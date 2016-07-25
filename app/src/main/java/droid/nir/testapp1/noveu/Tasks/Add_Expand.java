@@ -12,7 +12,9 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -32,6 +34,7 @@ import java.util.List;
 import droid.nir.testapp1.Bonjour;
 import droid.nir.testapp1.R;
 import droid.nir.testapp1.noveu.Dialogue.DialogueSelectorTasks;
+import droid.nir.testapp1.noveu.Home.Home;
 import droid.nir.testapp1.noveu.Tasks.Loaders.DeleteTask;
 import droid.nir.testapp1.noveu.Tasks.Loaders.LoadTaskHelper;
 import droid.nir.testapp1.noveu.Tasks.data.SharedData;
@@ -39,6 +42,7 @@ import droid.nir.testapp1.noveu.Tasks.data.TaskVitalData;
 import droid.nir.testapp1.noveu.Util.AutoRefresh;
 import droid.nir.testapp1.noveu.Util.Import;
 import droid.nir.testapp1.noveu.Util.Log;
+import droid.nir.testapp1.noveu.constants.SharedKeys;
 import droid.nir.testapp1.noveu.constants.constants;
 import droid.nir.testapp1.noveu.dB.DBProvider;
 import droid.nir.testapp1.noveu.dB.Project;
@@ -138,11 +142,12 @@ public class Add_Expand extends AppCompatActivity
         choice = bundle_expand.getInt("choice");
         if (choice == 0) {
             getArgumentsMinimal(bundle_expand);
+
         } else if (choice == 1) {
             id = bundle_expand.getInt("taskid");
             extras = getIntent().getStringExtra("extra");
             new AsyncLoad().execute(id);
-
+            findViewById(R.id.moreimage).setVisibility(View.VISIBLE);
 
         }
 
@@ -824,6 +829,7 @@ public class Add_Expand extends AppCompatActivity
         protected void onPostExecute(Integer noofrows) {
             super.onPostExecute(noofrows);
             if (noofrows > 0) {
+                if (!new Home().showDeleteSnack())
                 Toast.makeText(context, context.getString(R.string.task_delete_successful), Toast.LENGTH_SHORT).show();
             } else
                 Toast.makeText(context, context.getString(R.string.task_delete_unsuccessful), Toast.LENGTH_LONG).show();

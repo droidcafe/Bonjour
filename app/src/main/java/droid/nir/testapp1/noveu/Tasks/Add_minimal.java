@@ -70,7 +70,7 @@ public class Add_minimal extends AppCompatActivity implements View.OnClickListen
             projectid = bundle.getInt("proid");
         }
         else{
-            projectid = 2;
+            projectid = Project.getDefaultProject(context);
         }
 
         TextView projectName = (TextView) findViewById(R.id.proname);

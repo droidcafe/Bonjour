@@ -10,7 +10,9 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -32,6 +34,7 @@ import java.util.List;
 import droid.nir.databaseHelper.MainDatabase;
 import droid.nir.defcon3.FirstScreen;
 import droid.nir.testapp1.About;
+import droid.nir.testapp1.Bonjour;
 import droid.nir.testapp1.CustomDate;
 import droid.nir.testapp1.R;
 import droid.nir.testapp1.noveu.Home.Adapters.TaskAdapter;
@@ -103,6 +106,8 @@ public class Home extends AppCompatActivity
 
         if (AutoRefresh.isRefreshNeeded(this))
             runDelayedRefresh();
+       // if(Import.getSharedPref(this,SharedKeys.delete) == 1)
+        //    showDeleteSnack();
     }
 
     private void setuptasklist() {
@@ -356,5 +361,24 @@ public class Home extends AppCompatActivity
         super.onDestroy();
 
       //  new ParentDb(this).returnSQl().close();
+    }
+
+    public boolean showDeleteSnack() {
+        if(activity == null)
+            return false;
+
+        final CoordinatorLayout coordinatorLayout = (CoordinatorLayout)activity.findViewById(R.id.homeparent);
+        Snackbar snackbar =  Snackbar
+                .make(coordinatorLayout, context.getString(R.string.task_delete_successful), Snackbar.LENGTH_LONG)
+                .setAction("UNDO", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Snackbar snackbar1 = Snackbar.make(coordinatorLayout, "Message is restored!", Snackbar.LENGTH_SHORT);
+                        snackbar1.show();
+                    }
+                });
+
+        snackbar.show();
+        return true;
     }
 }
