@@ -57,8 +57,8 @@ public class ParentDb extends SQLiteOpenHelper {
         if(ifsset<1)
         {
             settingDatabase();
-            Import.setSharedPref(context, SharedKeys.update,0);
             Import.setSharedPref(context, SharedKeys.DbVersion, dBmetaData.DATABASE_VERSION);
+            Import.setSharedPref(context, SharedKeys.DbVersion_old, dBmetaData.DATABASE_VERSION);
         }
         AsyncCreate asyncCreate = new AsyncCreate();
         asyncCreate.execute(sqLiteDatabase);
@@ -73,7 +73,6 @@ public class ParentDb extends SQLiteOpenHelper {
         if(ifsset<1)
         {
             settingDatabase();
-            Import.setSharedPref(context, SharedKeys.update, 1);
             Import.setSharedPref(context, SharedKeys.DbVersion, newVersion);
             Import.setSharedPref(context, SharedKeys.DbVersion_old,oldVersion);
         }

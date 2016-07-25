@@ -42,6 +42,7 @@ import droid.nir.testapp1.noveu.Tasks.Loaders.LoadTask;
 import droid.nir.testapp1.noveu.Util.AutoRefresh;
 import droid.nir.testapp1.noveu.Util.Import;
 import droid.nir.testapp1.noveu.constants.SharedKeys;
+import droid.nir.testapp1.noveu.constants.constants;
 import droid.nir.testapp1.noveu.dB.ParentDb;
 import droid.nir.testapp1.noveu.dB.Tasks;
 import droid.nir.testapp1.noveu.dB.metaValues.dBmetaData;
@@ -79,14 +80,12 @@ public class Home extends AppCompatActivity
     private SQLiteDatabase checkInitial() {
 
         SQLiteDatabase db = ParentDb.getInstance(context).returnSQl();
-        new MainDatabase(this, this).settingDatabase(false);
-
 
         sharedPreferences = getSharedPreferences(SharedKeys.prefname, 0);
+        int version= sharedPreferences.getInt(SharedKeys.Version, -1);
 
-        boolean isfirst = sharedPreferences.getBoolean(SharedKeys.firstkey, true);
-        if (isfirst) {
-            Initial.startInitialops(this);
+        if (version != constants.VERSION) {
+            Initial.startInitialops(this,this ,version);
         }
         boolean isAlarmSet = DailySyncAlarm.isDailySyncSet(context);
         if(!isAlarmSet)

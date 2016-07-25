@@ -17,6 +17,8 @@ public class SharedKeys {
     public static final String update ="update";
     public static final String DbVersion ="newDbVersion";
     public static final String DbVersion_old ="newDbVersion_old";
+    public static final String Version ="appVersion";
+    public static final String Version_old ="appVersion_old";
 
 
   //  public static String = "";

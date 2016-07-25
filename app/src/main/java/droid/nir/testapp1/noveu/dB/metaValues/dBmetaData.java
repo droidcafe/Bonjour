@@ -8,6 +8,7 @@ public class dBmetaData {
 
     public static final String DATABASE_SCHEMA = "db_bonjour";
     public static int DATABASE_VERSION = 25;
+    public static int DATABASE_VERSION_LEGACY = 80;
 
     /**
      * new tables add below. DONT CHANGE ORDER!!!!dependcies are there like

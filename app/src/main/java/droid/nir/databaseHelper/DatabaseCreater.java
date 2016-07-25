@@ -10,6 +10,7 @@ import android.os.AsyncTask;
 import droid.nir.testapp1.noveu.Util.Log;
 import android.widget.Toast;
 
+import droid.nir.testapp1.noveu.dB.metaValues.dBmetaData;
 import droid.nir.testapp1.toast;
 
 /**
@@ -18,7 +19,7 @@ import droid.nir.testapp1.toast;
 public class DatabaseCreater extends SQLiteOpenHelper {
 
     private static final String DATABASE_SCHEMA = "MyDataBase";
-    private  static int DATABASE_VERSION = 79;
+    private  static int DATABASE_VERSION = dBmetaData.DATABASE_VERSION_LEGACY;
     private String CreateSQL[];
     private  String TABLE_NAME[];
     private  String DropSQL[];
@@ -129,7 +130,7 @@ public class DatabaseCreater extends SQLiteOpenHelper {
             {
                 try {
 
-                    db.execSQL(DropSQL[i]);
+                   // db.execSQL(DropSQL[i]);
 
                 } catch (SQLException e) {
                   //  Toast.makeText(context, ""+e, Toast.LENGTH_LONG).show();
@@ -145,7 +146,7 @@ public class DatabaseCreater extends SQLiteOpenHelper {
 
             Toast.makeText(context, "Upgrade", Toast.LENGTH_LONG).show();
             Log.i("onUpgrade", "upgrade successfully");
-            onCreate(db);
+         //   onCreate(db);
             super.onPostExecute(aVoid);
         }
     }

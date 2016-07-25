@@ -25,6 +25,7 @@ import droid.nir.testapp1.MainActivity;
 import droid.nir.testapp1.Pending_Recycler_Data;
 import droid.nir.testapp1.R;
 import droid.nir.testapp1.noveu.constants.SharedKeys;
+import droid.nir.testapp1.noveu.dB.metaValues.dBmetaData;
 import droid.nir.testapp1.pending_data;
 
 import droid.nir.testapp1.timecorrection;
@@ -51,7 +52,7 @@ public class MainDatabase extends SQLiteOpenHelper {
     timecorrection timecorrection;
 
     private static final String DATABASE_SCHEMA = "MyDataBase";
-    private static int DATABASE_VERSION = 80;
+    private static int DATABASE_VERSION = dBmetaData.DATABASE_VERSION_LEGACY;
 
     public MainDatabase(Context context, Activity activity) {
         super(context, DATABASE_SCHEMA, null, DATABASE_VERSION);

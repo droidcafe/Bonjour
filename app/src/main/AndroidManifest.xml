@@ -315,8 +315,7 @@
 
         <activity
             android:name=".noveu.notifications.NotificationActivity"
-            android:label="@string/title_activity_notification"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@android:style/Theme.NoDisplay" />
         <activity
             android:name=".noveu.Tasks.Add_Reminder_new"
             android:label="@string/title_activity_add__reminder_new"
