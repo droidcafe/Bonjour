@@ -1,0 +1,75 @@
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <TextView
+        android:id="@+id/dcomp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_margin="20dp"
+        android:layout_marginBottom="0dp"
+        android:layout_marginLeft="30dp"
+        android:text="Pros outweigh the cons"
+        android:textColor="@color/primary_text"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/dpros"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/dcomp"
+        android:layout_below="@id/dcomp"
+        android:layout_margin="0dp"
+        android:paddingLeft="20dp"
+        android:paddingStart="20dp"
+        android:text="Pros"
+        android:textColor="@color/primary_text"
+        android:textSize="18sp" />
+
+    <ListView
+        android:id="@+id/dprolist"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignLeft="@id/dcomp"
+        android:layout_below="@id/dpros"
+        android:paddingBottom="10dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="0dp"
+        android:stackFromBottom="false"
+        android:transcriptMode="normal"
+        android:visibility="visible"
+        android:scrollbarAlwaysDrawVerticalTrack="false"
+        />
+
+    <TextView
+        android:id="@+id/dcons"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/dcomp"
+        android:layout_below="@id/dprolist"
+        android:layout_margin="0dp"
+        android:paddingLeft="20dp"
+        android:paddingStart="20dp"
+        android:text="Cons"
+        android:textColor="@color/primary_text"
+        android:textSize="18sp" />
+
+    <ListView
+        android:id="@+id/dconlist"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignLeft="@id/dcomp"
+        android:layout_below="@id/dcons"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="0dp"
+        android:stackFromBottom="false"
+        android:transcriptMode="normal"
+        android:visibility="visible"
+        />
+
+</RelativeLayout>

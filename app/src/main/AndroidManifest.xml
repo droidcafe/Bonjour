@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="droid.nir.testapp1"
+    android:versionCode="5"
+    android:versionName="1.0.2">
+
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application
+        android:name=".Bonjour"
+        android:allowBackup="true"
+        android:icon="@drawable/cc"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme"
+        tools:replace="android:icon">
+
+        <!-- android:theme="@style/AppTheme" -->
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/AppTheme.Toolbar" />
+        <activity
+            android:name=".Add_Pending"
+            android:label="@string/title_activity_add__pending"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.Pending">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="droid.nir.testapp1.MainActivity" />
+        </activity>
+        <activity
+            android:name=".MainActivity2Activity"
+            android:label="@string/title_activity_main_activity2" />
+        <activity
+            android:name=".trial_calendar2"
+            android:label="@string/title_activity_trial_calendar2" />
+        <activity
+            android:name=".Add_Event2"
+            android:label="@string/title_activity_add__event2"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.Event">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="droid.nir.testapp1.MainActivity" />
+        </activity>
+        <activity
+            android:name="droid.nir.alarmManager.AlaramReceiver2"
+            android:label="@string/title_activity_alaram_receiver2" />
+        <activity
+            android:name=".Add_Todo_list"
+            android:label="@string/title_activity_add__todo_list"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme3">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="droid.nir.testapp1.MainActivity" />
+        </activity>
+
+        <service
+            android:name="droid.nir.alarmManager.CheckForToday"
+            android:enabled="true" />
+        <service
+            android:name="droid.nir.alarmManager.DismissNotification"
+            android:enabled="true" />
+
+        <receiver android:name=".BootReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name="droid.nir.alarmManager.NotificationCreater">
+            <intent-filter>
+                <action android:name="nir.droid.NEWNOTIFICATION" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_RESTARTED" />
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name=".floating_trials"
+            android:label="@string/title_activity_floating_trials" />
+        <activity
+            android:name=".xx"
+            android:label="@string/title_activity_xx" />
+        <activity
+            android:name=".CustomDate"
+            android:label="@string/title_activity_custom_date"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="droid.nir.testapp1.MainActivity" />
+        </activity>
+        <activity
+            android:name=".ShowList"
+            android:label="@string/title_activity_show_list"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme3">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="droid.nir.testapp1.MainActivity" />
+        </activity>
+        <activity
+            android:name=".ShowEvent"
+            android:label="@string/title_activity_show_event"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.Event">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="droid.nir.testapp1.MainActivity" />
+        </activity>
+        <activity
+            android:name=".AllDecisions"
+            android:label="@string/title_activity_all_decisions"
+            android:theme="@style/AppTheme.Pending.ToolBar" />
+        <activity
+            android:name=".AllEvents"
+            android:label="@string/title_activity_all_events"
+            android:theme="@style/AppTheme.Event.ToolBar" />
+        <activity
+            android:name=".AllLists"
+            android:label="@string/title_activity_all_lists"
+            android:theme="@style/AppTheme.Toolbar3" />
+        <activity
+            android:name=".ShowDecision"
+            android:label="@string/title_activity_show_decision"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.Pending">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="droid.nir.testapp1.MainActivity" />
+        </activity>
+        <activity
+            android:name=".AllRemainders"
+            android:label="@string/title_activity_all_remainders"
+            android:theme="@style/AppTheme.Toolbar4" />
+        <activity
+            android:name=".trial_flaoting"
+            android:label="@string/title_activity_trial_flaoting" />
+        <activity
+            android:name=".trial_alarm"
+            android:label="@string/title_activity_trial_alarm" />
+        <activity
+            android:name=".ShowRemainder"
+            android:label="@string/title_activity_show_remainder"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme4">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="droid.nir.testapp1.MainActivity" />
+        </activity>
+        <activity
+            android:name=".About"
+            android:label="@string/title_activity_about"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Toolbarhome" />
+        <activity
+            android:name=".Help"
+            android:label="@string/title_activity_help"
+            android:parentActivityName=".About"
+            android:theme="@style/AppThemehelp">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="droid.nir.testapp1.About" />
+        </activity>
+        <activity
+            android:name="droid.nir.defcon3.ScreenSlidePageFragment"
+            android:label="@string/title_activity_help" />
+        <activity
+            android:name=".todolist.SlidingUpScrollViewActivity"
+            android:label="@string/title_activity_help"
+            android:theme="@style/AppTheme.Toolbar3" />
+        <activity
+            android:name="droid.nir.defcon3.FirstScreen"
+            android:label="@string/title_activity_first_screen"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Toolbar" />
+        <activity
+            android:name="droid.nir.defcon3.help_main"
+            android:label="@string/title_activity_help_main"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Toolbar" />
+        <activity
+            android:name=".todolist.All_list"
+            android:label="@string/title_activity_all_list"
+            android:theme="@style/AppTheme.Toolbar3" />
+        <activity
+            android:name=".noveu.Home.Home"
+            android:theme="@style/AppTheme.Task.ToolBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".noveu.Tasks.Add_minimal"
+            android:label="@string/title_activity_add_minimal"
+            android:parentActivityName=".noveu.Home.Home"
+            android:theme="@style/AppTheme.Task"
+            android:windowSoftInputMode="adjustPan">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="droid.nir.testapp1.noveu.Home.Home" />
+        </activity>
+        <activity
+            android:name=".noveu.Tasks.Add_Expand"
+            android:label="@string/title_activity_add__expand"
+            android:theme="@style/AppTheme.Task.ToolBar" />
+        <activity
+            android:name=".noveu.Tasks.Add_Reminder"
+            android:label="@string/title_activity_add__reminder"
+            android:theme="@style/AppTheme.Task.ToolBar" />
+
+        <provider
+            android:name=".noveu.dB.DBProvider"
+            android:authorities="droid.nir.testapp1.noveu.dbprovider" />
+
+        <activity
+            android:name=".noveu.Tasks.Add_SubTasks"
+            android:label="@string/title_activity_add__sub_tasks"
+            android:parentActivityName=".noveu.Tasks.Add_Expand"
+            android:theme="@style/AppTheme.Task.ToolBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="droid.nir.testapp1.noveu.Tasks.Add_Expand" />
+        </activity>
+        <activity
+            android:name=".noveu.Tasks.Add_Notes"
+            android:label="@string/title_activity_add__notes"
+            android:parentActivityName=".noveu.Tasks.Add_Expand"
+            android:theme="@style/AppTheme.Task.ToolBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="droid.nir.testapp1.noveu.Tasks.Add_Expand" />
+        </activity>
+        <activity
+            android:name=".noveu.NavDrw.HomeNav"
+            android:label="@string/title_activity_home_nav"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".noveu.Projects.ProjectManager"
+            android:label="@string/title_activity_project_manager"
+            android:theme="@style/AppTheme.Task.ToolBar" />
+        <activity
+            android:name=".noveu.Projects.ProjectTask"
+            android:label="@string/title_activity_project_task"
+            android:parentActivityName=".noveu.Projects.ProjectManager"
+            android:theme="@style/AppTheme.Task.ToolBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="droid.nir.testapp1.noveu.Projects.ProjectManager" />
+        </activity>
+        <activity
+            android:name=".noveu.bonjoursettings.BonjourSettings"
+            android:label="@string/title_activity_bonjour_settings"
+            android:parentActivityName=".noveu.Home.Home"
+            android:theme="@style/AppTheme.Task">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="droid.nir.testapp1.noveu.Home.Home" />
+        </activity>
+
+        <service
+            android:name=".noveu.sync.TrialService"
+            android:exported="false" />
+        <service
+            android:name=".noveu.sync.MyService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <receiver
+            android:name=".noveu.sync.receivers.TimeChange"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.TIME_SET" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name=".noveu.sync.services.TaskChangeService"
+            android:exported="false" />
+
+        <receiver
+            android:name=".noveu.sync.receivers.DbChangeReceiver"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="droid.nir.testapp1.intent.TASK_UPDATE" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="droid.nir.testapp1.intent.TASK_DELETE" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="droid.nir.testapp1.intent.TASK_INSERT" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name=".noveu.sync.services.NotifyService"
+            android:exported="false" />
+        <service
+            android:name=".noveu.sync.services.PlayBackService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity
+            android:name=".noveu.notifications.NotificationActivity"
+            android:label="@string/title_activity_notification"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".noveu.Tasks.Add_Reminder_new"
+            android:label="@string/title_activity_add__reminder_new"
+            android:theme="@style/AppTheme.Task.ToolBar" />
+
+        <service
+            android:name=".noveu.sync.services.DailySyncService"
+            android:exported="false" />
+        <service
+            android:name=".noveu.sync.services.ShareService"
+            android:exported="false" />
+        <service
+            android:name=".noveu.sync.services.NotificationResponseService"
+            android:exported="false"></service>
+    </application>
+
+</manifest>

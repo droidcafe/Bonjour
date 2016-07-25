@@ -1,0 +1,133 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="droid.nir.testapp1.ShowRemainder">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_margin="20dp"
+        android:textSize="20sp"
+        android:layout_marginLeft="30dp"
+
+        android:text="@string/titlecome"
+        android:id="@+id/listtitle"
+        android:textColor="@color/primary_text"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/event_inner_text"
+        android:id="@+id/rnotificationn"
+        android:layout_below="@id/listtitle"
+        android:layout_marginLeft="50dp"
+        android:text="@string/notification"
+        android:layout_marginBottom="30dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignBottom="@id/rnotificationn"
+        android:id="@+id/rnottime"
+android:text="9:30"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_marginRight="20dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/event_inner_text"
+        android:id="@+id/rdate"
+        android:layout_below="@id/rnotificationn"
+        android:layout_marginLeft="50dp"
+        android:text="@string/date"
+        android:layout_marginBottom="30dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignBottom="@id/rdate"
+        android:id="@+id/ldateview"
+        android:text="10/8/2005"
+        android:layout_marginRight="20dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/event_inner_text"
+        android:id="@+id/ralarm"
+        android:layout_below="@id/rdate"
+        android:layout_marginLeft="50dp"
+        android:text="@string/alarmset"
+        android:layout_marginBottom="30dp"
+        android:paddingLeft="40dp"
+        android:textColor="@color/accent"
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_below="@id/ralarm"
+        android:layout_height="1dp"
+        android:id="@+id/firstline"
+        android:background="@color/lines_grey" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_margin="20dp"
+        android:textSize="20sp"
+        android:layout_marginLeft="30dp"
+        android:layout_below="@id/firstline"
+        android:text="TDesp comes here"
+        android:id="@+id/desp"
+        android:visibility="gone"
+        android:textColor="@color/titletext"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text=""
+        android:layout_centerHorizontal="true"
+        android:visibility="gone"
+        android:id="@+id/hiddentext"
+        android:gravity="center"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_below="@id/desp"
+        android:layout_height="1dp"
+        android:visibility="gone"
+        android:id="@+id/secondline"
+        android:background="@color/lines_grey" />
+
+
+    <com.melnykov.fab.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="35dp"
+        android:layout_marginBottom="35dp"
+        android:src="@drawable/ic_pencil_white_24dp"
+        fab:fab_colorNormal="@color/raccent"
+        fab:fab_colorPressed="@color/accentpressed"
+        fab:fab_colorRipple="@color/ripple"/>
+
+</RelativeLayout>
