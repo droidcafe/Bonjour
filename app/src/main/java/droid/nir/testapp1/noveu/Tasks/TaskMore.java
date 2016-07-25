@@ -7,8 +7,10 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import droid.nir.testapp1.R;
+import droid.nir.testapp1.noveu.Util.Import;
 import droid.nir.testapp1.noveu.Util.Log;
 import droid.nir.testapp1.noveu.dB.DBProvider;
 
@@ -51,6 +53,9 @@ public class TaskMore extends Fragment implements View.OnClickListener {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        Import anImport = new Import(view.getContext());
+        anImport.settypefaces("Raleway-Light.ttf", (TextView) view.findViewById(R.id.share_text));
+        anImport.settypefaces("Raleway-Light.ttf", (TextView) view.findViewById(R.id.delete_text));
         (view.findViewById(R.id.share)).setOnClickListener(this);
         (view.findViewById(R.id.delete)).setOnClickListener(this);
     }
