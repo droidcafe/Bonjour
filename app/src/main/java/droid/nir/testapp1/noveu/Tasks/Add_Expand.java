@@ -324,7 +324,7 @@ public class Add_Expand extends AppCompatActivity
         TaskVitalData taskVitalData = TaskVitalData.initialise(mode, task, dateselected);
         int[] passInt = {0, TaskUtil.isTime(remmode), timehr, timemin, TaskUtil.isAlarm(remmode)};
 
-        TaskShare taskShare = new TaskShare(passInt, Project.getProjectName(projectid), taskVitalData);
+        TaskShare taskShare = new TaskShare(passInt, Project.getProjectName(context,projectid), taskVitalData);
         Intent shareIntent = taskShare.share(context);
         context.startActivity(Intent.createChooser(shareIntent, context.getResources().getString(R.string.shareusing)));
     }
@@ -743,7 +743,7 @@ public class Add_Expand extends AppCompatActivity
 
         private void getProject(int projectid) {
 
-            proname = Project.getProjectName(projectid);
+            proname = Project.getProjectName(context,projectid);
             publishProgress(2);
 
         }

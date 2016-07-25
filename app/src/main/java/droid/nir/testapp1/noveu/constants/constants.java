@@ -5,12 +5,12 @@ package droid.nir.testapp1.noveu.constants;
  */
 public class constants {
 
-    public final static int VERSION = 9;
+    public final static int VERSION = 10;
     public final static int REMINDER_REQUESTCODE = 101;
     public final static int SUBTASK_REQUESTCODE = 102;
     public final static int NOTES_REQUESTCODE = 103;
     public final static int NOTIFY_TASKS_PENDINGINTENT_REQUESTODE = 20;
-    public final static int DEFAULT_PROJECT_ID = 2;
+    public final static int DEFAULT_PROJECT_ID = 3;
 
 
     public final static int SUCCESS_CODE = 400;

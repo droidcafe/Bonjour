@@ -49,6 +49,7 @@ public class Add_minimal extends AppCompatActivity implements View.OnClickListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_minimal);
 
+        context = this;
         setHeight();
         ButterKnife.bind(this);
 
@@ -59,7 +60,6 @@ public class Add_minimal extends AppCompatActivity implements View.OnClickListen
         newtask.addTextChangedListener(this);
         setOnClicks();
         mode=0;
-        context = this;
     }
 
     private void getArguments() {
@@ -74,7 +74,7 @@ public class Add_minimal extends AppCompatActivity implements View.OnClickListen
         }
 
         TextView projectName = (TextView) findViewById(R.id.proname);
-        projectName.setText(Project.getProjectName(projectid));
+        projectName.setText(Project.getProjectName(context,projectid));
         anImport.settypefaces("Raleway-SemiBold.ttf", projectName);
     }
 

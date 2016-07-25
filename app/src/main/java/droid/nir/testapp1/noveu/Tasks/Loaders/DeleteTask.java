@@ -15,6 +15,8 @@ public class DeleteTask {
     {
         Context context = Bonjour.getContext();
         TaskVitalData taskVitalData = LoadTaskHelper.loadTasksVitals(context, tid);
+        if(taskVitalData == null)
+            return -1;
         if(taskVitalData.isrem == 1)
             removeReminder(context,tid);
         if(taskVitalData.issubtask == 1)

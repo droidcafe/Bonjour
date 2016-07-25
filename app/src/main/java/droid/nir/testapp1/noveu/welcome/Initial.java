@@ -11,6 +11,8 @@ import droid.nir.testapp1.noveu.Util.Import;
 import droid.nir.testapp1.noveu.constants.SharedKeys;
 import droid.nir.testapp1.noveu.constants.constants;
 import droid.nir.testapp1.noveu.dB.ParentDb;
+import droid.nir.testapp1.noveu.dB.initial.TaskMigrations;
+import droid.nir.testapp1.noveu.dB.initial.inital_projects;
 
 /**
  * Created by droidcafe on 3/30/2016.
@@ -25,5 +27,10 @@ public class Initial {
 
         new MainDatabase(context, activity).settingDatabase(false);
 
+    }
+
+    public static void startDBops(Context context){
+        new inital_projects().execute(context);
+        TaskMigrations.migrate();
     }
 }

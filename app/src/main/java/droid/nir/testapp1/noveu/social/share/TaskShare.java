@@ -110,7 +110,7 @@ public class TaskShare  {
 
         taskVitalData = LoadTaskHelper.loadTasksVitals(context, tid);
         if (taskVitalData != null) {
-            project = Project.getProjectName(taskVitalData.pid);
+            project = Project.getProjectName(context,taskVitalData.pid);
             if (taskVitalData.isrem == 1) {
                 reminderdata = LoadTaskHelper.loadReminder(context, tid);
                 if(reminderdata[1] == 1)

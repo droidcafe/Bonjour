@@ -15,6 +15,7 @@ import droid.nir.testapp1.noveu.Util.Log;
 import droid.nir.testapp1.noveu.constants.SharedKeys;
 import droid.nir.testapp1.noveu.dB.initial.inital_projects;
 import droid.nir.testapp1.noveu.dB.metaValues.dBmetaData;
+import droid.nir.testapp1.noveu.welcome.Initial;
 
 /**
  * Created by user on 12/25/2015.
@@ -80,11 +81,10 @@ public class ParentDb extends SQLiteOpenHelper {
         droptable = true;
         if(droptable)
         {
-
-          //  new AsyncDrop().execute(sqLiteDatabase);
+            //  new AsyncDrop().execute(sqLiteDatabase);
         }
         else{
-            new AsyncCreate().execute(sqLiteDatabase);
+         //   new AsyncCreate().execute(sqLiteDatabase);
         }
     }
 
@@ -115,11 +115,8 @@ public class ParentDb extends SQLiteOpenHelper {
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
-          //  Toast.makeText(context, "oncreate the tble", Toast.LENGTH_LONG).show();
-          //  Log.i("oncreate", "Created Successfully");
-
-
-           new inital_projects().execute(context);
+            Log.i("oncreate", "Created Successfully");
+            Initial.startDBops(context);
         }
     }
 

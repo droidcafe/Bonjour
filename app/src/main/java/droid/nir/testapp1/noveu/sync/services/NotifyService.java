@@ -96,7 +96,7 @@ public class NotifyService extends IntentService {
     private  static void showTaskNotification(int[] notificationData) {
         TaskVitalData taskData = LoadTaskHelper.loadTasksVitals(context, notificationData[0]);
 
-        String project = new Project(context).getProjectName(taskData.pid);
+        String project = new Project(context).getProjectName(context,taskData.pid);
         Log.d("ns", "notify " + project + " " + taskData.done);
 
         NotificationUtils.NotificationMode notificationMode;

@@ -11,6 +11,7 @@ import java.util.List;
 import droid.nir.databaseHelper.Todolist;
 import droid.nir.testapp1.Bonjour;
 import droid.nir.testapp1.noveu.Util.Import;
+import droid.nir.testapp1.noveu.Util.Log;
 import droid.nir.testapp1.noveu.constants.SharedKeys;
 import droid.nir.testapp1.noveu.dB.Project;
 import droid.nir.testapp1.noveu.dB.Tasks;
@@ -21,7 +22,7 @@ import droid.nir.testapp1.noveu.dB.metaValues.dBmetaData;
  */
 public class TaskMigrations {
 
-    public void migrate() {
+    public static void migrate() {
         Context context = Bonjour.getContext();
         int update = Import.getSharedPref(context, SharedKeys.update);
         int olddbVersion = Import.getSharedPref(context, SharedKeys.legacyDbVersion_old);
@@ -44,7 +45,6 @@ public class TaskMigrations {
             todolist = new Todolist(context);
             tasks = new Tasks(context);
         }
-        // http://www.pornhub.com/view_video.php?viewkey=ph577646478784e
 
         @Override
         protected Void doInBackground(Void... params) {
@@ -61,7 +61,7 @@ public class TaskMigrations {
                 passDatas[0] = todoCursor.getString(todoCursor.getColumnIndex("title"));
                 passDatas[1] = todoCursor.getString(todoCursor.getColumnIndex("date"));
 
-                passInt[0] = Project.getDefaultProject();
+                passInt[0] = Project.getDefaultProject(context);
                 passInt[1] = todoCursor.getInt(todoCursor.getColumnIndex("notification"));
                 passInt[2] = 0; /** notes */
                 int size = todoCursor.getInt(todoCursor.getColumnIndex("listno"));
@@ -89,12 +89,13 @@ public class TaskMigrations {
                     Cursor remCursor = todolist.select(db, 2, columnreq, itemSelection, null, null, null, null);
                     while (remCursor.moveToNext()) {
                         passInt[5] = 1;
-                        passInt[6] = remCursor.getInt(remCursor.getColumnIndex("timehr"));
-                        passInt[7] = remCursor.getInt(remCursor.getColumnIndex("timemin"));
+                        passInt[6] = remCursor.getInt(remCursor.getColumnIndex("nhr"));
+                        passInt[7] = remCursor.getInt(remCursor.getColumnIndex("nmin"));
                     }
                     passInt[8] = 0;
                 }
 
+                Log.d("tm","migrating "+id);
                 Tasks.insert(passDatas, passInt, context, subtasks, subtaskdone);
             }
             return null;

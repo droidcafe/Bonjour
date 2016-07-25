@@ -33,7 +33,7 @@ public class inital_projects extends AsyncTask<Context,Void,Void> {
         {
             project.insert(initial_projects[i],0);
         }
-        Project.setDefaultProject(constants.DEFAULT_PROJECT_ID);
+        Project.setDefaultProject(params[0],constants.DEFAULT_PROJECT_ID);
         initial_count(params[0]);
         return null;
     }

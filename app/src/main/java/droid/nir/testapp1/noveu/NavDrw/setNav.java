@@ -8,6 +8,8 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
+
+import droid.nir.testapp1.AllLists;
 import droid.nir.testapp1.noveu.Util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -79,7 +81,7 @@ public class setNav implements NavigationView.OnNavigationItemSelectedListener {
                     activity.finish();
                     break;
                 case R.id.nav_event:
-                    Intent goinginent2 = new Intent(context, AllEvents.class);
+                    Intent goinginent2 = new Intent(context, AllLists.class);
                     context.startActivity(goinginent2);
                     activity.finish();
                     break;

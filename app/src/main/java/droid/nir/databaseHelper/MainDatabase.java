@@ -352,6 +352,8 @@ public class MainDatabase extends SQLiteOpenHelper {
 
         if(isset == 0)
             setVariables();
+        Import.setSharedPref(context, SharedKeys.update, 1);
+
 //        intialisedrop();
 //        for (int i = 0; i < DropSQL.length; i++) {
 //            try {

@@ -7,6 +7,8 @@ import android.graphics.Color;
 import android.os.Bundle;
 
 import android.support.v7.widget.RecyclerView;
+
+import droid.nir.testapp1.noveu.Home.Home;
 import droid.nir.testapp1.noveu.Util.Log;
 import android.util.SparseBooleanArray;
 import android.view.ActionMode;
@@ -172,9 +174,12 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> im
         Log.d("ta","position "+position +" "+taskList.get(position).taskid);
         if(taskList.get(position).taskid !=-1)
         {
+            new Add_Expand.AsyncDelete().execute(taskList.get(position).taskid);
             taskList.remove(position);
-         //   notifyDataSetChanged();
+            //   notifyDataSetChanged();
             notifyItemRemoved(position);
+            new Home.AsyncLoad().execute();
+
         //    notifyItemRangeChanged(position,getItemCount());
 //            Log.d("ta","removed "+taskList.get(position).tasktitle);
         }

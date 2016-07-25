@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.AsyncTask;
 
+import droid.nir.testapp1.Bonjour;
 import droid.nir.testapp1.noveu.Util.Log;
 
 import droid.nir.databaseHelper.DatabaseCreater;
@@ -105,7 +106,7 @@ public class Project {
 
     public static void delete(Context context, int tableNo, String selection, String[] selectionArgs, int pid) {
 
-        if(pid == getDefaultProject())
+        if(pid == getDefaultProject(context))
         {
             /**
              * set next project default as the one having highest task count
@@ -148,7 +149,7 @@ public class Project {
         }
     }
 
-    public static String getProjectName(int projectId) {
+    public static String getProjectName(Context context, int projectId) {
         String selection = "_id = " + projectId;
         Cursor cursor = Project.select(context, 0, new int[]{1}, selection, null, null, null, null);
 
@@ -160,29 +161,30 @@ public class Project {
     }
 
     public static int getProjectSize(int projectId) {
+
+        Context context = Bonjour.getContext();
         String selection = "_id = " + projectId;
         Cursor cursor = Project.select(context, 0, new int[]{2}, selection, null, null, null, null);
 
         while (cursor.moveToNext()) {
             return cursor.getInt(cursor.getColumnIndex(Project.columnNames[0][2]));
         }
-
         return -1;
     }
 
-    public static int getDefaultProject() {
+    public static int getDefaultProject(Context context) {
         SharedPreferences sharedPreferences = context.getSharedPreferences(SharedKeys.prefname, 0);
         return sharedPreferences.getInt(SharedKeys.projectDefault, -1);
     }
 
-    public static void setDefaultProject(int id) {
+    public static void setDefaultProject(Context context, int id) {
         SharedPreferences sharedPreferences = context.getSharedPreferences(SharedKeys.prefname, 0);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putInt(SharedKeys.projectDefault , id);
         editor.commit();
     }
 
-    public static ProjectData getProject(int projectId) {
+    public static ProjectData getProject(Context context, int projectId) {
 
         ProjectData projectData = new ProjectData();
         String selection = "_id = " + projectId;
@@ -207,7 +209,7 @@ public class Project {
      */
     public static void updateProject(Context context, int projectId) {
 
-        ProjectData projectData = getProject(projectId);
+        ProjectData projectData = getProject(context, projectId);
         if (projectData == null)
             return;
         projectData.ProjectSize++;

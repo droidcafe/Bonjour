@@ -186,7 +186,7 @@ public class LoadTask {
             object.tasktitle = cursor.getString(cursor.getColumnIndex(Tasks.columnNames[0][1]));
             int projectid = cursor.getInt(cursor.getColumnIndex(Tasks.columnNames[0][2]));
 
-            object.projectName = new Project(context).getProjectName(projectid);
+            object.projectName = Project.getProjectName(context,projectid);
             object.taskid = cursor.getInt(cursor.getColumnIndex(Tasks.columnNames[0][0]));
 
             list.add(list.size(), object);

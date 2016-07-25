@@ -44,7 +44,9 @@ import droid.nir.testapp1.noveu.Util.Import;
 import droid.nir.testapp1.noveu.constants.SharedKeys;
 import droid.nir.testapp1.noveu.constants.constants;
 import droid.nir.testapp1.noveu.dB.ParentDb;
+import droid.nir.testapp1.noveu.dB.Project;
 import droid.nir.testapp1.noveu.dB.Tasks;
+import droid.nir.testapp1.noveu.dB.initial.TaskMigrations;
 import droid.nir.testapp1.noveu.dB.metaValues.dBmetaData;
 import droid.nir.testapp1.noveu.recycler.ItemTouchHelperCallback;
 import droid.nir.testapp1.noveu.sync.alarms.DailySyncAlarm;
@@ -79,14 +81,14 @@ public class Home extends AppCompatActivity
 
     private SQLiteDatabase checkInitial() {
 
-        SQLiteDatabase db = ParentDb.getInstance(context).returnSQl();
-
         sharedPreferences = getSharedPreferences(SharedKeys.prefname, 0);
         int version= sharedPreferences.getInt(SharedKeys.Version, -1);
 
         if (version != constants.VERSION) {
             Initial.startInitialops(this,this ,version);
         }
+        SQLiteDatabase db = ParentDb.getInstance(context).returnSQl();
+
         boolean isAlarmSet = DailySyncAlarm.isDailySyncSet(context);
         if(!isAlarmSet)
             DailySyncAlarm.setSyncAlarmNow(context);
@@ -295,18 +297,18 @@ public class Home extends AppCompatActivity
             public void run() {
                 refresh();
             }
-        }, 1500);
+        }, 1200);
 
 
     }
 
-    private void refresh() {
+    public void refresh() {
         setuptasklist();
         AutoRefresh.setRefreshDone(this);
     }
 
 
-    private static class AsyncLoad extends AsyncTask<Void, Void, List<dataHome>> {
+    public static class AsyncLoad extends AsyncTask<Void, Void, List<dataHome>> {
 
         RecyclerView recyclerView;
 
