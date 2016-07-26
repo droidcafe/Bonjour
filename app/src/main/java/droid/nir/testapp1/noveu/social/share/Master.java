@@ -2,6 +2,7 @@ package droid.nir.testapp1.noveu.social.share;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 
 import droid.nir.testapp1.Bonjour;
 import droid.nir.testapp1.R;
@@ -23,7 +24,9 @@ public class Master {
         share.setAction(Intent.ACTION_SEND);
         share.setType("text/plain");
         share.putExtra(Intent.EXTRA_TEXT, sharetext);
-        share.addFlags(Intent.FLAG_ACTIVITY_NEW_DOCUMENT);
+        if (Build.VERSION.SDK_INT >= 21) {
+            share.addFlags(Intent.FLAG_ACTIVITY_NEW_DOCUMENT);
+        }
         share.putExtra(Intent.EXTRA_SUBJECT,"" +title);
 
         return share;

@@ -211,7 +211,13 @@
         <activity
             android:name=".noveu.Tasks.Add_Expand"
             android:label="@string/title_activity_add__expand"
-            android:theme="@style/AppTheme.Task.ToolBar" />
+            android:theme="@style/AppTheme.Task.ToolBar">
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="text/*" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".noveu.Tasks.Add_Reminder"
             android:label="@string/title_activity_add__reminder"

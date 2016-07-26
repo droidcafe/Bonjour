@@ -12,9 +12,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -42,7 +40,6 @@ import droid.nir.testapp1.noveu.Tasks.data.TaskVitalData;
 import droid.nir.testapp1.noveu.Util.AutoRefresh;
 import droid.nir.testapp1.noveu.Util.Import;
 import droid.nir.testapp1.noveu.Util.Log;
-import droid.nir.testapp1.noveu.constants.SharedKeys;
 import droid.nir.testapp1.noveu.constants.constants;
 import droid.nir.testapp1.noveu.dB.DBProvider;
 import droid.nir.testapp1.noveu.dB.Project;
@@ -88,7 +85,7 @@ public class Add_Expand extends AppCompatActivity
     static Context context;
     static Activity activity;
     static String extras;
-    static boolean isMoreVisible;
+    static boolean isMoreVisible, isShared;
     static int choice, id;
 
     @Override
@@ -133,10 +130,23 @@ public class Add_Expand extends AppCompatActivity
         mode = 0;
         remmode = 0;
         extras = "";
+        choice = 0;
+        id = -1;
         isMoreVisible = false;
+        isShared = false;
     }
 
     private void getArguments() {
+        Intent intent = getIntent();
+        String action = intent.getAction();
+        String type = intent.getType();
+
+        if (Intent.ACTION_SEND.equals(action) && type != null) {
+            if (type.startsWith("text/")) {
+                getSharedText(intent);
+            }
+            return;
+        }
         Bundle bundle_expand = getIntent().getExtras();
 
         choice = bundle_expand.getInt("choice");
@@ -151,6 +161,25 @@ public class Add_Expand extends AppCompatActivity
 
         }
 
+    }
+
+    private void getSharedText(Intent intent) {
+        String task = intent.getStringExtra(Intent.EXTRA_TEXT);
+        String task_title = intent.getStringExtra(Intent.EXTRA_SUBJECT);
+
+        projectid = Project.getDefaultProject(context);
+        getLoaderManager().initLoader(1, null, this);
+
+        if (task_title != null) {
+            ((TextView) findViewById(R.id.new_task)).setText(task_title);
+            SharedData.notes = task;
+            setText(R.id.notes, R.id.notesimage, 5);
+            remmode = 0;
+        } else {
+            ((TextView) findViewById(R.id.new_task)).setText(task);
+        }
+
+        isShared = true;
     }
 
 
@@ -320,7 +349,8 @@ public class Add_Expand extends AppCompatActivity
             task = getResources().getString(R.string.randomtask);
         new AsyncSave().execute(task);
 
-        finish();
+        Log.d("ae","choice "+choice +" id "+id);
+            finish();
     }
 
     private static void shareTask() {
@@ -329,7 +359,7 @@ public class Add_Expand extends AppCompatActivity
         TaskVitalData taskVitalData = TaskVitalData.initialise(mode, task, dateselected);
         int[] passInt = {0, TaskUtil.isTime(remmode), timehr, timemin, TaskUtil.isAlarm(remmode)};
 
-        TaskShare taskShare = new TaskShare(passInt, Project.getProjectName(context,projectid), taskVitalData);
+        TaskShare taskShare = new TaskShare(passInt, Project.getProjectName(context, projectid), taskVitalData);
         Intent shareIntent = taskShare.share(context);
         context.startActivity(Intent.createChooser(shareIntent, context.getResources().getString(R.string.shareusing)));
     }
@@ -662,6 +692,8 @@ public class Add_Expand extends AppCompatActivity
             else if (choice == 1)
                 Tasks.update(passData, passInt, context, SharedData.list, SharedData.subTaskdone, id);
             SharedData.clearAll();
+//            if (isShared)
+//                System.exit(1);
             return null;
         }
     }
@@ -748,7 +780,7 @@ public class Add_Expand extends AppCompatActivity
 
         private void getProject(int projectid) {
 
-            proname = Project.getProjectName(context,projectid);
+            proname = Project.getProjectName(context, projectid);
             publishProgress(2);
 
         }
@@ -830,7 +862,7 @@ public class Add_Expand extends AppCompatActivity
             super.onPostExecute(noofrows);
             if (noofrows > 0) {
                 if (!new Home().showDeleteSnack())
-                Toast.makeText(context, context.getString(R.string.task_delete_successful), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, context.getString(R.string.task_delete_successful), Toast.LENGTH_SHORT).show();
             } else
                 Toast.makeText(context, context.getString(R.string.task_delete_unsuccessful), Toast.LENGTH_LONG).show();
         }
@@ -838,6 +870,7 @@ public class Add_Expand extends AppCompatActivity
 
     /**
      * used for loading project dialogue data on clicking on project
+     *
      * @param id
      * @param args
      * @return

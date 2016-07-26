@@ -72,17 +72,20 @@ public class NotifyService extends IntentService {
                 if (notificationData[1] == passData[1] && notificationData[2] == passData[2] &&
                         notificationData[4] == 0) {
                     if (notificationData[5] == constants.notificationMode[0])
-                        if (showTaskNotification(notificationData)) /** here actually showing occurs - true if notification firing was successfull else false **/
+                        if (showTaskNotification(notificationData)) /** here actually showing occurs - true if notification firing was successfull else false **/ {
                             if (notificationData[3] == 1)
                                 PlayBackService.startPlayBack(context, AlarmUtils.getAlarmUri(), false);
+
+                            /**
+                             * here notification has been displayed . do things like change isfire = 1 and done =1
+                             */
+                            TodayNotificationHelper.updateIsFired(context, 1, id);
+                            if (notificationData[5] == constants.notificationMode[0])
+                                TaskNotificationHelper.handleNotificationFiring(context, notificationData[0]);
+                        }
                 }
             }
-            /**
-             * here notification has been displayed . do things like change isfire = 1 and done =1
-             */
-            TodayNotificationHelper.updateIsFired(context, 1, id);
-            if (notificationData[5] == constants.notificationMode[0])
-                TaskNotificationHelper.handleNotificationFiring(context, notificationData[0]);
+
         }
 
     }

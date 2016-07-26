@@ -366,7 +366,7 @@ To view a reminder click on it.
 
     <string name="add_expand">Add in expanded mode</string>
     <string name="task_hint1">Lunch tommorow at 1:00</string>
-    <string name="title_activity_add__expand">Add new task</string>
+    <string name="title_activity_add__expand">Add as new task</string>
     <string name="subtasks">SubTasks</string>
     <string name="alarmoff">Alarm Off</string>
     <string name="alarmon">Alarm On</string>
