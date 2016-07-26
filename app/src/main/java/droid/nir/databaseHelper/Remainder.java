@@ -162,10 +162,16 @@ public class Remainder {
 
     public Cursor select(SQLiteDatabase db, int tableno, int[] columnno, String selection, String[] selectionArgs, String groupby, String having, String orderby) {
         if (db != null) {
-            String[] reqcolumns = new String[columnno.length];
-            //  reqcolumns = null;
-            for (int i = 0; i < columnno.length; i++) {
-                reqcolumns[i] = columnNames[tableno][columnno[i]];
+            String[] reqcolumns;
+
+            if(columnno == null){
+                reqcolumns = null;
+            }
+            else{
+                reqcolumns = new String[columnno.length];
+                for (int i = 0; i < columnno.length; i++) {
+                    reqcolumns[i] = columnNames[tableno][columnno[i]];
+                }
             }
 
             Cursor tempcursor = edatabaseCreater.select(db, tableNames[tableno], reqcolumns, selection, selectionArgs, groupby, having, orderby);

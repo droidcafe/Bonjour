@@ -31,10 +31,8 @@ import com.prolificinteractive.materialcalendarview.OnDateChangedListener;
 
 import java.util.List;
 
-import droid.nir.databaseHelper.MainDatabase;
 import droid.nir.defcon3.FirstScreen;
 import droid.nir.testapp1.About;
-import droid.nir.testapp1.Bonjour;
 import droid.nir.testapp1.CustomDate;
 import droid.nir.testapp1.R;
 import droid.nir.testapp1.noveu.Home.Adapters.TaskAdapter;
@@ -47,7 +45,6 @@ import droid.nir.testapp1.noveu.Util.Import;
 import droid.nir.testapp1.noveu.constants.SharedKeys;
 import droid.nir.testapp1.noveu.constants.constants;
 import droid.nir.testapp1.noveu.dB.ParentDb;
-import droid.nir.testapp1.noveu.dB.Project;
 import droid.nir.testapp1.noveu.dB.Tasks;
 import droid.nir.testapp1.noveu.dB.initial.TaskMigrations;
 import droid.nir.testapp1.noveu.dB.metaValues.dBmetaData;
@@ -85,15 +82,15 @@ public class Home extends AppCompatActivity
     private SQLiteDatabase checkInitial() {
 
         sharedPreferences = getSharedPreferences(SharedKeys.prefname, 0);
-        int version= sharedPreferences.getInt(SharedKeys.Version, -1);
+        int version = sharedPreferences.getInt(SharedKeys.Version, -1);
 
         if (version != constants.VERSION) {
-            Initial.startInitialops(this,this ,version);
+            Initial.startInitialops(this, this, version);
         }
         SQLiteDatabase db = ParentDb.getInstance(context).returnSQl();
-
+     //   TaskMigrations.migrate();
         boolean isAlarmSet = DailySyncAlarm.isDailySyncSet(context);
-        if(!isAlarmSet)
+        if (!isAlarmSet)
             DailySyncAlarm.setSyncAlarmNow(context);
 
         return db;
@@ -106,7 +103,7 @@ public class Home extends AppCompatActivity
 
         if (AutoRefresh.isRefreshNeeded(this))
             runDelayedRefresh();
-       // if(Import.getSharedPref(this,SharedKeys.delete) == 1)
+        // if(Import.getSharedPref(this,SharedKeys.delete) == 1)
         //    showDeleteSnack();
     }
 
@@ -360,15 +357,15 @@ public class Home extends AppCompatActivity
     protected void onDestroy() {
         super.onDestroy();
 
-      //  new ParentDb(this).returnSQl().close();
+        //  new ParentDb(this).returnSQl().close();
     }
 
     public boolean showDeleteSnack() {
-        if(activity == null)
+        if (activity == null)
             return false;
 
-        final CoordinatorLayout coordinatorLayout = (CoordinatorLayout)activity.findViewById(R.id.homeparent);
-        Snackbar snackbar =  Snackbar
+        final CoordinatorLayout coordinatorLayout = (CoordinatorLayout) activity.findViewById(R.id.homeparent);
+        Snackbar snackbar = Snackbar
                 .make(coordinatorLayout, context.getString(R.string.task_delete_successful), Snackbar.LENGTH_LONG)
                 .setAction("UNDO", new View.OnClickListener() {
                     @Override

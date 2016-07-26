@@ -10,6 +10,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 
 import droid.nir.testapp1.AllLists;
+import droid.nir.testapp1.AllRemainders;
 import droid.nir.testapp1.noveu.Util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -76,7 +77,7 @@ public class setNav implements NavigationView.OnNavigationItemSelectedListener {
                     activity.finish();
                     break;
                 case R.id.nav_pending:
-                    Intent goinginent1 = new Intent(context, AllDecisions.class);
+                    Intent goinginent1 = new Intent(context, AllRemainders.class);
                     context.startActivity(goinginent1);
                     activity.finish();
                     break;
