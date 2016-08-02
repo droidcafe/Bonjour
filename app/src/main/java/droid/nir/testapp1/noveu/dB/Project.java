@@ -8,6 +8,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.AsyncTask;
 
+import java.util.ArrayList;
+
 import droid.nir.testapp1.Bonjour;
 import droid.nir.testapp1.noveu.Util.Log;
 
@@ -201,6 +203,18 @@ public class Project {
         return projectData;
     }
 
+    public static ArrayList<String> getProjects(Context context) {
+
+        Cursor cursor = Project.select(context, 0, new int[]{1}, null, null, null, null, null);
+        ArrayList<String> projectNames = new ArrayList<>(cursor.getCount());
+
+        if (cursor.getCount() <= 0)
+            return null;
+        while (cursor.moveToNext()) {
+            projectNames.add(cursor.getString(cursor.getColumnIndex(Project.columnNames[0][1])));
+        }
+        return projectNames;
+    }
     /**
      * increases the project size on inserting a new task to the project
      *

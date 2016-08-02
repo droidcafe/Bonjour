@@ -157,10 +157,34 @@ public class Import {
         SharedPreferences sharedPreferences = context.getSharedPreferences(SharedKeys.prefname,0);
         return  sharedPreferences.getInt(key, -1);
     }
+
     public static String getSharedPref( String key, Context context){
         SharedPreferences sharedPreferences = context.getSharedPreferences(SharedKeys.prefname,0);
         return  sharedPreferences.getString(key, null);
     }
+
+    /**
+     * helper function for getting settings shared prefs
+     * @param context
+     * @param key key of shared preference
+     * @param type type of preference 1 - string 2- integer 3 - boolean
+     * @return
+     */
+    public static Object getSettingSharedPref(  Context context, String key, int type){
+        SharedPreferences sharedPreferences = context.getSharedPreferences(SharedKeys.prefname_setting,0);
+
+        if(type == 1)
+        return  sharedPreferences.getString(key, null);
+
+        else if(type == 2)
+            return  sharedPreferences.getInt(key, -1);
+
+        else if(type == 3)
+            return  sharedPreferences.getBoolean(key, true);
+
+        return null;
+    }
+
 }
 
 

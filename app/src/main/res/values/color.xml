@@ -59,6 +59,12 @@
     <color name="tprimary_light">#B3E5FC</color>
     <color name="tprimarytext">#8e54b3</color>
 
+    <color name="sprimary">#F4F4F4</color>
+    <color name="sprimary_dark">#757575</color>
+    <color name="saccent">@color/tprimary</color>
+    <color name="sprimary_light">#B3E5FC</color>
+    <color name="sprimarytext">#8e54b3</color>
+
 
 
     <color name="primary_textt">#000000</color>

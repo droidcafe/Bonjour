@@ -77,12 +77,12 @@ public class setNav implements NavigationView.OnNavigationItemSelectedListener {
                     activity.finish();
                     break;
                 case R.id.nav_pending:
-                    Intent goinginent1 = new Intent(context, AllRemainders.class);
+                    Intent goinginent1 = new Intent(context, AllDecisions.class);
                     context.startActivity(goinginent1);
                     activity.finish();
                     break;
                 case R.id.nav_event:
-                    Intent goinginent2 = new Intent(context, AllLists.class);
+                    Intent goinginent2 = new Intent(context, AllEvents.class);
                     context.startActivity(goinginent2);
                     activity.finish();
                     break;
@@ -97,7 +97,7 @@ public class setNav implements NavigationView.OnNavigationItemSelectedListener {
                 case R.id.nav_settings:
                     Intent goinginent5 = new Intent(context, BonjourSettings.class);
                     context.startActivity(goinginent5);
-                    activity.finish();
+                   // activity.finish();
                     break;
 
             }

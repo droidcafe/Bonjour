@@ -23,6 +23,13 @@
         <item name="colorAccent">@color/taccent</item>
     </style>
 
+    <style name="AppTheme.Settings" parent="Theme.AppCompat.Light">
+        <item name="colorPrimary">@color/sprimary</item>
+        <item name="colorPrimaryDark">@color/sprimary_dark</item>
+        <item name="colorAccent">@color/saccent</item>
+
+    </style>
+
     <style name="AppTheme.Event" parent="AppTheme.Task">
         <item name="colorAccent">@color/eaccent</item>
     </style>

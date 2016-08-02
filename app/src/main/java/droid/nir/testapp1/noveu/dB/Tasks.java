@@ -171,7 +171,7 @@ public class    Tasks {
 
     public static void update(String[] passDatas, int[] passInt, Context context,
                               List<String> subtasklist,
-                              List<Integer> subTaskdone, int tid) {
+                              List<Integer> subTaskdone, int tid, int isChange) {
 
         //DBProvider dbProvider =new DBProvider();
         String task = passDatas[0];

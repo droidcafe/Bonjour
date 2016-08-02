@@ -81,7 +81,7 @@ public class Add_Expand extends AppCompatActivity
     static Import anImport;
     static int repeatselected, alarmselected;
     static String dateselected;
-    static int mode = 0, remmode = 0, projectid, timehr, timemin;
+    static int mode = 0, remmode = 0, projectid, timehr, timemin, inital_remmode;
     static Context context;
     static Activity activity;
     static String extras;
@@ -129,6 +129,7 @@ public class Add_Expand extends AppCompatActivity
 
         mode = 0;
         remmode = 0;
+        inital_remmode = 0;
         extras = "";
         choice = 0;
         id = -1;
@@ -689,8 +690,11 @@ public class Add_Expand extends AppCompatActivity
 
             if (choice == 0)
                 Tasks.insert(passData, passInt, context, SharedData.list, SharedData.subTaskdone);
-            else if (choice == 1)
-                Tasks.update(passData, passInt, context, SharedData.list, SharedData.subTaskdone, id);
+            else if (choice == 1) {
+                if (inital_remmode != remmode)
+
+                Tasks.update(passData, passInt, context, SharedData.list, SharedData.subTaskdone, id,1);
+            }
             SharedData.clearAll();
 //            if (isShared)
 //                System.exit(1);
@@ -765,7 +769,10 @@ public class Add_Expand extends AppCompatActivity
                 Log.d("ae", "pid " + taskVitalData.pid);
                 getProject(taskVitalData.pid);
                 if (taskVitalData.isrem == 1)
+                {
                     getReminder(id);
+                    inital_remmode = remmode;
+                }
                 if (taskVitalData.isnotes == 1)
                     getNotes(id);
                 if (taskVitalData.issubtask == 1)

@@ -3,7 +3,6 @@ package droid.nir.testapp1.noveu.Tasks;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import droid.nir.testapp1.noveu.Util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -19,6 +18,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import droid.nir.testapp1.R;
 import droid.nir.testapp1.noveu.Util.Import;
+import droid.nir.testapp1.noveu.Util.Log;
 import droid.nir.testapp1.noveu.Util.TimeUtil;
 import droid.nir.testapp1.noveu.constants.constants;
 

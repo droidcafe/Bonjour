@@ -15,6 +15,7 @@ import droid.nir.testapp1.noveu.Tasks.data.TaskVitalData;
 import droid.nir.testapp1.noveu.Util.Import;
 import droid.nir.testapp1.noveu.Util.Log;
 import droid.nir.testapp1.noveu.Util.TimeUtil;
+import droid.nir.testapp1.noveu.constants.SharedKeys;
 import droid.nir.testapp1.noveu.dB.Project;
 
 /**
@@ -57,7 +58,20 @@ public class TaskShare  {
     {
         String title  = taskVitalData.name;
         String share = " "+title + "\n";
-        if (taskVitalData.issubtask == 1)
+
+        boolean isnotes = (boolean) Import.getSettingSharedPref(context, SharedKeys.task_share_note,3);
+        boolean isreminder = (boolean) Import.getSettingSharedPref(context, SharedKeys.task_share_reminder,3);
+        boolean issubtask = (boolean) Import.getSettingSharedPref(context, SharedKeys.task_share_subtask,3);
+
+        if(isnotes && taskVitalData.isnotes == 1) {
+            Log.d("ts"," s "+SharedData.notes);
+            if (!SharedData.notes.equals("")) {
+                share = share.concat( SharedData.notes + "\n");
+            }
+        }
+        Log.d("ts"," share "+share);
+
+        if (issubtask && taskVitalData.issubtask == 1)
         {
             String todo = "", done ="";
             Log.d("ts"," s "+SharedData.list.toString() + " d "+SharedData.subTaskdone.toString());
@@ -77,16 +91,9 @@ public class TaskShare  {
             }
         }
         Log.d("ts"," share "+share);
-        if(taskVitalData.isnotes == 1) {
-            Log.d("ts"," s "+SharedData.notes);
-            if (!SharedData.notes.equals("")) {
-                share = share.concat(Import.getString(context, R.string.task_share_notes)
-                        + "\n" + SharedData.notes + "\n");
-            }
-        }
-        Log.d("ts"," share "+share);
 
-        if (taskVitalData.isrem == 1) {
+
+        if (isreminder && taskVitalData.isrem == 1) {
             share = share.concat(context.getString(R.string.task_share_rem, taskVitalData.date));
             if (reminderdata[1] == 1) {
                 String time , alarm;

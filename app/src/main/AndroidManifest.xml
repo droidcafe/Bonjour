@@ -266,7 +266,7 @@
             android:name=".noveu.bonjoursettings.BonjourSettings"
             android:label="@string/title_activity_bonjour_settings"
             android:parentActivityName=".noveu.Home.Home"
-            android:theme="@style/AppTheme.Task">
+            android:theme="@style/AppTheme.Settings">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="droid.nir.testapp1.noveu.Home.Home" />

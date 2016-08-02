@@ -73,7 +73,7 @@ public class Home extends AppCompatActivity
         setbasics();
         if (db != null && !db.needUpgrade(dBmetaData.DATABASE_VERSION) && Import.checkTable(db, Tasks.tableNames[0])) {
             setuptasklist();
-            ParentDb.getInstance(context).close();
+         //   ParentDb.getInstance(context).close();
         }
 
     }
