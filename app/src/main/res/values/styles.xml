@@ -262,6 +262,7 @@
         <item name="android:gravity">center_vertical</item>
 
     </style>
+
     <style name="task_add_head">
         <item name="android:textColor">@color/taskpermit</item>
         <item name="android:layout_marginLeft">0dp</item>

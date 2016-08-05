@@ -551,5 +551,6 @@ To view a reminder click on it.
     <string name="savedialoguetext">Your changes are not saved</string>
     <string name="save">Save</string>
     <string name="no">No</string>
+    <string name="title_activity_show__expand">Show_Expand</string>
 </resources>
 

@@ -18,7 +18,6 @@
 
             <com.wnafee.vector.MorphButton
                 android:id="@+id/moreimage"
-                android:visibility="gone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
@@ -27,15 +26,16 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="10dp"
                 android:padding="10dp"
+                android:visibility="gone"
                 app:vc_endDrawable="@drawable/ic_more_vert_black_24px"
                 app:vc_foregroundTint="@color/tprimary"
                 app:vc_startDrawable="@drawable/ic_more_vert_black_24px" />
 
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/ttitleinput"
-                android:layout_toLeftOf="@id/moreimage"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@id/moreimage">
 
                 <EditText
                     android:id="@+id/new_task"
@@ -56,8 +56,6 @@
             </android.support.design.widget.TextInputLayout>
 
 
-
-
             <View
                 android:id="@+id/titleline"
                 android:layout_width="match_parent"
@@ -73,9 +71,9 @@
                 android:layout_below="@id/titleline"
                 android:layout_gravity="top|center_horizontal"
                 android:layout_margin="15dp"
+                app:vc_endDrawable="@drawable/ic_label_outline_black_24px"
                 app:vc_foregroundTint="@color/tprimary"
-                app:vc_startDrawable="@drawable/ic_label_outline_black_24px"
-                app:vc_endDrawable="@drawable/ic_label_outline_black_24px" />
+                app:vc_startDrawable="@drawable/ic_label_outline_black_24px" />
 
             <TextView
                 android:id="@+id/projectname"
@@ -85,8 +83,8 @@
                 android:layout_alignTop="@id/projectnameimage"
                 android:layout_below="@id/titleline"
                 android:layout_toRightOf="@id/projectnameimage"
-                android:textColor="@color/tprimary_dark"
-                android:text="Movies to watch" />
+                android:text="Movies to watch"
+                android:textColor="@color/tprimary_dark" />
 
             <View
                 android:id="@+id/projectline"
@@ -104,9 +102,9 @@
                 android:layout_below="@id/projectline"
                 android:layout_gravity="top|center_horizontal"
                 android:layout_margin="15dp"
+                app:vc_endDrawable="@drawable/ic_add_alert_black_24px"
                 app:vc_foregroundTint="@color/taskpermit"
-                app:vc_startDrawable="@drawable/ic_add_alert_black_24px"
-                app:vc_endDrawable="@drawable/ic_add_alert_black_24px" />
+                app:vc_startDrawable="@drawable/ic_add_alert_black_24px" />
 
 
             <TextView
@@ -118,8 +116,6 @@
                 android:layout_below="@id/projectline"
                 android:layout_toRightOf="@id/projectnameimage"
                 android:text="@string/remainder" />
-
-
 
 
             <View
@@ -138,9 +134,9 @@
                 android:layout_below="@id/reminderline"
                 android:layout_gravity="top|center_horizontal"
                 android:layout_margin="15dp"
+                app:vc_endDrawable="@drawable/ic_list_black_24px"
                 app:vc_foregroundTint="@color/taskpermit"
-                app:vc_startDrawable="@drawable/ic_list_black_24px"
-                app:vc_endDrawable="@drawable/ic_list_black_24px" />
+                app:vc_startDrawable="@drawable/ic_list_black_24px" />
 
             <TextView
                 android:id="@+id/subtasks"
@@ -157,11 +153,11 @@
                 style="@style/task_add_head"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
                 android:layout_alignTop="@id/subtasksimage"
                 android:layout_below="@id/reminderline"
-               android:layout_alignParentRight="true"
-                android:layout_marginRight="20dp"
                 android:layout_marginLeft="10dp"
+                android:layout_marginRight="20dp"
                 android:text="" />
 
             <View
@@ -180,9 +176,9 @@
                 android:layout_below="@id/subtasksline"
                 android:layout_gravity="top|center_horizontal"
                 android:layout_margin="15dp"
+                app:vc_endDrawable="@drawable/ic_reorder_black_24px"
                 app:vc_foregroundTint="@color/taskpermit"
-                app:vc_startDrawable="@drawable/ic_reorder_black_24px"
-                app:vc_endDrawable="@drawable/ic_reorder_black_24px" />
+                app:vc_startDrawable="@drawable/ic_reorder_black_24px" />
 
             <TextView
                 android:id="@+id/notes"
@@ -192,8 +188,7 @@
                 android:layout_alignTop="@id/notesimage"
                 android:layout_below="@id/subtasksline"
                 android:layout_toRightOf="@id/projectnameimage"
-                android:text="@string/note"
-                />
+                android:text="@string/note" />
 
 
         </RelativeLayout>
@@ -201,10 +196,10 @@
     </ScrollView>
 
     <FrameLayout
+        android:id="@+id/morelayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:id="@+id/morelayout">
+        android:layout_gravity="bottom">
 
 
     </FrameLayout>
@@ -215,7 +210,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
-        android:src="@drawable/ic_done_white_24dp"
-        />
+        android:src="@drawable/ic_done_white_24dp" />
 
 </android.support.design.widget.CoordinatorLayout>

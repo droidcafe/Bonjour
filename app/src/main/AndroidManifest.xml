@@ -214,7 +214,9 @@
             android:theme="@style/AppTheme.Task.ToolBar">
             <intent-filter>
                 <action android:name="android.intent.action.SEND" />
+
                 <category android:name="android.intent.category.DEFAULT" />
+
                 <data android:mimeType="text/*" />
             </intent-filter>
         </activity>
@@ -335,7 +337,12 @@
             android:exported="false" />
         <service
             android:name=".noveu.sync.services.NotificationResponseService"
-            android:exported="false"></service>
+            android:exported="false" />
+
+        <activity
+            android:name=".noveu.Tasks.show.Show_Expand"
+            android:label="@string/title_activity_show__expand"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
