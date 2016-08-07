@@ -671,7 +671,7 @@ public class Add_Expand extends AppCompatActivity
             if (choice == 0)
                 Tasks.insert(passData, passInt, context, SharedData.list, SharedData.subTaskdone);
             else if (choice == 1) {
-                Tasks.update(passData, passInt, context, SharedData.list, SharedData.subTaskdone, id, 1);
+                Tasks.update(passData, passInt, context, SharedData.list, SharedData.subTaskdone, id);
             }
             SharedData.clearAll();
 //            if (isShared)

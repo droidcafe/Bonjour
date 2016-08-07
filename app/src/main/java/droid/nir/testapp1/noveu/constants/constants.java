@@ -20,6 +20,8 @@ public class constants {
 
     public static String projectTaskTAG = "pt";
 
+    public static int MIN_VALID_SECONDS = 600; /** in seconds */
+
 
     /**
      * the status values for each funtion in reminder screen

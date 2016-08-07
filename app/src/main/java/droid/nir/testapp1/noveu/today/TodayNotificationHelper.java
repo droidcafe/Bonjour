@@ -4,9 +4,15 @@ import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 import droid.nir.testapp1.noveu.Util.Import;
 import droid.nir.testapp1.noveu.Util.Log;
 import droid.nir.testapp1.noveu.Util.TimeUtil;
+import droid.nir.testapp1.noveu.constants.constants;
 import droid.nir.testapp1.noveu.dB.DBProvider;
 import droid.nir.testapp1.noveu.dB.Today;
 
@@ -151,5 +157,41 @@ public class TodayNotificationHelper {
 
         String date = Import.getStringFromCursor(cursor, "date");
         return isGoodTask(new int[]{id, isrem, done}, date);
+    }
+
+    /**
+     * checks if time is valid or not . Valid time is which is greater than or minimum {@value constants#MIN_VALID_SECONDS}
+     * less than present time
+     * @param hour set hour for notification
+     * @param min set minute for notification
+     * @return whether time is valid or not
+     * @throws ParseException
+     */
+    public static boolean isValidTime(int hour, int min) {
+        int nowhr = TimeUtil.getNowTime(Calendar.HOUR_OF_DAY);
+        int nowmin = TimeUtil.getNowTime(Calendar.MINUTE);
+
+
+        String time_now = "" + nowhr + ":" + nowmin + ":00";
+        String time_set = "" + hour + ":" + min + ":00";
+
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm:ss");
+        Date date_now = null;
+        try {
+            date_now = simpleDateFormat.parse(time_now);
+            Date date_set = simpleDateFormat.parse(time_set);
+            long timeDiff = (date_now.getTime() - date_set.getTime());
+            if (timeDiff < 0)
+                return true;
+            timeDiff /= 1000;
+            if (timeDiff < constants.MIN_VALID_SECONDS)
+                return true;
+        } catch (ParseException e) {
+           Log.e("tnh",""+e.toString());
+            return  false;
+        }
+
+
+        return false;
     }
 }

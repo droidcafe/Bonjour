@@ -6,6 +6,7 @@ import android.content.Context;
 import java.util.Calendar;
 
 import droid.nir.testapp1.noveu.Tasks.Loaders.LoadTaskHelper;
+import droid.nir.testapp1.noveu.Tasks.TaskUtil;
 import droid.nir.testapp1.noveu.Util.Import;
 import droid.nir.testapp1.noveu.Util.Log;
 import droid.nir.testapp1.noveu.Util.TimeUtil;
@@ -31,12 +32,12 @@ public class TaskNotificationHelper {
             if (alarmdata[1] == 1) { /** repeat is present */
                 int repeatmode = LoadTaskHelper.loadRepeat(context,alarmdata[0]);
                 TaskNotificationHelper.startRepeatProcess(context, tid, repeatmode);
+                TaskUtil.setDone(context, tid,0);
             }
             else
-                TaskNotificationHelper.startDoneProcess(context, tid);
-        }
-        else{
-            TaskNotificationHelper.startDoneProcess(context, tid);
+                TaskUtil.setDone(context, tid,1);
+        } else{
+            TaskUtil.setDone(context, tid, 1);
         }
     }
     public static void startRepeatProcess(Context context , int tid, int repeatMode){
@@ -53,14 +54,7 @@ public class TaskNotificationHelper {
                     selection,selectionArgs);
     }
 
-    public static void startDoneProcess(Context context, int tid){
-        int reqCol[] = {7}; /** done */
-        int newVal[] = {1};
 
-        String selection = "_id = ? ";
-        String selectionArgs[] = { Integer.toString(tid)};
-        Tasks.update(context,0,reqCol,newVal ,selection,selectionArgs);
-    }
 
     public static int getTaskNotificationDefault (Context context, boolean isSound){
         int taskDefault = 0;

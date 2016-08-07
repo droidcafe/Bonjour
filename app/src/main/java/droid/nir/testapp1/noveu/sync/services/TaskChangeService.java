@@ -15,6 +15,7 @@ import droid.nir.testapp1.noveu.Util.TimeUtil;
 import droid.nir.testapp1.noveu.constants.IntentActions;
 import droid.nir.testapp1.noveu.constants.constants;
 import droid.nir.testapp1.noveu.notifications.handlers.NotificationHandler;
+import droid.nir.testapp1.noveu.notifications.util.TaskNotificationHelper;
 import droid.nir.testapp1.noveu.today.TodayNotificationHelper;
 
 public class TaskChangeService extends IntentService {
@@ -72,23 +73,49 @@ public class TaskChangeService extends IntentService {
         }
     }
 
+    /**
+     * {@link #getIntArguments}
+     * @param passInt
+     * @param date
+     * @param notificationUpdateMode
+     */
     private void handleTaskUpdate(int[] passInt, String date, int notificationUpdateMode) {
 
+
         String selection = "oid = " + passInt[0];
+        int[] reqColumns = new int[]{0, 3, 4, 5,6};
         Cursor cursor = TodayNotificationHelper.loadNotificationData(context,
-                selection, null,
-                new int[]{0, 3, 4, 5});
+                selection, null, reqColumns
+                );
         int notificationData[] = new int[cursor.getColumnCount()];
+        if (notificationUpdateMode == constants.task_update_modes[0]) {
+            /**
+             * have to find a way to update notification if it is present
+             */
+            if(TodayNotificationHelper.isGoodTask(passInt,date)){
+                if(cursor.getCount() > 0){
+                    while (cursor.moveToNext()) {
+                        notificationData = TodayNotificationHelper.decodeNotificationData(cursor,
+                                reqColumns);
+                    }
+                    if (notificationData[4] == 1){
+                        TaskNotificationHelper.handleNotificationFiring(context,passInt[0]);
+                    }
+                }
+            }
+
+            return;
+        }
         if (cursor.getCount() > 0) {
             while (cursor.moveToNext()) {
                 notificationData = TodayNotificationHelper.decodeNotificationData(cursor,
-                        new int[]{0, 3, 4, 5});
+                        reqColumns);
                 NotificationHandler.cancel(context, notificationData[0]);
                 NotificationHandler.cancelAlarm(context,
                         new int[]{notificationData[0], notificationData[1], notificationData[2]});
             }
 
-            if (TodayNotificationHelper.isGoodTask(passInt, date,notificationUpdateMode)) {
+            if (TodayNotificationHelper.isGoodTask(passInt, date, notificationUpdateMode)) {
 
                 int reminderData[] = LoadTaskHelper.loadReminder(context, passInt[0]);
                 if (reminderData[1] == 1) //if time is set or not
@@ -96,9 +123,17 @@ public class TaskChangeService extends IntentService {
                     int timeData[] = LoadTaskHelper.loadTime(context, reminderData[0]);
                     TodayNotificationHelper.updateTodayNotification(context,
                             notificationData[0],
-                            new int[]{1, passInt[0], timeData[0], timeData[1], timeData[2]});
+                            new int[]{1, passInt[0], timeData[0], timeData[1], timeData[2], 0});
+                    if(TodayNotificationHelper.isValidTime(timeData[0],timeData[1]))
+                        setTaskAlarm(new int[]{notificationData[0], timeData[0], timeData[1]});
+                    else{
+                        /**
+                         * if time has passed do things like set fired =1 and check if repeat process is to begin
+                         */
+                        TodayNotificationHelper.updateIsFired(context, 1, notificationData[0]);
+                        TaskNotificationHelper.handleNotificationFiring(context, passInt[0]);
 
-                    setTaskAlarm(new int[]{notificationData[0], timeData[0], timeData[1]});
+                    }
                 } else {
                     int timehr = TimeUtil.getNowTime(Calendar.HOUR_OF_DAY);
                     int timemin = TimeUtil.getNowTime(Calendar.MINUTE);
@@ -131,7 +166,17 @@ public class TaskChangeService extends IntentService {
             int timeData[] = LoadTaskHelper.loadTime(context, reminderData[0]);
             int id = TodayNotificationHelper.insertTodayNotification(context, tid, timeData,
                     constants.notificationMode[0]);
-            setTaskAlarm(new int[]{id, timeData[0], timeData[1]});
+            if(TodayNotificationHelper.isValidTime(timeData[0],timeData[1])) {
+                setTaskAlarm(new int[]{id, timeData[0], timeData[1]});
+            }
+            else{
+                /**
+                 * if time has passed do things like set fired =1 and check if repeat process is to begin
+                 */
+                TodayNotificationHelper.updateIsFired(context, 1,id);
+                TaskNotificationHelper.handleNotificationFiring(context, tid);
+
+            }
         } else {
             int timehr = TimeUtil.getNowTime(Calendar.HOUR_OF_DAY);
             int timemin = TimeUtil.getNowTime(Calendar.MINUTE);

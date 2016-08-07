@@ -64,17 +64,17 @@ public class NotificationHandler {
     /**
      * cancels all pending alarms set in today_notification table
      * it checks isfired is 0 or not
+     *
      * @param context
      */
-    public static void cancelAllPendingAlarm(Context context)
-    {
+    public static void cancelAllPendingAlarm(Context context) {
         String selection = "isfired = ?";
         String[] selectionArgs = {Integer.toString(0)};
-        int[] columnreq = {0,3,4};
-        Cursor today_cursor = TodayNotificationHelper.loadNotificationData(context,selection, selectionArgs,columnreq);
-        while (today_cursor.moveToNext()){
-            int[] passInt = TodayNotificationHelper.decodeNotificationData(today_cursor,new int[]{0,3,4});
-            cancelAlarm(context,passInt);
+        int[] columnreq = {0, 3, 4};
+        Cursor today_cursor = TodayNotificationHelper.loadNotificationData(context, selection, selectionArgs, columnreq);
+        while (today_cursor.moveToNext()) {
+            int[] passInt = TodayNotificationHelper.decodeNotificationData(today_cursor, new int[]{0, 3, 4});
+            cancelAlarm(context, passInt);
         }
     }
 
@@ -93,12 +93,13 @@ public class NotificationHandler {
 
     /**
      * cancels a active notification from the drawer using the notification id
+     *
      * @param context
-     * @param id the id of notification (the row id from today table {@link droid.nir.testapp1.noveu.dB.Today})
+     * @param id      the id of notification (the row id from today table {@link droid.nir.testapp1.noveu.dB.Today})
      */
     @TargetApi(Build.VERSION_CODES.ECLAIR)
     public static void cancel(final Context context, int id) {
-      PlayBackService.stopPlayBack(context);
+        PlayBackService.stopPlayBack(context);
         final NotificationManager nm = (NotificationManager) context
                 .getSystemService(Context.NOTIFICATION_SERVICE);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ECLAIR) {
@@ -108,6 +109,15 @@ public class NotificationHandler {
         }
     }
 
+    public static void update(final Context context, final Notification notification, int id) {
+        final NotificationManager nm = (NotificationManager) context
+                .getSystemService(Context.NOTIFICATION_SERVICE);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ECLAIR) {
+            nm.notify(NOTIFICATION_TAG, id, notification);
+        } else {
+            nm.notify(NOTIFICATION_TAG.hashCode(), notification);
+        }
+    }
 
 
 }

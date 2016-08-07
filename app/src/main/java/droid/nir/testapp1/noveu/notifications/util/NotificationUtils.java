@@ -24,6 +24,7 @@ import droid.nir.testapp1.noveu.sync.services.ShareService;
 
 /**
  * Created by droidcafe on 3/28/2016.
+ * class used for building of notifications
  */
 public class NotificationUtils {
 

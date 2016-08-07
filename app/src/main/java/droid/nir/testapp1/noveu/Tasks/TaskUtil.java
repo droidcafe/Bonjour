@@ -4,6 +4,7 @@ import android.content.Context;
 
 import droid.nir.testapp1.noveu.Tasks.Loaders.LoadTaskHelper;
 import droid.nir.testapp1.noveu.constants.constants;
+import droid.nir.testapp1.noveu.dB.Tasks;
 
 /**
  * Created by droidcafe on 3/27/2016.
@@ -149,6 +150,16 @@ public class TaskUtil {
 
     //    return constants.task_update_modes[0];
 
+    }
+
+
+    public static void setDone(Context context, int tid,int new_value){
+        int reqCol[] = {7}; /** done */
+        int newVal[] = {new_value};
+
+        String selection = "_id = ? ";
+        String selectionArgs[] = { Integer.toString(tid)};
+        Tasks.update(context, 0, reqCol, newVal, selection, selectionArgs);
     }
 
 
