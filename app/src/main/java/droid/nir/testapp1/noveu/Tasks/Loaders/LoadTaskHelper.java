@@ -259,5 +259,21 @@ public class LoadTaskHelper {
         }
         return task_data;
     }
+
+    public static int getDone(Context context , int tid){
+        String selection = "_id = ?";
+        String selectionArgs[] = {Integer.toString(tid)};
+
+        Uri  uri = Uri.withAppendedPath(DBProvider.CONTENT_URI_TASKS, Tasks.tableNames[0]);
+        String[] projection_task = {"done"};
+        Cursor task_done = context.getContentResolver().query(uri,
+                projection_task,selection,selectionArgs,null);
+
+        int done = 0;
+        while (task_done.moveToNext())
+            done = task_done.getInt(task_done.getColumnIndex("done"));
+
+        return done;
+    }
 }
 

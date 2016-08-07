@@ -28,7 +28,7 @@ public class constants {
      * 4 alarm
      * 8 repeat
      */
-    public static final int[] modeAdd = {0,1,2,4,8};
+    public static final int[] modeAdd = {0, 1, 2, 4, 8};
     /**
      * permited mode for reminder values in add reminder screen
      * 1 date  1
@@ -37,7 +37,7 @@ public class constants {
      * 11 date + reminder + repeat  4
      * 15 all  5
      */
-    public static  final  int[] permitMode = {0,1,3,7,11,15};
+    public static final int[] permitMode = {0, 1, 3, 7, 11, 15};
 
 
     /**
@@ -52,7 +52,7 @@ public class constants {
      * 9 r+S+n 7
      * r = reminder(1,4,6,9),s =sub(3,4,8,9), n = notes(5,6,8,9)
      */
-    public static final int[] taskexpandmode = {0,1,3,5,4,6,8,9};
+    public static final int[] taskexpandmode = {0, 1, 3, 5, 4, 6, 8, 9};
 
     /**
      * permitted mode for repeat
@@ -61,7 +61,7 @@ public class constants {
      * 2 - monthly
      * 3 - yearly
      */
-    public static final  int[] repeatMode = {0,1,2,3};
+    public static final int[] repeatMode = {0, 1, 2, 3};
 
     public static final int daily_sync_pending_intent_id = 1111;
     public static final int daily_sync_shared_pref = 2329;
@@ -71,12 +71,23 @@ public class constants {
      * permitted mode for notification (in today_notification table)
      * 1- from tasks
      */
-    public static final int[] notificationMode = {1,2};
+    public static final int[] notificationMode = {1, 2};
 
     public static final String notificationActionid1 = "111";
     public static final String notificationActionid2 = "222";
 
     public static final String share_task_intent_extra = "share";
+
+    /**
+     * different types of task updates. return by {@link droid.nir.testapp1.noveu.Tasks.TaskUtil}
+     * isNotificationUpdate function
+     * <p/>
+     * 0 - no update is to be made
+     * 1 - added reminder now only so notification is to be inserted
+     * 2 - no time was set. Now time has been set (notification type changed from permanent to normal/alarm)
+     * 3 - time details got changed (redo entire notification)
+     */
+    public static final int[] task_update_modes = {0, 1, 2, 3};
 
 
 }

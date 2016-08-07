@@ -1,5 +1,8 @@
 package droid.nir.testapp1.noveu.Tasks;
 
+import android.content.Context;
+
+import droid.nir.testapp1.noveu.Tasks.Loaders.LoadTaskHelper;
 import droid.nir.testapp1.noveu.constants.constants;
 
 /**
@@ -92,6 +95,65 @@ public class TaskUtil {
             return 1;
         return 0;
     }
+
+
+    /**
+     * helper function to check if notification update is to be made
+     * @param context
+     * @param remData - the remider datas 0- isrem 1- istime, 2- timehr, 3- timemin, 4- isalarm, 5-isrepeat, 6-repeatmode
+     * @param remdate - the new date of reminder
+     * @param id - the original task id
+     * @return one of the notification mode specified in {@link constants} task_update_mode
+     */
+    public static  int getNotificationUpdate(Context context, int[] remData, String remdate, int id){
+        String selection = "_id = ?";
+        String selectionArgs[] = {Integer.toString(id)};
+        int[] isRem = LoadTaskHelper.loadTaskPartial(context,0,new int[]{4},selection,selectionArgs);
+
+        if(isRem[0] == 0){
+            if (remData[0] == 1)
+                return constants.task_update_modes[0];
+            else
+                return constants.task_update_modes[1];
+        }
+
+        int remData_old[] = LoadTaskHelper.loadReminder(context, id);
+        if (remData_old[1] == 0){ // time was not set
+            if (remData[1] == 1) {
+                return constants.task_update_modes[2];
+            }
+            else
+                return constants.task_update_modes[0];
+        }
+
+        int[] timeData = LoadTaskHelper.loadTime(context, remData_old[0]);
+        if (timeData[0] == remData[2] && timeData[1] == remData[3]) {
+            if (timeData[2] == remData[4]) {
+                if (timeData[3] == 1) {
+                    if (remData[5] == 1)
+                        if (timeData[4] == remData[6])
+                            return constants.task_update_modes[0];
+                        else
+                            return constants.task_update_modes[3];
+                } else if (remData[5] == 0)
+                    return constants.task_update_modes[0];
+                else
+                    return constants.task_update_modes[3];
+            }
+
+            return constants.task_update_modes[3];
+
+        } else {
+            return constants.task_update_modes[3];
+        }
+
+    //    return constants.task_update_modes[0];
+
+    }
+
+
+
+
 
 
 }

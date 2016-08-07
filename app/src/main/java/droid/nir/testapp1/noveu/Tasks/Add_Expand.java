@@ -26,6 +26,7 @@ import android.widget.Toast;
 
 import com.wnafee.vector.MorphButton;
 
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
 
@@ -350,8 +351,8 @@ public class Add_Expand extends AppCompatActivity
             task = getResources().getString(R.string.randomtask);
         new AsyncSave().execute(task);
 
-        Log.d("ae","choice "+choice +" id "+id);
-            finish();
+        Log.d("ae", "choice " + choice + " id " + id);
+        finish();
     }
 
     private static void shareTask() {
@@ -620,10 +621,10 @@ public class Add_Expand extends AppCompatActivity
 
             String[] passData = new String[4];
             int[] passInt = new int[11];
-
+            Arrays.fill(passData, "");
+            Arrays.fill(passInt, 0);
 
             passData[0] = params[0];
-
 
             passInt[0] = projectid;
             passInt[4] = 0; //done
@@ -634,13 +635,7 @@ public class Add_Expand extends AppCompatActivity
                 passInt[1] = 1;
                 passData[2] = dateselected;
                 passData[1] = dateselected;
-                if (remmode < 2) {
-                    passInt[5] = 0;
-                    passInt[6] = 0;
-                    passInt[7] = 0;
-                    passInt[8] = 0;
-                    passInt[9] = 0;
-                } else if (remmode > 2) {
+                if (remmode > 2) {
                     passInt[5] = 1;
                     passInt[6] = timehr;
                     passInt[7] = timemin;
@@ -660,40 +655,23 @@ public class Add_Expand extends AppCompatActivity
 
                 passData[1] = date;
 
-
-                passInt[1] = 0;
-                passInt[5] = 0;
-                passInt[6] = 0;
-                passInt[7] = 0;
-                passInt[8] = 0;
-                passInt[9] = 0;
-
             }
 
             if (mode == 3 || mode == 4 || mode == 8 || mode == 9) {
                 //subtast present
-
                 passInt[3] = 1;
-            } else {
-                passInt[3] = 0;
             }
 
             if (mode == 5 || mode == 6 || mode == 8 || mode == 9) {
                 //notes present
-
                 passInt[2] = 1;
                 passData[3] = SharedData.notes;
-            } else {
-                passInt[2] = 0;
-                passData[3] = "";
             }
 
             if (choice == 0)
                 Tasks.insert(passData, passInt, context, SharedData.list, SharedData.subTaskdone);
             else if (choice == 1) {
-                if (inital_remmode != remmode)
-
-                Tasks.update(passData, passInt, context, SharedData.list, SharedData.subTaskdone, id,1);
+                Tasks.update(passData, passInt, context, SharedData.list, SharedData.subTaskdone, id, 1);
             }
             SharedData.clearAll();
 //            if (isShared)
@@ -768,8 +746,7 @@ public class Add_Expand extends AppCompatActivity
                 publishProgress(1);
                 Log.d("ae", "pid " + taskVitalData.pid);
                 getProject(taskVitalData.pid);
-                if (taskVitalData.isrem == 1)
-                {
+                if (taskVitalData.isrem == 1) {
                     getReminder(id);
                     inital_remmode = remmode;
                 }

@@ -9,7 +9,7 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Typeface;
-
+import android.os.Bundle;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -153,36 +153,53 @@ public class Import {
         editor.commit();
     }
 
-    public static int getSharedPref(Context context, String key){
-        SharedPreferences sharedPreferences = context.getSharedPreferences(SharedKeys.prefname,0);
-        return  sharedPreferences.getInt(key, -1);
+    public static int getSharedPref(Context context, String key) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences(SharedKeys.prefname, 0);
+        return sharedPreferences.getInt(key, -1);
     }
 
-    public static String getSharedPref( String key, Context context){
-        SharedPreferences sharedPreferences = context.getSharedPreferences(SharedKeys.prefname,0);
-        return  sharedPreferences.getString(key, null);
+    public static String getSharedPref(String key, Context context) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences(SharedKeys.prefname, 0);
+        return sharedPreferences.getString(key, null);
     }
 
     /**
      * helper function for getting settings shared prefs
+     *
      * @param context
-     * @param key key of shared preference
-     * @param type type of preference 1 - string 2- integer 3 - boolean
+     * @param key     key of shared preference
+     * @param type    type of preference 1 - string 2- integer 3 - boolean
      * @return
      */
-    public static Object getSettingSharedPref(  Context context, String key, int type){
-        SharedPreferences sharedPreferences = context.getSharedPreferences(SharedKeys.prefname_setting,0);
+    public static Object getSettingSharedPref(Context context, String key, int type) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences(SharedKeys.prefname_setting, 0);
 
-        if(type == 1)
-        return  sharedPreferences.getString(key, null);
+        if (type == 1)
+            return sharedPreferences.getString(key, null);
 
-        else if(type == 2)
-            return  sharedPreferences.getInt(key, -1);
+        else if (type == 2)
+            return sharedPreferences.getInt(key, -1);
 
-        else if(type == 3)
-            return  sharedPreferences.getBoolean(key, true);
+        else if (type == 3)
+            return sharedPreferences.getBoolean(key, true);
 
         return null;
+    }
+
+    /**
+     * helper function for getting integer extras present in bundle - extras are to be named like extra0, extra1..extraN (N = length -1)
+     *
+     * @param bundle
+     * @param length - the no of extras present
+     * @return the array of extras present
+     */
+    public static int[] getIntExtraArguments(Bundle bundle, int length) {
+        int extras[] = new int[length];
+        for (int i = 0; i < length; i++) {
+            extras[i] = bundle.getInt("extra" + i, -1);
+        }
+
+        return extras;
     }
 
 }

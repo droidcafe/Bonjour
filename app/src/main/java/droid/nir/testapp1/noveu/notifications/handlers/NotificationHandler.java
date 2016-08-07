@@ -44,7 +44,7 @@ public class NotificationHandler {
     }
 
     /**
-     * function to cancel an alarm
+     * function to cancel an alarm set for notification firing
      *
      * @param context
      * @param passInt 0-rid 1-timehr 2- timemin
@@ -91,6 +91,11 @@ public class NotificationHandler {
     }
 
 
+    /**
+     * cancels a active notification from the drawer using the notification id
+     * @param context
+     * @param id the id of notification (the row id from today table {@link droid.nir.testapp1.noveu.dB.Today})
+     */
     @TargetApi(Build.VERSION_CODES.ECLAIR)
     public static void cancel(final Context context, int id) {
       PlayBackService.stopPlayBack(context);
