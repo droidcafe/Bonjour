@@ -1,24 +1,12 @@
 package droid.nir.testapp1.noveu.notifications;
 
-import android.app.Notification;
-import android.app.PendingIntent;
 import android.content.Context;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
-
-import droid.nir.testapp1.noveu.Util.Import;
-import droid.nir.testapp1.noveu.Util.Log;
 
 import java.util.List;
 
 import droid.nir.testapp1.R;
-import droid.nir.testapp1.noveu.Tasks.Add_Expand;
-import droid.nir.testapp1.noveu.constants.SharedKeys;
-import droid.nir.testapp1.noveu.notifications.handlers.NotificationHandler;
+import droid.nir.testapp1.noveu.Util.Log;
 import droid.nir.testapp1.noveu.notifications.util.NotificationUtils;
 
 
@@ -27,7 +15,6 @@ import droid.nir.testapp1.noveu.notifications.util.NotificationUtils;
  * for helper funcions - {@link droid.nir.testapp1.noveu.notifications.util.TaskNotificationHelper}
  */
 public class TaskSilentNotification {
-
 
 
     /**
@@ -44,11 +31,15 @@ public class TaskSilentNotification {
      */
     public static void notify(final Context context, String title, String project, List<String> taskList,
                               final int id, int tid, NotificationUtils.NotificationMode notificationMode,
-                              int notificationType) {
+                              String notes, int notificationType) {
         String listString = taskList.toString();
 
 
         NotificationCompat.InboxStyle inboxStyle = new NotificationCompat.InboxStyle();
+
+        if (notes != null)
+            inboxStyle.addLine(notes);
+
         String summartText = context.getResources().getString(R.string.task_silent_notification_list_summary, taskList.size(), project);
 
         for (int i = 0; i < taskList.size() && i < 10; i++)
@@ -90,11 +81,8 @@ public class TaskSilentNotification {
                 .bigText(bigText);
 
         NotificationUtils.buildNotification(context, title,
-                bigText, tid, bigTextStyle, id, notificationMode,notificationType);
+                bigText, tid, bigTextStyle, id, notificationMode, notificationType);
     }
-
-
-
 
 
 }
