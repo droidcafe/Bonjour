@@ -9,6 +9,8 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Typeface;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -200,6 +202,14 @@ public class Import {
         }
 
         return extras;
+    }
+
+    /**
+     * function for returning default notification sound
+     * @return uri of system default notificatin sound
+     */
+    public static Uri getDefaultNotificationSound(){
+        return RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
     }
 
 }

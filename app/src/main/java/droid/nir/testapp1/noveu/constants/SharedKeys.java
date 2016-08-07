@@ -26,10 +26,12 @@ public class SharedKeys {
     public static final String task_share_note = "pref_task_share_note";
     public static final String task_share_reminder= "pref_task_share_reminder";
     public static final String task_share_subtask= "pref_task_share_subtask";
-    public static final String task_notifications_vibrate= "pref_task_notifications_vibrate";
-    public static final String task_notifications_vibrate_types= "pref_task_notifications_vibrate_types";
-    public static final String task_notifications_ringtone= "pref_task_notifications_ringtone";
-    public static final String task_notifications_light= "pref_task_notifications_light";
+    public static final String task_notification_vibrate= "pref_task_notifications_vibrate";
+    public static final String task_notification_vibrate_types= "pref_task_notifications_vibrate_types";
+    public static final String task_notification_ringtone= "pref_task_notifications_ringtone";
+    public static final String task_notification_light= "pref_task_notifications_light";
     public static final String general_project_default = "pref_general_project_default";
+    public static final String pref_task_notification_note= "pref_task_notification_note";
+    public static final String pref_task_notification_subtask= "pref_task_notification_subtask";
 //    public static final String = "";
 }

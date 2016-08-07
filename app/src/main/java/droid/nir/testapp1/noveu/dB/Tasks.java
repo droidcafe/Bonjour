@@ -9,6 +9,7 @@ import android.util.Log;
 
 import java.util.List;
 
+import droid.nir.testapp1.noveu.Tasks.Loaders.LoadTaskHelper;
 import droid.nir.testapp1.noveu.Tasks.TaskUtil;
 import droid.nir.testapp1.noveu.Util.AutoRefresh;
 import droid.nir.testapp1.noveu.constants.IntentActions;
@@ -177,6 +178,9 @@ public class Tasks {
 
         if (notification_update_mode != 0)
             passInt[4] = 0;
+        else
+            passInt[4] = LoadTaskHelper.getDone(context, tid);
+
         int int_index = 0, string_index = 0;
         for (int i = 1; i < columnNos[0]; i++) {
             if (columnTypes[0][i].equals("INTEGER"))

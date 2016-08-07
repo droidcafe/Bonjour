@@ -46,12 +46,31 @@
             android:key="pref_task_notifications_vibrate_types"
             android:negativeButtonText="@null"
             android:positiveButtonText="@null"
+            android:dependency="pref_task_notifications_vibrate"
             android:title="@string/pref_title_task_vibrate_type" />
 
         <SwitchPreference
             android:defaultValue="true"
             android:key="pref_task_notifications_light"
             android:title="@string/pref_title_light" />
+
+    </PreferenceCategory>
+
+
+    <PreferenceCategory
+        android:key="pref_task_category_share"
+        android:title="@string/notification_summray">
+
+    <CheckBoxPreference
+        android:title="@string/note"
+        android:key="pref_task_notification_note"
+        android:defaultValue="true"
+        />
+    <CheckBoxPreference
+        android:title="@string/subtasks"
+        android:key="pref_task_notification_subtask"
+        android:defaultValue="true"
+        />
 
     </PreferenceCategory>
 

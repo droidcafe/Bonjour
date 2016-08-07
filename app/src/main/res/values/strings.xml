@@ -552,5 +552,7 @@ To view a reminder click on it.
     <string name="save">Save</string>
     <string name="no">No</string>
     <string name="title_activity_show__expand">Show_Expand</string>
+
+    <string name="notification_summray">Notification Summary</string>
 </resources>
 

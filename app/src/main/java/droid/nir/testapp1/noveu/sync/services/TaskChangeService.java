@@ -88,7 +88,7 @@ public class TaskChangeService extends IntentService {
                         new int[]{notificationData[0], notificationData[1], notificationData[2]});
             }
 
-            if (TodayNotificationHelper.isGoodTask(passInt, date)) {
+            if (TodayNotificationHelper.isGoodTask(passInt, date,notificationUpdateMode)) {
 
                 int reminderData[] = LoadTaskHelper.loadReminder(context, passInt[0]);
                 if (reminderData[1] == 1) //if time is set or not

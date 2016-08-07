@@ -7,11 +7,14 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
 
 import droid.nir.testapp1.R;
+import droid.nir.testapp1.noveu.Util.Import;
 import droid.nir.testapp1.noveu.constants.IntentActions;
+import droid.nir.testapp1.noveu.constants.SharedKeys;
 import droid.nir.testapp1.noveu.constants.constants;
 import droid.nir.testapp1.noveu.notifications.NotificationActivity;
 import droid.nir.testapp1.noveu.notifications.handlers.NotificationHandler;
@@ -26,6 +29,17 @@ public class NotificationUtils {
 
     public enum NotificationMode {silent, permanent, alarm}
 
+    /**
+     *
+     * @param context
+     * @param title
+     * @param contentText
+     * @param tid
+     * @param notifStyle
+     * @param id
+     * @param mode
+     * @param notificationType - from where notification comes  1 - from tasks {@link constants#notificationMode}
+     */
     public static void buildNotification(final Context context,
                                          final String title, final String contentText,
                                          int tid, NotificationCompat.Style notifStyle, int id, NotificationMode mode,
@@ -90,8 +104,14 @@ public class NotificationUtils {
                                                                     NotificationCompat.Builder builder, int id, int notificationType) {
 
 
+        Uri sound = Import.getDefaultNotificationSound();
+        if(notificationType == constants.notificationMode[0]) {
+            sound = Uri.parse((String) Import.getSettingSharedPref(context, SharedKeys.task_notification_ringtone, 1));
+            builder.setDefaults(TaskNotificationHelper.getTaskNotificationDefault(context, true));
+        }
+
         builder
-                .setDefaults(Notification.DEFAULT_ALL)
+                .setSound(sound)
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
 
                 .addAction(
@@ -113,13 +133,21 @@ public class NotificationUtils {
     public static NotificationCompat.Builder buildNotificatonPermanent(final Context context,
                                                                        NotificationCompat.Builder builder,
                                                                        int id, int notificationType) {
+        Uri sound = Import.getDefaultNotificationSound();
+        if(notificationType == constants.notificationMode[0]) {
+            sound = Uri.parse((String) Import.getSettingSharedPref(context, SharedKeys.task_notification_ringtone, 1));
+            builder.setDefaults(TaskNotificationHelper.getTaskNotificationDefault(context, true));
+        }
+
         Intent action_intent = new Intent(context,NotificationResponseService.class);
         action_intent.setAction(IntentActions.ACTION_NOTIFICATION_DISMISSPERMANENT);
         action_intent.putExtra("nid", id);
 
 
+
         builder
-                .setDefaults(Notification.DEFAULT_ALL)
+                .setVibrate(new long[]{10,5})
+                .setSound(sound)
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
 
 
@@ -146,7 +174,7 @@ public class NotificationUtils {
         if(notificationType == constants.notificationMode[0])
             intent.setAction(IntentActions.ACTION_NOTIFICATION_PROCEED_ALARM_TASK);
 
-        intent.putExtra("nid",id);
+        intent.putExtra("nid", id);
         builder
                 .setDefaults(0)
                 .setPriority(NotificationCompat.PRIORITY_MAX)
