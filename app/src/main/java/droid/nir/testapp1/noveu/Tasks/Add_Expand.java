@@ -134,6 +134,7 @@ public class Add_Expand extends AppCompatActivity
         extras = "";
         choice = 0;
         id = -1;
+        projectid = Project.getDefaultProject(context);
         isMoreVisible = false;
         isShared = false;
     }
@@ -668,6 +669,7 @@ public class Add_Expand extends AppCompatActivity
                 passData[3] = SharedData.notes;
             }
 
+            Log.d("ae","pid "+passInt[0]);
             if (choice == 0)
                 Tasks.insert(passData, passInt, context, SharedData.list, SharedData.subTaskdone);
             else if (choice == 1) {
@@ -765,6 +767,7 @@ public class Add_Expand extends AppCompatActivity
         private void getProject(int projectid) {
 
             proname = Project.getProjectName(context, projectid);
+            Add_Expand.projectid = projectid;
             publishProgress(2);
 
         }

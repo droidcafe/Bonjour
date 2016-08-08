@@ -39,11 +39,11 @@ public class DbChangeReceiver extends BroadcastReceiver {
         broadcast_bundle.putInt("done", ints[2]);
         broadcast_bundle.putString("date", date);
 
-        int extra_length = (extras != null) ? 0 : extras.length;
+        int extra_length = (extras != null) ?  extras.length : 0;
 
         broadcast_bundle.putInt("extras", extra_length);
 
-        for (int i = 0; i < extras.length; i++) {
+        for (int i = 0; i < extra_length; i++) {
             broadcast_bundle.putInt("extra" + i, extras[i]);
         }
         intent_broadcast.putExtra("broadcast_bundle", broadcast_bundle);

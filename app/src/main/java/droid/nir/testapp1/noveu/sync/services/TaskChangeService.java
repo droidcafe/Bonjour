@@ -29,7 +29,7 @@ public class TaskChangeService extends IntentService {
     public static void startTaskChange(Context context, Intent broadcastIntent) {
         Intent intent = new Intent(context, TaskChangeService.class);
         intent.setAction(broadcastIntent.getAction());
-        intent.putExtra("broadcast_bundle", broadcastIntent.getExtras());
+        intent.putExtra("broadcast_bundle", broadcastIntent.getBundleExtra("broadcast_bundle"));
 
         context.startService(intent);
     }
@@ -49,7 +49,7 @@ public class TaskChangeService extends IntentService {
         context = getApplicationContext();
         if (intent != null) {
             final String action = intent.getAction();
-            Bundle bundle = intent.getExtras();
+            Bundle bundle = intent.getBundleExtra("broadcast_bundle");
             int passInt[] = getIntArguments(bundle);
             int passIntExtra[] = (passInt[3] > 0)
                     ? Import.getIntExtraArguments(bundle, passInt[3])
@@ -64,7 +64,7 @@ public class TaskChangeService extends IntentService {
                         handleTaskInsert(passInt[0]);
                     break;
                 case IntentActions.ACTION_TASK_UPDATE:
-                    handleTaskUpdate(passInt, date, passIntExtra[0]);
+                   // handleTaskUpdate(passInt, date, passIntExtra[0]);
                     break;
                 case IntentActions.ACTION_TASK_DAILY_SYNC:
                     handleTaskInsert(passInt[0]);
@@ -212,7 +212,9 @@ public class TaskChangeService extends IntentService {
         int done = bundle.getInt("done", -1);
         int isrem = bundle.getInt("isrem", -1);
         int extras = bundle.getInt("extras");
+        Log.d("tcs"," "+id +" "+done+" "+isrem+" "+extras);
         return new int[]{id, isrem, done, extras};
+
 
     }
 
