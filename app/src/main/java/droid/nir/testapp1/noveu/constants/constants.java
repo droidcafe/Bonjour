@@ -20,7 +20,7 @@ public class constants {
 
     public static String projectTaskTAG = "pt";
 
-    public static int MIN_VALID_SECONDS = 600; /** in seconds */
+    public static int MIN_VALID_SECONDS = 300; /** in seconds */
 
 
     /**

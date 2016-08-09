@@ -64,7 +64,7 @@ public class TaskChangeService extends IntentService {
                         handleTaskInsert(passInt[0]);
                     break;
                 case IntentActions.ACTION_TASK_UPDATE:
-                   // handleTaskUpdate(passInt, date, passIntExtra[0]);
+                    handleTaskUpdate(passInt, date, passIntExtra[0]);
                     break;
                 case IntentActions.ACTION_TASK_DAILY_SYNC:
                     handleTaskInsert(passInt[0]);
@@ -82,8 +82,9 @@ public class TaskChangeService extends IntentService {
     private void handleTaskUpdate(int[] passInt, String date, int notificationUpdateMode) {
 
 
+        Log.d("tcs","update mode "+notificationUpdateMode);
         String selection = "oid = " + passInt[0];
-        int[] reqColumns = new int[]{0, 3, 4, 5,6};
+        int[] reqColumns = new int[]{0, 3, 4, 5,6}; /** 0 id , 1 timehr, 2 timemin,3 isalarm,4  isfired */
         Cursor cursor = TodayNotificationHelper.loadNotificationData(context,
                 selection, null, reqColumns
                 );
@@ -144,6 +145,9 @@ public class TaskChangeService extends IntentService {
                     showNotificationNow(notificationData[0], timehr, timemin);
 
                 }
+            }
+            else{
+                TodayNotificationHelper.deleteTodayNotification(context,notificationData[0]);
             }
         } else {
             if (TodayNotificationHelper.isGoodTask(passInt, date))

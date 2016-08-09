@@ -222,11 +222,12 @@ public class Tasks {
                     rid = cursor.getInt(cursor.getColumnIndex(Tasks.columnNames[1][0]));
             }
 
-            if (passInt[5] == 1) {
+            if (passInt[5] == 1) { //time is set
                 selection = "" + columnNames[2][1] + " = " + rid;
                 ContentValues contentAlarm = new ContentValues(5);
                 contentAlarm.put(columnNames[2][1], rid);
                 int i = 2;
+                int aid = 0;
                 while (i < columnNos[2])
                     contentAlarm.put(columnNames[2][i++], passInt[int_index++]);
 
@@ -234,7 +235,30 @@ public class Tasks {
                 rows = context.getContentResolver().update(uri, contentAlarm, selection, null);
 
                 if (rows == 0) {
-                    context.getContentResolver().insert(uri, contentAlarm);
+                    insertedUri = context.getContentResolver().insert(uri, contentAlarm);
+                    aid = Integer.parseInt(insertedUri.getLastPathSegment());
+                }else {
+                    int reqcolumn[] = {0};
+
+                    Cursor cursor = Tasks.select(context, 2, reqcolumn, selection, null, null, null, null);
+                    while (cursor.moveToNext())
+                        aid = cursor.getInt(cursor.getColumnIndex(Tasks.columnNames[1][0]));
+                }
+
+                if (passInt[9] == 1){ // repeat is set
+
+                    selection = ""+columnNames[3][1]+ " = "+aid;
+                    Log.d("ta","aid  "+aid +" select "+selection +" "+selection);
+                    ContentValues contentRepeat = new ContentValues(2);
+                    contentRepeat.put(columnNames[3][1], aid);
+                    contentRepeat.put(columnNames[3][2], passInt[int_index++]);
+
+                    uri = Uri.withAppendedPath(DBProvider.CONTENT_URI_TASKS, tableNames[3]);
+
+                    rows = context.getContentResolver().update(uri, contentRepeat, selection, null);
+                    if (rows == 0){
+                        insertedUri = context.getContentResolver().insert(uri, contentRepeat);
+                    }
                 }
 
             }

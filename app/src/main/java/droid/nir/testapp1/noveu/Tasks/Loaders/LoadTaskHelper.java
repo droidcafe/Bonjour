@@ -260,6 +260,34 @@ public class LoadTaskHelper {
         return task_data;
     }
 
+
+    /**
+     * loads partial integer column from tasks like just repeat after displaying notificationn=
+     * @param context
+     * @param tableNo table required from tasks
+     * @param reqColumn the required column
+     * @param selection selection string
+     * @param selectionArgs selection args
+     * @return the integer data fetched in the order given in reqcolumn
+     */
+    public static String loadTaskPartial(Context context, int tableNo,
+                                        int reqColumn, String selection,
+                                        String[] selectionArgs) {
+        Uri  uri = Uri.withAppendedPath(DBProvider.CONTENT_URI_TASKS, Tasks.tableNames[tableNo]);
+        String[] projection_task = Import.inttoStringColumn(new int[]{reqColumn}, (tableNo + 1));
+        Cursor cursor_task_data = context.getContentResolver().query(uri, projection_task,
+                selection, selectionArgs, null);
+
+        String task_data ="";
+        if(cursor_task_data.getCount() <= 0)
+            return null;
+        while (cursor_task_data.moveToNext()) {
+            for (int i =0 ; i < projection_task.length ; i++)
+                task_data = cursor_task_data.getString(cursor_task_data.getColumnIndex(projection_task[i]));
+        }
+        return task_data;
+    }
+
     public static int getDone(Context context , int tid){
         String selection = "_id = ?";
         String selectionArgs[] = {Integer.toString(tid)};

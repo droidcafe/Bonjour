@@ -119,6 +119,8 @@ public class TaskUtil {
         }
 
         int remData_old[] = LoadTaskHelper.loadReminder(context, id);
+
+        String date = LoadTaskHelper.loadTaskPartial(context, 1,2,"tid = "+id , null);
         if (remData_old[1] == 0){ // time was not set
             if (remData[1] == 1) {
                 return constants.task_update_modes[2];
@@ -128,7 +130,7 @@ public class TaskUtil {
         }
 
         int[] timeData = LoadTaskHelper.loadTime(context, remData_old[0]);
-        if (timeData[0] == remData[2] && timeData[1] == remData[3]) {
+        if (timeData[0] == remData[2] && timeData[1] == remData[3] && date.equals(remdate)) {
             if (timeData[2] == remData[4]) {
                 if (timeData[3] == 1) {
                     if (remData[5] == 1)

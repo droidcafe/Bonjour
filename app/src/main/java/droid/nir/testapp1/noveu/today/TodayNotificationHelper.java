@@ -95,6 +95,18 @@ public class TodayNotificationHelper {
     }
 
     /**
+     * function to delete rows in notification table
+     * @param context
+     * @param id      id of row to be deleted
+     * @return no of rows affected
+     */
+    public static int deleteTodayNotification(Context context, int id){
+        String selection = "_id = ?";
+        String selectionArgs[] = {String.valueOf(id)};
+        return Today.delete(context,0,selection,selectionArgs);
+    }
+
+    /**
      * to update isfired column in today_notification to 1 or o
      *
      * @param context

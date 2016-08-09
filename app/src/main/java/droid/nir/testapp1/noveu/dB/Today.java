@@ -2,6 +2,7 @@ package droid.nir.testapp1.noveu.dB;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 
@@ -90,14 +91,28 @@ public class Today {
     }
 
     /**
-     * to delete all rows in req table - used in dailysync service before inserting today notifications
-     *
+     * to delete all rows in req table -
+     * used in {@link droid.nir.testapp1.noveu.sync.services.DailySyncService#onHandleIntent(Intent)}
+     * service before inserting today notifications
      * @param context
      * @param tableNo required table
      */
     public static void deleteAll(Context context, int tableNo) {
         Uri uri = Uri.withAppendedPath(DBProvider.CONTENT_URI_TASKS, tableNames[tableNo]);
         context.getContentResolver().delete(uri, null, null);
+    }
+
+
+    /**
+     * to delete specified rows in req table -
+     * used in {@link droid.nir.testapp1.noveu.today.TodayNotificationHelper#deleteTodayNotification(Context, int)}
+     * service before inserting today notifications
+     * @param context
+     * @param tableNo required table
+     */
+    public static int delete(Context context, int tableNo, String selection, String[] selectionArgs) {
+        Uri uri = Uri.withAppendedPath(DBProvider.CONTENT_URI_TASKS, tableNames[tableNo]);
+        return context.getContentResolver().delete(uri, selection, selectionArgs);
     }
 
 
