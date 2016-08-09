@@ -111,5 +111,15 @@
     <color name="nav_center">#8975AC</color>
     <color name="nav_end">#5B4E78</color>
     <color name="ripple_color">#BCBCBC</color>
+
+    <color name="about_dark">#292421</color>
+    <color name="about_dark1">#C03332</color>
+    <color name="about_dark2">#8C6801</color>
+    <color name="about_dark3">#0A5832</color>
+    <color name="about_dark4">#016D7A</color>
+    <color name="about_primary1">#D94C3F</color>
+    <color name="about_primary2">#F2B301</color>
+    <color name="about_primary3">#0F9C58</color>
+    <color name="about_primary4">#01BBD3</color>
 </resources>
 

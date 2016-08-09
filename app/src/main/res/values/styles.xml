@@ -30,6 +30,13 @@
 
     </style>
 
+    <style name="AppTheme.About.ToolBar" parent="AppTheme.NoActionBar">
+        <item name="colorPrimary">@color/tprimary</item>
+        <item name="colorPrimaryDark">@color/about_dark</item>
+        <item name="colorAccent">@color/tprimary</item>
+    </style>
+
+
     <style name="AppTheme.Event" parent="AppTheme.Task">
         <item name="colorAccent">@color/eaccent</item>
     </style>

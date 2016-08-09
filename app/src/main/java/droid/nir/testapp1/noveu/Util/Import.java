@@ -4,6 +4,7 @@ package droid.nir.testapp1.noveu.Util;
  * Created by droidcafe on 2/20/2016.
  */
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.database.Cursor;
@@ -11,7 +12,10 @@ import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Typeface;
 import android.media.RingtoneManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,6 +23,7 @@ import com.wnafee.vector.MorphButton;
 
 import java.util.Calendar;
 
+import droid.nir.testapp1.R;
 import droid.nir.testapp1.noveu.constants.SharedKeys;
 import droid.nir.testapp1.noveu.dB.metaValues.dBmetaData;
 
@@ -176,6 +181,9 @@ public class Import {
     public static Object getSettingSharedPref(Context context, String key, int type) {
         SharedPreferences sharedPreferences = context.getSharedPreferences(SharedKeys.prefname_setting, 0);
 
+        if(sharedPreferences == null)
+            return null;
+
         if (type == 1)
             return sharedPreferences.getString(key, null);
 
@@ -211,6 +219,23 @@ public class Import {
     public static Uri getDefaultNotificationSound(){
         return RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
     }
+
+    public static void setStatusBarColor(Context context, Activity activity, int color){
+        Window window =activity.getWindow();
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            window.setStatusBarColor(context.getResources().getColor(color));
+
+        }
+    }
+
+    public static void setBackGroundColor(Context context, Activity activity, int viewId ,int color) {
+        activity.findViewById(viewId).setBackgroundColor(context.getResources().
+                getColor(color));
+    }
+
 
 }
 

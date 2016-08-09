@@ -107,7 +107,9 @@ public class NotificationUtils {
 
         Uri sound = Import.getDefaultNotificationSound();
         if(notificationType == constants.notificationMode[0]) {
-            sound = Uri.parse((String) Import.getSettingSharedPref(context, SharedKeys.task_notification_ringtone, 1));
+            String ringtone = (String) Import.getSettingSharedPref(context, SharedKeys.task_notification_ringtone, 1);
+            if (ringtone!=null)
+            sound = Uri.parse(ringtone);
             builder.setDefaults(TaskNotificationHelper.getTaskNotificationDefault(context, true));
         }
 
@@ -136,7 +138,9 @@ public class NotificationUtils {
                                                                        int id, int notificationType) {
         Uri sound = Import.getDefaultNotificationSound();
         if(notificationType == constants.notificationMode[0]) {
-            sound = Uri.parse((String) Import.getSettingSharedPref(context, SharedKeys.task_notification_ringtone, 1));
+            String ringtone = (String) Import.getSettingSharedPref(context, SharedKeys.task_notification_ringtone, 1);
+            if (ringtone!=null)
+                sound = Uri.parse(ringtone);
             builder.setDefaults(TaskNotificationHelper.getTaskNotificationDefault(context, true));
         }
 

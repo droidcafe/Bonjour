@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import droid.nir.testapp1.R;
+import droid.nir.testapp1.noveu.Projects.data.ProjectList;
 import droid.nir.testapp1.noveu.dB.Project;
 
 /**
@@ -166,13 +167,14 @@ public class BonjourSettings extends AppCompatPreferenceActivity {
             addPreferencesFromResource(R.xml.pref_general);
             setHasOptionsMenu(true);
 
-            ArrayList<String> projectNames= Project.getProjects(getActivity());
+            ProjectList projectList = Project.getProjects(getActivity());
 
-            CharSequence[] entries = new CharSequence[projectNames.size()];
-            CharSequence[] entryValues =new CharSequence[projectNames.size()];
-            for(int i=0;i< projectNames.size();i++){
-                entries[i] = projectNames.get(i);
-                entryValues[i] = projectNames.get(i).toLowerCase();
+            CharSequence[] entries = new CharSequence[projectList.projectNames.size()];
+            CharSequence[] entryValues =new CharSequence[projectList.projectIds.size()];
+
+            for(int i=0;i< projectList.projectNames.size();i++){
+                entries[i] = projectList.projectNames.get(i);
+                entryValues[i] = Integer.toString(projectList.projectIds.get(i));
             }
             ListPreference lp = (ListPreference)findPreference("pref_general_project_default");
             lp.setEntries(entries);

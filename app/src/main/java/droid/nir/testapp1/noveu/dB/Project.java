@@ -11,6 +11,8 @@ import android.os.AsyncTask;
 import java.util.ArrayList;
 
 import droid.nir.testapp1.Bonjour;
+import droid.nir.testapp1.noveu.Projects.data.ProjectList;
+import droid.nir.testapp1.noveu.Util.Import;
 import droid.nir.testapp1.noveu.Util.Log;
 
 import droid.nir.databaseHelper.DatabaseCreater;
@@ -175,8 +177,12 @@ public class Project {
     }
 
     public static int getDefaultProject(Context context) {
-        SharedPreferences sharedPreferences = context.getSharedPreferences(SharedKeys.prefname, 0);
-        return sharedPreferences.getInt(SharedKeys.projectDefault, -1);
+        String defaultProject = (String) Import.getSettingSharedPref(context, SharedKeys.general_project_default,1);
+        int projectId =Integer.parseInt(defaultProject);
+
+        return projectId;
+//        SharedPreferences sharedPreferences = context.getSharedPreferences(SharedKeys.prefname, 0);
+//        return sharedPreferences.getInt(SharedKeys.projectDefault, -1);
     }
 
     public static void setDefaultProject(Context context, int id) {
@@ -203,7 +209,7 @@ public class Project {
         return projectData;
     }
 
-    public static ArrayList<String> getProjects(Context context) {
+    public static ArrayList<String> getProjectNames(Context context) {
 
         Cursor cursor = Project.select(context, 0, new int[]{1}, null, null, null, null, null);
         ArrayList<String> projectNames = new ArrayList<>(cursor.getCount());
@@ -214,6 +220,22 @@ public class Project {
             projectNames.add(cursor.getString(cursor.getColumnIndex(Project.columnNames[0][1])));
         }
         return projectNames;
+    }
+
+    public static ProjectList getProjects(Context context) {
+
+        Cursor cursor = Project.select(context, 0, new int[]{0,1}, null, null, null, null, null);
+        ProjectList projectList = new ProjectList();
+        projectList.projectNames = new ArrayList<>(cursor.getCount());
+        projectList.projectIds = new ArrayList<>(cursor.getCount());
+
+        if (cursor.getCount() <= 0)
+            return null;
+        while (cursor.moveToNext()) {
+            projectList.projectNames.add(cursor.getString(cursor.getColumnIndex(Project.columnNames[0][1])));
+            projectList.projectIds.add(cursor.getInt(cursor.getColumnIndex(Project.columnNames[0][0])));
+        }
+        return projectList;
     }
     /**
      * increases the project size on inserting a new task to the project

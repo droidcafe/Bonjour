@@ -343,6 +343,11 @@
             android:name=".noveu.Tasks.show.Show_Expand"
             android:label="@string/title_activity_show__expand"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+
+        <activity android:name=".noveu.welcome.about.About"
+            android:theme="@style/AppTheme.About.ToolBar"/>
     </application>
+
+
 
 </manifest>
