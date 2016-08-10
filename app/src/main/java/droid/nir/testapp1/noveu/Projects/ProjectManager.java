@@ -161,26 +161,27 @@ public class ProjectManager extends AppCompatActivity implements LoaderManager.L
 
     private void setupProjectAddDialog() {
 
-        DialogFragment alertDialog = DialogueProjectManager.newInstanceInsert();
+        DialogFragment alertDialog = DialogueProjectManager.newInstanceInsert(0);
         alertDialog.show(getFragmentManager(), "dialogs");
     }
 
     /**
      *  add a new project
      * @param text the new or updated project name
+     * @param id
      */
 
-    public void doPositiveInsert(String text) {
+    public void doPositiveInsert(String text, int id) {
         Log.d("ProjectManager",""+text);
 
 
-            Uri uri = Uri.withAppendedPath(DBProvider.CONTENT_URI_TASKS,"project");
-            ContentValues contentValues = new ContentValues(2);
-            contentValues.put(Project.columnNames[0][1],text);
-            contentValues.put(Project.columnNames[0][2], 0);
-            Uri uriInsert =  getContentResolver().insert(uri,contentValues);
-
-            int id = Integer.parseInt(uriInsert.getLastPathSegment());
+//            Uri uri = Uri.withAppendedPath(DBProvider.CONTENT_URI_TASKS,"project");
+//            ContentValues contentValues = new ContentValues(2);
+//            contentValues.put(Project.columnNames[0][1],text);
+//            contentValues.put(Project.columnNames[0][2], 0);
+//            Uri uriInsert =  getContentResolver().insert(uri,contentValues);
+//
+//            int id = Integer.parseInt(uriInsert.getLastPathSegment());
             mAdapter.addItem(text, 0, id);
 
     }
@@ -208,7 +209,7 @@ public class ProjectManager extends AppCompatActivity implements LoaderManager.L
     public void doPositiveDelete(int id)
     {
         String where = Project.columnNames[0][0] + " = "+ id;
-        Project.delete(this , 0, where,null,id);
+        Project.delete(this , 0, where,null,new Integer[]{id}, Project.deleteMode.quick);
         mAdapter.deleteProject();
       //  mAdapter.notifyItemRemoved(mAdapter.lastClickedPosition);
         //mAdapter.deleteProject();

@@ -13,24 +13,25 @@ public class TaskUtil {
 
     /**
      * util function to check if a task is saveable or not
+     *
      * @param task the task name
      * @param mode the current mode
      * @return true if either task has a name or if there is atleast one among reminder , notes, subtask has
      * been set . else false
      */
-    public static boolean isSaveableTask(String task , int mode)
-    {
-        return !(task.equals("")&&mode==0);
+    public static boolean isSaveableTask(String task, int mode) {
+        return !(task.equals("") && mode == 0);
     }
 
     /**
      * helper function to find out if sub task is present from a mode of tasks.
      * do so by comparing mode to predetermined value in @class - constants.taskexpandmode
+     *
      * @param mode current mode in expand view
      * @return 0 - not present 1-present
      */
     public static int isSubTask(int mode) {
-        if (mode == constants.taskexpandmode[2] ||mode == constants.taskexpandmode[4] ||
+        if (mode == constants.taskexpandmode[2] || mode == constants.taskexpandmode[4] ||
                 mode == constants.taskexpandmode[6] || mode == constants.taskexpandmode[7])
             return 1;
 
@@ -40,59 +41,68 @@ public class TaskUtil {
     /**
      * helper function to find out if notes is present from a mode of tasks.
      * do so by comparing mode to predetermined value in @class - constants.taskexpandmode
+     *
      * @param mode current mode in expand view
      * @return 0 - not present 1-present
      */
     public static int isNotes(int mode) {
-        if (mode == constants.taskexpandmode[3] ||mode == constants.taskexpandmode[5] ||
+        if (mode == constants.taskexpandmode[3] || mode == constants.taskexpandmode[5] ||
                 mode == constants.taskexpandmode[6] || mode == constants.taskexpandmode[7])
             return 1;
 
         return 0;
     }
+
     /**
      * helper function to find out if reminder is present from a mode of tasks.
      * do so by comparing mode to predetermined value in @class - constants.taskexpandmode
+     *
      * @param mode current mode in expand view
      * @return 0 - not present 1-present
      */
     public static int isReminder(int mode) {
-        if (mode == constants.taskexpandmode[1] ||mode == constants.taskexpandmode[4] ||
+        if (mode == constants.taskexpandmode[1] || mode == constants.taskexpandmode[4] ||
                 mode == constants.taskexpandmode[5] || mode == constants.taskexpandmode[7])
             return 1;
 
         return 0;
     }
+
     /**
      * helper function to find out if time is set for a reminder
      * do so by comparing remmode to predetermined value in @class - constants.permitmode
+     *
      * @param remmode current remmode in expand view
      * @return 0 - not present 1-present
      */
-    public static int isTime(int remmode){
+    public static int isTime(int remmode) {
         if (remmode > constants.permitMode[1])
             return 1;
         return 0;
     }
+
     /**
      * helper function to find out if alarm is set for a reminder
      * do so by comparing remmode to predetermined value in @class - constants.permitmode
+     *
      * @param remmode current remmode in expand view
      * @return 0 - not present 1-present
      */
-    public static int isAlarm(int remmode){
-        if (remmode == constants.permitMode[3] || remmode == constants.permitMode[5] )
+    public static int isAlarm(int remmode) {
+        if (remmode == constants.permitMode[3] || remmode == constants.permitMode[5])
             return 1;
         return 0;
     }
+
     /**
      * helper function to find out if repeat is set for a reminder
      * do so by comparing remmode to predetermined value in @class - constants.permitmode
+     *
      * @param remmode current remmode in expand view
      * @return 0 - not present 1-present
      */
-    public static int isRepeat(int remmode){
-        if (remmode == constants.permitMode[4] || remmode == constants.permitMode[5] )
+    public static int isRepeat(int remmode) {
+        if (remmode == constants.permitMode[4] || remmode == constants.permitMode[5])
             return 1;
         return 0;
     }
@@ -100,18 +110,19 @@ public class TaskUtil {
 
     /**
      * helper function to check if notification update is to be made
+     *
      * @param context
      * @param remData - the remider datas 0- isrem 1- istime, 2- timehr, 3- timemin, 4- isalarm, 5-isrepeat, 6-repeatmode
      * @param remdate - the new date of reminder
-     * @param id - the original task id
+     * @param id      - the original task id
      * @return one of the notification mode specified in {@link constants} task_update_mode
      */
-    public static  int getNotificationUpdate(Context context, int[] remData, String remdate, int id){
+    public static int getNotificationUpdate(Context context, int[] remData, String remdate, int id) {
         String selection = "_id = ?";
         String selectionArgs[] = {Integer.toString(id)};
-        int[] isRem = LoadTaskHelper.loadTaskPartial(context,0,new int[]{4},selection,selectionArgs);
+        int[][] isRem = LoadTaskHelper.loadTaskPartial(context, 0, new int[]{4}, selection, selectionArgs);
 
-        if(isRem[0] == 0){
+        if (isRem[0][0] == 0) {
             if (remData[0] == 1)
                 return constants.task_update_modes[0];
             else
@@ -120,12 +131,11 @@ public class TaskUtil {
 
         int remData_old[] = LoadTaskHelper.loadReminder(context, id);
 
-        String date = LoadTaskHelper.loadTaskPartial(context, 1,2,"tid = "+id , null);
-        if (remData_old[1] == 0){ // time was not set
+        String date = LoadTaskHelper.loadTaskPartial(context, 1, 2, "tid = " + id, null);
+        if (remData_old[1] == 0) { // time was not set
             if (remData[1] == 1) {
                 return constants.task_update_modes[2];
-            }
-            else
+            } else
                 return constants.task_update_modes[0];
         }
 
@@ -150,23 +160,37 @@ public class TaskUtil {
             return constants.task_update_modes[3];
         }
 
-    //    return constants.task_update_modes[0];
+        //    return constants.task_update_modes[0];
 
     }
 
-
-    public static void setDone(Context context, int tid,int new_value){
+    /**
+     * updates done value to new value
+     *
+     * @param context
+     * @param tid       id of task
+     * @param new_value new value of done
+     */
+    public static void setDone(Context context, int tid, int new_value) {
         int reqCol[] = {7}; /** done */
         int newVal[] = {new_value};
 
         String selection = "_id = ? ";
-        String selectionArgs[] = { Integer.toString(tid)};
+        String selectionArgs[] = {Integer.toString(tid)};
         Tasks.update(context, 0, reqCol, newVal, selection, selectionArgs);
     }
 
+    public static void changeProject(Context context, int pid, int old_pid) {
+        String selection = "" + Tasks.columnNames[0][2] + " = ?";
+        String[] selectionArgs = {Integer.toString(old_pid)};
+        int[][] tids = LoadTaskHelper.loadTaskPartial(context, 0, new int[]{0}, selection, selectionArgs);
 
-
-
+        for (int i = 0; i < tids.length; i++) {
+            selection = "_id = ? ";
+            selectionArgs[0] = Integer.toString(tids[i][0]);
+            Tasks.update(context, 0, new int[]{2}, new int[]{pid}, selection,selectionArgs);
+        }
+    }
 
 
 }

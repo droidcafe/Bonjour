@@ -242,7 +242,7 @@ public class LoadTaskHelper {
      * @param selectionArgs selection args
      * @return the integer data fetched in the order given in reqcolumn
      */
-    public static int[] loadTaskPartial(Context context, int tableNo,
+    public static int[][] loadTaskPartial(Context context, int tableNo,
                                         int[] reqColumn, String selection,
                                         String[] selectionArgs) {
         Uri  uri = Uri.withAppendedPath(DBProvider.CONTENT_URI_TASKS, Tasks.tableNames[tableNo]);
@@ -250,12 +250,14 @@ public class LoadTaskHelper {
         Cursor cursor_task_data = context.getContentResolver().query(uri, projection_task,
                 selection, selectionArgs, null);
 
-        int[] task_data = new int[cursor_task_data.getColumnCount()];
+        int[][] task_data = new int[cursor_task_data.getCount()][cursor_task_data.getColumnCount()];
+        int j =0;
         if(cursor_task_data.getCount() <= 0)
             return null;
         while (cursor_task_data.moveToNext()) {
             for (int i =0 ; i < projection_task.length ; i++)
-                task_data[i] = cursor_task_data.getInt(cursor_task_data.getColumnIndex(projection_task[i]));
+                task_data[j][i] = cursor_task_data.getInt(cursor_task_data.getColumnIndex(projection_task[i]));
+            j++;
         }
         return task_data;
     }
@@ -302,6 +304,22 @@ public class LoadTaskHelper {
             done = task_done.getInt(task_done.getColumnIndex("done"));
 
         return done;
+    }
+
+    public static int getProject(Context context , int tid){
+        String selection = "_id = ?";
+        String selectionArgs[] = {Integer.toString(tid)};
+
+        Uri  uri = Uri.withAppendedPath(DBProvider.CONTENT_URI_TASKS, Tasks.tableNames[0]);
+        String[] projection_task = {Tasks.columnNames[0][2]};
+        Cursor task_done = context.getContentResolver().query(uri,
+                projection_task,selection,selectionArgs,null);
+
+        int pid = 0;
+        while (task_done.moveToNext())
+            pid = task_done.getInt(task_done.getColumnIndex(Tasks.columnNames[0][2]));
+
+        return pid;
     }
 }
 

@@ -69,7 +69,7 @@ public class Tasks {
         ContentValues contentTask = new ContentValues();
         int int_index = 0, string_index = 0;
 
-        Project.updateProject(context, passInt[0]);
+        Project.updateProject(context, passInt[0], 1);
 
 
         for (int i = 1; i < columnNos[0]; i++) {
@@ -161,7 +161,7 @@ public class Tasks {
      * 0       1        2      3        4
      * <p></p>
      * passint = projectid, isrem, isnotes, issubtask, done, istime, timehr, timemin, isalarm, isrepeat, repeatmode
-     *             0            1     2        3         4      5      6        7       8        9           10
+     * 0            1     2        3         4      5      6        7       8        9           10
      */
 
     public static void update(String[] passDatas, int[] passInt, Context context,
@@ -180,6 +180,9 @@ public class Tasks {
             passInt[4] = 0;
         else
             passInt[4] = LoadTaskHelper.getDone(context, tid);
+
+        int old_pid = LoadTaskHelper.getProject(context, tid);
+        Project.updateProject(context, passInt[0], old_pid, 1);
 
         int int_index = 0, string_index = 0;
         for (int i = 1; i < columnNos[0]; i++) {
@@ -237,7 +240,7 @@ public class Tasks {
                 if (rows == 0) {
                     insertedUri = context.getContentResolver().insert(uri, contentAlarm);
                     aid = Integer.parseInt(insertedUri.getLastPathSegment());
-                }else {
+                } else {
                     int reqcolumn[] = {0};
 
                     Cursor cursor = Tasks.select(context, 2, reqcolumn, selection, null, null, null, null);
@@ -245,10 +248,10 @@ public class Tasks {
                         aid = cursor.getInt(cursor.getColumnIndex(Tasks.columnNames[1][0]));
                 }
 
-                if (passInt[9] == 1){ // repeat is set
+                if (passInt[9] == 1) { // repeat is set
 
-                    selection = ""+columnNames[3][1]+ " = "+aid;
-                    Log.d("ta","aid  "+aid +" select "+selection +" "+selection);
+                    selection = "" + columnNames[3][1] + " = " + aid;
+                    Log.d("ta", "aid  " + aid + " select " + selection + " " + selection);
                     ContentValues contentRepeat = new ContentValues(2);
                     contentRepeat.put(columnNames[3][1], aid);
                     contentRepeat.put(columnNames[3][2], passInt[int_index++]);
@@ -256,7 +259,7 @@ public class Tasks {
                     uri = Uri.withAppendedPath(DBProvider.CONTENT_URI_TASKS, tableNames[3]);
 
                     rows = context.getContentResolver().update(uri, contentRepeat, selection, null);
-                    if (rows == 0){
+                    if (rows == 0) {
                         insertedUri = context.getContentResolver().insert(uri, contentRepeat);
                     }
                 }

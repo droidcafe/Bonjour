@@ -25,12 +25,12 @@ public class TaskNotificationHelper {
 
         if (remiderdata[1] == 1) {
             String selection_remider = "rid = ?";
-            int alarmdata[] = LoadTaskHelper.loadTaskPartial(context,2,
+            int alarmdata[][] = LoadTaskHelper.loadTaskPartial(context,2,
                     new int[]{0,5},selection_remider,
                     new String[]{Integer.toString(remiderdata[0])});
-            Log.d("ns", "repeat " + alarmdata[0] + " " + alarmdata[1]);
-            if (alarmdata[1] == 1) { /** repeat is present */
-                int repeatmode = LoadTaskHelper.loadRepeat(context,alarmdata[0]);
+            Log.d("ns", "repeat " + alarmdata[0][0] + " " + alarmdata[0][1]);
+            if (alarmdata[0][1] == 1) { /** repeat is present */
+                int repeatmode = LoadTaskHelper.loadRepeat(context,alarmdata[0][0]);
                 TaskNotificationHelper.startRepeatProcess(context, tid, repeatmode);
                 TaskUtil.setDone(context, tid,0);
             }

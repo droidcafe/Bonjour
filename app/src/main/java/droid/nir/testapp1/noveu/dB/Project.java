@@ -11,12 +11,11 @@ import android.os.AsyncTask;
 import java.util.ArrayList;
 
 import droid.nir.testapp1.Bonjour;
+import droid.nir.testapp1.noveu.Projects.data.ProjectData;
 import droid.nir.testapp1.noveu.Projects.data.ProjectList;
+import droid.nir.testapp1.noveu.Tasks.TaskUtil;
 import droid.nir.testapp1.noveu.Util.Import;
 import droid.nir.testapp1.noveu.Util.Log;
-
-import droid.nir.databaseHelper.DatabaseCreater;
-import droid.nir.testapp1.noveu.Projects.data.ProjectData;
 import droid.nir.testapp1.noveu.constants.SharedKeys;
 import droid.nir.testapp1.toast;
 
@@ -26,6 +25,16 @@ import droid.nir.testapp1.toast;
 public class Project {
 
     static Context context;
+
+    /**
+     * different delete modes
+     * safe - delete after moving all task to new project
+     * quick - delete the project by deleting all tasks in that project
+     */
+    public enum deleteMode {
+        safe, quick
+    }
+
     public static String[][] columnNames = {
             {"_id", "proname", "itemsno"}
     };
@@ -108,17 +117,60 @@ public class Project {
         asyncinsert.execute();
     }
 
-    public static void delete(Context context, int tableNo, String selection, String[] selectionArgs, int pid) {
+    /**
+     * method to delete a project
+     *
+     * @param context
+     * @param tableNo
+     * @param selection
+     * @param selectionArgs
+     * @param pids
+     * @param mode
+     */
+    public static void delete(Context context, int tableNo, String selection, String[] selectionArgs, Integer pids[], deleteMode mode) {
 
-        if(pid == getDefaultProject(context))
-        {
+        if (pids[0] == getDefaultProject(context)) {
             /**
              * set next project default as the one having highest task count
              */
         }
+        new AsyncDelete(context, mode).execute(pids);
         Uri uri = Uri.withAppendedPath(DBProvider.CONTENT_URI_TASKS, tableNames[tableNo]);
         context.getContentResolver().delete(uri, selection, selectionArgs);
 
+    }
+
+    /**
+     * background class for deleting projects
+     * if deletemode == safe the params[0] = pid to be deleted
+     * params[1] = new pid
+     * else if deletemode == quick params[0] = pid to be deleted
+     */
+    static class AsyncDelete extends AsyncTask<Integer, Void, Void> {
+
+        deleteMode mode;
+        Context context;
+
+        public AsyncDelete(Context context, deleteMode mode) {
+            this.mode = mode;
+            this.context = context;
+        }
+
+        @Override
+        protected Void doInBackground(Integer... params) {
+            int pid = params[0];
+
+            if (mode == deleteMode.safe) {
+                int new_pid = params[1];
+                TaskUtil.changeProject(context, new_pid, pid);
+                return null;
+            }
+
+            String selection = "pid = ?";
+            String[] selectionArgs = {Integer.toString(pid)};
+            Tasks.delete(context,0,selection,selectionArgs);
+            return null;
+        }
     }
 
     class Asyncinsert extends AsyncTask<Void, Void, Uri> {
@@ -177,8 +229,8 @@ public class Project {
     }
 
     public static int getDefaultProject(Context context) {
-        String defaultProject = (String) Import.getSettingSharedPref(context, SharedKeys.general_project_default,1);
-        int projectId =Integer.parseInt(defaultProject);
+        String defaultProject = (String) Import.getSettingSharedPref(context, SharedKeys.general_project_default, 1);
+        int projectId = Integer.parseInt(defaultProject);
 
         return projectId;
 //        SharedPreferences sharedPreferences = context.getSharedPreferences(SharedKeys.prefname, 0);
@@ -188,7 +240,7 @@ public class Project {
     public static void setDefaultProject(Context context, int id) {
         SharedPreferences sharedPreferences = context.getSharedPreferences(SharedKeys.prefname, 0);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putInt(SharedKeys.projectDefault , id);
+        editor.putInt(SharedKeys.projectDefault, id);
         editor.commit();
     }
 
@@ -224,7 +276,7 @@ public class Project {
 
     public static ProjectList getProjects(Context context) {
 
-        Cursor cursor = Project.select(context, 0, new int[]{0,1}, null, null, null, null, null);
+        Cursor cursor = Project.select(context, 0, new int[]{0, 1}, null, null, null, null, null);
         ProjectList projectList = new ProjectList();
         projectList.projectNames = new ArrayList<>(cursor.getCount());
         projectList.projectIds = new ArrayList<>(cursor.getCount());
@@ -237,18 +289,21 @@ public class Project {
         }
         return projectList;
     }
+
     /**
      * increases the project size on inserting a new task to the project
      *
      * @param context
-     * @param projectId the id of project whose size is to be changed
+     * @param projectId     the id of project whose size is to be changed
+     * @param increase_size the no by which size of project is to be increased
      */
-    public static void updateProject(Context context, int projectId) {
+    public static int updateProject(Context context, int projectId, int increase_size) {
 
+        Log.d("pr", "size " + increase_size);
         ProjectData projectData = getProject(context, projectId);
         if (projectData == null)
-            return;
-        projectData.ProjectSize++;
+            return -1;
+        projectData.ProjectSize += increase_size;
         ContentValues contentValues = new ContentValues(2);
         contentValues.put(columnNames[0][1], projectData.ProjectName);
         contentValues.put(columnNames[0][2], projectData.ProjectSize);
@@ -256,10 +311,43 @@ public class Project {
         String selection = "_id = " + projectId;
         Uri uri = Uri.withAppendedPath(DBProvider.CONTENT_URI_TASKS, "project");
 
-        context.getContentResolver().update(uri, contentValues, selection, null);
+        return context.getContentResolver().update(uri, contentValues, selection, null);
 
     }
 
+
+    /**
+     * increases the project size on inserting a new task to the project
+     *
+     * @param context
+     * @param projectId     the id of project whose size is to be changed
+     * @param increase_size the no by which size of project is to be increased
+     */
+    public static int updateProject(Context context, int projectId, int oldprojectId, int increase_size) {
+
+        updateProject(context, oldprojectId, -increase_size);
+        return updateProject(context, projectId, increase_size);
+    }
+
+    /**
+     * add a new project
+     *
+     * @param text the new or updated project name
+     */
+
+    public static int doPositiveInsert(Context context, String text) {
+        Log.d("ProjectManager", "" + text);
+
+
+        Uri uri = Uri.withAppendedPath(DBProvider.CONTENT_URI_TASKS, "project");
+        ContentValues contentValues = new ContentValues(2);
+        contentValues.put(Project.columnNames[0][1], text);
+        contentValues.put(Project.columnNames[0][2], 0);
+        Uri uriInsert = context.getContentResolver().insert(uri, contentValues);
+
+        return Integer.parseInt(uriInsert.getLastPathSegment());
+
+    }
 
 }
 

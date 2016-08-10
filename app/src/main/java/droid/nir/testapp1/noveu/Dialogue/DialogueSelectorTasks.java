@@ -27,7 +27,7 @@ import droid.nir.testapp1.noveu.dB.Project;
 /**
  * Created by droidcafe on 2/25/2016.
  */
-public class    DialogueSelectorTasks extends DialogFragment implements LoaderManager.LoaderCallbacks<Cursor>, AdapterView.OnItemClickListener {
+public class    DialogueSelectorTasks extends DialogFragment implements LoaderManager.LoaderCallbacks<Cursor>, AdapterView.OnItemClickListener, View.OnClickListener {
     SimpleCursorAdapter cursorAdapter;
     ListView listView;
     int choice;
@@ -61,6 +61,7 @@ public class    DialogueSelectorTasks extends DialogFragment implements LoaderMa
     public void onStart() {
         super.onStart();
         listView = (ListView) getDialog().findViewById(R.id.prolist);
+        getDialog().findViewById(R.id.addpro).setOnClickListener(this);
         String[] from = {Project.columnNames[0][1],Project.columnNames[0][2]};
         int to[] ={R.id.proname,R.id.prosize};
        cursorAdapter = new SimpleCursorAdapter(getActivity(), R.layout.list_projectselector,null,from,to);
@@ -103,5 +104,16 @@ public class    DialogueSelectorTasks extends DialogFragment implements LoaderMa
         dismiss();
 
 
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.addpro:
+                dismiss();
+                DialogFragment alertDialog = DialogueProjectManager.newInstanceInsert(choice);
+                alertDialog.show(getFragmentManager(), "dialogs");
+                break;
+        }
     }
 }

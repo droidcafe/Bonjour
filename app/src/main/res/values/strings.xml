@@ -379,7 +379,7 @@ To view a reminder click on it.
     <string name="t9">9:00</string>
     <string name="t12">12:00</string>
     <string name="t18">18:00</string>
-    <string name="title_activity_project_manager">Project Manager</string>
+    <string name="title_activity_project_manager">Label Manager</string>
     <string name="managepro">Create and Delete your labels below</string>
 
     <string name="initial_project0">All</string>
@@ -391,6 +391,7 @@ To view a reminder click on it.
     <string name="addproject">New label name</string>
     <string name="addproject_hint">Enter the new label name</string>
     <string name="addproject_title">Add label</string>
+    <string name="addproject_new_title">Create new label</string>
 
     <string name="updateproject_title">Update label</string>
     <string name="updateproject_hint">Enter the updated label name</string>
@@ -418,7 +419,7 @@ To view a reminder click on it.
     <string name="tasks">Tasks</string>
     <string name="completed">Completed</string>
     <string name="project">Labels</string>
-    <string name="title_activity_project_task">ProjectTask</string>
+    <string name="title_activity_project_task">Label Task</string>
 
     <string name="noprotask">No tasks for %1$s!! To create one please click plus button below</string>
     <string name="selected_count">%1$s selected</string>
