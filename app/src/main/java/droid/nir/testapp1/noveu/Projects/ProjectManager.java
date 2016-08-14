@@ -35,6 +35,7 @@ public class ProjectManager extends AppCompatActivity implements LoaderManager.L
 
 
     ProjectAdapter mAdapter;
+    static final int LOADER_ID = 0101;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,9 +47,9 @@ public class ProjectManager extends AppCompatActivity implements LoaderManager.L
         setupNav();
         Loader<Object> loader =  getLoaderManager().getLoader(0);
         if(loader!=null&&!loader.isReset())
-            getLoaderManager().restartLoader(0, null, this);
+            getLoaderManager().restartLoader(LOADER_ID, null, this);
         else
-            getLoaderManager().initLoader(0, null, this);
+            getLoaderManager().initLoader(LOADER_ID, null, this);
 
         findViewById(R.id.fab).setOnClickListener(this);
 
@@ -66,13 +67,12 @@ public class ProjectManager extends AppCompatActivity implements LoaderManager.L
 
     private void setupNav() {
         new setNav(this,this).setupNavigation(R.id.nav_pro);
-        //((NavigationView)findViewById(R.id.nav_view)).setCheckedItem(R.id.nav_pro);
     }
 
     private void setupRecycler(Cursor cursor) {
-        Log.d("pm",""+cursor.getCount());
+        Log.d("pm", "" + cursor.getCount());
         RecyclerView recyclerView = (RecyclerView)findViewById(R.id.recyclerview);
-        recyclerView.setLayoutManager(new GridLayoutManager(this,2));
+        recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         mAdapter =new ProjectAdapter(this,this,cursor);
         recyclerView.setAdapter(mAdapter);
         recyclerView.setHasFixedSize(true);
@@ -83,8 +83,6 @@ public class ProjectManager extends AppCompatActivity implements LoaderManager.L
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-
-
     }
 
     @Override
@@ -94,44 +92,13 @@ public class ProjectManager extends AppCompatActivity implements LoaderManager.L
 
     }
 
-    @Override
-    public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.project_manager, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.refresh) {
-           refresh();
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
     private void refresh() {
-        getLoaderManager().restartLoader(0, null, this);
+        getLoaderManager().restartLoader(LOADER_ID, null, this);
     }
 
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
-        Log.d("pm","create loader");
+        Log.d("pm", "create loader");
         Uri uri =Uri.withAppendedPath(DBProvider.CONTENT_URI_TASKS,"project");
         return new CursorLoader(this,uri,null,null,null,null);
     }
@@ -145,7 +112,10 @@ public class ProjectManager extends AppCompatActivity implements LoaderManager.L
     @Override
     public void onLoaderReset(Loader<Cursor> loader) {
         Log.d("projectmanager", "loader reset");
-        getLoaderManager().restartLoader()
+        RecyclerView recyclerView = (RecyclerView)findViewById(R.id.recyclerview);
+        recyclerView.swapAdapter(null,true);
+     //   getLoaderManager().restartLoader(LOADER_ID,null,this);
+
     }
 
     @Override
@@ -201,6 +171,33 @@ public class ProjectManager extends AppCompatActivity implements LoaderManager.L
     {
 
         mAdapter.deleteProject();
-        refresh();
+       // refresh();
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.project_manager, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.refresh) {
+            refresh();
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

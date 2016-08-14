@@ -348,7 +348,7 @@ public class Add_Expand extends AppCompatActivity
             return;
         }
 
-        if (taskfield.equals(""))
+        if (task.equals(""))
             task = getResources().getString(R.string.randomtask);
         new AsyncSave().execute(task);
 

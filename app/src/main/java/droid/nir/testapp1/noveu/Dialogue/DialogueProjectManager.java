@@ -106,7 +106,7 @@ public class DialogueProjectManager extends DialogFragment implements LoaderMana
                             final EditText tv = (EditText) getDialog().findViewById(R.id.proname);
 
                             String text = tv.getText().toString();
-                            if (tv.equals(""))
+                            if (text.equals(""))
                                 maketext.makeText(getResources().getString(R.string.noproname));
                             else {
                                 int id = Project.doPositiveInsert(getActivity(), text);
@@ -150,9 +150,8 @@ public class DialogueProjectManager extends DialogFragment implements LoaderMana
                         public void onClick(DialogInterface dialog, int whichButton) {
 
                             final EditText tv = (EditText) getDialog().findViewById(R.id.proname);
-
                             String text = tv.getText().toString();
-                            if (tv.equals(""))
+                            if (text.equals(""))
                                 maketext.makeText(getResources().getString(R.string.noproname));
                             else {
                                 ((ProjectManager) getActivity()).doPositiveUpdate(text, id);
@@ -188,7 +187,12 @@ public class DialogueProjectManager extends DialogFragment implements LoaderMana
             alertBuilder.setPositiveButton(getResources().getString(R.string.delete),
                     new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int whichButton) {
-                            Project.deleteMode mode = (deleteOption == 0) ? Project.deleteMode.quick : Project.deleteMode.safe;
+                            Project.deleteMode mode = Project.deleteMode.purgatory;
+
+                            Log.d("dpm"," option "+deleteOption);
+                            if (deleteOption == 0) mode = Project.deleteMode.quick;
+                            else if(deleteOption == 1) mode = Project.deleteMode.safe;
+
                             Project.delete(getActivity(),id,mode,new_pid);
                             ((ProjectManager) getActivity()).doPositiveDelete();
                         }

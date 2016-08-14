@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
+
+import droid.nir.testapp1.noveu.Util.AutoRefresh;
 import droid.nir.testapp1.noveu.Util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -184,10 +186,6 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ViewHold
 
 
         notifyItemRemoved(lastClickedPosition);
-       // notifyDataSetChanged();
-
-       /*
-            Log.d("pa"," "+pronames.get(i) +" "+i);(+*/
 
     }
 

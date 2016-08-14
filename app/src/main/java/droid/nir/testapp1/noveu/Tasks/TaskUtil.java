@@ -3,6 +3,7 @@ package droid.nir.testapp1.noveu.Tasks;
 import android.content.Context;
 
 import droid.nir.testapp1.noveu.Tasks.Loaders.LoadTaskHelper;
+import droid.nir.testapp1.noveu.Util.Log;
 import droid.nir.testapp1.noveu.constants.constants;
 import droid.nir.testapp1.noveu.dB.Project;
 import droid.nir.testapp1.noveu.dB.Tasks;
@@ -182,9 +183,13 @@ public class TaskUtil {
     }
 
     public static void changeProject(Context context, int pid, int old_pid) {
+        Log.d("tu","new "+pid+" "+old_pid);
         String selection = "" + Tasks.columnNames[0][2] + " = ?";
         String[] selectionArgs = {Integer.toString(old_pid)};
         int[][] tids = LoadTaskHelper.loadTaskPartial(context, 0, new int[]{0}, selection, selectionArgs);
+
+        if(tids == null)
+            return;
 
         Project.updateProject(context,pid,tids.length);
 

@@ -15,6 +15,7 @@ import droid.nir.testapp1.noveu.Projects.ProjectManager;
 import droid.nir.testapp1.noveu.Projects.data.ProjectData;
 import droid.nir.testapp1.noveu.Projects.data.ProjectList;
 import droid.nir.testapp1.noveu.Tasks.TaskUtil;
+import droid.nir.testapp1.noveu.Util.AutoRefresh;
 import droid.nir.testapp1.noveu.Util.Import;
 import droid.nir.testapp1.noveu.Util.Log;
 import droid.nir.testapp1.noveu.constants.SharedKeys;
@@ -33,7 +34,7 @@ public class Project {
      * quick - delete the project by deleting all tasks in that project
      */
     public enum deleteMode {
-        safe, quick
+        safe, quick, purgatory;
     }
 
     public static String[][] columnNames = {
@@ -137,7 +138,7 @@ public class Project {
         else{
             passInt[0] = id;
         }
-        Project.delete(context , 0, where,null,passInt,deleteMode);
+        Project.delete(context, 0, where, null, passInt, deleteMode);
     }
 
     /**
@@ -154,6 +155,7 @@ public class Project {
 
         Uri uri = Uri.withAppendedPath(DBProvider.CONTENT_URI_TASKS, tableNames[tableNo]);
         context.getContentResolver().delete(uri, selection, selectionArgs);
+        AutoRefresh.setRefreshSharedPref(context);
         new AsyncDelete(context, mode).execute(pids);
 
     }
@@ -190,11 +192,12 @@ public class Project {
                 int new_pid = params[1];
                 TaskUtil.changeProject(context, new_pid, pid);
                 return null;
+            }else if (mode == deleteMode.quick) {
+                String selection = "pid = ?";
+                String[] selectionArgs = {Integer.toString(pid)};
+                Tasks.delete(context,0,selection,selectionArgs);
             }
 
-            String selection = "pid = ?";
-            String[] selectionArgs = {Integer.toString(pid)};
-            Tasks.delete(context,0,selection,selectionArgs);
             return null;
         }
     }
@@ -241,6 +244,8 @@ public class Project {
 
         return "";
     }
+
+
 
     public static int getProjectSize(int projectId) {
 

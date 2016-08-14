@@ -269,6 +269,14 @@ public class ParentDb extends SQLiteOpenHelper {
 
     }
 
+    public Cursor rawQuery(SQLiteDatabase db, String selection, String selectionArgs[]) {
+        if (db != null) {
+            return db.rawQuery(selection,selectionArgs);
+        }
+
+        return null;
+    }
+
 
 
 

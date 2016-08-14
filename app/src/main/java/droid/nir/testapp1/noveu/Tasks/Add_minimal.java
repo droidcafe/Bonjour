@@ -175,7 +175,7 @@ public class Add_minimal extends AppCompatActivity implements View.OnClickListen
             finish();
             return;
         }
-        if(taskfield.equals(" "))
+        if(task.equals(""))
             task=getResources().getString(R.string.randomtask);
         new AsyncSave().execute(task);
        finish();
