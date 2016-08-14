@@ -37,11 +37,12 @@ public class DialogueProjectManager extends DialogFragment implements LoaderMana
 
     public enum DialogueMode {insert, update, delete}
 
-    ;
-
     DialogueMode mode;
     String proname;
     MaterialBetterSpinner spinnerProlist;
+    int deleteOption, new_pid;
+    int[] ids;
+
 
     /**
      * to create dialogue for adding new labels
@@ -178,6 +179,8 @@ public class DialogueProjectManager extends DialogFragment implements LoaderMana
         else if (choice == 2) {
             mode = DialogueMode.delete;
 
+            deleteOption = -1;
+            new_pid = -1;
             proname = getArguments().getString("proname");
             final int id = getArguments().getInt("proid");
             alertBuilder.setView(R.layout.dialogue_projectmanager_delet);
@@ -185,10 +188,9 @@ public class DialogueProjectManager extends DialogFragment implements LoaderMana
             alertBuilder.setPositiveButton(getResources().getString(R.string.delete),
                     new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int whichButton) {
-
-                            ((ProjectManager) getActivity()).doPositiveDelete(id);
-
-
+                            Project.deleteMode mode = (deleteOption == 0) ? Project.deleteMode.quick : Project.deleteMode.safe;
+                            Project.delete(getActivity(),id,mode,new_pid);
+                            ((ProjectManager) getActivity()).doPositiveDelete();
                         }
                     }
             )
@@ -236,17 +238,17 @@ public class DialogueProjectManager extends DialogFragment implements LoaderMana
                         android.R.layout.simple_dropdown_item_1line, list);
 
                 MaterialBetterSpinner spinner = (MaterialBetterSpinner) getDialog().findViewById(R.id.taskoptions);
+                MaterialBetterSpinner prospinner = (MaterialBetterSpinner) getDialog().findViewById(R.id.moveto);
+
                 spinner.setHint(getString(R.string.prodelete_hint, new Object[]{proname}));
                 Typeface typeface = Typeface.createFromAsset(getActivity().getAssets(), "SourceSansPro-Regular.otf");
                 spinner.setTypeface(typeface);
-                //    spinner.setHintTextColor(getResources().getColor(R.color.black));
                 spinner.setAdapter(adapter);
 
                 spinner.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-
+                        deleteOption = position;
                         if (position == 0) {
                             getDialog().findViewById(R.id.moveto).setVisibility(View.GONE);
 
@@ -254,6 +256,14 @@ public class DialogueProjectManager extends DialogFragment implements LoaderMana
                             getLoaderManager().initLoader(0, null, DialogueProjectManager.this);
 
                         }
+                    }
+                });
+
+                prospinner.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                        Log.d("dpm","pro click "+i+" "+l+" "+ids[i]);
+                        new_pid = ids[i];
                     }
                 });
 
@@ -285,7 +295,7 @@ public class DialogueProjectManager extends DialogFragment implements LoaderMana
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
         Log.d("dpm", "loader finish");
         String list[] = new String[data.getCount()];
-        int ids[] = new int[data.getCount()];
+        ids = new int[data.getCount()];
         int i = 0;
         data.moveToPosition(-1);
         Log.d("dpm", "loader " + data.getPosition());
@@ -311,3 +321,4 @@ public class DialogueProjectManager extends DialogFragment implements LoaderMana
     }
 
 }
+

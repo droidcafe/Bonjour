@@ -11,6 +11,7 @@ import android.os.AsyncTask;
 import java.util.ArrayList;
 
 import droid.nir.testapp1.Bonjour;
+import droid.nir.testapp1.noveu.Projects.ProjectManager;
 import droid.nir.testapp1.noveu.Projects.data.ProjectData;
 import droid.nir.testapp1.noveu.Projects.data.ProjectList;
 import droid.nir.testapp1.noveu.Tasks.TaskUtil;
@@ -118,6 +119,28 @@ public class Project {
     }
 
     /**
+     * function to delete a project from {@link ProjectManager} screen
+     * @param context
+     * @param id
+     * @param deleteMode - the type of deletemode {@link Project.deleteMode}
+     * @param new_pid - new pid to shift the tasks if @param deleteMode = safe
+     */
+    public static void delete(Context context,int id, Project.deleteMode deleteMode, int new_pid)
+    {
+        String where = Project.columnNames[0][0] + " = "+ id;
+        Integer passInt[] = new Integer[2];
+        if (deleteMode == Project.deleteMode.safe)
+        {
+            passInt[0] = id;
+            passInt[1] = new_pid;
+        }
+        else{
+            passInt[0] = id;
+        }
+        Project.delete(context , 0, where,null,passInt,deleteMode);
+    }
+
+    /**
      * method to delete a project
      *
      * @param context
@@ -129,14 +152,9 @@ public class Project {
      */
     public static void delete(Context context, int tableNo, String selection, String[] selectionArgs, Integer pids[], deleteMode mode) {
 
-        if (pids[0] == getDefaultProject(context)) {
-            /**
-             * set next project default as the one having highest task count
-             */
-        }
-        new AsyncDelete(context, mode).execute(pids);
         Uri uri = Uri.withAppendedPath(DBProvider.CONTENT_URI_TASKS, tableNames[tableNo]);
         context.getContentResolver().delete(uri, selection, selectionArgs);
+        new AsyncDelete(context, mode).execute(pids);
 
     }
 
@@ -159,6 +177,14 @@ public class Project {
         @Override
         protected Void doInBackground(Integer... params) {
             int pid = params[0];
+
+            if (pid == getDefaultProject(context)) {
+                /**
+                 * set next project default as the one having highest task count
+                 */
+
+
+            }
 
             if (mode == deleteMode.safe) {
                 int new_pid = params[1];
@@ -350,5 +376,6 @@ public class Project {
     }
 
 }
+
 
 

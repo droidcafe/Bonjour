@@ -145,7 +145,7 @@ public class ProjectManager extends AppCompatActivity implements LoaderManager.L
     @Override
     public void onLoaderReset(Loader<Cursor> loader) {
         Log.d("projectmanager", "loader reset");
-      //  getLoaderManager().restartLoader()
+        getLoaderManager().restartLoader()
     }
 
     @Override
@@ -173,15 +173,6 @@ public class ProjectManager extends AppCompatActivity implements LoaderManager.L
 
     public void doPositiveInsert(String text, int id) {
         Log.d("ProjectManager",""+text);
-
-
-//            Uri uri = Uri.withAppendedPath(DBProvider.CONTENT_URI_TASKS,"project");
-//            ContentValues contentValues = new ContentValues(2);
-//            contentValues.put(Project.columnNames[0][1],text);
-//            contentValues.put(Project.columnNames[0][2], 0);
-//            Uri uriInsert =  getContentResolver().insert(uri,contentValues);
-//
-//            int id = Integer.parseInt(uriInsert.getLastPathSegment());
             mAdapter.addItem(text, 0, id);
 
     }
@@ -206,12 +197,10 @@ public class ProjectManager extends AppCompatActivity implements LoaderManager.L
         mAdapter.notifyItemChanged(mAdapter.lastClickedPosition);
     }
 
-    public void doPositiveDelete(int id)
+    public void doPositiveDelete()
     {
-        String where = Project.columnNames[0][0] + " = "+ id;
-        Project.delete(this , 0, where,null,new Integer[]{id}, Project.deleteMode.quick);
+
         mAdapter.deleteProject();
-      //  mAdapter.notifyItemRemoved(mAdapter.lastClickedPosition);
-        //mAdapter.deleteProject();
+        refresh();
     }
 }

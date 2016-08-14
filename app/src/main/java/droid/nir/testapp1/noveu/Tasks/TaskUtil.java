@@ -4,6 +4,7 @@ import android.content.Context;
 
 import droid.nir.testapp1.noveu.Tasks.Loaders.LoadTaskHelper;
 import droid.nir.testapp1.noveu.constants.constants;
+import droid.nir.testapp1.noveu.dB.Project;
 import droid.nir.testapp1.noveu.dB.Tasks;
 
 /**
@@ -184,6 +185,8 @@ public class TaskUtil {
         String selection = "" + Tasks.columnNames[0][2] + " = ?";
         String[] selectionArgs = {Integer.toString(old_pid)};
         int[][] tids = LoadTaskHelper.loadTaskPartial(context, 0, new int[]{0}, selection, selectionArgs);
+
+        Project.updateProject(context,pid,tids.length);
 
         for (int i = 0; i < tids.length; i++) {
             selection = "_id = ? ";
