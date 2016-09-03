@@ -17,6 +17,7 @@ import droid.nir.testapp1.R;
 
 public class AboutFragment1 extends Fragment {
 
+    private OnAboutHelperListener aboutHelperListener;
 
     public AboutFragment1() {
 
@@ -47,12 +48,15 @@ public class AboutFragment1 extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-
+        aboutHelperListener = (OnAboutHelperListener) context;
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        if(aboutHelperListener != null){
+            aboutHelperListener.changeFont(view);
+        }
 //        Window window =getActivity().getWindow();
 //
 //        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -66,7 +70,10 @@ public class AboutFragment1 extends Fragment {
     @Override
     public void onDetach() {
         super.onDetach();
+        aboutHelperListener = null;
     }
+
+
 
 
 }

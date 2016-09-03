@@ -19,6 +19,7 @@ import droid.nir.testapp1.noveu.Util.Log;
 public class AboutFragment2 extends Fragment {
 
 
+    private OnAboutHelperListener aboutHelperListener;
     public AboutFragment2() {
 
     }
@@ -50,6 +51,9 @@ public class AboutFragment2 extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         Log.d("af","onviewcreated");
+        if(aboutHelperListener != null){
+            aboutHelperListener.changeFont(view);
+        }
 //        Window window =getActivity().getWindow();
 //
 //        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -69,7 +73,7 @@ public class AboutFragment2 extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        Log.d("af","onattaach");
+        aboutHelperListener = (OnAboutHelperListener) context;
     }
 
 
@@ -77,7 +81,7 @@ public class AboutFragment2 extends Fragment {
     @Override
     public void onDetach() {
         super.onDetach();
+        aboutHelperListener = null;
     }
-
 
 }

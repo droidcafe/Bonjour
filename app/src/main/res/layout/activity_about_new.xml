@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/pagerparent"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    android:id="@+id/pagerparent"
     android:fitsSystemWindows="true"
     tools:context="droid.nir.testapp1.noveu.welcome.about.About">
 
@@ -26,9 +26,19 @@
             android:layout_margin="15dp"
             android:padding="10dp"
             android:text="@string/skip"
+            android:id="@+id/skip"
             android:textAllCaps="true"
             android:textColor="@color/white"
             android:textSize="20sp" />
+
+        <include
+            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_centerHorizontal="true"
+            layout="@layout/about_page_indicators"
+            android:id="@+id/page_indicators"
+            android:layout_above="@id/skip"
+            android:layout_marginBottom="0dp"/>
 
 
     </RelativeLayout>

@@ -75,7 +75,7 @@ public class Add_minimal extends AppCompatActivity implements View.OnClickListen
 
         TextView projectName = (TextView) findViewById(R.id.proname);
         projectName.setText(Project.getProjectName(context,projectid));
-        anImport.settypefaces("Raleway-SemiBold.ttf", projectName);
+        Import.settypefaces(context, "Raleway-SemiBold.ttf", projectName);
     }
 
 
@@ -291,23 +291,23 @@ public class Add_minimal extends AppCompatActivity implements View.OnClickListen
     private void setfontDate()
     {
         Log.d("minimal", "font");
-        anImport.settypefaces("Raleway-Light.ttf", (TextView) date.findViewById(R.id.today_text));
-        anImport.settypefaces("Raleway-Light.ttf", (TextView) date.findViewById(R.id.tmrw_text));
-        anImport.settypefaces("Raleway-Light.ttf", (TextView) date.findViewById(R.id.week_text));
-        anImport.settypefaces("Raleway-Light.ttf", (TextView) date.findViewById(R.id.custom_text));
+       Import.settypefaces(context, "Raleway-Light.ttf", (TextView) date.findViewById(R.id.today_text));
+       Import.settypefaces(context, "Raleway-Light.ttf", (TextView) date.findViewById(R.id.tmrw_text));
+       Import.settypefaces(context, "Raleway-Light.ttf", (TextView) date.findViewById(R.id.week_text));
+       Import.settypefaces(context, "Raleway-Light.ttf", (TextView) date.findViewById(R.id.custom_text));
     }
 
     private void setfontTime()
     {
         Log.d("minimal", "font");
-        anImport.settypefaces("Raleway-Light.ttf", (TextView) time.findViewById(R.id.today_text));
-        anImport.settypefaces("Raleway-Light.ttf", (TextView) time.findViewById(R.id.tmrw_text));
-        anImport.settypefaces("Raleway-Light.ttf", (TextView) time.findViewById(R.id.week_text));
-        anImport.settypefaces("Raleway-Light.ttf", (TextView) time.findViewById(R.id.custom_text));
+       Import.settypefaces(context, "Raleway-Light.ttf", (TextView) time.findViewById(R.id.today_text));
+       Import.settypefaces(context, "Raleway-Light.ttf", (TextView) time.findViewById(R.id.tmrw_text));
+       Import.settypefaces(context, "Raleway-Light.ttf", (TextView) time.findViewById(R.id.week_text));
+       Import.settypefaces(context, "Raleway-Light.ttf", (TextView) time.findViewById(R.id.custom_text));
 
-        anImport.settypefaces("Raleway-Light.ttf", (TextView) time.findViewById(R.id.t9_pic));
-        anImport.settypefaces("Raleway-Light.ttf", (TextView) time.findViewById(R.id.t18_pic));
-        anImport.settypefaces("Raleway-Light.ttf", (TextView) time.findViewById(R.id.t12_pic));
+       Import.settypefaces(context, "Raleway-Light.ttf", (TextView) time.findViewById(R.id.t9_pic));
+       Import.settypefaces(context, "Raleway-Light.ttf", (TextView) time.findViewById(R.id.t18_pic));
+       Import.settypefaces(context, "Raleway-Light.ttf", (TextView) time.findViewById(R.id.t12_pic));
 
     }
 

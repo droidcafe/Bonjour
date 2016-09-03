@@ -1,5 +1,9 @@
 package droid.nir.testapp1.noveu.welcome.about;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -7,20 +11,31 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.Collection;
 
 import droid.nir.testapp1.R;
+import droid.nir.testapp1.noveu.Home.Home;
 import droid.nir.testapp1.noveu.Util.Import;
 import droid.nir.testapp1.noveu.Util.Log;
+import droid.nir.testapp1.noveu.constants.SharedKeys;
+import droid.nir.testapp1.noveu.constants.constants;
+import droid.nir.testapp1.noveu.welcome.Initial;
 import droid.nir.testapp1.noveu.welcome.about.animations.DepthPageTransform;
 import droid.nir.testapp1.noveu.welcome.about.animations.ZoomPageTransform;
 
-public class About extends FragmentActivity implements ViewPager.OnPageChangeListener {
+public class About extends FragmentActivity implements ViewPager.OnPageChangeListener, OnAboutHelperListener, View.OnClickListener {
 
 
     private ViewPager mPager;
     private PagerAdapter mPagerAdapter;
     private int position =0;
     private  static  final  int NUM_PAGES = 4;
+    private static final int[] page_dots = {R.id.page1,R.id.page2,R.id.page3,R.id.page4};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,14 +47,32 @@ public class About extends FragmentActivity implements ViewPager.OnPageChangeLis
      //   mPager.setPageTransformer(true, new DepthPageTransform());
         mPager.setAdapter(mPagerAdapter);
         mPager.addOnPageChangeListener(this);
+        setup();
         changeParentView(position);
+        changePageIndicator(position);
+    }
 
+    private void setup() {
+        Import.settypefaces(this, "Raleway-Light.ttf", (TextView) findViewById(R.id.skip));
+        findViewById(R.id.skip).setOnClickListener(this);
+
+        int version = -1;
+        Intent intent = getIntent();
+        if (intent != null) {
+            version = intent.getIntExtra("version",-4);
+            Log.d("ab","version "+version);
+            if (version != constants.VERSION && version!= -4){
+                Log.d("ab","starting inital");
+                Initial.startInitialops(this, this, version);
+            }
+        }
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         changeParentView(position);
+        changePageIndicator(position);
     }
 
     @Override
@@ -62,8 +95,9 @@ public class About extends FragmentActivity implements ViewPager.OnPageChangeLis
     @Override
     public void onPageSelected(int position) {
         Log.d("ab","page selected "+position);
-        changeParentView(position);
         this.position = position;
+        changeParentView(position);
+        changePageIndicator(position);
     }
 
     @Override
@@ -71,6 +105,31 @@ public class About extends FragmentActivity implements ViewPager.OnPageChangeLis
         Log.d("ab","page state "+state);
 
 
+    }
+
+    @Override
+    public void changeFont(View view) {
+
+        Context context = view.getContext();
+        Import.settypefaces(context, "Ribbon_V2_2011.otf", (TextView) view.findViewById(R.id.about_title));
+        Import.settypefaces(context, "Raleway-Medium.ttf", (TextView) view.findViewById(R.id.about_desp));
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.skip:
+                goHome();
+                break;
+        }
+    }
+
+    private void goHome() {
+        Import.setSharedPref(this, SharedKeys.about_shown_till, position);
+        Intent return_intent = new Intent();
+        return_intent.putExtra("shown_till",position);
+        setResult(constants.SUCCESS_CODE, return_intent);
+        finish();
     }
 
     private class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
@@ -125,6 +184,17 @@ public class About extends FragmentActivity implements ViewPager.OnPageChangeLis
 
             }
         }
+
+
+    private void changePageIndicator(int position) {
+
+        Resources res = getResources();
+        for (int i = 0; i < NUM_PAGES; i++) {
+            int pic_id = (i== position) ? R.drawable.indication_full : R.drawable.indication_outline;
+            Drawable drawable = res.getDrawable(pic_id);
+            ((ImageView) findViewById(page_dots[i])).setImageDrawable(drawable);
+        }
+    }
     }
 
 

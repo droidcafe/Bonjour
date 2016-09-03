@@ -424,6 +424,24 @@
         <item name="android:textSize">@dimen/datedatesize</item>
     </style>
 
+    <style name="about_desp">
+        <item name="android:layout_marginTop">5dp</item>
+        <item name="android:layout_marginBottom">120dp</item>
+        <item name="android:layout_marginRight">20dp</item>
+        <item name="android:layout_marginLeft">20dp</item>
+        <item name="android:padding">5dp</item>
+        <item name="android:textSize">19sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_alignParentBottom">true</item>
+    </style>
+
+    <style name="about_title">
+        <item name="android:padding">10dp</item>
+        <item name="android:textSize">35sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:gravity">center</item>
+    </style>
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>

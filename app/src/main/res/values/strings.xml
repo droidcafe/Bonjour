@@ -543,7 +543,7 @@ To view a reminder click on it.
 
     <string name="task_share_notes">Notes </string>
     <string name="task_share">Task is %1$s</string>
-    <string name="promotion_share"> \nSend via <bold>BucketList</bold> </string>
+    <string name="promotion_share"> \nSent via <b>BucketList</b> </string>
     <string name="promotion_download">Download Now !!\ \ </string>
     <string name="app_url">https://play.google.com/store/apps/details?id=droid.nir.testapp1</string>
     <string name="task_delete_successful">Task deleted successfully</string>
@@ -556,5 +556,13 @@ To view a reminder click on it.
 
     <string name="notification_summray">Notification Summary</string>
     <string name="decision_maker">Decision Maker</string>
+
+    <string name="app_desp">Forget how to forget</string>
+    <string name="decision_desp">Take the best decisions</string>
+    <string name="task_desp">Manage all your chores with to-do lists, notes and reminders</string>
+    <string name="events_desp">Never again miss an event</string>
+    <!--<string name=""></string>-->
+    <!--<string name=""></string>-->
+    <!--<string name=""></string>-->
 </resources>
 

@@ -1,4 +1,4 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,29 +7,63 @@
     tools:context="droid.nir.testapp1.noveu.welcome.about.AboutFragment1">
 
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/button_action_blue"/>
     <TextView
+        android:id="@+id/about_desp"
+        style="@style/about_desp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:padding="10dp"
-        android:textSize="25sp"
-        android:textColor="@color/white"
+        android:text="@string/decision_desp" />
+
+    <TextView
+        android:id="@+id/about_title"
+        style="@style/about_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/about_desp"
         android:text="@string/decision_maker" />
 
-    <TextView
+
+    <ImageView
+        android:id="@+id/man"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:padding="5dp"
-        android:textSize="16sp"
-        android:textColor="@color/white"
-        android:text="Replace this string with actual description" />
+        android:layout_above="@id/about_title"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/promo_decision1" />
 
-</LinearLayout>
+    <ImageView
+        android:id="@+id/promo_question"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/man"
+        android:layout_marginBottom="-40dp"
+        android:layout_marginLeft="40dp"
+        android:rotation="-30"
+        android:src="@drawable/promo_decision2" />
+
+
+    <ImageView
+        android:id="@+id/promo_idea"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/man"
+        android:layout_marginLeft="50dp"
+        android:layout_toRightOf="@id/promo_question"
+        android:src="@drawable/promo_decision3" />
+
+
+    <ImageView
+        android:id="@+id/promo_final"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/man"
+        android:layout_marginBottom="-50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_toRightOf="@id/promo_idea"
+        android:src="@drawable/promo_decision6" />
+
+
+
+
+</RelativeLayout>

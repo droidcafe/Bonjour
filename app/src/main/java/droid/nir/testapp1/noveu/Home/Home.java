@@ -32,7 +32,6 @@ import com.prolificinteractive.materialcalendarview.OnDateChangedListener;
 import java.util.List;
 
 import droid.nir.defcon3.FirstScreen;
-import droid.nir.testapp1.About;
 import droid.nir.testapp1.CustomDate;
 import droid.nir.testapp1.R;
 import droid.nir.testapp1.noveu.Home.Adapters.TaskAdapter;
@@ -42,15 +41,15 @@ import droid.nir.testapp1.noveu.Tasks.Add_minimal;
 import droid.nir.testapp1.noveu.Tasks.Loaders.LoadTask;
 import droid.nir.testapp1.noveu.Util.AutoRefresh;
 import droid.nir.testapp1.noveu.Util.Import;
+import droid.nir.testapp1.noveu.Util.Log;
 import droid.nir.testapp1.noveu.constants.SharedKeys;
 import droid.nir.testapp1.noveu.constants.constants;
 import droid.nir.testapp1.noveu.dB.ParentDb;
 import droid.nir.testapp1.noveu.dB.Tasks;
-import droid.nir.testapp1.noveu.dB.initial.TaskMigrations;
 import droid.nir.testapp1.noveu.dB.metaValues.dBmetaData;
 import droid.nir.testapp1.noveu.recycler.ItemTouchHelperCallback;
 import droid.nir.testapp1.noveu.sync.alarms.DailySyncAlarm;
-import droid.nir.testapp1.noveu.welcome.Initial;
+import droid.nir.testapp1.noveu.welcome.about.About;
 
 public class Home extends AppCompatActivity
         implements OnDateChangedListener, View.OnClickListener {
@@ -73,7 +72,7 @@ public class Home extends AppCompatActivity
         setbasics();
         if (db != null && !db.needUpgrade(dBmetaData.DATABASE_VERSION) && Import.checkTable(db, Tasks.tableNames[0])) {
             setuptasklist();
-         //   ParentDb.getInstance(context).close();
+            //   ParentDb.getInstance(context).close();
         }
 
     }
@@ -85,15 +84,23 @@ public class Home extends AppCompatActivity
         int version = sharedPreferences.getInt(SharedKeys.Version, -1);
 
         if (version != constants.VERSION) {
-            Initial.startInitialops(this, this, version);
+            Intent welcome_intent = new Intent(this, About.class);
+            welcome_intent.putExtra("version",version);
+            startActivityForResult(welcome_intent, constants.WELCOME_REQUESTCODE);
         }
-        SQLiteDatabase db = ParentDb.getInstance(context).returnSQl();
-     //   TaskMigrations.migrate();
-        boolean isAlarmSet = DailySyncAlarm.isDailySyncSet(context);
-        if (!isAlarmSet)
-            DailySyncAlarm.setSyncAlarmNow(context);
-
+        Log.d("ho","continue ");
+        SQLiteDatabase db = continueInitial();
         return db;
+    }
+
+    private SQLiteDatabase continueInitial() {
+        boolean isAlarmSet = DailySyncAlarm.isDailySyncSet(context);
+        if (!isAlarmSet) {
+            DailySyncAlarm.setSyncAlarmNow(context);
+        }
+
+        return ParentDb.getInstance(context).returnSQl();
+
     }
 
 
@@ -190,16 +197,12 @@ public class Home extends AppCompatActivity
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
         switch (item.getItemId()) {
@@ -218,7 +221,7 @@ public class Home extends AppCompatActivity
                 break;
             case R.id.action_help:
 
-                startActivity(new Intent(this, About.class));
+                startActivity(new Intent(this, droid.nir.testapp1.About.class));
 
                 break;
             case R.id.action_share:
@@ -249,6 +252,18 @@ public class Home extends AppCompatActivity
 
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode == constants.SUCCESS_CODE) {
+            switch (requestCode) {
+                case  constants.WELCOME_REQUESTCODE:
+                    continueInitial();
+                    break;
+            }
+        }
     }
 
     public void composeEmail(String[] addresses, String subject, Uri attachment) {

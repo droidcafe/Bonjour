@@ -25,6 +25,8 @@ public class dBUtil {
         while (cursor.moveToNext()) {
 
         }
+
+        return -1;
     }
 
 }

@@ -263,6 +263,7 @@ public class Project {
         String defaultProject = (String) Import.getSettingSharedPref(context, SharedKeys.general_project_default, 1);
         int projectId = Integer.parseInt(defaultProject);
 
+        Log.d("pr","default "+projectId);
         return projectId;
 //        SharedPreferences sharedPreferences = context.getSharedPreferences(SharedKeys.prefname, 0);
 //        return sharedPreferences.getInt(SharedKeys.projectDefault, -1);

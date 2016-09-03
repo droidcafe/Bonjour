@@ -53,9 +53,10 @@ public class TaskMore extends Fragment implements View.OnClickListener {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        Import anImport = new Import(view.getContext());
-        anImport.settypefaces("Raleway-Light.ttf", (TextView) view.findViewById(R.id.share_text));
-        anImport.settypefaces("Raleway-Light.ttf", (TextView) view.findViewById(R.id.delete_text));
+        Context context = view.getContext();
+        Import.settypefaces(context,"Raleway-Light.ttf", (TextView) view.findViewById(R.id.share_text));
+        Import.settypefaces(context,"Raleway-Light.ttf", (TextView) view.findViewById(R.id.delete_text));
+
         (view.findViewById(R.id.share)).setOnClickListener(this);
         (view.findViewById(R.id.delete)).setOnClickListener(this);
     }
