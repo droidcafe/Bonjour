@@ -13,12 +13,12 @@ import droid.nir.testapp1.noveu.recycler.Interfaces.ItemTouchHelperViewHolder;
 /**
  * Created by droidcafe on 4/3/2016.
  */
-public class ItemTouchHelperCallback extends ItemTouchHelper.Callback {
+public class TaskAdapterItemTouchHelperCallback extends ItemTouchHelper.Callback {
 
     private static final float ALPHA_FULL = 1.0f;
     ItemTouchHelperAdapter mAdapter;
 
-    public ItemTouchHelperCallback(ItemTouchHelperAdapter adapter){
+    public TaskAdapterItemTouchHelperCallback(ItemTouchHelperAdapter adapter){
         mAdapter = adapter;
     }
 

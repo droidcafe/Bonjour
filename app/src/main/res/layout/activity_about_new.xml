@@ -31,13 +31,35 @@
             android:textColor="@color/white"
             android:textSize="20sp" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_margin="15dp"
+            android:padding="10dp"
+            android:text="@string/next"
+            android:id="@+id/next"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_above="@id/next"
+            android:layout_height="1dp"
+            android:id="@+id/firstline"
+            android:layout_marginBottom="-13dp"
+            android:layout_marginTop="15dp"
+            android:background="@color/lines_grey_light" />
+
         <include
             android:layout_height="wrap_content"
             android:layout_width="100dp"
             android:layout_centerHorizontal="true"
             layout="@layout/about_page_indicators"
             android:id="@+id/page_indicators"
-            android:layout_above="@id/skip"
+            android:layout_above="@id/firstline"
             android:layout_marginBottom="0dp"/>
 
 

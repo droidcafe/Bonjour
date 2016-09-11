@@ -47,7 +47,7 @@ import droid.nir.testapp1.noveu.constants.constants;
 import droid.nir.testapp1.noveu.dB.ParentDb;
 import droid.nir.testapp1.noveu.dB.Tasks;
 import droid.nir.testapp1.noveu.dB.metaValues.dBmetaData;
-import droid.nir.testapp1.noveu.recycler.ItemTouchHelperCallback;
+import droid.nir.testapp1.noveu.recycler.TaskAdapterItemTouchHelperCallback;
 import droid.nir.testapp1.noveu.sync.alarms.DailySyncAlarm;
 import droid.nir.testapp1.noveu.welcome.about.About;
 
@@ -360,7 +360,7 @@ public class Home extends AppCompatActivity
             recyclerView.setAdapter(taskAdapter);
             recyclerView.setHasFixedSize(true);
 
-            ItemTouchHelper.Callback callback = new ItemTouchHelperCallback(taskAdapter);
+            ItemTouchHelper.Callback callback = new TaskAdapterItemTouchHelperCallback(taskAdapter);
             ItemTouchHelper itemTouchHelper = new ItemTouchHelper(callback);
             itemTouchHelper.attachToRecyclerView(recyclerView);
         }

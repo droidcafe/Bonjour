@@ -55,6 +55,7 @@ public class About extends FragmentActivity implements ViewPager.OnPageChangeLis
     private void setup() {
         Import.settypefaces(this, "Raleway-Light.ttf", (TextView) findViewById(R.id.skip));
         findViewById(R.id.skip).setOnClickListener(this);
+        findViewById(R.id.next).setOnClickListener(this);
 
         int version = -1;
         Intent intent = getIntent();
@@ -89,7 +90,6 @@ public class About extends FragmentActivity implements ViewPager.OnPageChangeLis
     @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
         Log.d("ab","page scrolled "+position);
-
     }
 
     @Override
@@ -102,7 +102,7 @@ public class About extends FragmentActivity implements ViewPager.OnPageChangeLis
 
     @Override
     public void onPageScrollStateChanged(int state) {
-        Log.d("ab","page state "+state);
+        Log.d("ab", "page state " + state);
 
 
     }
@@ -121,6 +121,12 @@ public class About extends FragmentActivity implements ViewPager.OnPageChangeLis
             case R.id.skip:
                 goHome();
                 break;
+            case R.id.next:
+                if(position == NUM_PAGES -1){
+                    goHome();
+                }else{
+                    mPager.setCurrentItem(mPager.getCurrentItem() + 1,true);
+                }
         }
     }
 
@@ -167,18 +173,26 @@ public class About extends FragmentActivity implements ViewPager.OnPageChangeLis
                 case 0:
                     findViewById(R.id.pagerparent).setBackgroundColor(getResources().getColor(R.color.about_primary2));
                     Import.setStatusBarColor(this, this, R.color.about_dark1);
+                    findViewById(R.id.skip).setVisibility(View.VISIBLE);
+                    ((TextView)findViewById(R.id.next)).setText(getResources().getString(R.string.next));
                     break;
                 case 1:
                     findViewById(R.id.pagerparent).setBackgroundColor(getResources().getColor(R.color.about_primary3));
                     Import.setStatusBarColor(this, this, R.color.about_dark2);
+                    findViewById(R.id.skip).setVisibility(View.VISIBLE);
+                    ((TextView)findViewById(R.id.next)).setText(getResources().getString(R.string.next));
                     break;
                 case 2:
                     findViewById(R.id.pagerparent).setBackgroundColor(getResources().getColor(R.color.about_primary4));
                     Import.setStatusBarColor(this, this, R.color.about_dark3);
+                    findViewById(R.id.skip).setVisibility(View.VISIBLE);
+                    ((TextView)findViewById(R.id.next)).setText(getResources().getString(R.string.next));
                     break;
                 case 3:
                     findViewById(R.id.pagerparent).setBackgroundColor(getResources().getColor(R.color.about_primary4));
                     Import.setStatusBarColor(this, this, R.color.about_dark4);
+                    findViewById(R.id.skip).setVisibility(View.GONE);
+                    ((TextView)findViewById(R.id.next)).setText(getResources().getString(R.string.start));
                     break;
 
 

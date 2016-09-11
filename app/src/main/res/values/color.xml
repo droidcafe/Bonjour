@@ -69,6 +69,7 @@
 
     <color name="primary_textt">#000000</color>
     <color name="lines_grey">#CDC5BF</color>
+    <color name="lines_grey_light">#50F4F4F4</color>
     <color name="lines_grey_dilute">#75CDC5BF</color>
     <color name="titletext">#292421</color>
     <color name="maintext">#292421</color>
