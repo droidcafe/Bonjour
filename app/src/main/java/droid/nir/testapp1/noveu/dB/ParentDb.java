@@ -81,7 +81,7 @@ public class ParentDb extends SQLiteOpenHelper {
         droptable = true;
         if(droptable)
         {
-            //  new AsyncDrop().execute(sqLiteDatabase);
+              new AsyncDrop().execute(sqLiteDatabase);
         }
         else{
          //   new AsyncCreate().execute(sqLiteDatabase);
@@ -89,6 +89,14 @@ public class ParentDb extends SQLiteOpenHelper {
     }
 
     class AsyncCreate extends AsyncTask<SQLiteDatabase , Void,Void> {
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            dBmetaData.setExtras();
+
+        }
+
         @Override
         protected Void doInBackground(SQLiteDatabase... db) {
             String[] CreateSQL =  intialisecreatesql();
@@ -156,14 +164,20 @@ public class ParentDb extends SQLiteOpenHelper {
         }
     }
 
-    public String[] intialisecreatesql() {
+    public String[]  intialisecreatesql() {
        String[] CreateSQL = new String[TABLE_NAME.length];
 
+        int column_index = 0;
         for (int i = 0; i < TABLE_NAME.length; i++) {
             CreateSQL[i] = "Create table if not exists " + TABLE_NAME[i] + " ( " + columnName[i][0] + " INTEGER PRIMARY KEY AUTOINCREMENT , ";
 
             for (int j = 1; j < tableLength[i]; j++) {
                 String temp = columnName[i][j] + " " + columnTypes[i][j] + " ";
+                String extra = dBmetaData.extra_constraints.get(column_index++);
+                if (extra != null){
+                    temp = temp.concat(extra +" ");
+                }
+
                 if ((j + 1) != tableLength[i])
                     temp = temp.concat(" , ");
 

@@ -341,6 +341,8 @@ public class Home extends AppCompatActivity
 
 
             LoadTask loadTask = new LoadTask(activity, context);
+            String preselection = ""+Tasks.columnNames[0][8] +" = 0";
+            loadTask.loadPreSelection(preselection,null);
             return loadTask.loadAllTasks();
 
 

@@ -26,6 +26,7 @@ import droid.nir.testapp1.noveu.Tasks.Add_minimal;
 import droid.nir.testapp1.noveu.Tasks.Loaders.LoadTask;
 import droid.nir.testapp1.noveu.Util.AutoRefresh;
 import droid.nir.testapp1.noveu.constants.constants;
+import droid.nir.testapp1.noveu.dB.Tasks;
 
 public class ProjectTask extends AppCompatActivity implements View.OnClickListener {
 
@@ -129,7 +130,7 @@ public class ProjectTask extends AppCompatActivity implements View.OnClickListen
         @Override
         protected List<dataHome> doInBackground(Integer... params) {
             LoadTask loadTask = new LoadTask(activity,context);
-            String preselection = "pid = "+params[0];
+            String preselection = "pid = "+params[0] +" and "+ Tasks.columnNames[0][8] +" = "+0;
             //String preselectionArgs[] = {params[0]};
             loadTask.loadPreSelection(preselection, null);
 

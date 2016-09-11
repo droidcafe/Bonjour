@@ -24,7 +24,7 @@ public class Tasks {
     Context context;
     public static String[][] columnNames = {
             // 0     1     2      3      4       5          6         7
-           /* 0 */ {"_id", "name", "pid", "date", "isrem", "isnotes", "issubtask", "done"},
+           /* 0 */ {"_id", "name", "pid", "date", "isrem", "isnotes", "issubtask", "done","hideflag"},
             {"_id", "tid", "date", "istime"},
              /* 2 */{"_id", "rid", "timehr", "timemin", "isalarm", "isrepeat"},
             {"_id", "aid", "mode"},
@@ -32,7 +32,7 @@ public class Tasks {
             {"_id", "tid", "subtask", "subtaskorder", "done"}
     };
     public static String[][] columnTypes = {
-            /* 0 */ {"INTEGER", "VARCHAR(350)", "INTEGER", "VARCHAR(30)", "INTEGER", "INTEGER", "INTEGER", "INTEGER"},
+            /* 0 */ {"INTEGER", "VARCHAR(350)", "INTEGER", "VARCHAR(30)", "INTEGER", "INTEGER", "INTEGER", "INTEGER", "INTEGER"},
             {"INTEGER", "INTEGER", "VARCHAR(30)", "INTEGER"},
              /* 2 */ {"INTEGER", "INTEGER", "INTEGER", "INTEGER", "INTEGER", "INTEGER"},
             {"INTEGER", "INTEGER", "INTEGER"},
@@ -41,7 +41,7 @@ public class Tasks {
 
     };
     public static String[] tableNames = {"tasks", "reminder", "alarm", "repeat", "notes", "subtasks"};
-    public static int[] columnNos = {8, 4, 6, 3, 3, 5};
+    public static int[] columnNos = {9, 4, 6, 3, 3, 5};
     toast maketext;
 
     public Tasks(Context context) {
@@ -72,7 +72,7 @@ public class Tasks {
         Project.updateProject(context, passInt[0], 1);
 
 
-        for (int i = 1; i < columnNos[0]; i++) {
+        for (int i = 1; i < 8; i++) {
             if (columnTypes[0][i].equals("INTEGER"))
                 contentTask.put(columnNames[0][i], passInt[int_index++]);
             else

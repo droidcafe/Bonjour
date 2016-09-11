@@ -31,7 +31,7 @@
     </style>
 
     <style name="AppTheme.About.ToolBar" parent="AppTheme.NoActionBar">
-        <item name="colorPrimary">@color/tprimary</item>
+        <item name="colorPrimary">@color/sprimary</item>
         <item name="colorPrimaryDark">@color/about_dark</item>
         <item name="colorAccent">@color/tprimary</item>
     </style>
