@@ -38,7 +38,9 @@ import droid.nir.testapp1.noveu.Home.Adapters.TaskAdapter;
 import droid.nir.testapp1.noveu.Home.data.dataHome;
 import droid.nir.testapp1.noveu.NavDrw.setNav;
 import droid.nir.testapp1.noveu.Tasks.Add_minimal;
+import droid.nir.testapp1.noveu.Tasks.Loaders.DeleteTask;
 import droid.nir.testapp1.noveu.Tasks.Loaders.LoadTask;
+import droid.nir.testapp1.noveu.Tasks.TaskUtil;
 import droid.nir.testapp1.noveu.Util.AutoRefresh;
 import droid.nir.testapp1.noveu.Util.Import;
 import droid.nir.testapp1.noveu.Util.Log;
@@ -85,10 +87,10 @@ public class Home extends AppCompatActivity
 
         if (version != constants.VERSION) {
             Intent welcome_intent = new Intent(this, About.class);
-            welcome_intent.putExtra("version",version);
+            welcome_intent.putExtra("version", version);
             startActivityForResult(welcome_intent, constants.WELCOME_REQUESTCODE);
         }
-        Log.d("ho","continue ");
+        Log.d("ho", "continue ");
         SQLiteDatabase db = continueInitial();
         return db;
     }
@@ -257,9 +259,9 @@ public class Home extends AppCompatActivity
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(resultCode == constants.SUCCESS_CODE) {
+        if (resultCode == constants.SUCCESS_CODE) {
             switch (requestCode) {
-                case  constants.WELCOME_REQUESTCODE:
+                case constants.WELCOME_REQUESTCODE:
                     continueInitial();
                     break;
             }
@@ -341,8 +343,8 @@ public class Home extends AppCompatActivity
 
 
             LoadTask loadTask = new LoadTask(activity, context);
-            String preselection = ""+Tasks.columnNames[0][8] +" = 0";
-            loadTask.loadPreSelection(preselection,null);
+            String preselection = "" + Tasks.columnNames[0][8] + " = 0";
+            loadTask.loadPreSelection(preselection, null);
             return loadTask.loadAllTasks();
 
 
@@ -377,7 +379,15 @@ public class Home extends AppCompatActivity
         //  new ParentDb(this).returnSQl().close();
     }
 
-    public boolean showDeleteSnack() {
+    /**
+     * function for showing snack after deleting tasks
+     * with action undo. <p></p>
+     * usually shown before actual deletion taken place
+     *
+     * @param tid - id of task to be deleted
+     * @return
+     */
+    public boolean showDeleteSnack(final int tid) {
         if (activity == null)
             return false;
 
@@ -387,11 +397,33 @@ public class Home extends AppCompatActivity
                 .setAction("UNDO", new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Snackbar snackbar1 = Snackbar.make(coordinatorLayout, "Message is restored!", Snackbar.LENGTH_SHORT);
+                        String redoMessage = activity.getResources().getString(R.string.redo_task);
+                        Snackbar snackbar1 = Snackbar.make(coordinatorLayout, redoMessage, Snackbar.LENGTH_SHORT);
                         snackbar1.show();
+                        DeleteTask.safeDelete = false;
+
+                        TaskUtil.setUndo(context, tid, 0);
+                        new AsyncLoad().execute();
                     }
                 });
 
+        snackbar.show();
+        return true;
+    }
+
+    /**
+     * function for showing snack after deleting tasks. without undo action
+     * usually shown after deletion taken place
+     *
+     * @return
+     */
+    public boolean showDeleteSnack() {
+        if (activity == null)
+            return false;
+
+        final CoordinatorLayout coordinatorLayout = (CoordinatorLayout) activity.findViewById(R.id.homeparent);
+        Snackbar snackbar = Snackbar
+                .make(coordinatorLayout, context.getString(R.string.task_delete_successful), Snackbar.LENGTH_LONG);
         snackbar.show();
         return true;
     }

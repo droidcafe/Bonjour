@@ -102,7 +102,7 @@ public class ProjectTaskAdapter extends RecyclerView.Adapter<ProjectTaskAdapter.
             Log.d("ta", "position " + position + " " + taskList.get(position).taskid);
             if(taskList.get(position).taskid !=-1)
             {
-                new DeleteTask.AsyncDelete().execute(taskList.get(position).taskid);
+                new DeleteTask.AsyncDelete(0).execute(taskList.get(position).taskid);
                 taskList.remove(position);
                 notifyItemRemoved(position);
                 new ProjectTask.AsyncLoad().execute();

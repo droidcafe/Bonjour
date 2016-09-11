@@ -6,10 +6,13 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 
+import android.os.Handler;
 import android.support.v7.widget.RecyclerView;
 
+import droid.nir.testapp1.Bonjour;
 import droid.nir.testapp1.noveu.Home.Home;
 import droid.nir.testapp1.noveu.Tasks.Loaders.DeleteTask;
+import droid.nir.testapp1.noveu.Tasks.TaskUtil;
 import droid.nir.testapp1.noveu.Util.Log;
 import android.util.SparseBooleanArray;
 import android.view.ActionMode;
@@ -173,13 +176,13 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> im
     public void itemSwipeDismiss(int position, int direction) {
 
         Log.d("ta","position "+position +" "+taskList.get(position).taskid);
-        if(taskList.get(position).taskid !=-1)
+        int tid =+taskList.get(position).taskid ;
+        if(tid !=-1)
         {
-            new DeleteTask.AsyncDelete().execute(taskList.get(position).taskid);
+            DeleteTask.setDelayedDelete(activity,tid, 5000);
             taskList.remove(position);
-            //   notifyDataSetChanged();
             notifyItemRemoved(position);
-            new Home.AsyncLoad().execute();
+
 
         //    notifyItemRangeChanged(position,getItemCount());
 //            Log.d("ta","removed "+taskList.get(position).tasktitle);

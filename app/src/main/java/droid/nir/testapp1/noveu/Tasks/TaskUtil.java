@@ -191,13 +191,22 @@ public class TaskUtil {
         if(tids == null)
             return;
 
-        Project.updateProject(context,pid,tids.length);
+        Project.updateProject(context, pid, tids.length);
 
         for (int i = 0; i < tids.length; i++) {
             selection = "_id = ? ";
             selectionArgs[0] = Integer.toString(tids[i][0]);
             Tasks.update(context, 0, new int[]{2}, new int[]{pid}, selection,selectionArgs);
         }
+    }
+
+    public static void setUndo(Context context,int tid,int undo_value){
+        int reqCol[] = {8}; /** hideflag */
+        int newVal[] = {undo_value};
+
+        String selection = "_id = ? ";
+        String selectionArgs[] = {Integer.toString(tid)};
+        Tasks.update(context, 0, reqCol, newVal, selection, selectionArgs);
     }
 
 

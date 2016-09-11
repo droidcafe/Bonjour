@@ -563,6 +563,7 @@ To view a reminder click on it.
     <string name="events_desp">Never again miss an event</string>
     <string name="random_label">Random Label %1$d </string>
     <string name="start">Start</string>
+    <string name="redo_task">Task Restored</string>
     <!--<string name=""></string>-->
     <!--<string name=""></string>-->
 </resources>

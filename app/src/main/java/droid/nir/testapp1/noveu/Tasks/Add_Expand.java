@@ -369,7 +369,8 @@ public class Add_Expand extends AppCompatActivity
     }
 
     private void deleteTask() {
-        new DeleteTask.AsyncDelete().execute(id);
+
+        DeleteTask.setDelayedDelete(activity,id, 5000);
         finish();
     }
 
