@@ -44,6 +44,7 @@ public class DialogueProjectManager extends DialogFragment implements LoaderMana
     int[] ids;
 
 
+    public static final int newlabelid = -198;
     /**
      * to create dialogue for adding new labels
      *
@@ -190,11 +191,24 @@ public class DialogueProjectManager extends DialogFragment implements LoaderMana
                             Project.deleteMode mode = Project.deleteMode.purgatory;
 
                             Log.d("dpm"," option "+deleteOption);
+                            int is_new = new_pid;
                             if (deleteOption == 0) mode = Project.deleteMode.quick;
-                            else if(deleteOption == 1) mode = Project.deleteMode.safe;
+                            else if(deleteOption == 1){
+                                mode = Project.deleteMode.safe;
+                                if (new_pid == newlabelid) {
+                                    final EditText tv = (EditText) getDialog().findViewById(R.id.new_task);
+                                    String text = tv.getText().toString();
+                                    if (text.equals(""))
+                                    {
+                                        maketext.makeText(getResources().getString(R.string.noproname));
+                                        text = getResources().getString(R.string.random_label,1);
+                                    }
+                                    new_pid = Project.doPositiveInsert(getActivity(), text);
+                                }
+                            }
 
                             Project.delete(getActivity(),id,mode,new_pid);
-                            ((ProjectManager) getActivity()).doPositiveDelete();
+                            ((ProjectManager) getActivity()).doPositiveDelete(is_new);
                         }
                     }
             )
@@ -254,10 +268,14 @@ public class DialogueProjectManager extends DialogFragment implements LoaderMana
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         deleteOption = position;
                         if (position == 0) {
+                            getDialog().findViewById(R.id.newpro).setVisibility(View.GONE);
                             getDialog().findViewById(R.id.moveto).setVisibility(View.GONE);
 
                         } else if (position == 1) {
                             getLoaderManager().initLoader(0, null, DialogueProjectManager.this);
+                            if(new_pid == newlabelid){
+                                getDialog().findViewById(R.id.newpro).setVisibility(View.VISIBLE);
+                            }
 
                         }
                     }
@@ -266,8 +284,12 @@ public class DialogueProjectManager extends DialogFragment implements LoaderMana
                 prospinner.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                        Log.d("dpm","pro click "+i+" "+l+" "+ids[i]);
                         new_pid = ids[i];
+                        if (ids[i] == newlabelid){
+                            getDialog().findViewById(R.id.newpro).setVisibility(View.VISIBLE);
+                        }else{
+                            getDialog().findViewById(R.id.newpro).setVisibility(View.GONE);
+                        }
                     }
                 });
 
@@ -298,8 +320,8 @@ public class DialogueProjectManager extends DialogFragment implements LoaderMana
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
         Log.d("dpm", "loader finish");
-        String list[] = new String[data.getCount()];
-        ids = new int[data.getCount()];
+        String list[] = new String[data.getCount()+1];
+        ids = new int[data.getCount() + 1];
         int i = 0;
         data.moveToPosition(-1);
         Log.d("dpm", "loader " + data.getPosition());
@@ -308,6 +330,8 @@ public class DialogueProjectManager extends DialogFragment implements LoaderMana
             list[i] = data.getString(data.getColumnIndex(Project.columnNames[0][1]));
             ids[i++] = data.getInt(data.getColumnIndex(Project.columnNames[0][0]));
         }
+        list[i] = getActivity().getResources().getString(R.string.addproject_new_title);
+        ids[i++] = newlabelid;
         getDialog().findViewById(R.id.moveto).setVisibility(View.VISIBLE);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(),
                 android.R.layout.simple_dropdown_item_1line, list);

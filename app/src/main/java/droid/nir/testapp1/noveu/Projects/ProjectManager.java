@@ -93,6 +93,7 @@ public class ProjectManager extends AppCompatActivity implements LoaderManager.L
     }
 
     private void refresh() {
+        Log.d("pm","refreshing");
         getLoaderManager().restartLoader(LOADER_ID, null, this);
     }
 
@@ -167,10 +168,15 @@ public class ProjectManager extends AppCompatActivity implements LoaderManager.L
         mAdapter.notifyItemChanged(mAdapter.lastClickedPosition);
     }
 
-    public void doPositiveDelete()
+    public void doPositiveDelete(int new_pid)
     {
 
         mAdapter.deleteProject();
+        Log.d("dpm", "new pid " +new_pid);
+        if(new_pid == DialogueProjectManager.newlabelid){
+            refresh();
+            Log.d("dpm", "new pid " + new_pid);
+        }
        // refresh();
     }
 

@@ -1,9 +1,15 @@
 package droid.nir.testapp1.noveu.Tasks.Loaders;
 
 import android.content.Context;
+import android.os.AsyncTask;
+import android.widget.Toast;
 
 import droid.nir.testapp1.Bonjour;
+import droid.nir.testapp1.R;
+import droid.nir.testapp1.noveu.Home.Home;
 import droid.nir.testapp1.noveu.Tasks.data.TaskVitalData;
+import droid.nir.testapp1.noveu.Util.AutoRefresh;
+import droid.nir.testapp1.noveu.dB.Project;
 import droid.nir.testapp1.noveu.dB.Tasks;
 
 /**
@@ -24,6 +30,7 @@ public class DeleteTask {
         if(taskVitalData.isnotes == 1)
             removeNote(context, tid);
 
+        Project.updateProject(context, taskVitalData.pid,-1);
         String selection = "_id = ? ";
         String selectionArgs[] = {Integer.toString(tid)};
         return Tasks.delete(context,0, selection, selectionArgs);
@@ -67,5 +74,31 @@ public class DeleteTask {
         String selection = "aid = ? ";
         String selectionArgs[] = {Integer.toString(aid)};
         Tasks.delete(context,3, selection, selectionArgs);
+    }
+
+    public static class AsyncDelete extends AsyncTask<Integer, Void, Integer> {
+        Context context = Bonjour.getContext();
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            AutoRefresh.setRefreshSharedPref(context);
+        }
+
+        @Override
+        protected Integer doInBackground(Integer... params) {
+
+            return DeleteTask.delete(params[0]);
+        }
+
+        @Override
+        protected void onPostExecute(Integer noofrows) {
+            super.onPostExecute(noofrows);
+            if (noofrows > 0) {
+                if (!new Home().showDeleteSnack())
+                    Toast.makeText(context, context.getString(R.string.task_delete_successful), Toast.LENGTH_SHORT).show();
+            } else
+                Toast.makeText(context, context.getString(R.string.task_delete_unsuccessful), Toast.LENGTH_LONG).show();
+        }
     }
 }

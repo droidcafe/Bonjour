@@ -368,7 +368,7 @@ public class Add_Expand extends AppCompatActivity
     }
 
     private void deleteTask() {
-        new AsyncDelete().execute(id);
+        new DeleteTask.AsyncDelete().execute(id);
         finish();
     }
 
@@ -829,31 +829,6 @@ public class Add_Expand extends AppCompatActivity
         }
     }
 
-    public static class AsyncDelete extends AsyncTask<Integer, Void, Integer> {
-        Context context = Bonjour.getContext();
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            AutoRefresh.setRefreshSharedPref(context);
-        }
-
-        @Override
-        protected Integer doInBackground(Integer... params) {
-
-            return DeleteTask.delete(params[0]);
-        }
-
-        @Override
-        protected void onPostExecute(Integer noofrows) {
-            super.onPostExecute(noofrows);
-            if (noofrows > 0) {
-                if (!new Home().showDeleteSnack())
-                    Toast.makeText(context, context.getString(R.string.task_delete_successful), Toast.LENGTH_SHORT).show();
-            } else
-                Toast.makeText(context, context.getString(R.string.task_delete_unsuccessful), Toast.LENGTH_LONG).show();
-        }
-    }
 
     /**
      * used for loading project dialogue data on clicking on project

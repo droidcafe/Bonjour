@@ -122,7 +122,7 @@ public class Project {
     /**
      * function to delete a project from {@link ProjectManager} screen
      * @param context
-     * @param id
+     * @param id - the id of label to be deleted
      * @param deleteMode - the type of deletemode {@link Project.deleteMode}
      * @param new_pid - new pid to shift the tasks if @param deleteMode = safe
      */

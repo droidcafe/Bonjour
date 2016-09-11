@@ -12,14 +12,19 @@ import android.widget.TextView;
 import java.util.List;
 
 import droid.nir.testapp1.R;
+import droid.nir.testapp1.noveu.Home.Home;
 import droid.nir.testapp1.noveu.Home.data.dataHome;
+import droid.nir.testapp1.noveu.Projects.ProjectTask;
 import droid.nir.testapp1.noveu.Tasks.Add_Expand;
+import droid.nir.testapp1.noveu.Tasks.Loaders.DeleteTask;
 import droid.nir.testapp1.noveu.Util.Import;
+import droid.nir.testapp1.noveu.Util.Log;
+import droid.nir.testapp1.noveu.recycler.Interfaces.ItemTouchHelperAdapter;
 
 /**
  * Created by droidcafe on 3/15/2016.
  */
-public class ProjectTaskAdapter extends RecyclerView.Adapter<ProjectTaskAdapter.ViewHolder> {
+public class ProjectTaskAdapter extends RecyclerView.Adapter<ProjectTaskAdapter.ViewHolder> implements ItemTouchHelperAdapter {
     List<dataHome> taskList;
     Context context;
     Import anImport;
@@ -83,9 +88,27 @@ public class ProjectTaskAdapter extends RecyclerView.Adapter<ProjectTaskAdapter.
     }
 
 
+
+
     @Override
     public int getItemCount() {
         return taskList.size();
+    }
+
+    @Override
+    public void itemSwipeDismiss(int position, int direction) {
+
+
+            Log.d("ta", "position " + position + " " + taskList.get(position).taskid);
+            if(taskList.get(position).taskid !=-1)
+            {
+                new DeleteTask.AsyncDelete().execute(taskList.get(position).taskid);
+                taskList.remove(position);
+                notifyItemRemoved(position);
+                new ProjectTask.AsyncLoad().execute();
+
+            }
+
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {

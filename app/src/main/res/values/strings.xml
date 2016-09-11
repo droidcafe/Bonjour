@@ -561,7 +561,7 @@ To view a reminder click on it.
     <string name="decision_desp">Take the best decisions</string>
     <string name="task_desp">Manage all your chores with to-do lists, notes and reminders</string>
     <string name="events_desp">Never again miss an event</string>
-    <!--<string name=""></string>-->
+    <string name="random_label">Random Label %1$d </string>
     <!--<string name=""></string>-->
     <!--<string name=""></string>-->
 </resources>

@@ -124,7 +124,7 @@ public class ProjectTask extends AppCompatActivity implements View.OnClickListen
         setupRecycler(id);
     }
 
-    private static class AsyncLoad extends AsyncTask<Integer,Integer,List<dataHome>>{
+    public static class AsyncLoad extends AsyncTask<Integer,Integer,List<dataHome>>{
 
         @Override
         protected List<dataHome> doInBackground(Integer... params) {
