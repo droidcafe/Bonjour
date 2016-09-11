@@ -124,7 +124,7 @@ public class Project {
      * @param context
      * @param id - the id of label to be deleted
      * @param deleteMode - the type of deletemode {@link Project.deleteMode}
-     * @param new_pid - new pid to shift the tasks if @param deleteMode = safe
+     * @param new_pid - new pid to shift the tasks if {@param deleteMode = safe}
      */
     public static void delete(Context context,int id, Project.deleteMode deleteMode, int new_pid)
     {
@@ -145,11 +145,12 @@ public class Project {
      * method to delete a project
      *
      * @param context
-     * @param tableNo
-     * @param selection
-     * @param selectionArgs
-     * @param pids
-     * @param mode
+     * @param tableNo - the table no in project from where to be deleted
+     * @param selection selection statement
+     * @param selectionArgs selection args
+     * @param pids 0 - the id of label to be deleted, 1 - new pid if deletemode is safe {@link Project.deleteMode}
+     *             otherwise 1 is not present
+     * @param mode the mode of deletion {@link Project.deleteMode}
      */
     public static void delete(Context context, int tableNo, String selection, String[] selectionArgs, Integer pids[], deleteMode mode) {
 

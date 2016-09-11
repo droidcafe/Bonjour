@@ -34,6 +34,8 @@ public class SharedKeys {
     public static final String pref_task_notification_note= "pref_task_notification_note";
     public static final String pref_task_notification_subtask= "pref_task_notification_subtask";
     public static final String about_shown_till= "about_shown_till";
+    public static final String  project_random_index= "project_random_index";
+//    public static final String = "";
 //    public static final String = "";
 //    public static final String = "";
 }

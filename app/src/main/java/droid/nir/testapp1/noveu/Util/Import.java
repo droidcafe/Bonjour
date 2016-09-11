@@ -150,7 +150,7 @@ public class Import {
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
         editor.putInt(key, value);
-        editor.commit();
+        editor.apply();
     }
 
     public static void setSharedPref(Context context, String key, String value) {
@@ -158,7 +158,7 @@ public class Import {
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
         editor.putString(key, value);
-        editor.commit();
+        editor.apply();
     }
 
     public static int getSharedPref(Context context, String key) {

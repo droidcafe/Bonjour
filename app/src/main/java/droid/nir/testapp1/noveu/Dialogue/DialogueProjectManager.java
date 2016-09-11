@@ -25,6 +25,7 @@ import droid.nir.testapp1.noveu.Tasks.Add_Expand;
 import droid.nir.testapp1.noveu.Tasks.Add_minimal;
 import droid.nir.testapp1.noveu.Util.Import;
 import droid.nir.testapp1.noveu.Util.Log;
+import droid.nir.testapp1.noveu.constants.SharedKeys;
 import droid.nir.testapp1.noveu.dB.DBProvider;
 import droid.nir.testapp1.noveu.dB.Project;
 import droid.nir.testapp1.toast;
@@ -113,7 +114,7 @@ public class DialogueProjectManager extends DialogFragment implements LoaderMana
                                 int id = Project.doPositiveInsert(getActivity(), text);
                                 switch (from){
                                     case 0:
-                                        ((ProjectManager) getActivity()).doPositiveInsert(text,id);
+                                        ((ProjectManager) getActivity()).doPositiveInsert(text,id,0);
                                         break;
                                     case 1:
                                         ((Add_minimal) getActivity()).renameProject(text,id);
@@ -189,26 +190,29 @@ public class DialogueProjectManager extends DialogFragment implements LoaderMana
                     new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int whichButton) {
                             Project.deleteMode mode = Project.deleteMode.purgatory;
-
+                            String text = null;
+                            int size = -1;
                             Log.d("dpm"," option "+deleteOption);
-                            int is_new = new_pid;
                             if (deleteOption == 0) mode = Project.deleteMode.quick;
                             else if(deleteOption == 1){
                                 mode = Project.deleteMode.safe;
                                 if (new_pid == newlabelid) {
                                     final EditText tv = (EditText) getDialog().findViewById(R.id.new_task);
-                                    String text = tv.getText().toString();
+                                    text = tv.getText().toString();
                                     if (text.equals(""))
                                     {
                                         maketext.makeText(getResources().getString(R.string.noproname));
-                                        text = getResources().getString(R.string.random_label,1);
+                                        int random_index = Import.getSharedPref(getActivity(), SharedKeys.project_random_index);
+                                        text = getResources().getString(R.string.random_label, ++random_index);
+                                        Import.setSharedPref(getActivity(),SharedKeys.project_random_index,random_index);
                                     }
                                     new_pid = Project.doPositiveInsert(getActivity(), text);
+                                    size = Project.getProjectSize(id);
                                 }
                             }
 
                             Project.delete(getActivity(),id,mode,new_pid);
-                            ((ProjectManager) getActivity()).doPositiveDelete(is_new);
+                            ((ProjectManager) getActivity()).doPositiveDelete(text,new_pid,size);
                         }
                     }
             )

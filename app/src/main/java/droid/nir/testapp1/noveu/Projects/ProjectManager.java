@@ -140,11 +140,12 @@ public class ProjectManager extends AppCompatActivity implements LoaderManager.L
      *  add a new project
      * @param text the new or updated project name
      * @param id
+     * @param no the no of tasks in that new project
      */
 
-    public void doPositiveInsert(String text, int id) {
+    public void doPositiveInsert(String text, int id,int no) {
         Log.d("ProjectManager",""+text);
-            mAdapter.addItem(text, 0, id);
+            mAdapter.addItem(text, no, id);
 
     }
 
@@ -168,14 +169,14 @@ public class ProjectManager extends AppCompatActivity implements LoaderManager.L
         mAdapter.notifyItemChanged(mAdapter.lastClickedPosition);
     }
 
-    public void doPositiveDelete(int new_pid)
+    public void doPositiveDelete(String text, int id,int no_tasks )
     {
 
         mAdapter.deleteProject();
-        Log.d("dpm", "new pid " +new_pid);
-        if(new_pid == DialogueProjectManager.newlabelid){
-            refresh();
-            Log.d("dpm", "new pid " + new_pid);
+        Log.d("dpm", "new pid " + id+" "+text);
+        if(text != null){
+            doPositiveInsert(text, id,no_tasks);
+            Log.d("dpm", "new pid " + no_tasks);
         }
        // refresh();
     }

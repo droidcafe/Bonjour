@@ -26,6 +26,7 @@ public class Initial {
         Import.setSharedPref(context, SharedKeys.Version, constants.VERSION);
         Import.setSharedPref(context, SharedKeys.Version_old, (version > 0) ? version : constants.VERSION);
         Import.setSharedPref(context, SharedKeys.update, (version > 0) ? 1 : 0);
+        Import.setSharedPref(context, SharedKeys.project_random_index, 0);
 
         new MainDatabase(context, activity).settingDatabase(false);
         final SharedPreferences defaultValueSp = context.getSharedPreferences(PreferenceManager.KEY_HAS_SET_DEFAULT_VALUES, Context.MODE_PRIVATE);
