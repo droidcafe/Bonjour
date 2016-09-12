@@ -50,7 +50,7 @@
     <string name="title_activity_show_remainder" translatable="false">ShowRemainder</string>
 
     <string name="deleted">Deleted</string>
-    <string name="undo" translatable="false">UNDO</string>
+    <string name="undo">UNDO</string>
     <string name="title_activity_about">About</string>
     <string name="title_activity_help">Help</string>
 
@@ -355,14 +355,14 @@ To view a reminder click on it.
 
     <string name="today">Today</string>
     <string name="yesterday">Yesterday</string>
-    <string name="tommorow">Tommorrow</string>
+    <string name="tommorow">Tomorrow</string>
     <string name="nextweek">Next-Week</string>
     <string name="custom_date">Select date</string>
     <string name="someday" translatable="false">Some Day</string>
 
     <string name="notask" translatable="false">Hurray!!No task. To create a task please press the plus sign below</string>
     <string name="title_activity_home">Home</string>
-    <string name="title_activity_add_minimal"></string>
+    <string name="title_activity_add_minimal" translatable="false"></string>
 
     <string name="add_expand">Add in expanded mode</string>
     <string name="task_hint1">Lunch tommorow at 1:00</string>
@@ -373,12 +373,12 @@ To view a reminder click on it.
     <string name="repeatoff">Repeat Off</string>
     <string name="repeaton">Repeat On</string>
 
-    <string name="path_today">M7,10H12V15H7M19,19H5V8H19M19,3H18V1H16V3H8V1H6V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,2 0 0,0 19,3Z
+    <string name="path_today" translatable="false">M7,10H12V15H7M19,19H5V8H19M19,3H18V1H16V3H8V1H6V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,2 0 0,0 19,3Z
 </string>
-    <string name="title_activity_add__reminder">Add_Reminder</string>
-    <string name="t9">9:00</string>
-    <string name="t12">12:00</string>
-    <string name="t18">18:00</string>
+    <string name="title_activity_add__reminder" translatable="false">Add_Reminder</string>
+    <string name="t9" translatable="false">9:00</string>
+    <string name="t12" translatable="false">12:00</string>
+    <string name="t18" translatable="false">18:00</string>
     <string name="title_activity_project_manager">Label Manager</string>
     <string name="managepro">Create and Delete your labels below</string>
 
@@ -398,7 +398,7 @@ To view a reminder click on it.
     <string name="updateproject">Enter New Label Name</string>
 
     <string name="deleteproject_title">Delete Label</string>
-    <string name="deleteproject">Label will be permenantely deleted. Do you which to proceed?</string>
+    <string name="deleteproject">Label will be permenantly deleted. Do you wish to proceed?</string>
 
     <string name="DElete">Delete %1$s</string>
     <string name="noproname">Label  can\'t be empty</string>
@@ -408,13 +408,13 @@ To view a reminder click on it.
 
     <string name="pickpro">Select a label</string>
     <string name="randomtask">Some random task</string>
-    <string name="title_activity_add__sub_tasks">Add_SubTasks</string>
+    <string name="title_activity_add__sub_tasks" translatable="false">Add_SubTasks</string>
     <string name="title_activity_notes">Notes</string>
-    <string name="title_activity_add__notes">Add_Notes</string>
-    <string name="title_activity_home_nav">HomeNav</string>
+    <string name="title_activity_add__notes" translatable="false">Add_Notes</string>
+    <string name="title_activity_home_nav" translatable="false">HomeNav</string>
 
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="navigation_drawer_open" translatable="false">Open navigation drawer</string>
+    <string name="navigation_drawer_close" translatable="false">Close navigation drawer</string>
 
     <string name="tasks">Tasks</string>
     <string name="completed">Completed</string>
@@ -437,15 +437,15 @@ To view a reminder click on it.
     <!-- Example General settings -->
     <string name="pref_header_general">General</string>
 
-    <string name="pref_title_social_recommendations">Enable social recommendations</string>
-    <string name="pref_description_social_recommendations">Recommendations for people to contact
+    <string name="pref_title_social_recommendations" translatable="false">Enable social recommendations</string>
+    <string name="pref_description_social_recommendations" translatable="false">Recommendations for people to contact
         based on your message history
     </string>
 
-    <string name="pref_title_display_name">Display name</string>
-    <string name="pref_default_display_name">John Smith</string>
+    <string name="pref_title_display_name" translatable="false">Display name</string>
+    <string name="pref_default_display_name" translatable="false">John Smith</string>
 
-    <string name="pref_title_add_friends_to_messages">Add friends to messages</string>
+    <string name="pref_title_add_friends_to_messages" translatable="false">Add friends to messages</string>
     <string name="pref_title_project_default">Default label</string>
     <string-array name="pref_example_list_titles">
         <item>Always</item>
@@ -461,7 +461,7 @@ To view a reminder click on it.
 
     <string name="pref_header_tasks">Tasks</string>
 
-    <string name="pref_title_sync_frequency">Sync frequency</string>
+    <string name="pref_title_sync_frequency" translatable="false">Sync frequency</string>
     <string name="pref_title_task_vibrate_type">Vibrate type</string>
     <string-array name="pref_sync_frequency_titles">
         <item>15 minutes</item>
@@ -492,12 +492,12 @@ To view a reminder click on it.
         <item>2</item>
     </string-array>
 
-    <string name="pref_title_system_sync_settings">System sync settings</string>
+    <string name="pref_title_system_sync_settings" translatable="false">System sync settings</string>
 
     <!-- Example settings for Notifications -->
     <string name="pref_header_notifications">Notifications</string>
 
-    <string name="pref_title_new_message_notifications">New message notifications</string>
+    <string name="pref_title_new_message_notifications" translatable="false">New message notifications</string>
     <string name="pref_title_new_task_notifications">Task notifications</string>
 
     <string name="pref_title_ringtone">Notification Ringtone</string>
@@ -528,13 +528,13 @@ To view a reminder click on it.
     <string name="task_silent_notification_list_summary">%1$d items in label %2$s</string>
     <string name="task_silent_notification_text_summary">Label %1$s</string>
     <string name="task_silent_notification_text_default">Task at %1$s</string>
-    <string name="title_activity_notification">NotificationActivity</string>
+    <string name="title_activity_notification" translatable="false">NotificationActivity</string>
 
     <string name="repeat1">Daily</string>
     <string name="repeat2">Weekly</string>
     <string name="repeat3">Monthly</string>
     <string name="repeat4">Yearly</string>
-    <string name="title_activity_add__reminder_new">Add_Reminder_new</string>
+    <string name="title_activity_add__reminder_new" translatable="false">Add_Reminder_new</string>
 
     <string name="task_share_todo">List is  : </string>
     <string name="task_share_done">Completed Items are : </string>
@@ -543,16 +543,16 @@ To view a reminder click on it.
 
     <string name="task_share_notes">Notes </string>
     <string name="task_share">Task is %1$s</string>
-    <string name="promotion_share"> \nSent via <b>BucketList</b> </string>
+    <string name="promotion_share" translatable="false"> \nSent via <b>BucketList</b> </string>
     <string name="promotion_download">Download Now !!\ \ </string>
-    <string name="app_url">https://play.google.com/store/apps/details?id=droid.nir.testapp1</string>
+    <string name="app_url" translatable="false">https://play.google.com/store/apps/details?id=droid.nir.testapp1</string>
     <string name="task_delete_successful">Task deleted successfully</string>
     <string name="task_delete_unsuccessful">Sorry!!Unable to delete task. Please try again</string>
     <string name="savedialoguetitle">Save %1$s ?</string>
     <string name="savedialoguetext">Your changes are not saved</string>
     <string name="save">Save</string>
     <string name="no">No</string>
-    <string name="title_activity_show__expand">Show_Expand</string>
+    <string name="title_activity_show__expand" translatable="false">Show_Expand</string>
 
     <string name="notification_summray">Notification Summary</string>
     <string name="decision_maker">Decision Maker</string>
