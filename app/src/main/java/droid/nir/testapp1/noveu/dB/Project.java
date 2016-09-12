@@ -11,6 +11,7 @@ import android.os.AsyncTask;
 import java.util.ArrayList;
 
 import droid.nir.testapp1.Bonjour;
+import droid.nir.testapp1.R;
 import droid.nir.testapp1.noveu.Projects.ProjectManager;
 import droid.nir.testapp1.noveu.Projects.data.ProjectData;
 import droid.nir.testapp1.noveu.Projects.data.ProjectList;
@@ -121,21 +122,19 @@ public class Project {
 
     /**
      * function to delete a project from {@link ProjectManager} screen
+     *
      * @param context
-     * @param id - the id of label to be deleted
+     * @param id         - the id of label to be deleted
      * @param deleteMode - the type of deletemode {@link Project.deleteMode}
-     * @param new_pid - new pid to shift the tasks if {@param deleteMode = safe}
+     * @param new_pid    - new pid to shift the tasks if {@param deleteMode = safe}
      */
-    public static void delete(Context context,int id, Project.deleteMode deleteMode, int new_pid)
-    {
-        String where = Project.columnNames[0][0] + " = "+ id;
+    public static void delete(Context context, int id, Project.deleteMode deleteMode, int new_pid) {
+        String where = Project.columnNames[0][0] + " = " + id;
         Integer passInt[] = new Integer[2];
-        if (deleteMode == Project.deleteMode.safe)
-        {
+        if (deleteMode == Project.deleteMode.safe) {
             passInt[0] = id;
             passInt[1] = new_pid;
-        }
-        else{
+        } else {
             passInt[0] = id;
         }
         Project.delete(context, 0, where, null, passInt, deleteMode);
@@ -145,12 +144,12 @@ public class Project {
      * method to delete a project
      *
      * @param context
-     * @param tableNo - the table no in project from where to be deleted
-     * @param selection selection statement
+     * @param tableNo       - the table no in project from where to be deleted
+     * @param selection     selection statement
      * @param selectionArgs selection args
-     * @param pids 0 - the id of label to be deleted, 1 - new pid if deletemode is safe {@link Project.deleteMode}
-     *             otherwise 1 is not present
-     * @param mode the mode of deletion {@link Project.deleteMode}
+     * @param pids          0 - the id of label to be deleted, 1 - new pid if deletemode is safe {@link Project.deleteMode}
+     *                      otherwise 1 is not present
+     * @param mode          the mode of deletion {@link Project.deleteMode}
      */
     public static void delete(Context context, int tableNo, String selection, String[] selectionArgs, Integer pids[], deleteMode mode) {
 
@@ -181,22 +180,24 @@ public class Project {
         protected Void doInBackground(Integer... params) {
             int pid = params[0];
 
-            if (pid == getDefaultProject(context)) {
-                /**
-                 * set next project default as the one having highest task count
-                 */
-
-
-            }
 
             if (mode == deleteMode.safe) {
                 int new_pid = params[1];
                 TaskUtil.changeProject(context, new_pid, pid);
-                return null;
-            }else if (mode == deleteMode.quick) {
+            } else if (mode == deleteMode.quick) {
                 String selection = "pid = ?";
                 String[] selectionArgs = {Integer.toString(pid)};
-                Tasks.delete(context,0,selection,selectionArgs);
+                Tasks.delete(context, 0, selection, selectionArgs);
+            }
+
+            Log.d("pr", "ss " + pid + " " + getDefaultProject(context));
+            if (pid == getDefaultProject(context)) {
+                /**
+                 * set next project default as the one having highest task count
+                 */
+                int new_pid = getBiggestProject(context);
+                Log.d("pr", "default new" + new_pid);
+                setDefaultProject(context, new_pid);
             }
 
             return null;
@@ -247,7 +248,6 @@ public class Project {
     }
 
 
-
     public static int getProjectSize(int projectId) {
 
         Context context = Bonjour.getContext();
@@ -264,17 +264,14 @@ public class Project {
         String defaultProject = (String) Import.getSettingSharedPref(context, SharedKeys.general_project_default, 1);
         int projectId = Integer.parseInt(defaultProject);
 
-        Log.d("pr","default "+projectId);
+        Log.d("pr", "default " + projectId);
         return projectId;
 //        SharedPreferences sharedPreferences = context.getSharedPreferences(SharedKeys.prefname, 0);
 //        return sharedPreferences.getInt(SharedKeys.projectDefault, -1);
     }
 
     public static void setDefaultProject(Context context, int id) {
-        SharedPreferences sharedPreferences = context.getSharedPreferences(SharedKeys.prefname, 0);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putInt(SharedKeys.projectDefault, id);
-        editor.commit();
+        Import.setSettingSharedPref(context, SharedKeys.general_project_default, Integer.toString(id), 1);
     }
 
     public static ProjectData getProject(Context context, int projectId) {
@@ -380,6 +377,24 @@ public class Project {
 
         return Integer.parseInt(uriInsert.getLastPathSegment());
 
+    }
+
+
+    public static int getBiggestProject(Context context) {
+        Cursor largest = dBUtil.getLargestColumn(context, 0, 2, 1);
+        while (largest.moveToNext()) {
+            return largest.getInt(largest.getColumnIndex(Project.columnNames[0][0]));
+        }
+
+        return -1;
+    }
+
+    public static String getRandomProjectName(Context context) {
+        int random_index = Import.getSharedPref(context, SharedKeys.project_random_index);
+        String text = context.getResources().getString(R.string.random_label, ++random_index);
+        Import.setSharedPref(context, SharedKeys.project_random_index, random_index);
+
+        return text;
     }
 
 }

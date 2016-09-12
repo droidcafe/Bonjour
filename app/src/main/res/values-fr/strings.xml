@@ -27,7 +27,7 @@
     <string name="share">Partager</string>
     <string name="title">Bonjour</string>
     <string name="title_activity_about">Sur</string>
-    <string name="aalarmnot">alarme + notification</string>
+    <string name="aalarmnot">Alarme + Notification</string>
     <string name="acustomrange">Sélectionnez un intervalle de temps</string>
     <string name="add">ajouter</string>
     <string name="acustomtime">Choix d\'un fuseau personnalisé</string>
@@ -110,7 +110,7 @@
     <string name="deletewarn">La liste de todo sera définitivement supprimé</string>
     <string name="pheadtohead">Tête à tête</string>
     <string name="pprobig">Plus emportent sur les inconvénients;)</string>
-    <string name="aalaonly">alarme uniquement</string>
+    <string name="aalaonly">Alarme Uniquement</string>
     <string name="nodecision">Rien de tel en attendant la décision présente</string>
     <string name="pconsare">Cons sont</string>
     <string name="pconbig">Moins nombreux que les avantages :(</string>

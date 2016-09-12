@@ -11,7 +11,7 @@ public class constants {
     public final static int NOTES_REQUESTCODE = 103;
     public final static int WELCOME_REQUESTCODE = 434;
     public final static int NOTIFY_TASKS_PENDINGINTENT_REQUESTODE = 20;
-    public final static int DEFAULT_PROJECT_ID = 0;
+    public final static int DEFAULT_PROJECT_ID = 4;
 
 
     public final static int SUCCESS_CODE = 400;

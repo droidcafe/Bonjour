@@ -182,7 +182,7 @@ public class Import {
     public static Object getSettingSharedPref(Context context, String key, int type) {
         SharedPreferences sharedPreferences = context.getSharedPreferences(SharedKeys.prefname_setting, 0);
 
-        if(sharedPreferences == null)
+        if (sharedPreferences == null)
             return null;
 
         if (type == 1)
@@ -195,6 +195,33 @@ public class Import {
             return sharedPreferences.getBoolean(key, true);
 
         return null;
+    }
+
+    /**
+     * helper function for setting settings shared prefs
+     *
+     * @param context
+     * @param key     key of shared preference
+     * @param value   the value of key to be set
+     * @param type    type of preference 1 - string 2- integer 3 - boolean
+     * @return
+     */
+    public static void setSettingSharedPref(Context context, String key, Object value, int type) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences(SharedKeys.prefname_setting, 0);
+        if (sharedPreferences == null)
+            return;
+
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        if (type == 1)
+            editor.putString(key, (String) value);
+        else if (type == 2)
+            editor.putInt(key, (Integer) value);
+
+        else if (type == 3)
+            editor.putBoolean(key, (Boolean) value);
+
+        editor.apply();
     }
 
     /**
@@ -215,14 +242,15 @@ public class Import {
 
     /**
      * function for returning default notification sound
+     *
      * @return uri of system default notificatin sound
      */
-    public static Uri getDefaultNotificationSound(){
+    public static Uri getDefaultNotificationSound() {
         return RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
     }
 
-    public static void setStatusBarColor(Context context, Activity activity, int color){
-        Window window =activity.getWindow();
+    public static void setStatusBarColor(Context context, Activity activity, int color) {
+        Window window = activity.getWindow();
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
@@ -232,11 +260,10 @@ public class Import {
         }
     }
 
-    public static void setBackGroundColor(Context context, Activity activity, int viewId ,int color) {
+    public static void setBackGroundColor(Context context, Activity activity, int viewId, int color) {
         activity.findViewById(viewId).setBackgroundColor(context.getResources().
                 getColor(color));
     }
-
 
 
 }

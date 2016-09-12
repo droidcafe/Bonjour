@@ -202,9 +202,7 @@ public class DialogueProjectManager extends DialogFragment implements LoaderMana
                                     if (text.equals(""))
                                     {
                                         maketext.makeText(getResources().getString(R.string.noproname));
-                                        int random_index = Import.getSharedPref(getActivity(), SharedKeys.project_random_index);
-                                        text = getResources().getString(R.string.random_label, ++random_index);
-                                        Import.setSharedPref(getActivity(),SharedKeys.project_random_index,random_index);
+                                        text = Project.getRandomProjectName(getActivity());
                                     }
                                     new_pid = Project.doPositiveInsert(getActivity(), text);
                                     size = Project.getProjectSize(id);
