@@ -216,8 +216,8 @@
     <string name="rdecidedby">Have to be decided by</string>
     <string name="rdeletewarn">The reminder will be deleted permanently . Do you wish to proceed?</string>
 
-    <string name="nopending">No Pending Decision Created</string>
-    <string name="noevents">No Events Created</string>
+    <string name="nopending">To create a new pending decision click the + button below</string>
+    <string name="noevents">To create a new event click the + button below</string>
     <string name="nolists">No ToDo Lists Created</string>
     <string name="noreminders">No Reminders Created</string>
     <string name="shouldi">Should I </string>

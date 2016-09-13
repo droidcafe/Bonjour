@@ -171,10 +171,7 @@
         <activity
             android:name="droid.nir.defcon3.ScreenSlidePageFragment"
             android:label="@string/title_activity_help" />
-        <activity
-            android:name=".todolist.SlidingUpScrollViewActivity"
-            android:label="@string/title_activity_help"
-            android:theme="@style/AppTheme.Toolbar3" />
+
         <activity
             android:name="droid.nir.defcon3.FirstScreen"
             android:label="@string/title_activity_first_screen"
@@ -202,7 +199,8 @@
             android:name=".noveu.Tasks.Add_minimal"
             android:label="@string/title_activity_add_minimal"
             android:parentActivityName=".noveu.Home.Home"
-            android:theme="@style/AppTheme.Task"
+            android:theme="@style/AppTheme.Settings"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -211,6 +209,7 @@
         <activity
             android:name=".noveu.Tasks.Add_Expand"
             android:label="@string/title_activity_add__expand"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.Task.ToolBar">
             <intent-filter>
                 <action android:name="android.intent.action.SEND" />

@@ -219,7 +219,6 @@
     <string name="initial_project2">Commissioni</string>
     <string name="initial_project3">Film / TV per guardare</string>
     <string name="initial_project4">Lavoro</string>
-    <string name="loren_ipsum" translatable="false"></string>
     <string name="managepro">Creare ed eliminare le etichette al di sotto</string>
     <string name="nextweek">La prossima settimana</string>
     <string name="no">No</string>
@@ -247,7 +246,6 @@
     <string name="pref_title_vibrate">Vibrare</string>
     <string name="tommorow">Domani</string>
     <string name="undo">DISFARE</string>
-    <string name="undobar_sample_message" translatable="false"></string>
     <string name="updateproject">Inserisci nuovo nome di etichetta</string>
     <string name="updateproject_hint">Inserire il nome dell\'etichetta aggiornato</string>
     <string name="updateproject_title">label Aggiornamento</string>

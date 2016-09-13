@@ -1,5 +1,6 @@
 package droid.nir.testapp1;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -13,10 +14,13 @@ import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+
+import droid.nir.testapp1.noveu.Util.Import;
 import droid.nir.testapp1.noveu.Util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -35,6 +39,7 @@ public class AllDecisions extends ActionBarActivity implements View.OnClickListe
     TextView hiddentext;
     RecyclerView recyclerView;
     Context context;
+    Activity activity;
     RecyclerView.LayoutManager mLayoutManager;
     Pending_Recycler_Data pending_recycler_data;
     timecorrection timecorrection;
@@ -46,7 +51,7 @@ public class AllDecisions extends ActionBarActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.activity_all_decisions);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(R.string.pendingdecisions);
@@ -56,6 +61,7 @@ public class AllDecisions extends ActionBarActivity implements View.OnClickListe
         new setNav(this,this).setupNavigation(R.id.nav_pending);
         pending = new Pending(this);
         context= this;
+        activity = this;
         hiddentext = (TextView) findViewById(R.id.hiddentext);
         recyclerView = (RecyclerView) findViewById(R.id.tasklist);
         mLayoutManager = new LinearLayoutManager(this);
@@ -117,9 +123,21 @@ public class AllDecisions extends ActionBarActivity implements View.OnClickListe
 
     class  AsyncGet extends AsyncTask<Void,Void,Void>
     {
-
+        TextView alldone_title;
+        TextView alldone_promo;
+        ImageView alldone_pic;
         int ispresent =0;
         List<custom_data> arrayList = new ArrayList<>();
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            alldone_title = (TextView) activity.findViewById(R.id.alldone_title);
+            alldone_promo = (TextView) activity.findViewById(R.id.hiddentext);
+            alldone_pic = (ImageView) activity.findViewById(R.id.alldone_pic);
+
+        }
+
         @Override
         protected Void doInBackground(Void... params) {
             int[] columnno2 = {0,1,14,12,13,7,8,11};
@@ -145,8 +163,9 @@ public class AllDecisions extends ActionBarActivity implements View.OnClickListe
             super.onProgressUpdate(values);
 
             if (ispresent == 0) {
-                hiddentext.setText(R.string.nopending);
+                Import.setBackGroundColor(context, activity, R.id.home_back, R.color.tsecondary);
                 recyclerView.setVisibility(View.GONE);
+                Import.allDone(context, alldone_pic, alldone_title, alldone_promo);
             }
 
         }
@@ -156,13 +175,13 @@ public class AllDecisions extends ActionBarActivity implements View.OnClickListe
             super.onPostExecute(aVoid);
             if(ispresent==1)
             {
-                hiddentext.setVisibility(View.GONE);
+                Import.setBackGroundColor(context,activity,R.id.home_back,R.color.white);
                 recyclerView.setVisibility(View.VISIBLE);
+                Import.allDoneUndo(context, alldone_pic, alldone_title, alldone_promo);
+
                 pending_recycler_data = new Pending_Recycler_Data(context ,arrayList,3);
                 recyclerView.setLayoutManager(mLayoutManager);
                 recyclerView.setAdapter(pending_recycler_data);
-
-
 
             }
         }

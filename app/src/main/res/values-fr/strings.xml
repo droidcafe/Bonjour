@@ -240,7 +240,6 @@
     <string name="pref_header_tasks">les tâches</string>
     <string name="pref_ringtone_silent">Silencieux</string>
     <string name="pref_title_light">Lumière</string>
-    <string name="pref_title_new_message_notifications" translatable="false"></string>
     <string name="pref_title_new_task_notifications">notifications de tâches</string>
     <string name="pref_title_project_default">étiquette par défaut</string>
     <string name="pref_title_ringtone">Sonnerie de notification</string>

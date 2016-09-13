@@ -283,9 +283,10 @@ public class Import {
         int rand2 = random.nextInt(4);
 
         String imageId = "alldone"+rand1;
-        String titleId = "alldone"+rand2+"_tasks";
-        Glide.with(context).load(getResource(context,imageId,"drawable")).into(alldone_pic);
+        String titleId = "alldone"+rand2;
+      //  Glide.with(context).load(getResource(context,imageId,"drawable")).into(alldone_pic);
 
+        alldone_pic.setImageResource(getResource(context,imageId,"drawable"));
         alldone_title.setText(getResource(context,titleId,"string"));
 
     }

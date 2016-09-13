@@ -273,7 +273,6 @@
     <string name="prodelete_task2">다른 라벨로 모든 작업을 이동</string>
     <string name="project">라벨</string>
     <string name="promotion_download">지금 다운로드 !!\ \</string>
-    <string name="promotion_share" translatable="false"></string>
     <string name="random_label">임의의 레이블 %1$d 개</string>
     <string name="randomtask">어떤 임의의 작업</string>
 </resources>
