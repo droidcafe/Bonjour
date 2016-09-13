@@ -13,5 +13,15 @@
         app:showAsAction="ifRoom"
 
         />
+
+    <item
+        android:id="@+id/calendarselect"
+        android:icon="@drawable/ic_action_go_to_todayw"
+        android:orderInCategory="99"
+        android:title="@string/gotodate"
+
+        app:showAsAction="ifRoom"
+
+        />
 </menu>
 

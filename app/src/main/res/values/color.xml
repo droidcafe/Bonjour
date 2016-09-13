@@ -12,7 +12,7 @@
     <color name="dprimary">#FF5722</color>
     <color name="dprimary_dark">#E64A19</color>
     <color name="dprimary_light">#FFCCBC</color>
-    <color name="daccent">#03A9F4</color>
+    <color name="daccent">#FF4081</color>
     <color name="dprimary_text">#212121</color>
 
 
@@ -54,7 +54,7 @@
     <!--<color name="tprimary_dark">#846EAD</color>-->
     <!--<color name="taccent">#FF5252</color>-->
     <color name="tprimary">#2971EE</color>
-    <color name="tsecondary">#2164d6</color>
+    <color name="tsecondary">#2b71e6</color>
     <color name="tprimary_dark">#2969D5</color>
     <color name="taccent">#FD5501</color>
     <color name="tprimary_light">#B3E5FC</color>

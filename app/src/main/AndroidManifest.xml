@@ -91,10 +91,11 @@
         <activity
             android:name=".CustomDate"
             android:label="@string/title_activity_custom_date"
-            android:parentActivityName=".MainActivity">
+            android:theme="@style/AppTheme.Settings"
+            android:parentActivityName=".noveu.Home.Home">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="droid.nir.testapp1.MainActivity" />
+                android:value="droid.nir.testapp1.noveu.Home.Home" />
         </activity>
         <activity
             android:name=".ShowList"
@@ -108,11 +109,11 @@
         <activity
             android:name=".ShowEvent"
             android:label="@string/title_activity_show_event"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName=".AllEvents"
             android:theme="@style/AppTheme.Event">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="droid.nir.testapp1.MainActivity" />
+                android:value="droid.nir.testapp1.AllEvents" />
         </activity>
         <activity
             android:name=".AllDecisions"
@@ -129,11 +130,11 @@
         <activity
             android:name=".ShowDecision"
             android:label="@string/title_activity_show_decision"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName=".AllDecisions"
             android:theme="@style/AppTheme.Pending">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="droid.nir.testapp1.MainActivity" />
+                android:value="droid.nir.testapp1.AllDecisions" />
         </activity>
         <activity
             android:name=".AllRemainders"
@@ -341,7 +342,7 @@
         <activity
             android:name=".noveu.Tasks.show.Show_Expand"
             android:label="@string/title_activity_show__expand"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar"/>
 
         <activity android:name=".noveu.welcome.about.About"
             android:theme="@style/AppTheme.About.ToolBar"/>

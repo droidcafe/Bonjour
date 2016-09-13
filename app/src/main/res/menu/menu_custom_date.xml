@@ -9,7 +9,7 @@
 
     <item
         android:id="@+id/refresh"
-        android:icon="@drawable/ic_refresh_white_24dp"
+        android:icon="@drawable/ic_refresh_black_24dp"
         android:orderInCategory="96"
         android:title="@string/refresh"
 
