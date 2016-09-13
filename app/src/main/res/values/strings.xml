@@ -360,7 +360,12 @@ To view a reminder click on it.
     <string name="custom_date">Select date</string>
     <string name="someday" translatable="false">Some Day</string>
 
-    <string name="notask" translatable="false">Hurray!!No task. To create a task please press the plus sign below</string>
+
+    <string name="alldone0">Yippee! All done</string>
+    <string name="alldone1">Hurray! All done</string>
+    <string name="alldone2">Thats all folks! </string>
+    <string name="alldone3">Whew! Done for Now </string>
+    <string name="notask">To create a task please press the + button below</string>
     <string name="title_activity_home">Home</string>
     <string name="title_activity_add_minimal" translatable="false"></string>
 

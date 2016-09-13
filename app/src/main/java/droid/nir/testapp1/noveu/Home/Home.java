@@ -23,6 +23,7 @@ import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.prolificinteractive.materialcalendarview.CalendarDay;
@@ -359,6 +360,23 @@ public class Home extends AppCompatActivity
         @Override
         protected void onPostExecute(List<dataHome> data) {
             super.onPostExecute(data);
+
+            TextView alldone_title = (TextView) activity.findViewById(R.id.alldone_title);
+            TextView alldone_promo = (TextView) activity.findViewById(R.id.hiddentext);
+            ImageView alldone_pic = (ImageView) activity.findViewById(R.id.alldone_pic);
+
+
+            if (data.isEmpty()) {
+
+                Import.setBackGroundColor(context, activity, R.id.home_back, R.color.tsecondary);
+                recyclerView.setVisibility(View.GONE);
+                Import.allDone(context,alldone_pic,alldone_title,alldone_promo);
+
+                return;
+            }
+            Import.setBackGroundColor(context,activity,R.id.home_back,R.color.white);
+            recyclerView.setVisibility(View.VISIBLE);
+            Import.allDoneUndo(context,alldone_pic,alldone_title,alldone_promo);
 
             TaskAdapter taskAdapter = new TaskAdapter(context, activity, data);
             recyclerView.setAdapter(taskAdapter);

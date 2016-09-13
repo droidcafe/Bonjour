@@ -14,14 +14,18 @@ import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.wnafee.vector.MorphButton;
 
 import java.util.Calendar;
+import java.util.Random;
 
 import droid.nir.testapp1.R;
 import droid.nir.testapp1.noveu.constants.SharedKeys;
@@ -263,6 +267,42 @@ public class Import {
     public static void setBackGroundColor(Context context, Activity activity, int viewId, int color) {
         activity.findViewById(viewId).setBackgroundColor(context.getResources().
                 getColor(color));
+    }
+
+    public  static void allDone(Context context, ImageView alldone_pic, TextView alldone_title,
+                               TextView alldone_promo) {
+        alldone_pic.setVisibility(View.VISIBLE);
+        alldone_promo.setVisibility(View.VISIBLE);
+        alldone_title.setVisibility(View.VISIBLE);
+
+        settypefaces(context, "Raleway-Medium.ttf", alldone_title);
+        settypefaces(context, "SourceSansPro-Regular.otf", alldone_promo);
+
+        Random random = new Random();
+        int rand1 = random.nextInt(8);
+        int rand2 = random.nextInt(4);
+
+        String imageId = "alldone"+rand1;
+        String titleId = "alldone"+rand2+"_tasks";
+        Glide.with(context).load(getResource(context,imageId,"drawable")).into(alldone_pic);
+
+        alldone_title.setText(getResource(context,titleId,"string"));
+
+    }
+
+
+    public static void allDoneUndo(Context context, ImageView alldone_pic, TextView alldone_title,
+                                   TextView alldone_promo) {
+        alldone_pic.setVisibility(View.GONE);
+        alldone_promo.setVisibility(View.GONE);
+        alldone_title.setVisibility(View.GONE);
+
+    }
+
+    public static int getResource(Context context, String imageId,String prefix) {
+
+        String uri = prefix +"/" + imageId;
+        return context.getResources().getIdentifier(uri, null, context.getPackageName());
     }
 
 
