@@ -15,18 +15,12 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-import java.util.Collection;
-
 import droid.nir.testapp1.R;
-import droid.nir.testapp1.noveu.Home.Home;
 import droid.nir.testapp1.noveu.Util.Import;
 import droid.nir.testapp1.noveu.Util.Log;
 import droid.nir.testapp1.noveu.constants.SharedKeys;
 import droid.nir.testapp1.noveu.constants.constants;
 import droid.nir.testapp1.noveu.welcome.Initial;
-import droid.nir.testapp1.noveu.welcome.about.animations.DepthPageTransform;
-import droid.nir.testapp1.noveu.welcome.about.animations.ZoomPageTransform;
 
 public class About extends FragmentActivity implements ViewPager.OnPageChangeListener, OnAboutHelperListener, View.OnClickListener {
 
@@ -41,15 +35,17 @@ public class About extends FragmentActivity implements ViewPager.OnPageChangeLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about_new);
 
+        Import.getLogs();
         position = 0;
         mPager = (ViewPager) findViewById(R.id.aboutPager);
         mPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
-     //   mPager.setPageTransformer(true, new DepthPageTransform());
+        //   mPager.setPageTransformer(true, new DepthPageTransform());
         mPager.setAdapter(mPagerAdapter);
         mPager.addOnPageChangeListener(this);
         setup();
         changeParentView(position);
         changePageIndicator(position);
+
     }
 
     private void setup() {

@@ -41,10 +41,12 @@
     <color name="rprimary_text">#212121</color>
 
 
-    <color name="hprimary">#2196F3</color>
-    <color name="hprimary_dark">#1976D2</color>
+    <color name="hprimary">#1D2782</color>
+    <color name="hprimary_dark">#0A0E2F</color>
+    <color name="hprimary_secondary">#313A8D</color>
+    <color name="htext">#BEC1DB</color>
     <color name="hprimary_light">#BBDEFB</color>
-    <color name="haccent">#7C4DFF</color>
+    <color name="haccent">#FF4081</color>
     <color name="hprimary_text">#212121</color>
     <color name="hsecondary_text">#727272</color>
     <color name="hicons">#FFFFFF</color>

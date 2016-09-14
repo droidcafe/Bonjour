@@ -45,6 +45,7 @@ import droid.nir.testapp1.noveu.Tasks.TaskUtil;
 import droid.nir.testapp1.noveu.Util.AutoRefresh;
 import droid.nir.testapp1.noveu.Util.Import;
 import droid.nir.testapp1.noveu.Util.Log;
+import droid.nir.testapp1.noveu.bonjoursettings.ToolBarSettings.PrimarySettings;
 import droid.nir.testapp1.noveu.constants.SharedKeys;
 import droid.nir.testapp1.noveu.constants.constants;
 import droid.nir.testapp1.noveu.dB.ParentDb;
@@ -208,49 +209,17 @@ public class Home extends AppCompatActivity
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        switch (item.getItemId()) {
-
-
+        switch (id) {
             case R.id.calendarselect:
 
                 showcalendialogue();
                 return true;
 
-            case R.id.action_settings:
-
-                break;
             case R.id.refresh:
                 refresh();
                 break;
-            case R.id.action_help:
-
-                startActivity(new Intent(this, droid.nir.testapp1.About.class));
-
-                break;
-            case R.id.action_share:
-
-                String sharetext = getResources().getString(R.string.sharetext);
-                Intent shar = new Intent();
-                shar.setAction(Intent.ACTION_SEND);
-                shar.setType("text/plain");
-                shar.putExtra(Intent.EXTRA_TEXT, sharetext);
-                startActivity(Intent.createChooser(shar, getResources().getString(R.string.shareusing)));
-                break;
-            case R.id.action_feedback:
-                String[] mailid = {constants.dev_mail};
-                Import.composeEmail(activity, mailid, "FeedBack", null);
-                break;
-            case R.id.action_rate:
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(context.getResources().getString(R.string.app_uri)));
-                startActivity(intent);
-                break;
-            case R.id.action_about:
-
-                startActivity(new Intent(this, FirstScreen.class));
-
-
-                break;
-
+            default:
+                PrimarySettings.primarySetting(this,this,id);
 
         }
         return super.onOptionsItemSelected(item);

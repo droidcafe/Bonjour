@@ -15,6 +15,7 @@ import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -25,6 +26,8 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.wnafee.vector.MorphButton;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Calendar;
 import java.util.Random;
 
@@ -320,15 +323,41 @@ public class Import {
         return context.getResources().getIdentifier(uri, null, context.getPackageName());
     }
 
+    /**
+     * helper function for composing mail
+     * @param activity
+     * @param addresses
+     * @param subject
+     * @param attachment
+     */
     public static void composeEmail(Activity activity, String[] addresses, String subject, Uri attachment) {
         Intent intent = new Intent(Intent.ACTION_SENDTO);
         intent.setData(Uri.parse("mailto:"));
         intent.putExtra(Intent.EXTRA_EMAIL, addresses);
         intent.putExtra(Intent.EXTRA_SUBJECT, subject);
-        //   intent.putExtra(Intent.EXTRA_STREAM, attachment);
+        if (attachment != null)
+           intent.putExtra(Intent.EXTRA_STREAM, attachment);
+
         if (intent.resolveActivity(activity.getPackageManager()) != null) {
             activity.startActivity(intent);
         }
+    }
+
+    public static void getLogs(){
+        File filename = new File(Environment.getExternalStorageDirectory()+"/bonjour.log");
+        try {
+            boolean file = filename.createNewFile();
+            Log.d("import", "created file " + file + " " + filename.getAbsolutePath());
+
+            String cmd = "logcat -d -f"+filename.getAbsolutePath();
+            Runtime.getRuntime().exec(cmd);
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
     }
 
 

@@ -572,6 +572,8 @@ To view a reminder click on it.
     <string name="redo_task">Task Restored</string>
     <string name="title_activity_version">Version</string>
     <string name="more">More</string>
+    <string name="title_activity_help_details">HelpDetails</string>
+    <string name="title_activity_task_help">TaskHelp</string>
     <!--<string name=""></string>-->
     <!--<string name=""></string>-->
 </resources>

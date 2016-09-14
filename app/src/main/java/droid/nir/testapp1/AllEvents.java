@@ -35,6 +35,7 @@ import java.util.List;
 import droid.nir.databaseHelper.Events;
 import droid.nir.databaseHelper.Todolist;
 import droid.nir.testapp1.noveu.NavDrw.setNav;
+import droid.nir.testapp1.noveu.bonjoursettings.ToolBarSettings.PrimarySettings;
 import droid.nir.testapp1.noveu.constants.constants;
 
 public class AllEvents extends ActionBarActivity implements View.OnClickListener {
@@ -306,48 +307,19 @@ public class AllEvents extends ActionBarActivity implements View.OnClickListener
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_all_events, menu);
+        getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-
-
-        switch (item.getItemId()) {
+        int id = item.getItemId();
+        switch (id) {
             case R.id.refresh:
                 refresh();
                 break;
-            case R.id.action_help:
-
-                startActivity(new Intent(this, droid.nir.testapp1.About.class));
-
-                break;
-            case R.id.action_share:
-
-                String sharetext = getResources().getString(R.string.sharetext);
-                Intent shar = new Intent();
-                shar.setAction(Intent.ACTION_SEND);
-                shar.setType("text/plain");
-                shar.putExtra(Intent.EXTRA_TEXT, sharetext);
-                startActivity(Intent.createChooser(shar, getResources().getString(R.string.shareusing)));
-                break;
-            case R.id.action_feedback:
-                String[] mailid = {constants.dev_mail};
-                Import.composeEmail(activity, mailid, "FeedBack", null);
-                break;
-            case R.id.action_rate:
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(context.getResources().getString(R.string.app_uri)));
-                startActivity(intent);
-                break;
-            case R.id.action_about:
-
-                startActivity(new Intent(this, FirstScreen.class));
-                break;
-
+            default:
+                PrimarySettings.primarySetting(this, this, id);
         }
         return super.onOptionsItemSelected(item);
     }

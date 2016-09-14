@@ -11,6 +11,8 @@
     <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_LOGS" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:name=".Bonjour"
@@ -348,7 +350,15 @@
         <activity
             android:name=".noveu.welcome.Version"
             android:label="@string/title_activity_version"
-            android:theme="@style/AppTheme.About"/>
+            android:theme="@style/AppTheme.About" />
+        <activity
+            android:name=".noveu.welcome.help.Help"
+            android:label="@string/title_activity_help"
+            android:theme="@style/AppTheme.Help.ToolBar" />
+        <activity
+            android:name=".noveu.welcome.help.TaskHelp"
+            android:label="@string/title_activity_task_help"
+            android:theme="@style/AppTheme.Help.ToolBar" ></activity>
     </application>
 
 </manifest>

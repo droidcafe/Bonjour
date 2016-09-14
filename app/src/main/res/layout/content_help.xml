@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="droid.nir.testapp1.noveu.welcome.help.Help"
+    tools:showIn="@layout/activity_help3">
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:padding="10dp"
+        android:src="@drawable/koala_small" />
+
+    <View
+        android:id="@+id/firstline"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/logo"
+        android:layout_marginTop="30dp"
+        android:background="@color/lines_grey_light" />
+
+    <com.balysv.materialripple.MaterialRippleLayout
+        android:id="@+id/tasks_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/firstline"
+        app:mrl_rippleAlpha="0.3"
+        app:mrl_rippleColor="#A6A6A6"
+        app:mrl_rippleDelayClick="false"
+        app:mrl_rippleDuration="200"
+        app:mrl_rippleHover="true"
+        app:mrl_rippleOverlay="true">
+
+        <TextView
+            android:id="@+id/tasks"
+            style="@style/help_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/tasks" />
+
+
+    </com.balysv.materialripple.MaterialRippleLayout>
+
+    <View
+        android:id="@+id/taskline"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/tasks_layout"
+        android:background="@color/lines_grey_light" />
+
+    <com.balysv.materialripple.MaterialRippleLayout
+        android:id="@+id/pendng_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/taskline"
+        app:mrl_rippleAlpha="0.3"
+        app:mrl_rippleColor="#A6A6A6"
+        app:mrl_rippleDelayClick="false"
+        app:mrl_rippleDuration="200"
+        app:mrl_rippleHover="true"
+        app:mrl_rippleOverlay="true">
+
+        <TextView
+            android:id="@+id/pendingdecision"
+            style="@style/help_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/pendingdecisions" />
+
+
+    </com.balysv.materialripple.MaterialRippleLayout>
+
+    <View
+        android:id="@+id/pendingline"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/pendng_layout"
+        android:background="@color/lines_grey_light" />
+
+    <com.balysv.materialripple.MaterialRippleLayout
+        android:id="@+id/event_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/pendingline"
+        app:mrl_rippleAlpha="0.3"
+        app:mrl_rippleColor="#A6A6A6"
+        app:mrl_rippleDelayClick="false"
+        app:mrl_rippleDuration="200"
+        app:mrl_rippleHover="true"
+        app:mrl_rippleOverlay="true">
+
+        <TextView
+            android:id="@+id/events"
+            style="@style/help_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/events" />
+
+
+    </com.balysv.materialripple.MaterialRippleLayout>
+
+    <View
+        android:id="@+id/eventline"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/event_layout"
+        android:background="@color/lines_grey_light" />
+
+
+</RelativeLayout>

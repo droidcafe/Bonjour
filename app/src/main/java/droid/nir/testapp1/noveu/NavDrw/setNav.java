@@ -99,7 +99,7 @@ public class setNav implements NavigationView.OnNavigationItemSelectedListener {
                 case R.id.nav_settings:
                     Intent goinginent5 = new Intent(context, BonjourSettings.class);
                     context.startActivity(goinginent5);
-                    activity.finish();
+                  //  activity.finish();
                     break;
 
                 case R.id.nav_about:
