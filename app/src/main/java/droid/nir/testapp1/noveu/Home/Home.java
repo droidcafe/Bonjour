@@ -237,12 +237,11 @@ public class Home extends AppCompatActivity
                 startActivity(Intent.createChooser(shar, getResources().getString(R.string.shareusing)));
                 break;
             case R.id.action_feedback:
-                String[] mailid = {"wiizzapps@gmail.com"};
-                composeEmail(mailid, "FeedBack", null);
+                String[] mailid = {constants.dev_mail};
+                Import.composeEmail(activity, mailid, "FeedBack", null);
                 break;
             case R.id.action_rate:
-
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=droid.nir.testapp1"));
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(context.getResources().getString(R.string.app_uri)));
                 startActivity(intent);
                 break;
             case R.id.action_about:
@@ -269,16 +268,7 @@ public class Home extends AppCompatActivity
         }
     }
 
-    public void composeEmail(String[] addresses, String subject, Uri attachment) {
-        Intent intent = new Intent(Intent.ACTION_SENDTO);
-        intent.setData(Uri.parse("mailto:"));
-        intent.putExtra(Intent.EXTRA_EMAIL, addresses);
-        intent.putExtra(Intent.EXTRA_SUBJECT, subject);
-        //   intent.putExtra(Intent.EXTRA_STREAM, attachment);
-        if (intent.resolveActivity(getPackageManager()) != null) {
-            startActivity(intent);
-        }
-    }
+
 
     private void showhelpdialogue() {
         startActivity(new Intent(this, FirstScreen.class));
@@ -376,7 +366,7 @@ public class Home extends AppCompatActivity
             }
             Import.setBackGroundColor(context,activity,R.id.home_back,R.color.white);
             recyclerView.setVisibility(View.VISIBLE);
-            Import.allDoneUndo(context,alldone_pic,alldone_title,alldone_promo);
+            Import.allDoneUndo(context, alldone_pic, alldone_title, alldone_promo);
 
             TaskAdapter taskAdapter = new TaskAdapter(context, activity, data);
             recyclerView.setAdapter(taskAdapter);

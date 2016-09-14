@@ -16,9 +16,13 @@ import android.preference.PreferenceActivity;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 import android.preference.RingtonePreference;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
 import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +30,7 @@ import java.util.List;
 import droid.nir.testapp1.R;
 import droid.nir.testapp1.noveu.Projects.data.ProjectList;
 import droid.nir.testapp1.noveu.dB.Project;
+import droid.nir.testapp1.noveu.welcome.about.OnAboutHelperListener;
 
 /**
  * A {@link PreferenceActivity} that presents a set of application settings. On
@@ -152,7 +157,8 @@ public class BonjourSettings extends AppCompatPreferenceActivity {
         return PreferenceFragment.class.getName().equals(fragmentName)
                 || GeneralPreferenceFragment.class.getName().equals(fragmentName)
                 || TasksPreferenceFragment.class.getName().equals(fragmentName)
-                || NotificationPreferenceFragment.class.getName().equals(fragmentName);
+                || NotificationPreferenceFragment.class.getName().equals(fragmentName)
+                || AboutPreferenceFragment.class.getName().equals(fragmentName);
     }
 
     /**
@@ -242,6 +248,29 @@ public class BonjourSettings extends AppCompatPreferenceActivity {
                 return true;
             }
             return super.onOptionsItemSelected(item);
+        }
+    }
+
+    public static class AboutPreferenceFragment extends Fragment{
+
+        @Override
+        public void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            if (getArguments() != null) {
+
+            }
+        }
+
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                                 Bundle savedInstanceState) {
+            return inflater.inflate(R.layout.content_version, container, false);
+        }
+
+        @Override
+        public void onAttach(Context context) {
+            super.onAttach(context);
+
         }
     }
 }

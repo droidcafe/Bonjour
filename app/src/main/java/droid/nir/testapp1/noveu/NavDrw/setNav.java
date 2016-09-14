@@ -22,6 +22,7 @@ import droid.nir.testapp1.noveu.Home.Home;
 import droid.nir.testapp1.noveu.Projects.ProjectManager;
 import droid.nir.testapp1.noveu.bonjoursettings.BonjourSettings;
 import droid.nir.testapp1.noveu.dB.Tasks;
+import droid.nir.testapp1.noveu.welcome.Version;
 import droid.nir.testapp1.noveu.welcome.about.About;
 
 /**
@@ -98,7 +99,12 @@ public class setNav implements NavigationView.OnNavigationItemSelectedListener {
                 case R.id.nav_settings:
                     Intent goinginent5 = new Intent(context, BonjourSettings.class);
                     context.startActivity(goinginent5);
-                   // activity.finish();
+                    activity.finish();
+                    break;
+
+                case R.id.nav_about:
+                    Intent goinginent6 = new Intent(context, Version.class);
+                    context.startActivity(goinginent6);
                     break;
 
             }

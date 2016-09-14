@@ -83,7 +83,7 @@
     <string name="Delete">DELETE</string>
     <string name="go">GO</string>
 
-    <string name="versionno">Version 1.0.1</string>
+    <string name="versionno">Version 2.0.0</string>
     <string name="rights">All rights reserved</string>
     <string name="eventtitle">Event title</string>
     <string name="addsubtasks">Enter a subtask</string>
@@ -551,6 +551,7 @@ To view a reminder click on it.
     <string name="promotion_share" translatable="false"> \nSent via <b>BucketList</b> </string>
     <string name="promotion_download">Download Now !!\ \ </string>
     <string name="app_url" translatable="false">https://play.google.com/store/apps/details?id=droid.nir.testapp1</string>
+    <string name="app_uri" translatable="false">market://details?id=droid.nir.testapp1</string>
     <string name="task_delete_successful">Task deleted successfully</string>
     <string name="task_delete_unsuccessful">Sorry!!Unable to delete task. Please try again</string>
     <string name="savedialoguetitle">Save %1$s ?</string>
@@ -569,6 +570,8 @@ To view a reminder click on it.
     <string name="random_label">Random Label %1$d </string>
     <string name="start">Start</string>
     <string name="redo_task">Task Restored</string>
+    <string name="title_activity_version">Version</string>
+    <string name="more">More</string>
     <!--<string name=""></string>-->
     <!--<string name=""></string>-->
 </resources>

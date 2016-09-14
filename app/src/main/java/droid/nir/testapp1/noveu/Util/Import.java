@@ -6,6 +6,7 @@ package droid.nir.testapp1.noveu.Util;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -291,7 +292,13 @@ public class Import {
 
     }
 
-
+    /**
+     * helper function for undoing all done . when list is non empty
+     * @param context
+     * @param alldone_pic
+     * @param alldone_title
+     * @param alldone_promo
+     */
     public static void allDoneUndo(Context context, ImageView alldone_pic, TextView alldone_title,
                                    TextView alldone_promo) {
         alldone_pic.setVisibility(View.GONE);
@@ -300,10 +307,28 @@ public class Import {
 
     }
 
-    public static int getResource(Context context, String imageId,String prefix) {
+    /**
+     * helper function to get resource id of a resource
+     * @param context
+     * @param resourceId the id of resource
+     * @param prefix - prefix like drawable, string,array - where is resource is
+     * @return the id
+     */
+    public static int getResource(Context context, String resourceId,String prefix) {
 
-        String uri = prefix +"/" + imageId;
+        String uri = prefix +"/" + resourceId;
         return context.getResources().getIdentifier(uri, null, context.getPackageName());
+    }
+
+    public static void composeEmail(Activity activity, String[] addresses, String subject, Uri attachment) {
+        Intent intent = new Intent(Intent.ACTION_SENDTO);
+        intent.setData(Uri.parse("mailto:"));
+        intent.putExtra(Intent.EXTRA_EMAIL, addresses);
+        intent.putExtra(Intent.EXTRA_SUBJECT, subject);
+        //   intent.putExtra(Intent.EXTRA_STREAM, attachment);
+        if (intent.resolveActivity(activity.getPackageManager()) != null) {
+            activity.startActivity(intent);
+        }
     }
 
 

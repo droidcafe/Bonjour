@@ -6,6 +6,8 @@ package droid.nir.testapp1.noveu.constants;
 public class constants {
 
     public final static int VERSION = 10;
+    public final static String VERSION_CODE  = "2.0.0";
+    public final static String dev_mail  = "wiizzapps@gmail.com";
     public final static int REMINDER_REQUESTCODE = 101;
     public final static int SUBTASK_REQUESTCODE = 102;
     public final static int NOTES_REQUESTCODE = 103;

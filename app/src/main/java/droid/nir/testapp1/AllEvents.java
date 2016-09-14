@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
@@ -16,6 +17,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 
+import droid.nir.defcon3.FirstScreen;
 import droid.nir.testapp1.noveu.Util.Import;
 import droid.nir.testapp1.noveu.Util.Log;
 import android.view.Menu;
@@ -33,6 +35,7 @@ import java.util.List;
 import droid.nir.databaseHelper.Events;
 import droid.nir.databaseHelper.Todolist;
 import droid.nir.testapp1.noveu.NavDrw.setNav;
+import droid.nir.testapp1.noveu.constants.constants;
 
 public class AllEvents extends ActionBarActivity implements View.OnClickListener {
 
@@ -86,7 +89,7 @@ public class AllEvents extends ActionBarActivity implements View.OnClickListener
         super.onResume();
 
 
-        sharedPreferences = getSharedPreferences("sharedprefs",0);
+        sharedPreferences = getSharedPreferences("sharedprefs", 0);
         ischanged = sharedPreferences.getInt("ischanged", 0);
 
         if (ischanged == 1) {
@@ -202,7 +205,7 @@ public class AllEvents extends ActionBarActivity implements View.OnClickListener
 
         int iswholeday=0;
         List<custom_data2> arrayList = new ArrayList<>();
-        Log.d("checkfort1oday"," inserting event items "+cursor.getCount());
+        Log.d("checkfort1oday", " inserting event items " + cursor.getCount());
         while(cursor.moveToNext())
         {
 
@@ -312,14 +315,40 @@ public class AllEvents extends ActionBarActivity implements View.OnClickListener
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+
+        switch (item.getItemId()) {
+            case R.id.refresh:
+                refresh();
+                break;
+            case R.id.action_help:
+
+                startActivity(new Intent(this, droid.nir.testapp1.About.class));
+
+                break;
+            case R.id.action_share:
+
+                String sharetext = getResources().getString(R.string.sharetext);
+                Intent shar = new Intent();
+                shar.setAction(Intent.ACTION_SEND);
+                shar.setType("text/plain");
+                shar.putExtra(Intent.EXTRA_TEXT, sharetext);
+                startActivity(Intent.createChooser(shar, getResources().getString(R.string.shareusing)));
+                break;
+            case R.id.action_feedback:
+                String[] mailid = {constants.dev_mail};
+                Import.composeEmail(activity, mailid, "FeedBack", null);
+                break;
+            case R.id.action_rate:
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(context.getResources().getString(R.string.app_uri)));
+                startActivity(intent);
+                break;
+            case R.id.action_about:
+
+                startActivity(new Intent(this, FirstScreen.class));
+                break;
+
         }
-        else if(id==R.id.refresh)
-            refresh();
         return super.onOptionsItemSelected(item);
     }
 

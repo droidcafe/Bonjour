@@ -41,6 +41,12 @@
         <item name="colorAccent">@color/eaccent</item>
     </style>
 
+    <style name="AppTheme.About" parent="AppTheme.Task.ToolBar">
+        <item name="colorPrimary">@color/aprimary</item>
+        <item name="colorPrimaryDark">@color/aprimary_dark</item>
+        <item name="colorAccent">@color/eaccent</item>
+    </style>
+
     <style name="AppTheme.Event.ToolBar" parent="AppTheme.Task.ToolBar">
         <item name="colorAccent">@color/eaccent</item>
     </style>

@@ -2,12 +2,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="droid.nir.testapp1.MainActivity"
-
     >
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
-        android:title="@string/action_settings"
+        android:title="@string/more"
         app:showAsAction="never"
         android:visible="false"
         />
@@ -45,7 +44,7 @@
         android:id="@+id/refresh"
         android:icon="@drawable/ic_refresh_white_24dp"
         android:orderInCategory="96"
-        android:title="refresh"
+        android:title="@string/refresh"
 
         app:showAsAction="ifRoom"
 
@@ -54,6 +53,7 @@
         android:id="@+id/action_about"
         android:orderInCategory="105"
         android:title="@string/about"
+        android:visible="false"
         app:showAsAction="never"
 
         />
@@ -68,7 +68,7 @@
         android:icon="@drawable/ic_action_go_to_todayw"
         android:orderInCategory="99"
         android:title="@string/gotodate"
-
+        android:visible="false"
         app:showAsAction="ifRoom"
 
         />

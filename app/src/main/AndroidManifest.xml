@@ -91,8 +91,8 @@
         <activity
             android:name=".CustomDate"
             android:label="@string/title_activity_custom_date"
-            android:theme="@style/AppTheme.Settings"
-            android:parentActivityName=".noveu.Home.Home">
+            android:parentActivityName=".noveu.Home.Home"
+            android:theme="@style/AppTheme.Settings">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="droid.nir.testapp1.noveu.Home.Home" />
@@ -172,7 +172,6 @@
         <activity
             android:name="droid.nir.defcon3.ScreenSlidePageFragment"
             android:label="@string/title_activity_help" />
-
         <activity
             android:name="droid.nir.defcon3.FirstScreen"
             android:label="@string/title_activity_first_screen"
@@ -200,8 +199,8 @@
             android:name=".noveu.Tasks.Add_minimal"
             android:label="@string/title_activity_add_minimal"
             android:parentActivityName=".noveu.Home.Home"
-            android:theme="@style/AppTheme.Settings"
             android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Settings"
             android:windowSoftInputMode="adjustPan">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -342,12 +341,14 @@
         <activity
             android:name=".noveu.Tasks.show.Show_Expand"
             android:label="@string/title_activity_show__expand"
-            android:theme="@style/AppTheme.NoActionBar"/>
-
-        <activity android:name=".noveu.welcome.about.About"
-            android:theme="@style/AppTheme.About.ToolBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".noveu.welcome.about.About"
+            android:theme="@style/AppTheme.About.ToolBar" />
+        <activity
+            android:name=".noveu.welcome.Version"
+            android:label="@string/title_activity_version"
+            android:theme="@style/AppTheme.About"/>
     </application>
-
-
 
 </manifest>

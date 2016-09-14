@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -15,6 +16,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 
+import droid.nir.defcon3.FirstScreen;
 import droid.nir.testapp1.noveu.Util.Import;
 import droid.nir.testapp1.noveu.Util.Log;
 import android.view.Menu;
@@ -29,6 +31,7 @@ import java.util.List;
 
 import droid.nir.databaseHelper.Pending;
 import droid.nir.testapp1.noveu.NavDrw.setNav;
+import droid.nir.testapp1.noveu.constants.constants;
 
 
 public class AllDecisions extends ActionBarActivity implements View.OnClickListener {
@@ -308,18 +311,38 @@ public class AllDecisions extends ActionBarActivity implements View.OnClickListe
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+        switch (item.getItemId()) {
+            case R.id.refresh:
+                refresh();
+                break;
+            case R.id.action_help:
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+                startActivity(new Intent(this, droid.nir.testapp1.About.class));
+
+                break;
+            case R.id.action_share:
+
+                String sharetext = getResources().getString(R.string.sharetext);
+                Intent shar = new Intent();
+                shar.setAction(Intent.ACTION_SEND);
+                shar.setType("text/plain");
+                shar.putExtra(Intent.EXTRA_TEXT, sharetext);
+                startActivity(Intent.createChooser(shar, getResources().getString(R.string.shareusing)));
+                break;
+            case R.id.action_feedback:
+                String[] mailid = {constants.dev_mail};
+                Import.composeEmail(activity, mailid, "FeedBack", null);
+                break;
+            case R.id.action_rate:
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(context.getResources().getString(R.string.app_uri)));
+                startActivity(intent);
+                break;
+            case R.id.action_about:
+
+                startActivity(new Intent(this, FirstScreen.class));
+                break;
+
         }
-
-        else if(id==R.id.refresh)
-            refresh();
         return super.onOptionsItemSelected(item);
     }
 
