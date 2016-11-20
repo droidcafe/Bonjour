@@ -1,0 +1,157 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="droid.nir.defcon3.help_main">
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/button_action_blue"
+        android:id="@+id/background"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/pendingdecisions"
+        android:textSize="40sp"
+        android:textColor="@color/white"
+        android:layout_centerVertical="true"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/title"
+        android:paddingBottom="250dp"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
+      />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textSize="22sp"
+        android:textColor="@color/white"
+        android:visibility="visible"
+        android:textStyle="normal"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:id="@+id/subtitle"
+        android:padding="10dp"
+
+      />
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+
+        android:layout_alignParentRight="true"
+
+        android:id="@+id/hand"
+        android:visibility="gone"
+        android:src="@drawable/hand1"
+        />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="250dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="40dp"
+        android:id="@+id/hand20"
+        android:visibility="gone"
+        android:src="@drawable/hand2"
+        />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="240dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="100dp"
+        android:id="@+id/hand21"
+        android:visibility="gone"
+        android:src="@drawable/hand2"
+        />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="200dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="140dp"
+        android:id="@+id/hand22"
+        android:visibility="gone"
+        android:src="@drawable/hand2"
+        />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="50dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="220dp"
+        android:id="@+id/hand23"
+        android:visibility="gone"
+        android:src="@drawable/handdown"
+        />
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" | "
+        android:textSize="22sp"
+        android:textColor="@color/white"
+        android:visibility="visible"
+        android:textStyle="normal"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/stick"
+        android:paddingBottom="15dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/skip"
+        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:visibility="visible"
+        android:textStyle="normal"
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@id/stick"
+        android:id="@+id/skip"
+        android:paddingLeft="10dp"
+        android:paddingBottom="15dp"
+        android:paddingRight="5dp"
+
+
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/next"
+        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:visibility="visible"
+        android:textStyle="normal"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@id/stick"
+        android:id="@+id/next"
+        android:paddingRight="10dp"
+        android:paddingBottom="15dp"
+android:paddingLeft="5dp"
+        />
+
+</RelativeLayout>

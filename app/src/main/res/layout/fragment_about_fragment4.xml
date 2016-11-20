@@ -1,0 +1,59 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/about_primary4"
+    tools:context="droid.nir.testapp1.noveu.welcome.about.AboutFragment1">
+
+
+    <TextView
+        android:id="@+id/about_desp"
+        style="@style/about_desp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/events_desp" />
+
+    <TextView
+        android:id="@+id/about_title"
+        style="@style/about_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/about_desp"
+        android:text="@string/events" />
+
+
+    <ImageView
+        android:id="@+id/man"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/about_title"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/promo_events1" />
+
+    <ImageView
+        android:id="@+id/promo_subpic1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:rotation="-30"
+        android:src="@drawable/promo_events2" />
+
+
+    <ImageView
+        android:id="@+id/promo_subpic2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/promo_events3" />
+
+
+    <ImageView
+        android:id="@+id/promo_subpic3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/promo_events4" />
+
+
+
+
+</RelativeLayout>

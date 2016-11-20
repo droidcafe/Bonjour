@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Bucket List</string>
+    <string name="title_activity_help">Aidez-moi</string>
+    <string name="action">Exécuter l\'action</string>
+    <string name="action_settings">Paramètres</string>
+    <string name="delete">Effacer</string>
+    <string name="deleted">supprimé</string>
+    <string name="dialogtitle">Titre</string>
+    <string name="done">Terminé</string>
+    <string name="drawer_close">Fermer</string>
+    <string name="drawer_open">ouvert</string>
+    <string name="edit">Modifier</string>
+    <string name="events">Evénements</string>
+    <string name="gotodate">Aller à la date</string>
+
+    <string name="home">Maison</string>
+    <string name="main_description">Il n\'y a pas les tâches créées pour aujourd\'hui. Pour créer un s\'il vous plaît cliquez sur le bouton d\'ajout ci-dessous</string>
+    <string name="newdecision">Créer nouvelle décision</string>
+    <string name="newevent">Créer un nouvel événement</string>
+    <string name="newlist">Créer un nouveau pour faire la liste</string>
+    <string name="newreminder">Créer un nouveau rappel</string>
+    <string name="pending">décision en suspens</string>
+    <string name="pendingdecisions">décision en suspens</string>
+    <string name="refresh">Actualiser</string>
+    <string name="reminders">rappels</string>
+    <string name="share">Partager</string>
+    <string name="title">Bonjour</string>
+    <string name="title_activity_about">Sur</string>
+    <string name="aalarmnot">Alarme + Notification</string>
+    <string name="acustomrange">Sélectionnez un intervalle de temps</string>
+    <string name="add">ajouter</string>
+    <string name="acustomtime">Choix d\'un fuseau personnalisé</string>
+    <string name="addme">Ajoutez-moi</string>
+    <string name="address">adresse</string>
+    <string name="afew">Dans quelques minutes</string>
+    <string name="ahalftime">Une demi-heure avant</string>
+    <string name="anotif">aucune notification</string>
+    <string name="anotonly">notification uniquement</string>
+    <string name="atenmin">10 minutes avant</string>
+    <string name="awholeday">Toute la journée</string>
+    <string name="buy">acheter</string>
+    <string name="call">appel</string>
+    <string name="cons">Moins:</string>
+    <string name="custom">coutume</string>
+    <string name="doo">faire</string>
+    <string name="eventtitle">Titre de l\'événement</string>
+    <string name="faxno">Fax</string>
+    <string name="from">De</string>
+    <string name="fromtime">De temps</string>
+    <string name="important">important</string>
+    <string name="location">emplacement</string>
+
+    <string name="mailid">Email ID</string>
+    <string name="normal">ordinaire</string>
+    <string name="notes">Ajouter des notes</string>
+    <string name="notify">Avertissez</string>
+    <string name="paddextra">Ajouter un élément supplémentaire</string>
+    <string name="paddress">adresse:</string>
+    <string name="pchoose">Choisissez à partager?</string>
+    <string name="pdecide">Avoir à décider dans:</string>
+    <string name="pdecision">Décision en bref</string>
+    <string name="pdectype">Type de décision:</string>
+    <string name="pexpand">Soin pour élargir</string>
+    <string name="pfaxno">Fax:</string>
+    <string name="website">Site Internet</string>
+    <string name="wholeday">Toute la journée</string>
+    <string name="watch">regarder</string>
+    <string name="versionno">Version 1.0.1</string>
+    <string name="ttype">Tapez un élément de la liste</string>
+    <string name="tttile">Titre</string>
+    <string name="totime">pour le temps</string>
+    <string name="todolists">Pour faire des listes</string>
+    <string name="to">À</string>
+    <string name="tcreatenot">Créer avis</string>
+    <string name="shopname">Shop Name</string>
+    <string name="setalarm">Régler l\'alarme :</string>
+    <string name="send">envoyer</string>
+    <string name="sell">vendre</string>
+    <string name="say">dire</string>
+    <string name="remove">Retirer</string>
+    <string name="rights">Tous droits réservés</string>
+    <string name="title_activity_add__event2">Créer un nouvel événement</string>
+    <string name="pfound">Trouvé un nouveau?</string>
+    <string name="phow">Comment ?</string>
+    <string name="phone">Pas de téléphone</string>
+    <string name="play">jouer</string>
+    <string name="plean">Se penchant vers:</string>
+    <string name="pmin">minutes</string>
+    <string name="pmailid">Email id:</string>
+    <string name="pphone">Pas de téléphone : </string>
+    <string name="pprice">cours : </string>
+    <string name="price">cours</string>
+    <string name="pros">Avantages :</string>
+    <string name="pwebsite">Site Internet : </string>
+    <string name="pwhat">Quoi ?</string>
+    <string name="pwhen">Quand ?</string>
+    <string name="pwhy">Pourquoi ?</string>
+    <string name="pwhynot">Pourquoi pas ?</string>
+    <string name="title_activity_add__pending">Créer une nouvelle décision</string>
+    <string name="title_activity_add__todo_list">Créer une nouvelle liste à faire</string>
+    <string name="preci">Plus précisément dans:</string>
+    <string name="premindat">Rappelez-moi à</string>
+    <string name="premtype">Type de Rappel</string>
+    <string name="pshopname">Magasinez Nom:</string>
+    <string name="description">Description</string>
+    <string name="notification">notification</string>
+    <string name="create">créer</string>
+    <string name="cancel">ANNULER</string>
+    <string name="deletewarn">La liste de todo sera définitivement supprimé</string>
+    <string name="pheadtohead">Tête à tête</string>
+    <string name="pprobig">Plus emportent sur les inconvénients;)</string>
+    <string name="aalaonly">Alarme Uniquement</string>
+    <string name="nodecision">Rien de tel en attendant la décision présente</string>
+    <string name="pconsare">Cons sont</string>
+    <string name="pconbig">Moins nombreux que les avantages :(</string>
+    <string name="pdeadline">Date limite</string>
+    <string name="pdecideat">Doivent décider, au</string>
+    <string name="pprosare">pros sont</string>
+    <string name="pprosame">Avantages et inconvénients sont les mêmes :)</string>
+    <string name="remtype">Type de Rappel</string>
+    <string name="invalidate">Date invalide</string>
+    <string name="notitle">Pas de titre prévu</string>
+    <string name="alarmset">alarme ensemble</string>
+    <string name="date">date</string>
+    <string name="deletionfailed">Désolé! Suppression a échoué</string>
+    <string name="deletionsucess">suppression réussie</string>
+    <string name="edeletewarn">L\'événement sera définitivement supprimé .Ne vous souhaitez poursuivre?</string>
+    <string name="ewhole">Il est un événement d\'une journée sur</string>
+    <string name="ewholeday">Événement toute la journée</string>
+    <string name="enolocation">Aucun emplacement spécifié</string>
+    <string name="eto">à</string>
+    <string name="eeventform">L\'événement est de</string>
+    <string name="event">Evénement</string>
+    <string name="noalarmset">Aucune consigne d\'alarme</string>
+    <string name="noalarm">Pas d\'alarme</string>
+    <string name="noevent">Aucune présente l\'événement</string>
+    <string name="nonotificationset">Aucun ensemble de notification</string>
+    <string name="note">Remarques</string>
+    <string name="remainder">rappel</string>
+    <string name="shareusing">Partagez l\'aide</string>
+    <string name="todolist">Liste de choses à faire</string>
+    <string name="itemslist">éléments de la liste</string>
+    <string name="nolistitem">Pardon! Vide pour faire la liste</string>
+    <string name="notodolist">Désolé! Aucune liste à faire disponibles</string>
+    <string name="tdeletewarn">La liste à faire sera définitivement supprimé .Ne vous souhaitez poursuivre?</string>
+    <string name="thereare">Il y a</string>
+    <string name="titlecome">Titre vient ici</string>
+    <string name="nopending">Aucune décision en attendant Crée</string>
+    <string name="noreminder">Pardon! Aucun  rappel disponibles</string>
+    <string name="pnoprocon">Pas avantages et les inconvénients disponibles</string>
+    <string name="rdeletewarn">Le rappel sera définitivement supprimé. Voulez-vous procéder?</string>
+    <string name="refreshing">rafraîchissant</string>
+    <string name="rdecidedby">Doivent être décidées par</string>
+    <string name="shouldi">Devrais-je</string>
+    <string name="nodesp">Pas de description spécifiée</string>
+    <string name="noevents">Aucun événement créé</string>
+    <string name="nolists">Pas de listes de tâches Créé</string>
+    <string name="noof">nombre d\'éléments de la liste</string>
+    <string name="noreminders">Aucun rappel créés</string>
+    <string name="youhave">Tu as</string>
+    <string name="rnewreminder">Créer un nouveau rappel</string>
+    <string name="remtitle">Entrez le titre de rappel</string>
+    <string name="newtodolist">Entrez de nouveau à faire un élément de liste</string>
+    <string name="ok">D\'accord</string>
+    <string name="Delete">EFFACER</string>
+    <string name="nodate">Désolé! Aucune date sélectionnée</string>
+    <string name="ecustom">Événement débutera à</string>
+    <string name="choosedate">Choisissez une date</string>
+    <string name="ehalf">Événement va commencer dans une demi-heure</string>
+    <string name="emptytodolist">Vider liste de tâches</string>
+    <string name="eten">Événement va commencer dans 10 minutes</string>
+    <string name="go">Aller</string>
+    <string name="nocustom">Pas de tâches créées pour ce day.To en créer un s\'il vous plaît cliquer sur le bouton ci-dessous, plus de</string>
+    <string name="ddeletewarn">La décision dans l\'attente sera définitivement supprimé .Ne vous souhaitez poursuivre?</string>
+    <string name="about">Sur</string>
+    <string name="feedback">Commentaires</string>
+    <string name="help">Aidez-moi</string>
+    <string name="rateus">Évaluez nous</string>
+    <string name="eventmoto">Ne manquez jamais un événement nouveau</string>
+    <string name="hcreateevent">Pour créer un nouvel événement, cliquez sur le signe plus dans l\'écran d\'accueil et sélectionnez le deuxième bouton de gauche</string>
+    <string name="hcreatepending">Pour créer une nouvelle décision en attente, cliquez sur le signe plus dans l\'écran d\'accueil et sélectionnez le premier bouton de gauche</string>
+    <string name="hcreatereminder">Verser Créer un nouveau rappel, click sur le signe plus de l\'écran d\'Dans accueil et Select Le Quatrième bouton gauche</string>
+    <string name="hcreatetodolist">Pour créer une nouvelle liste, cliquez sur le signe plus dans l\'écran d\'accueil et sélectionnez le troisième bouton de la gauche</string>
+    <string name="todolistmoto">Oubliez comment oublier</string>
+    <string name="skiphelp">Passer Aide</string>
+    <string name="remindermoto">Toujours à l\'heure</string>
+    <string name="pendingmoto">Prendre les meilleures décisions</string>
+    <string name="moto">Parce que tout compte ...</string>
+    <string name="illustration"><u>Voir Illustration</u></string>
+    <string name="howtopending">Plus à propos de décisions en suspens</string>
+    <string name="howtoreminder">En savoir plus sur les rappels</string>
+    <string name="howtolist">Plus à propos de faire des listes</string>
+    <string name="howtoevent">En savoir plus sur les événements</string>
+    <string name="update">Mettre à jour</string>
+    <string name="sharetext">Découvrez la nouvelle app Bonjour -. Décisions, événements, des rappels et des listes de tâches en un seul endroit essayer maintenant !! \n  https://play.google.com/store/apps/details?id=droid.nir.testapp1</string>
+    <string name="skip">sauter</string>
+    <string name="next">Suivant</string>
+    <string name="DElete">Effacer %1$s</string>
+    <string name="action_clear">CLAIR</string>
+    <string name="action_dismiss">REJETER</string>
+    <string name="action_later">DANS UNE HEURE</string>
+    <string name="action_reply">Répondre</string>
+    <string name="action_share">Partager</string>
+    <string name="add_expand">Ajouter en mode étendu</string>
+    <string name="alarmoff">Alarme De</string>
+    <string name="alarmon">Alarme Sur</string>
+    <string name="completed">Terminé</string>
+    <string name="custom_date">Sélectionner une date</string>
+    <string name="events_desp">Ne manquez jamais un événement nouveau</string>
+    <string name="decision_maker">Décideur</string>
+    <string name="dateselect">Sélectionner une date</string>
+    <string name="decision_desp">Prendre les meilleures décisions</string>
+    <string name="deleteproject_title">Supprimer l\'étiquette</string>
+    <string name="initial_project0">Tout </string>
+    <string name="initial_project1">Personnel</string>
+    <string name="initial_project3">Films / TV à regarder</string>
+    <string name="initial_project2"> faire</string>
+    <string name="initial_project4">Travail</string>
+    <string name="managepro">Créer et supprimer vos étiquettes ci-dessous</string>
+    <string name="nextweek">Prochaine semaine</string>
+    <string name="no">Non</string>
+    <string name="notification_summray">Notification Sommaire</string>
+    <string name="pickpro">Sélectionnez une étiquette</string>
+    <string name="addproject">Nouveau nom d\'étiquette</string>
+    <string name="addproject_hint">Entrez le nouveau nom d\'étiquette</string>
+    <string name="addproject_new_title">Créer une nouvelle étiquette</string>
+    <string name="addproject_title">Ajouter l\'étiquette</string>
+    <string name="addsubtasks">Entrez une sous-tâche</string>
+    <string name="app_desp">Oubliez comment oublier</string>
+    <string name="deleteproject">Étiquette sera permenantely supprimé . Voulez-vous continuer ?</string>
+    <string name="noproname">Étiquette ne peut pas être vide</string>
+    <string name="noprotask">Aucune tâche pour %1$s!! Pour créer s\'il vous plaît cliquez sur le bouton ci-dessous</string>
+    <string name="pref_header_general">Général</string>
+    <string name="pref_header_notifications">Notifications</string>
+    <string name="pref_header_tasks">les tâches</string>
+    <string name="pref_ringtone_silent">Silencieux</string>
+    <string name="pref_title_light">Lumière</string>
+    <string name="pref_title_new_task_notifications">notifications de tâches</string>
+    <string name="pref_title_project_default">étiquette par défaut</string>
+    <string name="pref_title_ringtone">Sonnerie de notification</string>
+    <string name="pref_title_task_vibrate_type">Vibrer type</string>
+    <string name="pref_title_vibrate">Vibrer</string>
+    <string name="tommorow"> Demain</string>
+    <string name="undo"> ANNULER</string>
+    <string name="updateproject">Entrez Nouvelle étiquette Nom</string>
+    <string name="updateproject_hint">Entrez le nom de l\'étiquette mise à jour</string>
+    <string name="updateproject_title">étiquette de mise à jour</string>
+    <string name="yesterday">Hier</string>
+    <string name="today">Aujourd\'hui</string>
+    <string name="task_silent_notification_placeholder_text_template">%1$s</string>
+    <string name="task_silent_text_notification_placeholder_text_template">%1$s</string>
+    <string name="task_share_todo">Liste est:</string>
+    <string name="task_silent_notification_list_summary">%1$d articles dans étiquette %2$s</string>
+    <string name="task_silent_notification_text_default">Tâche à %1$s</string>
+    <string name="task_silent_notification_text_summary">Étiquette %1$s</string>
+    <string name="task_silent_notification_ticker">Nouvelle tâche %1$s</string>
+    <string name="task_silent_notification_title_template">Tâche silencieuse: %1$s </string>
+    <string name="task_silent_text_notification_title_template">Tâche texte silencieux: %1$s</string>
+    <string name="timeselect">Sélectionnez le temps</string>
+    <string name="title_activity_add__expand">Ajouter comme nouvelle tâche</string>
+    <string name="tasks"> les tâches</string>
+    <string name="title_activity_bonjour_settings"> le réglage</string>
+    <string name="title_activity_home">Accueil</string>
+    <string name="title_activity_notes"> la note</string>
+    <string name="title_activity_project_manager">Label Manager</string>
+    <string name="title_activity_project_task">Étiquette Task</string>
+    <string name="prodelete_hint2">Que faire avec toutes les tâches</string>
+    <string name="prodelete_hint3">Déménager à</string>
+    <string name="prodelete_task1">Supprimer toutes les tâches en %1$s</string>
+    <string name="prodelete_task2">Déplacer toutes les tâches à une autre étiquette</string>
+    <string name="project">Étiquettes</string>
+    <string name="promotion_download">Télécharger maintenant !!\ \</string>
+    <string name="random_label">Étiquette aléatoire %1$d</string>
+    <string name="randomtask">Certaines tâches aléatoires</string>
+    <string name="start">Démarrer</string>
+    <string name="subtasks">Sous-tâches</string>
+    <string name="task_delete_successful">Tâche supprimé</string>
+    <string name="task_delete_unsuccessful">Désolé !! Impossible de supprimer la tâche. Veuillez réessayer</string>
+    <string name="task_desp">Gérez toutes vos tâches avec à faire des listes, des notes et des rappels</string>
+    <string name="task_expand_hint1">Pour ajouter sous-tâches, alarmes, notes cliquez sur le</string>
+    <string name="task_hint1">Déjeuner demain à 01h00</string>
+    <string name="task_share_done">Articles remplis sont:</string>
+    <string name="task_share">Tâche est  %1$s</string>
+    <string name="task_share_notes"> La Note</string>
+    <string name="task_share_rem">Rappel est réglé pour %1$s</string>
+    <string name="task_share_rem2">à %1$s  de l\'alarme de %2$s</string>
+    <string name="task_expand_hint2">bouton dans le coin le plus élevé</string>
+    <string name="task_hint">Entrez la tâche</string>
+    <string name="title_activity_version">Version</string>
+    <string name="someday">Un jour</string>
+    <string name="selected_count">%1$s sélectionné</string>
+    <string name="repeat1">Tous les jours</string>
+    <string name="repeat2">Tous les jours</string>
+    <string name="repeat3">Mensuel</string>
+    <string name="repeat4">Annuel</string>
+    <string name="repeatoff">Répétez De</string>
+    <string name="repeaton">Répétez Sur</string>
+    <string name="save">Sauvegarder</string>
+    <string name="savedialoguetitle">Sauvegarder %1$s?</string>
+    <string name="savedialoguetext">Vos modifications ne sont pas enregistrées</string>
+    <string name="prodelete_hint">Que faire avec toutes les tâches %1$s</string>
+    <string name="notask">Pour créer une tâche s\'il vous plaît appuyez sur le bouton ci-dessous </string>
+    <string name="more">Plus</string>
+    <string name="alldone0">Pas plus de tâches</string>
+    <string name="alldone1">Pas plus de tâches</string>
+    <string name="alldone2">Pas plus de tâches</string>
+    <string name="alldone3">Pas plus de tâches</string>
+    <string name="redo_task">Tâche restaurée</string>
+    <string name="task0">Entrez la tâche</string>
+    <string name="task1">Entrez la tâche</string>
+    <string name="task10">Entrez la tâche</string>
+    <string name="task11">Entrez la tâche</string>
+    <string name="task12">Entrez la tâche</string>
+    <string name="task13">Entrez la tâche</string>
+    <string name="task14">Entrez la tâche</string>
+    <string name="task15">Entrez la tâche</string>
+    <string name="task2">Entrez la tâche</string>
+    <string name="task3">Entrez la tâche</string>
+    <string name="task4">Entrez la tâche</string>
+    <string name="task5">Entrez la tâche</string>
+    <string name="task6">Entrez la tâche</string>
+    <string name="task7">Entrez la tâche</string>
+    <string name="task8">Entrez la tâche</string>
+    <string name="task9">Entrez la tâche</string>
+
+
+    <string-array name="pref_sync_frequency_titles">
+        <item>15 minutes</item>
+        <item>30 minutes</item>
+        <item>1 heure</item>
+        <item>3 heures</item>
+        <item>6 heures</item>
+        <item>Jamais</item>
+    </string-array>
+
+    <string-array name="pref_sync_frequency_values">
+        <item>15</item>
+        <item>30</item>
+        <item>60</item>
+        <item>180</item>
+        <item>360</item>
+        <item>-1</item>
+    </string-array>
+    <string-array name="pref_vibrate_titles">
+        <item>Défaut</item>
+        <item>Court</item>
+        <item>Longue</item>
+    </string-array>
+
+    <string-array name="pref_vibrate_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+    <string-array name="pref_example_list_titles">
+        <item>Toujours</item>
+        <item>Quand c\'est possible</item>
+        <item>Jamais</item>
+    </string-array>
+    <string-array name="pref_example_list_values">
+        <item>1</item>
+        <item>0</item>
+        <item>-1</item>
+    </string-array>
+    <string name="initial_project5">Casuale</string>
+    <string name="initial_task1">Hey, je suis une tâche! Vous pouvez définir des rappels, ajouter des notes et entrez todo articles en moi.</string>
+    <string name="initial_task3">Fait avec moi? Puis glissez-moi à gauche ou à droite pour supprimer</string>
+    <string name="initial_task2">Voulez-vous me modifier? Cliquez sur moi</string>
+    <string name="initial_task4">Voulez-vous ajouter à vos propres tâches? Cliquez sur ce bouton plus d\'orange ci-dessous</string>
+</resources>

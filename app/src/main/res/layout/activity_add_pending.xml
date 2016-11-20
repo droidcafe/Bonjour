@@ -1,0 +1,839 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="droid.nir.testapp1.Add_Pending">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/pmost_outer_inner"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+
+            <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/pending_cards"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="0dp"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_marginTop="10dp"
+                card_view:cardCornerRadius="0dp"
+                card_view:cardElevation="2dp"
+                card_view:cardPreventCornerOverlap="false"
+                card_view:cardUseCompatPadding="true"
+                card_view:contentPadding="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:text="@string/pwhat"
+                        android:id="@+id/pwhat"
+                        android:textAppearance="?android:textAppearanceLarge"
+                        android:textColor="@color/daccent"
+                        android:textStyle="normal" />
+
+                    <View
+                        android:id="@+id/titleline"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginBottom="4dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@color/lines_grey" />
+
+
+                    <EditText
+                        android:id="@+id/ptitle"
+                        style="@style/edit_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="@null"
+                        android:focusableInTouchMode="true"
+                        android:hint="@string/pdecision"
+                        android:padding="10dp"
+                        android:singleLine="true"
+                        android:textSize="20sp" />
+
+                    <EditText
+                        android:id="@+id/pdescription"
+                        style="@style/edit_text2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="@null"
+                        android:ems="10"
+                        android:focusableInTouchMode="true"
+                        android:hint="@string/pexpand"
+                        android:inputType="textMultiLine"
+                        android:padding="10dp"
+                        android:visibility="gone" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal"
+                        android:visibility="gone">
+
+                        <TextView
+                            style="@style/inner_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="0dp"
+                            android:layout_marginRight="0dp"
+                            android:text="@string/premtype"
+
+                            />
+
+
+                        <TextView
+                            android:id="@+id/pimportancespinner"
+                            style="@style/event_inner_text4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingRight="20dp"
+                            android:text="@string/important" />
+
+                    </LinearLayout>
+
+
+                    <Switch
+                        android:id="@+id/switch1"
+                        style="@style/inner_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="false"
+                        android:paddingLeft="10dp"
+                        android:showText="true"
+                        android:switchPadding="20dp"
+                        android:text="@string/plean"
+                        android:thumbTextPadding="2dp"
+                        android:visibility="gone" />
+
+
+                    <!-- android:textOff="No"
+                    android:textOn="Yes"-->
+                    <!-- <TextView
+                         android:layout_width="match_parent"
+                         android:layout_height="10dp"
+                         android:background="@drawable/line"
+                         android:text="" />
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="15dp"
+                        android:layout_height="1dp"
+                        android:background="@color/lines_grey" />-->
+
+                    <ImageView
+                        android:id="@+id/more"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:paddingRight="10dp"
+                        android:src="@drawable/ic_action_expand" />
+
+                    <ImageView
+                        android:id="@+id/less"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:padding="10dp"
+                        android:src="@drawable/ic_action_collapse"
+                        android:visibility="gone" />
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+
+            <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="0dp"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_marginTop="10dp"
+                card_view:cardCornerRadius="0dp"
+                card_view:cardElevation="2dp"
+                card_view:cardPreventCornerOverlap="false"
+                card_view:cardUseCompatPadding="true"
+                card_view:contentPadding="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:text="@string/pwhen"
+                        android:id="@+id/pwhen"
+                        android:textAppearance="?android:textAppearanceLarge"
+                        android:textColor="@color/daccent"
+                        android:textStyle="normal" />
+
+                    <View
+
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginBottom="4dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@color/lines_grey" />
+
+                    <LinearLayout
+                        android:id="@+id/addmin"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            style="@style/inner_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="0dp"
+                            android:layout_marginRight="0dp"
+                            android:text="@string/preci"
+
+                            />
+
+                        <EditText
+                            android:id="@+id/ptimemin"
+                            android:layout_width="50dp"
+                            android:layout_height="wrap_content"
+                            android:ems="10"
+                            android:inputType="number"
+
+                            />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/pending_inner_margintop"
+                            android:text="@string/pmin"
+                            android:textAppearance="?android:textAppearanceMedium" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/pselectedtime"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal"
+                        android:visibility="gone">
+
+                        <TextView
+                            style="@style/inner_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="0dp"
+                            android:layout_marginRight="0dp"
+                            android:text="@string/premindat"
+
+                            />
+
+                        <TextView
+                            android:id="@+id/pselcttime"
+                            style="@style/event_inner_text4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="0dp"
+                            android:layout_marginRight="0dp"
+                            android:paddingRight="20dp"
+                            android:text="" />
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/ptimemode"
+                        style="@style/zero"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:visibility="gone">
+
+                        <TextView
+                            style="@style/inner_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="0dp"
+                            android:text="@string/pdecide" />
+
+                        <TextView
+                            android:id="@+id/ptimespinner"
+                            style="@style/event_inner_text4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="0dp"
+                            android:layout_marginRight="0dp"
+                            android:paddingRight="20dp"
+                            android:text="@string/afew" />
+
+
+                    </LinearLayout>
+
+
+                    <ImageView
+                        android:id="@+id/more2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:paddingRight="10dp"
+                        android:src="@drawable/ic_action_expand" />
+
+                    <ImageView
+                        android:id="@+id/less2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:padding="10dp"
+                        android:src="@drawable/ic_action_collapse"
+                        android:visibility="gone" />
+
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+
+            <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="0dp"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_marginTop="10dp"
+                card_view:cardCornerRadius="0dp"
+                card_view:cardElevation="2dp"
+                card_view:cardPreventCornerOverlap="false"
+                card_view:cardUseCompatPadding="true"
+                card_view:contentPadding="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/pwhy"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:text="@string/pwhy"
+                        android:layout_alignParentLeft="true"
+                        android:textAppearance="?android:textAppearanceLarge"
+                        android:textColor="@color/daccent"
+                        android:textStyle="normal" />
+
+                    <ImageView
+                        android:id="@+id/more3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/pwhy"
+                        android:paddingRight="10dp"
+                        android:src="@drawable/ic_action_expand" />
+
+                    <View
+
+                        android:id="@+id/pwhyline"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_below="@id/pwhy"
+                        android:layout_marginBottom="4dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@color/lines_grey"
+                        android:visibility="gone" />
+
+
+                    <TextView
+                        android:id="@+id/pros"
+                        style="@style/inner_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/pwhyline"
+                        android:layout_marginLeft="0dp"
+                        android:layout_marginRight="0dp"
+                        android:text="@string/pros"
+                        android:visibility="gone" />
+
+                    <LinearLayout
+                        android:id="@+id/protextid"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/pros"
+                        android:orientation="vertical"
+                        android:visibility="gone"></LinearLayout>
+
+                    <Button
+                        android:id="@+id/paddpro"
+                        style="@style/inner_margin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_below="@id/protextid"
+                        android:layout_marginLeft="0dp"
+                        android:text="@string/addme"
+                        android:textColor="@color/titletext"
+                        android:visibility="gone" />
+
+                    <EditText
+                        android:id="@+id/ppro"
+                        style="@style/edit_text"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/protextid"
+                        android:layout_gravity="center"
+                        android:layout_toLeftOf="@id/paddpro"
+                        android:hint="@string/pfound"
+                        android:padding="10dp"
+                        android:visibility="gone" />
+
+
+                    <TextView
+                        android:id="@+id/cons"
+                        style="@style/inner_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/ppro"
+                        android:layout_marginLeft="0dp"
+                        android:layout_marginRight="0dp"
+                        android:text="@string/cons"
+                        android:visibility="gone" />
+
+
+                    <LinearLayout
+                        android:id="@+id/constextid"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/cons"
+                        android:layout_marginTop="0dp"
+                        android:orientation="vertical"></LinearLayout>
+
+                    <Button
+                        android:id="@+id/paddcon"
+                        style="@style/inner_margin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_below="@id/constextid"
+                        android:layout_marginLeft="0dp"
+                        android:text="@string/addme"
+                        android:textColor="@color/titletext"
+                        android:visibility="gone" />
+
+
+                    <EditText
+                        android:id="@+id/pcon"
+                        style="@style/edit_text"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/constextid"
+                        android:layout_gravity="center"
+                        android:layout_toLeftOf="@id/paddcon"
+                        android:hint="@string/pfound"
+                        android:padding="10dp"
+                        android:visibility="gone" />
+
+                    <ImageView
+                        android:id="@+id/less3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_below="@id/pcon"
+                        android:padding="10dp"
+                        android:src="@drawable/ic_action_collapse"
+                        android:visibility="gone" />
+
+                </RelativeLayout>
+
+            </android.support.v7.widget.CardView>
+
+
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:id="@+id/hh"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+
+                <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="0dp"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_marginTop="10dp"
+                    card_view:cardCornerRadius="0dp"
+                    card_view:cardElevation="2dp"
+                    card_view:cardPreventCornerOverlap="false"
+                    card_view:cardUseCompatPadding="true"
+                    card_view:contentPadding="10dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/phow"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="10dp"
+                            android:layout_alignParentLeft="true"
+                            android:text="@string/phow"
+                            android:textAppearance="?android:textAppearanceLarge"
+                            android:textColor="@color/daccent"
+                            android:textStyle="normal" />
+
+                        <ImageView
+                            android:id="@+id/more4"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/phow"
+                            android:layout_alignParentRight="true"
+                            android:paddingRight="10dp"
+                            android:src="@drawable/ic_action_expand" />
+
+
+                        <View
+
+                            android:id="@+id/howline"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_below="@id/phow"
+                            android:layout_marginBottom="4dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginTop="5dp"
+                            android:background="@color/lines_grey"
+                            android:visibility="gone" />
+
+
+                        <TextView
+                            android:id="@+id/premtype"
+                            style="@style/inner_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/howline"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="0dp"
+                            android:text="@string/premtype"
+                            android:visibility="gone" />
+
+
+                        <TextView
+                            android:id="@+id/preminderspinner"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignTop="@id/premtype"
+                            android:layout_below="@id/howline"
+                            android:layout_toRightOf="@id/premtype"
+                            android:paddingLeft="20dp"
+                            android:paddingRight="10dp"
+                            android:text="@string/anotonly"
+                            android:textAppearance="?android:textAppearanceMedium"
+                            android:textColor="@color/primary_dark"
+                            android:visibility="gone"
+
+                            />
+
+
+                        <TextView
+                            android:id="@+id/pdectype"
+                            style="@style/inner_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/premtype"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="0dp"
+                            android:text="@string/pdectype"
+                            android:visibility="gone" />
+
+
+                        <TextView
+                            android:id="@+id/pdecisionspinner"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignLeft="@id/preminderspinner"
+                            android:layout_alignTop="@id/pdectype"
+                            android:layout_below="@id/premtype"
+                            android:layout_toRightOf="@id/pdectype"
+                            android:paddingLeft="20dp"
+                            android:paddingRight="20dp"
+                            android:text="@string/buy"
+                            android:textAppearance="?android:textAppearanceMedium"
+                            android:textColor="@color/primary_dark"
+                            android:visibility="gone" />
+
+
+                        <EditText
+                            android:id="@+id/pother"
+                            style="@style/edit_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/pdectype"
+                            android:layout_gravity="center"
+                            android:hint="@string/pchoose"
+                            android:maxLines="1"
+                            android:padding="10dp"
+
+                            android:visibility="gone" />
+
+
+                        <LinearLayout
+                            android:id="@+id/pphonelayout"
+                            style="@style/zero"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/pother"
+                            android:orientation="horizontal"
+                            android:visibility="gone"
+
+                            >
+
+                            <TextView
+                                style="@style/inner_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="0dp"
+                                android:text="@string/pphone" />
+
+                            <EditText
+                                android:id="@+id/pextra0"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ems="10"
+                                android:inputType="phone" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/pweblayout"
+                            style="@style/zero"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/pphonelayout"
+                            android:orientation="horizontal"
+                            android:visibility="gone"
+
+                            >
+
+                            <TextView
+                                style="@style/inner_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="0dp"
+                                android:text="@string/pwebsite" />
+
+                            <EditText
+                                android:id="@+id/pextra1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ems="10"
+                                android:inputType="textWebEditText" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/pmailidlayout"
+                            style="@style/zero"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/pweblayout"
+                            android:orientation="horizontal"
+                            android:visibility="gone"
+
+                            >
+
+                            <TextView
+                                style="@style/inner_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="0dp"
+                                android:text="@string/pmailid" />
+
+                            <EditText
+                                android:id="@+id/pextra2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ems="10"
+                                android:inputType="textEmailAddress" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/ppricelayout"
+                            style="@style/zero"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/pmailidlayout"
+                            android:orientation="horizontal"
+                            android:visibility="gone"
+
+                            >
+
+                            <TextView
+                                style="@style/inner_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="0dp"
+                                android:text="@string/pprice" />
+
+                            <EditText
+                                android:id="@+id/pextra3"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ems="10"
+                                android:inputType="numberDecimal" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/paddresslayout"
+                            style="@style/zero"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ppricelayout"
+                            android:orientation="horizontal"
+                            android:visibility="gone"
+
+                            >
+
+                            <TextView
+                                style="@style/inner_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="0dp"
+                                android:text="@string/paddress" />
+
+                            <EditText
+                                android:id="@+id/pextra4"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ems="10"
+                                android:inputType="textPostalAddress" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/pfaxlayout"
+                            style="@style/zero"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/paddresslayout"
+
+                            android:orientation="horizontal"
+                            android:visibility="gone">
+
+                            <TextView
+                                style="@style/inner_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="0dp"
+                                android:text="@string/pfaxno" />
+
+                            <EditText
+                                android:id="@+id/pextra5"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ems="10"
+                                android:inputType="text" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/pshopnamelayout"
+                            style="@style/zero"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/pfaxlayout"
+                            android:orientation="horizontal"
+                            android:visibility="gone"
+
+                            >
+
+                            <TextView
+                                style="@style/inner_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="0dp"
+                                android:text="@string/pshopname" />
+
+                            <EditText
+                                android:id="@+id/pextra6"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ems="10"
+                                android:inputType="text" />
+                        </LinearLayout>
+
+
+                        <TextView
+                            android:id="@+id/pextrasspinner"
+                            android:layout_width="wrap_content"
+
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/pshopnamelayout"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="15dp"
+                            android:padding="10dp"
+                            android:text="@string/paddextra"
+                            android:textAppearance="?android:textAppearanceMedium"
+                            android:textColor="@color/primary_dark"
+                            android:visibility="gone"
+
+                            />
+
+                        <ImageView
+                            android:id="@+id/less4"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_below="@id/pextrasspinner"
+                            android:padding="10dp"
+                            android:src="@drawable/ic_action_collapse"
+                            android:visibility="gone" />
+
+
+                    </RelativeLayout>
+
+                </android.support.v7.widget.CardView>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        android:src="@drawable/ic_done_white_24dp" />
+
+</android.support.design.widget.CoordinatorLayout>

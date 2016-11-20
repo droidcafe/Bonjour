@@ -1,0 +1,392 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+
+    tools:context="droid.nir.testapp1.ShowEvent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/firstlayout">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_margin="20dp"
+                android:textSize="20sp"
+                android:layout_marginLeft="30dp"
+
+                android:text="@string/titlecome"
+                android:id="@+id/etitle"
+                android:textColor="@color/primary_text"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:id="@+id/titleview"
+                android:layout_height="1dp"
+                android:background="@color/lines_grey"
+                android:layout_below="@id/etitle"
+                android:layout_marginBottom="10dp"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_action_place"
+                android:id="@+id/elocimage"
+                android:layout_margin="20dp"
+                android:layout_marginTop="0dp"
+                android:layout_below="@id/titleview"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/elocimage"
+                android:text="@string/location"
+                android:paddingBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:id="@+id/elocation"
+                android:textAppearance="?android:textAppearanceMedium"
+                android:textColor="@color/accent"
+                android:layout_toRightOf="@id/elocimage"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_action_go_to_today"
+                android:id="@+id/edateimage"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="20dp"
+                android:layout_below="@id/elocimage"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/edateimage"
+                android:text="@string/date"
+                android:paddingBottom="5dp"
+                android:id="@+id/edate"
+                android:layout_marginLeft="10dp"
+                android:textAppearance="?android:textAppearanceMedium"
+                android:textColor="@color/accent"
+                android:layout_toRightOf="@id/edateimage"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_action_labels"
+                android:id="@+id/edoneimage"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="20dp"
+                android:layout_below="@id/edateimage"
+                android:visibility="gone"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/edoneimage"
+                android:text="Completed"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:layout_marginLeft="10dp"
+android:visibility="gone"
+                android:id="@+id/edone"
+                android:textAppearance="?android:textAppearanceMedium"
+                android:textColor="@color/accent"
+                android:layout_toRightOf="@id/edoneimage"/>
+
+
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_action_time"
+                android:id="@+id/etimeimage"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="20dp"
+                android:layout_below="@id/edoneimage"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/etimeimage"
+                android:text="@string/ewholeday"
+                android:paddingBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:id="@+id/eltimeedit"
+                android:visibility="gone"
+                android:textAppearance="?android:textAppearanceMedium"
+                android:textColor="@color/accent"
+                android:layout_toRightOf="@id/etimeimage"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/from"
+                android:layout_toRightOf="@id/etimeimage"
+                android:layout_alignBottom="@id/etimeimage"
+                android:layout_alignStart="@id/edate"
+                android:layout_alignLeft="@id/edate"
+                android:textAppearance="?android:textAppearanceSmall"
+                android:layout_marginTop="10dp"
+                android:visibility="gone"
+                android:id="@+id/etimefrom"
+                android:paddingLeft="10dp"
+                android:layout_marginLeft="20dp"
+
+                android:paddingBottom="10dp"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/from"
+                android:visibility="gone"
+                android:layout_below="@id/etimefrom"
+                android:layout_alignStart="@id/etimefrom"
+                android:layout_alignLeft="@id/etimefrom"
+                android:padding="10dp"
+
+                style="@style/event_inner_text2"
+                android:textColor="@color/accent"
+                android:id="@+id/efromdate"
+                android:layout_marginTop="-10dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/fromtime"
+                android:visibility="gone"
+                android:layout_below="@id/etimefrom"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                style="@style/event_inner_text3"
+                android:id="@+id/efromtime"
+                android:layout_marginTop="-10dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/to"
+                android:layout_below="@id/efromdate"
+                android:layout_alignStart="@id/edate"
+                android:layout_alignLeft="@id/edate"
+                android:textAppearance="?android:textAppearanceSmall"
+                android:visibility="gone"
+                android:id="@+id/etimeto"
+                android:paddingLeft="10dp"
+                android:layout_marginLeft="20dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="to"
+                android:visibility="gone"
+                android:layout_below="@id/etimeto"
+                android:layout_alignStart="@id/etimefrom"
+                android:layout_alignLeft="@id/etimefrom"
+                android:padding="10dp"
+                android:textColor="@color/accent"
+                style="@style/event_inner_text2"
+                android:id="@+id/etodate"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/totime"
+                android:layout_below="@id/etimeto"
+                android:visibility="gone"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                style="@style/event_inner_text3"
+                android:id="@+id/etotime"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/from"
+                android:layout_toRightOf="@id/etimeimage"
+                android:layout_alignBottom="@id/etimeimage"
+                android:layout_alignStart="@id/edate"
+                android:layout_alignLeft="@id/edate"
+                android:textAppearance="?android:textAppearanceSmall"
+                android:layout_marginTop="10dp"
+                android:visibility="visible"
+                android:id="@+id/etimefrom1"
+                android:paddingLeft="0dp"
+                android:layout_marginLeft="0dp"
+
+                android:paddingBottom="10dp"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/from"
+                android:visibility="visible"
+                android:layout_below="@id/etimefrom1"
+                android:padding="10dp"
+                style="@style/event_inner_text2"
+                android:textColor="@color/accent"
+                android:id="@+id/efromdate1"
+                android:layout_alignStart="@id/etimefrom1"
+                android:layout_alignLeft="@id/etimefrom1"
+                android:layout_marginTop="-10dp"
+                android:layout_marginLeft="-10dp"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/to"
+                android:layout_toRightOf="@id/etimefrom1"
+                android:layout_alignBottom="@id/etimeimage"
+                android:textAppearance="?android:textAppearanceSmall"
+
+                android:id="@+id/etimeto1"
+                android:layout_marginTop="10dp"
+                android:visibility="visible"
+
+                android:paddingLeft="10dp"
+                android:layout_marginLeft="60dp"
+
+                android:paddingBottom="10dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/to"
+                android:visibility="visible"
+                android:layout_below="@id/etimeto1"
+
+                android:padding="10dp"
+                android:textColor="@color/accent"
+                style="@style/event_inner_text2"
+                android:id="@+id/etodate1"
+                android:layout_marginTop="-10dp"
+
+                android:layout_alignStart="@id/etimeto1"
+                android:layout_alignLeft="@id/etimeto1"/>
+
+        </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/secondlayout">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_action_alarms"
+                    android:id="@+id/enotiimage"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="20dp"
+
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/enotiimage"
+                    android:text="@string/notification"
+                    android:paddingBottom="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:id="@+id/enotificationn"
+                    android:textAppearance="?android:textAppearanceMedium"
+                    android:textColor="@color/accent"
+                    android:layout_toRightOf="@id/enotiimage"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:textAppearanceMedium"
+                    android:id="@+id/enotifytime"
+                    android:layout_alignBottom="@id/enotiimage"
+                    android:paddingBottom="5dp"
+                    android:paddingRight="20dp"
+                    android:textColor="@color/primary_textt"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:text="10:30"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/noalarm"
+                    android:layout_below="@id/enotificationn"
+                    android:layout_alignStart="@id/enotificationn"
+                    android:layout_alignLeft="@id/enotificationn"
+                    android:padding="10dp"
+                    android:layout_marginLeft="30dp"
+                    style="@style/event_inner_text2"
+                    android:textColor="@color/primary_dark"
+                    android:id="@+id/ealarmset"/>
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_action_sort_by_size"
+                android:id="@+id/enotesimage"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="20dp"
+
+                />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:text="@string/note"
+                    android:paddingBottom="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:id="@+id/enotes"
+                    android:textAppearance="?android:textAppearanceMedium"
+                    android:textColor="@color/primary_text"
+                    android:layout_toRightOf="@id/enotesimage"/>
+                <View
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:id="@+id/lastline"
+                    android:layout_below="@id/enotes"
+                    android:layout_height="1dp"
+                    android:background="@color/lines_grey" />
+
+
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:visibility="gone"
+                android:gravity="center"
+                android:id="@+id/hiddentext"
+                />
+            />
+        </LinearLayout>
+        </ScrollView>
+
+
+</LinearLayout>

@@ -1,0 +1,114 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+
+    tools:context="droid.nir.testapp1.ShowList">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_margin="20dp"
+        android:textSize="20sp"
+        android:layout_marginLeft="30dp"
+
+        android:text="@string/titlecome"
+        android:id="@+id/listtitle"
+        android:textColor="@color/primary_text"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/event_inner_text"
+        android:id="@+id/lnotificationn"
+        android:layout_below="@id/listtitle"
+        android:layout_marginLeft="50dp"
+        android:text="@string/notification"
+        android:layout_marginBottom="30dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignBottom="@id/lnotificationn"
+        android:id="@+id/lnottime"
+
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_marginRight="20dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/event_inner_text"
+        android:id="@+id/ldate"
+        android:layout_below="@id/lnotificationn"
+        android:layout_marginLeft="50dp"
+        android:text="@string/date"
+        android:layout_marginBottom="30dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignBottom="@id/ldate"
+        android:id="@+id/ldateview"
+
+        android:layout_marginRight="20dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_below="@id/ldate"
+        android:layout_height="1dp"
+        android:id="@+id/firstline"
+        android:background="@color/lines_grey" />
+
+
+    <ListView
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="0dp"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:id="@+id/todolist"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:stackFromBottom="false"
+        android:transcriptMode="normal"
+        android:layout_below="@id/firstline"
+
+        />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text=""
+        android:layout_centerHorizontal="true"
+        android:visibility="gone"
+        android:id="@+id/hiddentext"
+        android:gravity="center"/>
+    />
+
+
+    <com.melnykov.fab.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="35dp"
+        android:layout_marginBottom="35dp"
+        android:src="@drawable/ic_pencil_white_24dp"
+        fab:fab_colorNormal="@color/laccent"
+        fab:fab_colorPressed="@color/accentpressed"
+        fab:fab_colorRipple="@color/ripple"/>
+</RelativeLayout>

@@ -1,0 +1,108 @@
+apply plugin: 'com.android.application'
+
+android {
+    signingConfigs {
+        config {
+            keyAlias 'Nirmal'
+            keyPassword 'neolight'
+            storeFile file('D:/apks/AndroidStudio.jks')
+            storePassword 'neolight'
+        }
+    }
+    compileSdkVersion 25
+    buildToolsVersion "25.0.0"
+    defaultConfig {
+        applicationId "droid.nir.testapp1"
+        targetSdkVersion 25
+        versionCode 9
+        versionName "2.0.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
+        }
+    }
+    productFlavors{
+        dev{
+            minSdkVersion 21
+
+        }
+        prod{
+            minSdkVersion 15
+
+        }
+    }
+
+
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+
+    // compile 'com.hudomju:swipe-to-dismiss-undo:1.0'
+    //Optional for built-in cards
+    //Optional for staggered grid view
+    //Optional for drag and drop
+
+    // compile 'com.github.tyczj:ExtendedCalendarView:58babe0071'
+    //floating buttons
+    // used in tut videos  https://android-arsenal.com/details/1/965
+    //for list makes it hidden  https://android-arsenal.com/details/1/824
+    //  compile 'com.github.shell-software:fab:1.1.2'
+    // main stuff  https://android-arsenal.com/details/1/1522
+    //for scroll bar
+    //compile 'com.github.manuelpeinado.fadingactionbar:fadingactionbar-abc:3.1.2'
+    // compile 'com.github.manuelpeinado.glassactionbar:glassactionbar-abc:0.3.0'
+    // compile 'com.github.ksoichiro:android-observablescrollview:1.5.2'
+    //material dialogues
+    //   compile 'com.oguzdev:CircularFloatingActionMenu:1.0.2'
+
+    //from here for noveue
+
+
+    compile('com.weiwangcn.betterspinner:library-material:1.1.0') {
+        exclude group: 'com.android.support', module: 'appcompat-v7'
+    }
+
+
+
+    compile project(':library')
+    compile 'com.github.alamkanak:android-week-view:1.2.3'
+    compile 'com.github.citux:datetimepicker:0.1.2'
+    compile 'com.github.marcohc:robotocalendarview:1.1.0'
+    compile 'com.prolificinteractive:material-calendarview:0.6.1'
+    compile 'com.balysv:material-ripple:1.0.2'
+    compile 'com.github.jiahuanyu:CircleTimerView:62c7742622'
+    compile 'com.getbase:floatingactionbutton:1.9.1'
+    compile 'com.android.support:appcompat-v7:25.0.0'
+    compile 'com.android.support:recyclerview-v7:25.0.0'
+    compile 'com.android.support:cardview-v7:25.0.0'
+    compile 'com.android.support:design:25.0.0'
+    compile 'com.jakewharton:butterknife:7.0.1'
+    compile 'com.melnykov:floatingactionbutton:1.3.0'
+    compile 'de.hdodenhof:circleimageview:1.3.0'
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile 'com.android.support:percent:25.0.0'
+    compile 'com.wnafee:vector-compat:1.0.5'
+    compile 'com.telly:mrvector:0.2.0'
+    compile 'com.timehop.stickyheadersrecyclerview:library:0.4.3'
+    compile 'com.facebook.stetho:stetho:1.4.1'
+    compile 'eu.davidea:flexible-adapter:4.2.0'
+ //   compile 'com.google.android.gms:play-services-analytics:9.8.0'
+    compile 'com.android.support:support-v4:25.0.0'
+
+    compile 'com.google.android.gms:play-services-auth:9.8.0'
+    compile 'com.google.android.gms:play-services-maps:9.8.0'
+
+
+    compile 'com.google.firebase:firebase-core:9.8.0'
+    compile 'com.google.firebase:firebase-auth:9.8.0'
+    compile 'com.google.firebase:firebase-messaging:9.8.0'
+    compile 'com.google.firebase:firebase-crash:9.8.0'
+    compile 'com.google.firebase:firebase-invites:9.8.0'
+
+}
+
+apply plugin: 'com.google.gms.google-services'

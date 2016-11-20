@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Bucket List</string>
+    <string name="action_settings"> Impostazioni</string>
+    <string name="action">Peform azione</string>
+    <string name="delete">cancellare</string>
+    <string name="deleted">Soppresso</string>
+    <string name="dialogtitle">titolo</string>
+    <string name="done">Fatto</string>
+    <string name="drawer_close">Chiudere</string>
+    <string name="drawer_open">aperto</string>
+    <string name="edit">Modifica</string>
+    <string name="events">Evento</string>
+    <string name="gotodate">Vai a data</string>
+    <string name="home">Casa</string>
+    <string name="main_description">Non ci sono attività create per today.To creare uno clicca sul pulsante Aggiungi sotto</string>
+    <string name="newdecision">Creare nuova decisione</string>
+    <string name="title">Bonjour</string>
+    <string name="newevent">Crea nuovo evento</string>
+    <string name="newreminder">Creare un nuovo promemoria</string>
+    <string name="newlist">Crea nuovo per fare la lista</string>
+    <string name="pendingdecisions">In attesa di decisioni</string>
+    <string name="refresh">rinfrescare</string>
+    <string name="reminders">i promemoria</string>
+    <string name="share">Quota</string>
+    <string name="title_activity_about">Di</string>
+    <string name="title_activity_help">Aiuto</string>
+    <string name="aalarmnot">allarme + notifica</string>
+    <string name="acustomrange">Selezionare un intervallo di tempo</string>
+    <string name="add">aggiungere</string>
+    <string name="acustomtime">Selezionare un tempo personalizzato</string>
+    <string name="addme">Aggiungimi</string>
+    <string name="afew">In pochi minuti</string>
+    <string name="address">indirizzo</string>
+    <string name="ahalftime">Mezz\'ora prima</string>
+    <string name="anotif">Nessuna notifica</string>
+    <string name="anotonly">solo la comunicazione</string>
+    <string name="atenmin">10 minuti prima</string>
+    <string name="awholeday">Giorno intero</string>
+    <string name="buy">acquistare</string>
+    <string name="call">chiamata</string>
+    <string name="cons">contro:</string>
+    <string name="custom">usanza</string>
+    <string name="doo">Fare</string>
+    <string name="eventtitle">titolo dell\'evento</string>
+    <string name="faxno">Fax</string>
+    <string name="from">da</string>
+    <string name="fromtime">Dal momento</string>
+    <string name="important">importante</string>
+    <string name="location">posizione</string>
+    <string name="mailid">E-mail identificativo utente</string>
+    <string name="normal">normale</string>
+    <string name="notes">aggiungere note</string>
+    <string name="notify">notificare</string>
+    <string name="paddextra">Aggiungere un elemento in più</string>
+    <string name="paddress">indirizzo:</string>
+    <string name="pchoose">Scegli di condividere?</string>
+    <string name="pdecide">Decidere in:</string>
+    <string name="pdecision">Decisione in poche parole</string>
+    <string name="pdectype">Tipo Decisione:</string>
+    <string name="pexpand">Cura per espandere</string>
+    <string name="pfaxno">Fax:</string>
+    <string name="wholeday">Giorno intero</string>
+    <string name="website">sito web</string>
+    <string name="watch">guardare</string>
+    <string name="versionno">versione 1.0.1</string>
+    <string name="ttype">Digitare una voce di elenco</string>
+    <string name="tttile">titolo</string>
+    <string name="totime">per ora</string>
+    <string name="todolists">Per fare le liste</string>
+    <string name="to">a</string>
+    <string name="tcreatenot">Creazione di notifica</string>
+    <string name="shopname">Shop Name</string>
+    <string name="setalarm">Imposta sveglia :</string>
+    <string name="send">inviare</string>
+    <string name="sell">vendere</string>
+    <string name="say">dire</string>
+    <string name="remove">rimuovere</string>
+    <string name="rights">Tutti i diritti riservati</string>
+    <string name="pfound">Trovato uno nuovo?</string>
+    <string name="phow">Come ?</string>
+    <string name="phone">nessun telefono</string>
+    <string name="play">giocare</string>
+    <string name="plean">Pendente verso:</string>
+    <string name="pmailid">Mail ID:</string>
+    <string name="pmin">minuti</string>
+    <string name="pphone">nessun telefono : </string>
+    <string name="pprice">Prezzo : </string>
+    <string name="price">Prezzo</string>
+    <string name="pros">pro:</string>
+    <string name="pwebsite">sito web</string>
+    <string name="pwhat">Che cosa ?</string>
+    <string name="pwhen">Quando ?</string>
+    <string name="pwhy">Perché?</string>
+    <string name="pwhynot">Perchè no ?</string>
+    <string name="title_activity_add__event2">Crea nuovo evento</string>
+    <string name="title_activity_add__pending">Creare una nuova decisione</string>
+    <string name="title_activity_add__todo_list">Creare un nuovo per fare la lista</string>
+    <string name="preci">Più precisamente a:</string>
+    <string name="premindat">Mi ricordano a</string>
+    <string name="premtype">tipo Reminder</string>
+    <string name="pshopname">Negozio Nome:</string>
+    <string name="description">Descrizione</string>
+    <string name="notification">notifica</string>
+    <string name="create">creare</string>
+    <string name="cancel">ANNULLA</string>
+    <string name="deletewarn">Il todo list verrà eliminato in modo permanente</string>
+    <string name="pheadtohead">Testa a testa</string>
+    <string name="pprobig">Pro superano i contro;)</string>
+    <string name="aalaonly">solo allarme</string>
+    <string name="nodecision">Nessuna tale in attesa della decisione presente</string>
+    <string name="pconsare">contro sono</string>
+    <string name="pconbig">Contro superano i pro :(</string>
+    <string name="pdeadline">Scadenza</string>
+    <string name="pdecideat">Devono decidere in</string>
+    <string name="pprosare">pro sono</string>
+    <string name="pprosame">Pro e contro sono gli stessi :)</string>
+    <string name="remtype">tipo Reminder</string>
+    <string name="invalidate">Data non valida</string>
+    <string name="notitle">Nessun titolo fornito</string>
+    <string name="alarmset">allarme impostato</string>
+    <string name="date">data</string>
+    <string name="deletionfailed">Siamo spiacenti! Cancellazione non riuscita</string>
+    <string name="deletionsucess">Soppressione di successo</string>
+    <string name="edeletewarn">L\'evento sarà cancellato definitivamente .DO si desidera procedere?</string>
+    <string name="ewhole">Si tratta di un evento per l\'intera giornata</string>
+    <string name="ewholeday">Evento giorno intero</string>
+    <string name="enolocation">Nessuna località specificata</string>
+    <string name="eto">a</string>
+    <string name="eeventform">Evento è da</string>
+    <string name="event">evento</string>
+    <string name="noalarmset">Nessun set di allarme</string>
+    <string name="noalarm">Nessun allarme</string>
+    <string name="noevent">No such presente Evento</string>
+    <string name="nonotificationset">Nessun insieme di notifica</string>
+    <string name="note">Note</string>
+    <string name="pending">In attesa della decisione</string>
+    <string name="remainder">promemoria</string>
+    <string name="shareusing">Condividi con</string>
+    <string name="todolist">Lista di cose da fare</string>
+    <string name="itemslist">elementi nell\'elenco</string>
+    <string name="nolistitem">Scusate! Vuoto per fare la lista</string>
+    <string name="notodolist">Spiacente! Nessun tale elenco di fare disponibile</string>
+    <string name="tdeletewarn">L\'elenco di fare sarà cancellato definitivamente .DO si desidera procedere?</string>
+    <string name="thereare">Ci sono</string>
+    <string name="titlecome">Titolo viene qui</string>
+    <string name="nopending">Nessuna decisione attesa Creato</string>
+    <string name="noreminder">Siamo spiacenti! Nessun promemoria disponibili</string>
+    <string name="pnoprocon">Nessun pro e contro a disposizione</string>
+    <string name="rdeletewarn">Il promemoria verrà eliminato definitivamente. Vuoi continuare?</string>
+    <string name="rdecidedby">Devono essere deciso dal</string>
+    <string name="refreshing">rinfrescante</string>
+    <string name="shouldi">dovrei</string>
+    <string name="nodesp">Nessuna descrizione specificato</string>
+    <string name="noevents">Nessun evento Creati</string>
+    <string name="nolists">Non ci sono per fare le liste Creato</string>
+    <string name="noof">numero di elementi nella lista</string>
+    <string name="noreminders">Nessun promemoria creati</string>
+    <string name="youhave">Avete</string>
+    <string name="rnewreminder">Creare un nuovo promemoria</string>
+    <string name="remtitle">Inserisci titolo promemoria</string>
+    <string name="newtodolist">Inserisci di nuovo da fare elemento della lista</string>
+    <string name="ok">ok</string>
+    <string name="Delete">CANCELLA</string>
+    <string name="nodate">Spiacente! Nessun data selezionata</string>
+    <string name="ecustom">Evento avrà inizio alle</string>
+    <string name="choosedate">Scegliere una data</string>
+    <string name="ehalf">Evento avrà inizio in mezz\'ora</string>
+    <string name="emptytodolist">Vuoto Per fare voce dell\'Elenco</string>
+    <string name="eten">Evento avrà inizio in 10 minuti</string>
+    <string name="go">Andare</string>
+    <string name="nocustom">Nessuna attività create per questo day.To crearne uno clicca sul pulsante più in basso</string>
+    <string name="ddeletewarn">La decisione in attesa verranno eliminati in modo permanente .DO si desidera procedere?</string>
+    <string name="about">Di</string>
+    <string name="feedback">retroazione</string>
+    <string name="help">Aiuto</string>
+    <string name="rateus">noi Vota</string>
+    <string name="eventmoto">Non perdere mai un evento</string>
+    <string name="hcreateevent">Per creare un nuovo evento click sul segno più nella schermata principale e selezionare il secondo pulsante da sinistra</string>
+    <string name="hcreatepending">Per creare una nuova decisione in sospeso fare clic sul segno più nella schermata principale e selezionare il primo pulsante da sinistra</string>
+    <string name="hcreatereminder">Per creare un nuovo promemoria, fare clic sul segno più nella schermata principale e selezionare il pulsante quarta sinistra</string>
+    <string name="hcreatetodolist">Per creare un nuovo elenco, fare clic sul segno più nella schermata principale e selezionare il terzo pulsante da sinistra</string>
+    <string name="todolistmoto">Dimenticare come dimenticare</string>
+    <string name="skiphelp">Salta Aiuto</string>
+    <string name="remindermoto">Essere sempre in tempo</string>
+    <string name="pendingmoto">Prendere le decisioni migliori</string>
+    <string name="moto">Perché tutto conta ...</string>
+    <string name="illustration"><u>Visualizza Illustration</u></string>
+    <string name="howtopending">Di più su decisioni in sospeso</string>
+    <string name="howtoreminder">Di più su promemoria</string>
+    <string name="howtolist">Ulteriori informazioni per fare le liste</string>
+    <string name="howtoevent">di più sugli eventi</string>
+    <string name="update">aggiornamento</string>
+    <string name="sharetext">Scopri la nuova applicazione Bonjour - Decidere, Eventi, promemoria e per fare le liste in un unico luogo. Provalo subito !! \n https://play.google.com/store/apps/details?id=droid.nir.testapp1</string>
+    <string name="skip">saltare</string>
+    <string name="next">Il prossimo</string>
+    <string name="DElete">cancellare %1$s</string>
+    <string name="action_clear">PULIRE</string>
+    <string name="action_dismiss">RESPINGERE</string>
+    <string name="action_later">IN UN\'ORA</string>
+    <string name="action_reply">Rispondere</string>
+    <string name="action_share">Condividere</string>
+    <string name="add_expand">Aggiungere in modalità espansa</string>
+    <string name="alarmoff">Allarme Via</string>
+    <string name="alarmon">Allarme Su</string>
+    <string name="completed">Completato</string>
+    <string name="custom_date">Seleziona la data</string>
+    <string name="events_desp">Non perdere mai un evento</string>
+    <string name="decision_maker">Decisionista</string>
+    <string name="decision_desp">Prendere le decisioni migliori</string>
+    <string name="deleteproject_title">Prendere le decisioni migliori</string>
+    <string name="initial_project0">Tutti</string>
+    <string name="initial_project1">Personale</string>
+    <string name="initial_project2">Commissioni</string>
+    <string name="initial_project3">Film / TV per guardare</string>
+    <string name="initial_project4">Lavoro</string>
+    <string name="managepro">Creare ed eliminare le etichette al di sotto</string>
+    <string name="nextweek">La prossima settimana</string>
+    <string name="no">No</string>
+    <string name="noproname">Etichetta non può essere vuoto</string>
+    <string name="noprotask">Nessuna attività per %1$s!! Per creare clic sul pulsante più in basso</string>
+    <string name="pickpro">Selezionare un\'etichetta</string>
+    <string name="dateselect">Seleziona la data</string>
+    <string name="notification_summray">la sintesi delle notifiche</string>
+    <string name="addproject">Nuovo nome di etichetta</string>
+    <string name="addproject_hint">Inserire il nuovo nome di etichetta</string>
+    <string name="addproject_new_title">Crea nuova etichetta</string>
+    <string name="addproject_title">Aggiungere l\'etichetta</string>
+    <string name="addsubtasks">Inserisci un\'attività secondaria</string>
+    <string name="app_desp">Dimenticate come dimenticare</string>
+    <string name="deleteproject">Etichetta sarà permenantely cancellato. Non si desidera procedere ?</string>
+    <string name="pref_header_general">Generale</string>
+    <string name="pref_header_notifications">notifiche</string>
+    <string name="pref_header_tasks">Compiti</string>
+    <string name="pref_ringtone_silent">Silenzioso</string>
+    <string name="pref_title_light">Leggero</string>
+    <string name="pref_title_new_task_notifications">notifiche Task</string>
+    <string name="pref_title_project_default">etichetta di default</string>
+    <string name="pref_title_ringtone">Suoneria di notifica</string>
+    <string name="pref_title_task_vibrate_type">tipo di Vibrazione</string>
+    <string name="pref_title_vibrate">Vibrare</string>
+    <string name="tommorow">Domani</string>
+    <string name="undo">DISFARE</string>
+    <string name="updateproject">Inserisci nuovo nome di etichetta</string>
+    <string name="updateproject_hint">Inserire il nome dell\'etichetta aggiornato</string>
+    <string name="updateproject_title">label Aggiornamento</string>
+    <string name="yesterday">Ieri</string>
+    <string name="today"> Oggi</string>
+    <string name="task_silent_notification_placeholder_text_template">%1$s</string>
+    <string name="task_silent_text_notification_placeholder_text_template">%1$s</string>
+    <string name="task_share_todo">List è:</string>
+    <string name="task_silent_notification_list_summary">%1$d elementi in etichetta %2$s</string>
+    <string name="task_silent_notification_text_default">Compito a %1$s</string>
+    <string name="task_silent_notification_text_summary">Etichetta %1$s</string>
+    <string name="task_silent_notification_ticker">Nuova attività %1$s</string>
+    <string name="task_silent_notification_title_template">Task silenzioso: %1$s</string>
+    <string name="task_silent_text_notification_title_template">Compito di testo in silenzio: %1$s</string>
+    <string name="tasks">Compiti</string>
+    <string name="timeselect">Seleziona il tempo</string>
+    <string name="title_activity_add__expand">Aggiungi come nuova attività</string>
+    <string name="title_activity_bonjour_settings"> impostazioni</string>
+    <string name="title_activity_home">Casa</string>
+    <string name="title_activity_notes">la nota</string>
+    <string name="title_activity_project_manager">etichetta Gestire</string>
+    <string name="title_activity_project_task">Compiti etichetta</string>
+    <string name="prodelete_hint2">Cosa fare con tutti i compiti</string>
+    <string name="prodelete_hint3">Spostarsi</string>
+    <string name="prodelete_task1">Eliminare tutte le attività in %1$s</string>
+    <string name="prodelete_task2">Spostare tutte le attività ad un\'altra etichetta</string>
+    <string name="project">Etichette</string>
+    <string name="promotion_download">Scaricare ora !!\ \</string>
+    <string name="random_label">Etichetta casuale %1$d</string>
+    <string name="randomtask">Alcuni compito casuale</string>
+    <string name="start">Inizio</string>
+    <string name="subtasks">sottocompiti</string>
+    <string name="task_delete_successful">Task cancellato con successo</string>
+    <string name="task_delete_unsuccessful">Spiacente !! Impossibile eliminare compito. Riprova</string>
+    <string name="task_desp">Gestione di tutte le faccende con to-do list, note e promemoria</string>
+    <string name="task_expand_hint1">Per aggiungere sottoattività, gli allarmi, le note cliccare sul</string>
+    <string name="task_expand_hint2">Per aggiungere sottoattività, gli allarmi, le note cliccare sul</string>
+    <string name="task_hint">Inserisci il compito</string>
+    <string name="task_hint1">Il pranzo di domani a 1:00</string>
+    <string name="task_share">Compito è %1$s</string>
+    <string name="task_share_done">Articoli completati sono:</string>
+    <string name="task_share_notes"> La Nota</string>
+    <string name="task_share_rem">Promemoria è fissato per il %1$s</string>
+    <string name="task_share_rem2">a %1$s %2$s allarme</string>
+    <string name="title_activity_version">Versione</string>
+    <string name="someday">Un giorno</string>
+    <string name="selected_count">%1$s selezionato</string>
+    <string name="repeat1">Quotidiano</string>
+    <string name="repeat2">settimanalmente</string>
+    <string name="repeat3">Mensile</string>
+    <string name="repeat4">Annuale</string>
+    <string name="save">Salvare</string>
+    <string name="savedialoguetitle">Salvare %1$s ?</string>
+    <string name="savedialoguetext">Le modifiche non vengono salvate</string>
+    <string name="repeatoff">Ripetere  via</string>
+    <string name="repeaton">Ripetere  Sopra</string>
+    <string name="prodelete_hint">Cosa fare con tutti i compiti %1$s</string>
+    <string name="notask">Per creare un\'attività premere il tasto + in basso</string>
+    <string name="more">Di Più</string>
+    <string name="alldone0">Nessun altro compiti</string>
+    <string name="alldone2">Nessun altro compiti</string>
+    <string name="alldone1">Nessun altro compiti</string>
+    <string name="alldone3">Nessun altro compiti</string>
+    <string name="redo_task">Compito Restaurato</string>
+    <string name="task0">Inserisci il compito</string>
+    <string name="task1">Inserisci il compito</string>
+    <string name="task10">Inserisci il compito</string>
+    <string name="task11">Inserisci il compito</string>
+    <string name="task12">Inserisci il compito</string>
+    <string name="task13">Inserisci il compito</string>
+    <string name="task14">Inserisci il compito</string>
+    <string name="task15">Inserisci il compito</string>
+    <string name="task2">Inserisci il compito</string>
+    <string name="task3">Inserisci il compito</string>
+    <string name="task4">Inserisci il compito</string>
+    <string name="task5">Inserisci il compito</string>
+    <string name="task6">Inserisci il compito</string>
+    <string name="task8">Inserisci il compito</string>
+    <string name="task7">Inserisci il compito</string>
+    <string name="task9">Inserisci il compito</string>
+
+    <string-array name="pref_sync_frequency_titles">
+        <item>15 minuti</item>
+        <item>30 minuti</item>
+        <item>1 ora</item>
+        <item>3 ore</item>
+        <item>6 ore</item>
+        <item>Mai</item>
+    </string-array>
+
+    <string-array name="pref_sync_frequency_values">
+        <item>15</item>
+        <item>30</item>
+        <item>60</item>
+        <item>180</item>
+        <item>360</item>
+        <item>-1</item>
+    </string-array>
+    <string-array name="pref_vibrate_titles">
+        <item>Predefinito</item>
+        <item>Corto</item>
+        <item>Lungo</item>
+    </string-array>
+
+    <string-array name="pref_vibrate_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+    <string-array name="pref_example_list_titles">
+        <item>Sempre</item>
+        <item>Quando possibile</item>
+        <item>Mai</item>
+    </string-array>
+    <string-array name="pref_example_list_values">
+        <item>1</item>
+        <item>0</item>
+        <item>-1</item>
+    </string-array>
+    <string name="initial_project5">Casuale</string>
+    <string name="initial_task1">Hey, sono un compito! È possibile impostare promemoria, aggiungere note e inserire todo elementi dentro di me.</string>
+    <string name="initial_task2">Vuoi modificare me? Clicca su di me</string>
+    <string name="initial_task3">Fatto con me? Poi mi strisciare a sinistra oa destra per eliminare</string>
+    <string name="initial_task4">Vuoi aggiungere ai propri compiti? Fare clic su tale arancione più pulsante qui sotto</string>
+</resources>

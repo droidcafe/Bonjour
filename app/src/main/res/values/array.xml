@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="time_arrays1">
+        <item>In a Few minutes</item>
+        <item>Select a custom Time</item>
+    </array>
+
+    <array name="todo_listitem_array1">
+        <item>Edit</item>
+        <item>Remove</item>
+    </array>
+
+    <array name="notify_time_array1">
+        <item>No Notification</item>
+        <item>10 minutes before</item>
+        <item>Half an hour before</item>
+        <item>Custom</item>
+    </array>
+    <array name="time_arrays21">
+        <item>Whole Day</item>
+        <item>Select a Time range</item>
+    </array>
+    <array name="decision_arrays1">
+        <item>Buy</item>
+        <item>Do</item>
+        <item>Send</item>
+        <item>Watch</item>
+        <item>Say</item>
+        <item>Play</item>
+        <item>Call</item>
+        <item>Custom</item>
+    </array>
+    <array name="extras_arrays1">
+
+        <item>Phone</item>
+        <item>Website</item>
+        <item>Mail Id</item>
+        <item>Price</item>
+        <item>Address</item>
+        <item>Fax</item>
+        <item>Shop Name</item>
+    </array>
+    <array name="importance_arrays1">
+        <item>Important</item>
+        <item>Normal</item>
+    </array>
+    <array name="remainder_arrays1">
+        <item>Notification Only</item>
+        <item>Alarm+ Notification</item>
+    </array>
+
+
+    <array name="time_arrays">
+        <item>@string/afew</item>
+        <item>@string/acustomtime</item>
+    </array>
+
+    <array name="todo_listitem_array">
+        <item>@string/edit</item>
+        <item>@string/remove</item>
+    </array>
+
+    <array name="notify_time_array">
+        <item>@string/anotif</item>
+        <item>@string/atenmin</item>
+        <item>@string/ahalftime</item>
+        <item>@string/custom</item>
+    </array>
+    <array name="time_arrays2">
+        <item>@string/wholeday</item>
+        <item>@string/acustomrange</item>
+    </array>
+    <array name="decision_arrays">
+        <item>@string/buy</item>
+        <item>@string/doo</item>
+        <item>@string/send</item>
+        <item>@string/watch</item>
+        <item>@string/say</item>
+        <item>@string/play</item>
+        <item>@string/call</item>
+        <item>@string/custom</item>
+
+    </array>
+    <array name="extras_arrays">
+        <item>@string/phone</item>
+        <item>@string/website</item>
+        <item>@string/mailid</item>
+        <item>@string/price</item>
+        <item>@string/address</item>
+        <item>@string/faxno</item>
+        <item>@string/shopname</item>
+
+
+    </array>
+    <array name="importance_arrays">
+        <item>@string/important</item>
+        <item>@string/normal</item>
+    </array>
+    <array name="remainder_arrays">
+        <item>@string/anotonly</item>
+        <item>@string/aalarmnot</item>
+    </array>
+
+    <array name="days_array">
+        <item>@string/today</item>
+        <item>@string/tommorow</item>
+        <item>@string/nextweek</item>
+        <item>@string/custom</item>
+    </array>
+
+    <array name="time_array">
+        <item>@string/t9</item>
+        <item>@string/t12</item>
+        <item>@string/t18</item>
+        <item>@string/custom</item>
+    </array>
+
+    <array name="repeat_array">
+        <item>@string/repeat1</item>
+        <item>@string/repeat2</item>
+        <item>@string/repeat3</item>
+        <item>@string/repeat4</item>
+    </array>
+
+    <array name="initial_project">
+        <item>@string/initial_project1</item>
+        <item>@string/initial_project2</item>
+        <item>@string/initial_project3</item>
+        <item>@string/initial_project4</item>
+        <item>@string/initial_project5</item>
+    </array>
+
+    <array name="initial_task">
+        <item>@string/initial_task1</item>
+        <item>@string/initial_task2</item>
+        <item>@string/initial_task3</item>
+        <item>@string/initial_task4</item>
+    </array>
+    <integer-array name="initial_task_reminder">
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+    </integer-array>
+
+    <integer-array name="initial_task_notes">
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+    </integer-array>
+
+    <integer-array name="initial_task_project">
+        <item>1</item>
+        <item>2</item>
+        <item>4</item>
+        <item>5</item>
+    </integer-array>
+
+    <integer-array name="initial_task_subtasks">
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+    </integer-array>
+
+    <string-array name="task_option">
+        <item>@string/prodelete_task1</item>
+        <item>@string/prodelete_task2</item>
+    </string-array>
+
+
+</resources>

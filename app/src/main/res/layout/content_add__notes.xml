@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="droid.nir.testapp1.noveu.Tasks.Add_Notes"
+    android:orientation="vertical"
+    tools:showIn="@layout/activity_add__notes">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/note"
+        style="@style/task_sub_head"
+        android:id="@+id/tasksubhead"
+        />
+
+    <EditText
+        android:layout_alignParentTop="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@null"
+        android:padding="10dp"
+        android:id="@+id/notes"
+        android:gravity="top|left"
+        />
+
+</LinearLayout>

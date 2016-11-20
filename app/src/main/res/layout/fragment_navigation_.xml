@@ -1,0 +1,147 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/icons"
+    android:orientation="vertical"
+    android:theme="@style/Theme.AppCompat.Dialog"
+    tools:context="droid.nir.testapp1.Navigation_Fragment">
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+   >
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView2"
+        android:src="@drawable/koala250"
+        android:padding="0dp"
+        android:adjustViewBounds="true"
+       />
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imageView2"
+        android:padding="10dp"
+        android:layout_margin="10dp"
+        android:src="@drawable/ic_home_black_24dp"
+        android:layout_alignParentLeft="true"
+        android:id="@+id/homeimage"
+        />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/home"
+        android:layout_toRightOf="@id/homeimage"
+        android:id="@+id/navhome"
+        android:textColor="#000000"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:padding="10dp"
+        android:layout_margin="10dp"
+        android:layout_below="@id/imageView2"/>
+
+
+<ImageView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/homeimage"
+    android:padding="10dp"
+    android:layout_margin="10dp"
+    android:src="@drawable/ic_hourglass_empty_black_24dp"
+    android:layout_alignParentLeft="true"
+    android:id="@+id/decisionimage"
+    />
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="@string/pendingdecisions"
+    android:layout_toRightOf="@id/decisionimage"
+    android:id="@+id/navdecision"
+    android:textColor="#000000"
+    android:textAppearance="?android:textAppearanceMedium"
+    android:padding="10dp"
+    android:layout_margin="10dp"
+    android:layout_below="@id/homeimage"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/decisionimage"
+        android:padding="10dp"
+        android:layout_margin="10dp"
+        android:src="@drawable/ic_event_black_24dp"
+        android:layout_alignParentLeft="true"
+        android:id="@+id/eventimage"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/events"
+        android:layout_toRightOf="@id/eventimage"
+        android:id="@+id/navevent"
+        android:textColor="#000000"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:padding="10dp"
+        android:layout_margin="10dp"
+        android:layout_below="@id/decisionimage"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/eventimage"
+        android:padding="10dp"
+        android:layout_margin="10dp"
+        android:src="@drawable/ic_format_list_bulleted_black_24dp"
+        android:layout_alignParentLeft="true"
+        android:id="@+id/todolistimage"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/todolists"
+        android:layout_toRightOf="@id/eventimage"
+        android:id="@+id/navtodolist"
+        android:textColor="#000000"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:padding="10dp"
+        android:layout_margin="10dp"
+        android:layout_below="@id/eventimage"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/todolistimage"
+        android:padding="10dp"
+        android:layout_margin="10dp"
+        android:src="@drawable/ic_alarm_add_black_24dp"
+        android:layout_alignParentLeft="true"
+        android:id="@+id/remainderimage"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/reminders"
+        android:layout_toRightOf="@id/eventimage"
+        android:id="@+id/navremainder"
+        android:textColor="#000000"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:padding="10dp"
+        android:layout_margin="10dp"
+        android:layout_below="@id/todolistimage"/>
+
+
+
+
+</RelativeLayout>
+
+
+
+
+
+</ScrollView>

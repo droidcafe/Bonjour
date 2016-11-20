@@ -1,0 +1,57 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context="droid.nir.testapp1.trial_calendar2">
+
+
+    <com.prolificinteractive.materialcalendarview.MaterialCalendarView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/calendarView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        app:mcv_arrowColor="@color/primary_dark"
+        app:mcv_showOtherDates="false"
+        />
+
+
+    <TextView
+        android:id="@+id/calendarbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/calendarView"
+        android:padding="16dp"
+        android:text="@string/go"
+        android:layout_marginLeft="10dp"
+        android:textColor="@color/pink"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/calendarcancelbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/calendarView"
+        android:layout_marginRight="10dp"
+        android:layout_toLeftOf="@id/calendarbutton"
+        android:padding="16dp"
+        android:text="@string/cancel"
+        android:textStyle="bold" />
+
+    <!--
+     app:mcv_selectionColor="color"
+     app:mcv_headerTextAppearance="style"
+     app:mcv_dateTextAppearance="style"
+     app:mcv_weekDayTextAppearance="style"
+     app:mcv_weekDayLabels="array"
+     app:mcv_monthLabels="array"
+     app:mcv_tileSize="dimension"
+     app:mcv_firstDayOfWeek="enum"
+     app:mcv_leftArrowMask="drawable"
+     app:mcv_rightArrowMask="drawable"-->
+
+
+</RelativeLayout>

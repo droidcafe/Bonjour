@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/contexttext"
+        android:textColor="#000000"
+        android:text="@string/deletewarn"
+        android:textSize="17sp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_margin="10dp"
+        />
+
+    <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/contexttext"
+        android:id="@+id/taskoptions"
+        android:hint="@string/prodelete_hint2"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        app:met_floatingLabel="normal" />
+
+    <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/taskoptions"
+        android:id="@+id/moveto"
+        android:hint="@string/prodelete_hint3"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:visibility="gone"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        app:met_floatingLabel="normal" />
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/newpro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/moveto"
+        android:layout_marginLeft="10dp"
+        android:visibility="gone"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="10dp">
+
+        <EditText
+            android:id="@+id/new_task"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:hint="@string/addproject"
+            android:padding="10dp"
+            android:paddingBottom="20dp"
+            android:singleLine="true"
+             />
+    </android.support.design.widget.TextInputLayout>
+
+</RelativeLayout>

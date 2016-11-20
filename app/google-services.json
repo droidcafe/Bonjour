@@ -1,0 +1,45 @@
+{
+  "project_info": {
+    "project_number": "598790910183",
+    "firebase_url": "https://bonjour-2f68d.firebaseio.com",
+    "project_id": "bonjour-2f68d",
+    "storage_bucket": "bonjour-2f68d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:598790910183:android:ebc9eb0f0163cd5c",
+        "android_client_info": {
+          "package_name": "droid.nir.testapp1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "598790910183-b2hf1trmtmpsj0n2elrmkpkj6armrisp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDx8PsBuLVPR4DQdjuOFcWhReP_r-o3tl4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-75333040-1"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

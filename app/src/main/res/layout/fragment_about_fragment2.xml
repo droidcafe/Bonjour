@@ -1,0 +1,55 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/about_primary2"
+    android:orientation="vertical"
+    tools:context="droid.nir.testapp1.noveu.welcome.about.AboutFragment1">
+
+
+    <TextView
+        android:id="@+id/about_desp"
+        style="@style/about_desp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/task_desp" />
+
+    <TextView
+        android:id="@+id/about_title"
+        style="@style/about_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/about_desp"
+        android:text="@string/tasks" />
+
+
+    <ImageView
+        android:id="@+id/man"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/about_title"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/promo_tasks1" />
+
+    <ImageView
+        android:id="@+id/promo_subpic1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/promo_task6" />
+
+
+    <ImageView
+        android:id="@+id/promo_subpic2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/promo_tasks5" />
+
+
+    <ImageView
+        android:id="@+id/promo_subpic3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/promo_task4" />
+
+</RelativeLayout>

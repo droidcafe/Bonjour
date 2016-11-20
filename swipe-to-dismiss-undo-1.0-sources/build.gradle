@@ -1,0 +1,2 @@
+configurations.create("default")
+artifacts.add("default", file('swipe-to-dismiss-undo-1.0-sources .jar'))

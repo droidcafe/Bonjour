@@ -1,0 +1,694 @@
+<resources>
+    <string name="app_name">Bucket List</string>
+    <string name="title_activity_main" translatable="false">MainActivity</string>
+    <string name="title">Bucket List</string>
+    <string name="hello_world" translatable="false">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="dialogtitle">Title</string>
+        <string name="main_description">There are no tasks created for today.To create one please click the add button below
+    </string>
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
+    <string name="drawer_open">Open</string>
+    <string name="drawer_close">Close</string>
+
+
+    <string name="action">Perform action</string>
+    <string name="undobar_sample_message" translatable="false">Action performed.</string>
+
+    <string name="title_activity_add__pending">Create a new decision</string>
+    <string name="country_prompt" translatable="false">Choose A Country</string>
+    <string name="title_activity_trial" translatable="false">trialActivity</string>
+    <string name="done">Done</string>
+    <string name="title_activity_main_activity2" translatable="false">MainActivity2Activity</string>
+    <string name="title_activity_trial_calendar2" translatable="false">trial_calendar2</string>
+    <string name="title_activity_trial_calendar3" translatable="false">trial_calendar3</string>
+    <string name="title_activity_add_event" translatable="false">AddEvent</string>
+    <string name="title_activity_add__event2">Create new event</string>
+    <string name="title_activity_alarm" translatable="false">AlarmActivity</string>
+    <string name="title_activity_alaram_receiver2" translatable="false">AlaramReceiver2</string>
+    <string name="title_activity_add__todo_list">Create ToDo List</string>
+    <string name="title_activity_header_trials" translatable="false">Header_trials</string>
+    <string name="title_activity_header_trial2" translatable="false">header_trial2</string>
+
+
+    <string name="loren_ipsum" translatable="false">tristique.</string>
+    <string name="title_activity_floating_trials" translatable="false">floating_trials</string>
+    <string name="title_activity_xx" translatable="false">xx</string>
+    <string name="title_activity_custom_date" translatable="false">CustomDate</string>
+    <string name="title_activity_show_list" translatable="false">ShowList</string>
+    <string name="title_activity_show_event" translatable="false">ShowEvent</string>
+    <string name="title_activity_all_decisions" translatable="false">AllDecisions</string>
+    <string name="title_activity_all_events" translatable="false">AllEvents</string>
+    <string name="title_activity_all_lists" translatable="false">AllLists</string>
+    <string name="title_activity_show_decision" translatable="false">ShowDecision</string>
+    <string name="title_activity_all_remainders" translatable="false">AllRemainders</string>
+    <string name="title_activity_trial_flaoting" translatable="false">trial_flaoting</string>
+    <string name="title_activity_trial_alarm" translatable="false">trial_alarm</string>
+    <string name="title_activity_show_remainder" translatable="false">ShowRemainder</string>
+
+    <string name="deleted">Deleted</string>
+    <string name="undo">UNDO</string>
+    <string name="title_activity_about">About</string>
+    <string name="title_activity_help">Help</string>
+
+
+    <string name="imageclicking" translatable="false">Please Dont Click the image. It is only for design purposes. Click on buttons below image for navigation.</string>
+
+    <string name="delete">Delete</string>
+    <string name="share">Share</string>
+    <string name="feedback">FeedBack</string>
+    <string name="help">Help</string>
+    <string name="edit">Edit</string>
+    <string name="rateus">Rate us</string>
+    <string name="about">About</string>
+    <string name="gotodate">Go to date</string>
+    <string name="home">Home</string>
+    <string name="pendingdecisions">Pending Decisions</string>
+    <string name="events">Events</string>
+    <string name="reminders">Reminders</string>
+    <string name="todolists">To-do Lists</string>
+    <string name="refresh">Refresh</string>
+    <string name="newdecision">Create new decision</string>
+    <string name="newevent">Create new event</string>
+    <string name="newlist">Create new todo list</string>
+    <string name="newreminder">Create new reminder</string>
+    <string name="remove">Remove</string>
+    <string name="custom">Custom</string>
+    <string name="create">CREATE</string>
+    <string name="cancel">CANCEL</string>
+    <string name="ok">OK</string>
+    <string name="Delete">DELETE</string>
+    <string name="go">GO</string>
+
+    <string name="versionno">Version 2.0.0</string>
+    <string name="rights">All rights reserved</string>
+    <string name="eventtitle">Event title</string>
+    <string name="addsubtasks">Enter a subtask</string>
+    <string name="location">Location</string>
+    <string name="wholeday">Whole Day</string>
+    <string name="from">From</string>
+    <string name="to">To</string>
+    <string name="notify">Notify</string>
+    <string name="setalarm">Set Alarm  </string>
+    <string name="notes">Add Notes</string>
+    <string name="notification">Notification</string>
+    <string name="description">Description</string>
+
+
+    <string name="afew">In a Few minutes</string>
+    <string name="acustomtime">Select a custom Time</string>
+    <string name="anotif">No Notification</string>
+    <string name="atenmin">10 minutes before</string>
+    <string name="ahalftime">Half an hour before</string>
+    <string name="anotonly">Notification Only</string>
+    <string name="aalaonly">Alarm Only</string>
+    <string name="aalarmnot">Alarm+ Notification</string>
+    <string name="important">Important</string>
+    <string name="normal">Normal</string>
+    <string name="awholeday">Whole Day</string>
+    <string name="acustomrange">Select a Time range</string>
+    <string name="fromtime">From time</string>
+    <string name="fromdate">From date</string>
+    <string name="totime">To time</string>
+
+
+    <string name="buy">Buy</string>
+    <string name="sell">Sell</string>
+    <string name="call">Call</string>
+    <string name="doo">Do</string>
+    <string name="send">Send</string>
+    <string name="watch">Watch</string>
+    <string name="say">Say</string>
+    <string name="play">Play</string>
+    <string name="phone">Phone No</string>
+    <string name="website">Website</string>
+    <string name="mailid">Email id</string>
+    <string name="price">Price</string>
+    <string name="address">Address</string>
+    <string name="faxno">Fax</string>
+    <string name="shopname">Shop Name</string>
+
+
+    <string name="tttile">Title</string>
+    <string name="tcreatenot">Create Notification</string>
+    <string name="ttype">Type a list item</string>
+    <string name="add">Add</string>
+
+
+    <string name="pwhat">What ?</string>
+    <string name="pwhen">When ?</string>
+    <string name="phow">How ?</string>
+    <string name="pwhy">Why ?</string>
+    <string name="pdecision">Decision in a nutshell</string>
+    <string name="pexpand">Care to expand</string>
+    <string name="premtype">Reminder Type :</string>
+    <string name="plean">Leaning Towards : </string>
+    <string name="pdecide">Have to decide in : </string>
+    <string name="preci">More Precisely in : </string>
+    <string name="pwhynot">Why not ?</string>
+    <string name="premindat">Remind me at</string>
+    <string name="pros">Pros : </string>
+    <string name="cons">Cons : </string>
+    <string name="pfound">Found a New One ?</string>
+    <string name="addme">Add me</string>
+    <string name="pdectype">Decision type : </string>
+    <string name="paddextra">Add an extra element</string>
+    <string name="pphone">Phone No : </string>
+    <string name="pwebsite">Website : </string>
+    <string name="pmailid">Mail id : </string>
+    <string name="pprice">Price : </string>
+    <string name="paddress">Address : </string>
+    <string name="pfaxno">Fax No : </string>
+    <string name="pshopname">Shop Name : </string>
+    <string name="pmin">minutes</string>
+    <string name="pchoose">Choose to share ?</string>
+    <string name="pheadtohead">Head-to-Head</string>
+    <string name="pprobig">Pros outnumber the cons ;)</string>
+    <string name="pconbig">Cons outnumber the pros  :(</string>
+    <string name="pprosame">Pros and cons are the same :)</string>
+    <string name="pdeadline">DeadLine</string>
+    <string name="pdecideat">Have to decide at</string>
+    <string name="remtype">Reminder type</string>
+    <string name="pprosare">Pros are </string>
+    <string name="pconsare">Cons are </string>
+    <string name="nodecision">No such pending decision present</string>
+
+
+    <string name="deletewarn">The todo list will be permanently deleted</string>
+
+    <string name="notitle">No title specified</string>
+    <string name="invalidate">Invalid Date</string>
+
+    <string name="event">Event</string>
+    <string name="todolist">To-do list</string>
+    <string name="remainder">Reminder</string>
+    <string name="pending">Pending Decision</string>
+
+
+    <string name="titlecome">Title comes here</string>
+    <string name="enolocation">No location specified</string>
+    <string name="date">Date</string>
+    <string name="ewholeday">Whole day event</string>
+    <string name="noalarm">No alarm</string>
+    <string name="note">Notes</string>
+    <string name="noevent">No such Event present</string>
+    <string name="nonotificationset">No notification set</string>
+    <string name="eeventform">Event is from </string>
+    <string name="eto"> to </string>
+    <string name="ewhole">It is a whole day event on </string>
+    <string name="shareusing">Share using</string>
+    <string name="edeletewarn">The event will be deleted permanently .Do you wish to proceed?</string>
+    <string name="deletionsucess">Deletion Successful</string>
+    <string name="deletionfailed">Sorry!Deletion Failed</string>
+    <string name="alarmset">Alarm set</string>
+    <string name="noalarmset">No alarm set</string>
+    <string name="nolistitem">Sorry! Empty to do list</string>
+    <string name="notodolist">Sorry!No such to do list  available</string>
+    <string name="tdeletewarn">The to do list will be deleted permanently .Do you wish to proceed?</string>
+    <string name="thereare">There are</string>
+    <string name="itemslist"> items in the list </string>
+
+
+    <string name="noreminder">Sorry! No such reminder  available</string>
+
+    <string name="rdecidedby">Have to be decided by</string>
+    <string name="rdeletewarn">The reminder will be deleted permanently . Do you wish to proceed?</string>
+
+    <string name="nopending">To create a new pending decision click the + button below</string>
+    <string name="noevents">To create a new event click the + button below</string>
+    <string name="nolists">No ToDo Lists Created</string>
+    <string name="noreminders">No Reminders Created</string>
+    <string name="shouldi">Should I </string>
+    <string name="pnoprocon">No pros and cons available</string>
+    <string name="refreshing">Refreshing</string>
+    <string name="youhave">You have</string>
+    <string name="rnewreminder">Create new reminder</string>
+    <string name="noof">number of items in list</string>
+
+    <string name="nodesp">No description specified</string>
+    <string name="remtitle">Enter reminder title</string>
+    <string name="newtodolist">Enter new to do list item</string>
+    <string name="emptytodolist">Empty To do List item</string>
+
+    <string name="choosedate">Choose a date</string>
+    <string name="nodate"> Sorry!No Date Selected</string>
+    <string name="eten">Event will start in 10 minutes</string>
+    <string name="ehalf">Event will start in half an hour</string>
+    <string name="ecustom">Event will start at</string>
+    <string name="ddeletewarn">The pending decision will be deleted permanently .Do you wish to proceed?</string>
+    <string name="nocustom">No tasks created for this day.To create one please click on the plus button below</string>
+
+
+    <string name="pendinghelp_1" translatable="false">Having a hard time deciding whether to buy that cute dress you saw on Amazon or
+        message the cute girl from your class ? We all face this dilemma of being confused and not knowing what to do.
+        This feature is perfect for those moments . Create a pending decision using this feature, logically add pros and cons ,analyse your
+        options and then decide. \n Sometimes time is the best teacher. Give yourself some time before deciding. For not forgetting about
+        it create reminders, add alarms for a convienient later time. Also Bucket List makes it easier to share the decision with others
+        so that you can take their advice before choosing.
+ </string>
+
+    <string name="pendingtitle_2" translatable="false">Viewing all your decisions</string>
+    <string name="pendinghelp_2" translatable="false">To go to decisions page click on hamburger button on top left corner in home page
+        , then choose Pending Decision from navigation screen. \n
+    Here all your saved decisions would be listed. </string>
+
+    <string name="pendingtitle_3" translatable="false">Creating a new decision</string>
+    <string name="pendinghelp_3" translatable="false">To add a new decision first go to decisions page by clicking on the hamburger button on top  left most corner on home page,
+        then choose Pending Decisions. From the decisions page click on the plus button on bottom corner. \n A new page will be opened containing
+    various fields regarding your decision. You can set reminders, add alarm, add pros and cons for your decision all from this page.
+        You can also add extra items like phone no, email ids, websites etc related to your decision.
+     Once you are done click on the tick button on bottom corner to save your changes. Your new decision would be added to
+    the list of decisions in decision page after a few seconds. \n
+    To discard your changes just press back button before saving of the decision</string>
+
+    <string name="pendingtitle_4" translatable="false">Viewing a decision</string>
+    <string name="pendinghelp_4" translatable="false">To view an decision first go to decisions page by clicking on the hamburger button on top  left most corner on home page,
+        then choose Pending Decisions. Here you can see a list of saved decisions. To view any decision just click on the particular decision card.</string>
+
+    <string name="pendingtitle_5" translatable="false">Sharing or deleting a particular decision</string>
+    <string name="pendinghelp_5" translatable="false">To share or delete an decision go to the particular page of that decision by clicking on it from list of decisions. Then to share
+        click of share icon on the title bar, then choose your medium of sharing from the dialogue. To delete click on the delete icon
+        next to the share icon on the title bar. Remember  deletion is final and cannot be retraced back.</string>
+
+
+
+
+    <string name="eventhelp_1" translatable="false"> Have an upcoming birthday party, wedding,
+        anniversary celebrations ? Finding it hard to keep track of all upcoming events or prone to forget important dates?
+        Then this feature is the perfect solution for you. Add all your upcoming parties, weddings, anniversairies. You can set reminders for any
+        events of your choice. You can also  add alarms prior to events to make sure you do not forget about them.
+   </string>
+    <string name="eventtitle_3" translatable="false">Creating a new event</string>
+    <string name="eventhelp_3" translatable="false">To add a new event first go to events page by  clicking on the hamburger button on top  left most corner on home page,
+        then choose Events. From the events page click on the plus button on bottom corner. \n A new page will be opened containing
+    various fields regarding your event. You can set reminders, add alarm, add location for your event all from this page.
+     Once you are done click on the tick button on bottom corner to save your changes. Your new event would be added to
+    the list of events in event page after a few seconds. \n
+    To discard your changes just press back button before saving of the event</string>
+
+    <string name="eventtitle_2" translatable="false">Viewing all your events</string>
+    <string name="eventhelp_2" translatable="false">To go to events page click on hamburger button on top left corner in home page
+        , then choose Events from navigation screen. \n
+    Here all your saved events would be listed. </string>
+
+    <string name="eventtitle_4" translatable="false">Viewing an event</string>
+    <string name="eventhelp_4" translatable="false">To view an event first go to events page click on the hamburger button on top  left most corner on home page,
+        then choose Events. Here you can see a list of saved events. To view any event just click on the particular event card. </string>
+
+    <string name="eventtitle_5" translatable="false">Sharing or deleting a particular event</string>
+    <string name="eventhelp_5" translatable="false">To share or delete an event go to the particular page of that event by clicking on it from list of events. Then to share
+        click of share icon on the title bar, then choose your medium of sharing from the dialogue. To delete click on the delete icon
+        next to the share icon on the title bar. Remember deletion is final and cannot be retraced back.
+     </string>
+
+
+    <string name="taskhelp_1" translatable="false">Having a lot on your mind? Lots of things to get done?
+        Well this feature is most suited for you. Tasks let you create new todo items, assign a label for them
+    ,create alarms,add notes and add subtasks within a task. </string>
+
+
+    <string name="tasktitle_2" translatable="false">Viewing all your tasks</string>
+    <string name="taskhelp_2" translatable="false">To go to tasks page click on hamburger button on top left corner in home page
+        , then choose Tasks from navigation screen. \n
+    Here all your saved tasks would be listed.</string>
+
+    <string name="tasktitle_3" translatable="false">Creating a new task</string>
+    <string name="taskhelp_3" translatable="false">From the home page press the plus button on bottom corner. A new page opens where you can add
+    your task and set a reminder for it. Also you can assign a label for it for easy organisation of your tasks.
+        To add subtasks, notes, set alarms or repeat options click on expand option in
+    top right corner to open the expanded view. Once you have added all details press the plus sign in one step page or the tick button in
+    expanded page to save the task.</string>
+
+    <string name="tasktitle_4" translatable="false">Viewing an task</string>
+    <string name="taskhelp_4" translatable="false">To view an task from the list of task in home page just click on it</string>
+
+
+    <string name="tasktitle_6" translatable="false">Sharing a task</string>
+    <string name="taskhelp_6" translatable="false">To share a task click on it from the home page. Then click on the more button right of task name.
+    Then a dialogue pops up with option to share or delete the task . Click on share button and choose the sharing medium from the next dialogue.</string>
+
+    <string name="tasktitle_5" translatable="false">Editing  a task</string>
+    <string name="taskhelp_5" translatable="false">To edit a task click on it from the home page and in the details page edit or change any
+    detail you wish. Change the task name, edit the notes, add or remove subtask , change labels etc. After changes have been made
+    click on tick button on bottom corner of the page.</string>
+
+    <string name="tasktitle_7" translatable="false">Deleting a task</string>
+    <string name="taskhelp_7" translatable="false">To delete a task either swipe the particular task to left or right from home page or
+    go to the particular page of task by clicking on it. Then click on the more button right of task name.
+    Then a dialogue pops up with option to share or delete the task . Click on delete option. </string>
+
+
+    <string name="labelhelp_1" translatable="false">Labels help you to organise your task. You can categorise your tasks into different labels like
+    work, to-dos, personal etc thus helping to bring order within your tasks. Also it can help you to find your task much easier.
+    Each task can be assigned one label during creation which can be edited any time. You can set one label to be default
+    label in settings which will be the default label when creating new tasks. You can change that by clicking on it and choosing
+    your new label</string>
+    <string name="labeltitle_2" translatable="false">Viewing all your labels</string>
+    <string name="labelhelp_2" translatable="false">To go to labels page click on hamburger button on top left corner in home page
+        , then choose Labels from navigation screen. \n
+    Here all your labels would be listed.</string>
+
+    <string name="labeltitle_3" translatable="false">Creating a new label</string>
+    <string name="labelhelp_3" translatable="false">To add a new label first go to labels page by  clicking on the hamburger button on top  left most corner on
+        home page, then choose Labels. From the labels page click on the plus button on bottom corner.</string>
+
+    <string name="labeltitle_4" translatable="false">Viewing all tasks in a label</string>
+    <string name="labelhelp_4" translatable="false">To view all tasks in a label first go to label manager page click on the hamburger button on top  left most corner on home page,
+        then choose Labels. Here you can see a list of labels. To view all tasks in any particular label just click on it.</string>
+
+    <string name="labeltitle_5" translatable="false">Adding a task to a particular label</string>
+    <string name="labelhelp_5" translatable="false">To add a task to a particular label either go to the label page from label manager and press the plus button
+    on bottom right or while adding new task change the label to the desired one by clicking on label text and choosing your
+    desired option.</string>
+
+    <string name="labeltitle_6" translatable="false">Editing a label</string>
+    <string name="labelhelp_6" translatable="false">To edit a label click go to label manager and click on more button under the label name. Then click on the
+    pencil image to edit your label.</string>
+    <string name="labeltitle_7" translatable="false">Deleting a label</string>
+    <string name="labelhelp_7" translatable="false">To delete a label go to label manager and click on more button under the label name. Then click on the
+    delete button to edit your label. Here you option to decide what to do with the tasks in the label. Either you can delete all tasks in
+    that label or assign a new or existing label for those tasks. If no option is chosen then all tasks in that label with be labeless.
+    </string>
+
+
+    <string name="labeltitle_8" translatable="false">Setting default label</string>
+    <string name="labelhelp_8" translatable="false">To set a default label go to settings and click on general. Then click on Default Label and choose your
+        desired label. This will be used as default option while creating new tasks. You can change label by clicking on it and chosing your new
+        label.
+    </string>
+
+
+    <string name="title_activity_first_screen" translatable="false">FirstScreen</string>
+
+    <string name="moto">Because everything counts...</string>
+    <string name="pendingmoto">Make the best decisions</string>
+    <string name="eventmoto">Never again miss an event</string>
+    <string name="todolistmoto">Forget how to forget</string>
+    <string name="remindermoto">Always be on time</string>
+    <string name="skiphelp">Skip Help</string>
+    <string name="helpviewcard" translatable="false">x</string>
+    <string name="pendinglooklike" translatable="false">x</string>
+    <string name="hcreatepending">To create a new pending decision click on the plus sign in the home screen and select the first button from left</string>
+    <string name="hcreateevent">To create a new event click on the plus sign in the home screen and select the second button from left</string>
+    <string name="hcreatetodolist">To create a new list click on the plus sign in the home screen and select the third button from left</string>
+    <string name="hcreatereminder">To create a new reminder click on the plus sign in the home screen and select the fourth button from left</string>
+    <string name="heventlooklike" translatable="false"> x</string>
+    <string name="hreminderlooklike" translatable="false">x</string>
+    <string name="htodolooklike" translatable="false">x</string>
+    <string name="heventview" translatable="false">x</string>
+    <string name="hreminderview" translatable="false">x</string>
+    <string name="htodoview" translatable="false">x</string>
+    <string name="hpendeg" translatable="false">x</string>
+
+    <string name="hpendeg2" translatable="false">x</string>
+    <string name="heveneg" translatable="false">x</string>
+    <string name="htodoeg" translatable="false">x</string>
+    <string name="hremeg" translatable="false">x</string>
+    <string name="htodoeg2" translatable="false">x</string>
+    <string name="title_activity_help_main" translatable="false">help_main</string>
+
+
+    <string name="howtopending">More about pending decisions</string>
+    <string name="howtoevent">More about events</string>
+    <string name="howtolist">More about to-do lists</string>
+    <string name="howtoreminder">More about reminders</string>
+
+    <string name="illustration"><u>View Illustration</u></string>
+
+    <string name="sharetext">Check out the new app Bucket List - Decisions , Events, Reminders and todo lists all in one place.
+        Try it NOW!!\n https://play.google.com/store/apps/details?id=droid.nir.testapp1
+</string>
+
+    <string name="update">Update</string>
+
+    <string name="skip">Skip</string>
+
+    <string name="next">Next</string>
+    <string name="title_activity_all_list" translatable="false">All_list</string>
+
+    <string name="task0">Mail final draft</string>
+    <string name="task1">Lunch date tommorow 11pm</string>
+    <string name="task2">Buy groceries</string>
+    <string name="task3">Download Game of Thrones</string>
+    <string name="task4">Copy Bio assignment</string>
+    <string name="task5">Call Mom</string>
+    <string name="task6">Finish debugging of code</string>
+    <string name="task7">Go to mall</string>
+    <string name="task8">Share BucketList with friends</string>
+    <string name="task9">Buy gift for anniversary</string>
+    <string name="task10">Finsih watching Modern Family</string>
+    <string name="task11">Recharge mobile</string>
+    <string name="task12">Pay electricity bill</string>
+    <string name="task13">Pay tution fees</string>
+    <string name="task14">Pick up milk</string>
+    <string name="task15">Wish Peter Happy Bday</string>
+
+
+    <string name="today">Today</string>
+    <string name="yesterday">Yesterday</string>
+    <string name="tommorow">Tomorrow</string>
+    <string name="nextweek">Next-Week</string>
+    <string name="custom_date">Select date</string>
+    <string name="someday">Some Day</string>
+
+
+    <string name="alldone0">Yippee! All done</string>
+    <string name="alldone1">Hurray! All done</string>
+    <string name="alldone2">Thats all folks! </string>
+    <string name="alldone3">Whew! Done for Now </string>
+    <string name="notask">To create a task please press the + button below</string>
+    <string name="title_activity_home">Home</string>
+    <string name="title_activity_add_minimal" translatable="false"></string>
+
+    <string name="add_expand">Add in expanded mode</string>
+    <string name="task_hint1">Lunch tomorrow at 1:00</string>
+    <string name="title_activity_add__expand">Add as new task</string>
+    <string name="subtasks">SubTasks</string>
+    <string name="alarmoff">Alarm Off</string>
+    <string name="alarmon">Alarm On</string>
+    <string name="repeatoff">Repeat Off</string>
+    <string name="repeaton">Repeat On</string>
+
+    <string name="path_today" translatable="false">M7,10H12V15H7M19,19H5V8H19M19,3H18V1H16V3H8V1H6V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,2 0 0,0 19,3Z
+</string>
+    <string name="title_activity_add__reminder" translatable="false">Add_Reminder</string>
+    <string name="t9" translatable="false">9:00</string>
+    <string name="t12" translatable="false">12:00</string>
+    <string name="t18" translatable="false">18:00</string>
+    <string name="title_activity_project_manager">Label Manager</string>
+    <string name="managepro">Create and Delete your labels below</string>
+
+    <string name="initial_project0">All</string>
+    <string name="initial_project1">Personal</string>
+    <string name="initial_project2">To-Do</string>
+    <string name="initial_project3">Movies/TV to watch</string>
+    <string name="initial_project4">Work</string>
+    <string name="initial_project5">Random</string>
+
+    <string name="addproject">New label name</string>
+    <string name="addproject_hint">Enter the new label name</string>
+    <string name="addproject_title">Add label</string>
+    <string name="addproject_new_title">Create new label</string>
+
+    <string name="updateproject_title">Update label</string>
+    <string name="updateproject_hint">Enter the updated label name</string>
+    <string name="updateproject">Enter New Label Name</string>
+
+    <string name="deleteproject_title">Delete Label</string>
+    <string name="deleteproject">Label will be permenantly deleted. Do you wish to proceed?</string>
+
+    <string name="DElete">Delete %1$s</string>
+    <string name="noproname">Label  can\'t be empty</string>
+
+    <string name="dateselect">Select date</string>
+    <string name="timeselect">Select time</string>
+
+    <string name="pickpro">Select a label</string>
+    <string name="randomtask">Some task</string>
+    <string name="randomevent">Some event</string>
+    <string name="title_activity_add__sub_tasks" translatable="false">Add_SubTasks</string>
+    <string name="title_activity_notes">Notes</string>
+    <string name="title_activity_add__notes" translatable="false">Add_Notes</string>
+    <string name="title_activity_home_nav" translatable="false">HomeNav</string>
+
+    <string name="navigation_drawer_open" translatable="false">Open navigation drawer</string>
+    <string name="navigation_drawer_close" translatable="false">Close navigation drawer</string>
+
+    <string name="tasks">Tasks</string>
+    <string name="completed">Completed</string>
+    <string name="project">Labels</string>
+    <string name="title_activity_project_task">Label Task</string>
+
+    <string name="noprotask">No tasks for %1$s!! To create one please click plus button below</string>
+    <string name="selected_count">%1$s selected</string>
+
+    <string name="prodelete_task1">Delete all tasks in %1$s</string>
+    <string name="prodelete_task2">Move all tasks to another label</string>
+
+    <string name="prodelete_hint">What to do with all tasks in %1$s</string>
+    <string name="prodelete_hint2">What to do with all tasks</string>
+    <string name="prodelete_hint3">Move to</string>
+    <string name="title_activity_bonjour_settings">Settings</string>
+
+    <!-- Strings related to Settings -->
+
+    <!-- Example General settings -->
+    <string name="pref_header_general">General</string>
+
+    <string name="pref_title_social_recommendations" translatable="false">Enable social recommendations</string>
+    <string name="pref_description_social_recommendations" translatable="false">Recommendations for people to contact
+        based on your message history
+    </string>
+
+    <string name="pref_title_display_name" translatable="false">Display name</string>
+    <string name="pref_default_display_name" translatable="false">John Smith</string>
+
+    <string name="pref_title_add_friends_to_messages" translatable="false">Add friends to messages</string>
+    <string name="pref_title_project_default">Default label</string>
+    <string-array name="pref_example_list_titles">
+        <item>Always</item>
+        <item>When possible</item>
+        <item>Never</item>
+    </string-array>
+    <string-array name="pref_example_list_values">
+        <item>1</item>
+        <item>0</item>
+        <item>-1</item>
+    </string-array>
+
+
+    <string name="pref_header_tasks">Tasks</string>
+
+    <string name="pref_title_sync_frequency" translatable="false">Sync frequency</string>
+    <string name="pref_title_task_vibrate_type">Vibrate type</string>
+    <string-array name="pref_sync_frequency_titles">
+        <item>15 minutes</item>
+        <item>30 minutes</item>
+        <item>1 hour</item>
+        <item>3 hours</item>
+        <item>6 hours</item>
+        <item>Never</item>
+    </string-array>
+
+    <string-array name="pref_sync_frequency_values">
+        <item>15</item>
+        <item>30</item>
+        <item>60</item>
+        <item>180</item>
+        <item>360</item>
+        <item>-1</item>
+    </string-array>
+    <string-array name="pref_vibrate_titles">
+        <item>Default</item>
+        <item>Short</item>
+        <item>Long</item>
+    </string-array>
+
+    <string-array name="pref_vibrate_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+    <string name="pref_title_system_sync_settings" translatable="false">System sync settings</string>
+
+    <!-- Example settings for Notifications -->
+    <string name="pref_header_notifications">Notifications</string>
+
+    <string name="pref_title_new_message_notifications" translatable="false">New message notifications</string>
+    <string name="pref_title_new_task_notifications">Task notifications</string>
+
+    <string name="pref_title_ringtone">Notification Ringtone</string>
+    <string name="pref_ringtone_silent">Silent</string>
+
+    <string name="pref_title_vibrate">Vibrate</string>
+    <string name="pref_title_light">Light</string>
+
+    <string name="task_silent_notification_title_template">Task silent: %1$s</string>
+
+    <!-- TODO: remove this placeholder text -->
+    <string name="task_silent_notification_placeholder_text_template">%1$s
+    </string>
+
+    <string name="action_share">Share</string>
+    <string name="action_later">IN AN HOUR</string>
+    <string name="action_reply">Reply</string>
+    <string name="action_clear">CLEAR</string>
+    <string name="action_dismiss">DISMISS</string>
+
+    <string name="task_silent_text_notification_title_template">Task silent text: %1$s</string>
+
+    <!-- TODO: remove this placeholder text -->
+    <string name="task_silent_text_notification_placeholder_text_template"> %1$s
+    </string>
+
+    <string name="task_silent_notification_ticker">New task %1$s</string>
+    <string name="task_silent_notification_list_summary">%1$d items in label %2$s</string>
+    <string name="task_silent_notification_text_summary">Label %1$s</string>
+    <string name="task_silent_notification_text_default">Task at %1$s</string>
+    <string name="title_activity_notification" translatable="false">NotificationActivity</string>
+
+    <string name="repeat1">Daily</string>
+    <string name="repeat2">Weekly</string>
+    <string name="repeat3">Monthly</string>
+    <string name="repeat4">Yearly</string>
+    <string name="title_activity_add__reminder_new" translatable="false">Add_Reminder_new</string>
+
+    <string name="task_share_todo">List is  : </string>
+    <string name="task_share_done">Completed Items are : </string>
+    <string name="task_share_rem">Reminder is set for %1$s </string>
+    <string name="task_share_rem2"> at %1$s %2$s alarm </string>
+
+    <string name="task_share_notes">Notes </string>
+    <string name="task_share">Task is %1$s</string>
+    <string name="promotion_share" translatable="false"> \nSent via <b>BucketList</b> </string>
+    <string name="promotion_download">Download Now !!\ \ </string>
+    <string name="app_url" translatable="false">https://play.google.com/store/apps/details?id=droid.nir.testapp1</string>
+    <string name="app_uri" translatable="false">market://details?id=droid.nir.testapp1</string>
+    <string name="task_delete_successful">Task deleted successfully</string>
+    <string name="task_delete_unsuccessful">Sorry!!Unable to delete task. Please try again</string>
+    <string name="savedialoguetitle">Save %1$s ?</string>
+    <string name="savedialoguetext">Your changes are not saved</string>
+    <string name="save">Save</string>
+    <string name="no">No</string>
+    <string name="title_activity_show__expand" translatable="false">Show_Expand</string>
+
+    <string name="notification_summray">Notification Summary</string>
+    <string name="decision_maker">Decision Maker</string>
+
+    <string name="app_desp">Forget how to forget</string>
+    <string name="decision_desp">Take the best decisions</string>
+    <string name="task_desp">Manage all your chores with to-do lists, notes and reminders</string>
+    <string name="events_desp">Never again miss an event</string>
+    <string name="random_label">Random Label %1$d </string>
+    <string name="start">Start</string>
+    <string name="redo_task">Task Restored</string>
+    <string name="title_activity_version">Version</string>
+    <string name="more">More</string>
+    <string name="title_activity_help_details" translatable="false">HelpDetails</string>
+    <string name="title_activity_task_help" translatable="false">TaskHelp</string>
+
+    <string name="task_hint">Enter the task</string>
+    <string name="task_expand_hint1">To add subtasks, alarms, notes click on the</string>
+    <string name="task_expand_hint2"> button at topmost corner</string>
+
+    <string name="initial_task1">Hey, I\'m a task! You can set reminders, add notes and enter todo items within me.</string>
+    <string name="initial_task2">Want to edit me? Click on me</string>
+    <string name="initial_task3">Done with me ? Then swipe me to left or right to delete</string>
+    <string name="initial_task4">Want to add to your own tasks? Click that orange plus button below</string>
+    <string name="title_activity_pending_help" translatable="false">PendingHelp</string>
+    <string name="title_activity_event_help" translatable="false">EventHelp</string>
+    <string name="title_activity_label_help" translatable="false">LabelHelp</string>
+    <string name="title_activity_add__event" translatable="false">Add_Event</string>
+    <string name="title_activity_sign_in" translatable="false">SignIn</string>
+
+    <string name="join_now">Create a free account</string>
+    <string name="welcome">Welcome %1$s</string>
+    <string name="sign_in_failure">Sign In Failed! Please try again after some time</string>
+    <!--<string name=""></string>-->
+    <!--<string name=""></string>-->
+</resources>
+
