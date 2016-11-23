@@ -74,7 +74,7 @@ public class ProjectManager extends AppCompatActivity implements LoaderManager.L
         RecyclerView recyclerView = (RecyclerView)findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         recyclerView.addItemDecoration(new GridRecyclerSpaceDecoration(2,
-                DesignUtil.dpToPx(this,10), true));
+                DesignUtil.dpToPx(this,5), true));
         mAdapter =new ProjectAdapter(this,this,cursor);
         recyclerView.setAdapter(mAdapter);
         recyclerView.setHasFixedSize(true);
