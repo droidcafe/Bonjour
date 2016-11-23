@@ -12,8 +12,8 @@ import android.view.MenuItem;
 import android.view.View;
 
 import droid.nir.testapp1.AllDecisions;
+import droid.nir.testapp1.AllEvents;
 import droid.nir.testapp1.R;
-import droid.nir.testapp1.noveu.Home.AllEvents;
 import droid.nir.testapp1.noveu.Home.Home;
 import droid.nir.testapp1.noveu.Projects.ProjectManager;
 import droid.nir.testapp1.noveu.bonjoursettings.BonjourSettings;

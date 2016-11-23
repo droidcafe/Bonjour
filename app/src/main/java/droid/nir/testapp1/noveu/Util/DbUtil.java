@@ -1,10 +1,8 @@
-package droid.nir.testapp1.noveu.Util.pickers;
+package droid.nir.testapp1.noveu.Util;
 
 /**
  * Created by droidcafe on 11/18/2016.
  */
-
-import java.util.Arrays;
 
 import droid.nir.testapp1.noveu.Events.loaders.loadEvent;
 

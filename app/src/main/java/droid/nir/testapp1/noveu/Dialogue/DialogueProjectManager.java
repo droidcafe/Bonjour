@@ -25,7 +25,6 @@ import droid.nir.testapp1.noveu.Tasks.Add_Expand;
 import droid.nir.testapp1.noveu.Tasks.Add_minimal;
 import droid.nir.testapp1.noveu.Util.Import;
 import droid.nir.testapp1.noveu.Util.Log;
-import droid.nir.testapp1.noveu.constants.SharedKeys;
 import droid.nir.testapp1.noveu.dB.DBProvider;
 import droid.nir.testapp1.noveu.dB.Project;
 import droid.nir.testapp1.toast;
@@ -46,6 +45,7 @@ public class DialogueProjectManager extends DialogFragment implements LoaderMana
 
 
     public static final int newlabelid = -198;
+
     /**
      * to create dialogue for adding new labels
      *
@@ -109,20 +109,17 @@ public class DialogueProjectManager extends DialogFragment implements LoaderMana
 
                             String text = tv.getText().toString();
                             if (text.equals(""))
-                                maketext.makeText(getResources().getString(R.string.noproname));
-                            else {
-                                int id = Project.doPositiveInsert(getActivity(), text);
-                                switch (from){
-                                    case 0:
-                                        ((ProjectManager) getActivity()).doPositiveInsert(text,id,0);
-                                        break;
-                                    case 1:
-                                        ((Add_minimal) getActivity()).renameProject(text,id);
-                                        break;
-                                    case 2:
-                                        ((Add_Expand)getActivity()).renameProject(text, id);
-                                }
-
+                                text = Project.getRandomProjectName(getActivity());
+                            int id = Project.doPositiveInsert(getActivity(), text);
+                            switch (from) {
+                                case 0:
+                                    ((ProjectManager) getActivity()).doPositiveInsert(text, id, 0);
+                                    break;
+                                case 1:
+                                    ((Add_minimal) getActivity()).renameProject(text, id);
+                                    break;
+                                case 2:
+                                    ((Add_Expand) getActivity()).renameProject(text, id);
                             }
                         }
                     }
@@ -154,11 +151,9 @@ public class DialogueProjectManager extends DialogFragment implements LoaderMana
                             final EditText tv = (EditText) getDialog().findViewById(R.id.proname);
                             String text = tv.getText().toString();
                             if (text.equals(""))
-                                maketext.makeText(getResources().getString(R.string.noproname));
-                            else {
-                                ((ProjectManager) getActivity()).doPositiveUpdate(text, id);
+                                text = Project.getRandomProjectName(getActivity());
 
-                            }
+                            ((ProjectManager) getActivity()).doPositiveUpdate(text, id);
                         }
                     }
             )
@@ -192,25 +187,28 @@ public class DialogueProjectManager extends DialogFragment implements LoaderMana
                             Project.deleteMode mode = Project.deleteMode.purgatory;
                             String text = null;
                             int size = -1;
-                            Log.d("dpm"," option "+deleteOption);
+                            Log.d("dpm", " option " + deleteOption);
                             if (deleteOption == 0) mode = Project.deleteMode.quick;
-                            else if(deleteOption == 1){
+                            else if (deleteOption == 1) {
                                 mode = Project.deleteMode.safe;
+                                Log.d("dpm","new pid "+new_pid);
                                 if (new_pid == newlabelid) {
                                     final EditText tv = (EditText) getDialog().findViewById(R.id.new_task);
                                     text = tv.getText().toString();
-                                    if (text.equals(""))
-                                    {
-                                        maketext.makeText(getResources().getString(R.string.noproname));
+                                    if (text.equals("")) {
                                         text = Project.getRandomProjectName(getActivity());
                                     }
                                     new_pid = Project.doPositiveInsert(getActivity(), text);
+                                    Log.d("dpm","new id is "+new_pid);
                                     size = Project.getProjectSize(id);
+                                } else if (new_pid == -1){
+                                    text = Project.getRandomProjectName(getActivity());
+                                    new_pid = Project.doPositiveInsert(getActivity(), text);
                                 }
                             }
 
-                            Project.delete(getActivity(),id,mode,new_pid);
-                            ((ProjectManager) getActivity()).doPositiveDelete(text,new_pid,size);
+                            Project.delete(getActivity(), id, mode, new_pid);
+                            ((ProjectManager) getActivity()).doPositiveDelete(text, new_pid, size);
                         }
                     }
             )
@@ -275,7 +273,7 @@ public class DialogueProjectManager extends DialogFragment implements LoaderMana
 
                         } else if (position == 1) {
                             getLoaderManager().initLoader(0, null, DialogueProjectManager.this);
-                            if(new_pid == newlabelid){
+                            if (new_pid == newlabelid) {
                                 getDialog().findViewById(R.id.newpro).setVisibility(View.VISIBLE);
                             }
 
@@ -287,9 +285,9 @@ public class DialogueProjectManager extends DialogFragment implements LoaderMana
                     @Override
                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                         new_pid = ids[i];
-                        if (ids[i] == newlabelid){
+                        if (ids[i] == newlabelid) {
                             getDialog().findViewById(R.id.newpro).setVisibility(View.VISIBLE);
-                        }else{
+                        } else {
                             getDialog().findViewById(R.id.newpro).setVisibility(View.GONE);
                         }
                     }
@@ -322,7 +320,7 @@ public class DialogueProjectManager extends DialogFragment implements LoaderMana
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
         Log.d("dpm", "loader finish");
-        String list[] = new String[data.getCount()+1];
+        String list[] = new String[data.getCount() + 1];
         ids = new int[data.getCount() + 1];
         int i = 0;
         data.moveToPosition(-1);

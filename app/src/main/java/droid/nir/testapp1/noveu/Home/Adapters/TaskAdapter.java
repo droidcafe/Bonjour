@@ -5,21 +5,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-
-import android.os.Handler;
 import android.support.v7.widget.RecyclerView;
-
-import droid.nir.testapp1.Bonjour;
-import droid.nir.testapp1.noveu.Home.Home;
-import droid.nir.testapp1.noveu.Tasks.Loaders.DeleteTask;
-import droid.nir.testapp1.noveu.Tasks.TaskUtil;
-import droid.nir.testapp1.noveu.Util.Log;
 import android.util.SparseBooleanArray;
-import android.view.ActionMode;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -30,7 +18,9 @@ import java.util.List;
 import droid.nir.testapp1.R;
 import droid.nir.testapp1.noveu.Home.data.dataHome;
 import droid.nir.testapp1.noveu.Tasks.Add_Expand;
+import droid.nir.testapp1.noveu.Tasks.Loaders.DeleteTask;
 import droid.nir.testapp1.noveu.Util.Import;
+import droid.nir.testapp1.noveu.Util.Log;
 import droid.nir.testapp1.noveu.recycler.Interfaces.ItemTouchHelperAdapter;
 import droid.nir.testapp1.noveu.recycler.Interfaces.ItemTouchHelperViewHolder;
 

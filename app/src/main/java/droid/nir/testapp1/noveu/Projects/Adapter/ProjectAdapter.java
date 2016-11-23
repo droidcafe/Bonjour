@@ -6,11 +6,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
-
-import droid.nir.testapp1.noveu.Util.AutoRefresh;
-import droid.nir.testapp1.noveu.Util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import droid.nir.testapp1.R;
 import droid.nir.testapp1.noveu.Dialogue.DialogueProjectManager;
 import droid.nir.testapp1.noveu.Projects.ProjectTask;
+import droid.nir.testapp1.noveu.Util.Log;
 import droid.nir.testapp1.noveu.dB.Project;
 
 /**
@@ -75,6 +76,8 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ViewHold
         holder.prosize.setText(size);
 
 
+
+
     }
 
     @Override
@@ -82,7 +85,7 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ViewHold
         return pronames.size();
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public  class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView proname;
         TextView prosize;
@@ -98,49 +101,19 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ViewHold
             delete = (ImageButton) itemView.findViewById(R.id.prodelete);
             view = itemView.findViewById(R.id.prolayout);
 
+
+
             more.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
-                    Log.d("pa",""+getAdapterPosition()+" "+getLayoutPosition());
-
-                    if (edit.isShown()) {
-                        edit.setVisibility(View.GONE);
-                        delete.setVisibility(View.GONE);
-                    } else {
-                        edit.setVisibility(View.VISIBLE);
-                        delete.setVisibility(View.VISIBLE);
-
-                    }
-                }
-            });
-
-            edit.setOnClickListener(new View.OnClickListener() {
-
-                @Override
-                public void onClick(View v) {
-                    Log.d("pa",""+getAdapterPosition()+" "+getLayoutPosition());
-
-                    int position = getAdapterPosition();
-                    DialogFragment alertDialog = DialogueProjectManager.newInstanceUpdate(pronames.get(position), proids.get(position));
-                    alertDialog.show(activity.getFragmentManager(), "dialogs");
-
-                    lastClickedPosition = position;
-                }
-            });
-
-            delete.setOnClickListener(new View.OnClickListener() {
-
-                @Override
-                public void onClick(View v) {
-                    Log.d("pa",""+getAdapterPosition()+" "+getLayoutPosition());
-
-                    DialogFragment alertDialog = DialogueProjectManager.newInstanceDelete(pronames.get(getAdapterPosition()), proids.get(getAdapterPosition()));
-                    alertDialog.show(activity.getFragmentManager(), "dialogs");
-
+                public void onClick(View view) {
                     lastClickedPosition = getAdapterPosition();
+                    PopupMenu popupMenu = new PopupMenu(context,view);
+                    MenuInflater menuInflater = new MenuInflater(context);
+                    menuInflater.inflate(R.menu.project_manager_card_more,popupMenu.getMenu());
+                    popupMenu.setOnMenuItemClickListener(new moreMenuClickListener(getAdapterPosition()));
+                    popupMenu.show();
                 }
             });
-
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -187,6 +160,33 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ViewHold
 
         notifyItemRemoved(lastClickedPosition);
 
+    }
+
+    class moreMenuClickListener implements PopupMenu.OnMenuItemClickListener {
+
+        int position;
+            moreMenuClickListener(int position) {
+            this.position = position;
+        }
+
+        @Override
+        public boolean onMenuItemClick(MenuItem item) {
+            switch (item.getItemId()) {
+                case R.id.action_edit:
+                    DialogFragment alertDialog = DialogueProjectManager.newInstanceUpdate(
+                            pronames.get(position), proids.get(position));
+                    alertDialog.show(activity.getFragmentManager(), "dialogs");
+                    break;
+                case R.id.action_delete:
+                    Log.d("pa",""+position);
+
+                    DialogFragment deleteDialog = DialogueProjectManager.newInstanceDelete(
+                            pronames.get(position), proids.get(position));
+                    deleteDialog.show(activity.getFragmentManager(), "dialogs");
+                    break;
+            }
+            return false;
+        }
     }
 
 }
