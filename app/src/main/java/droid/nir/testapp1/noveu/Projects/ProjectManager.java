@@ -9,15 +9,12 @@ import android.content.Loader;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.PersistableBundle;
-import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import droid.nir.testapp1.noveu.Util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -27,8 +24,11 @@ import droid.nir.testapp1.noveu.Dialogue.DialogueProjectManager;
 import droid.nir.testapp1.noveu.NavDrw.setNav;
 import droid.nir.testapp1.noveu.Projects.Adapter.ProjectAdapter;
 import droid.nir.testapp1.noveu.Util.AutoRefresh;
+import droid.nir.testapp1.noveu.Util.DesignUtil;
+import droid.nir.testapp1.noveu.Util.Log;
 import droid.nir.testapp1.noveu.dB.DBProvider;
 import droid.nir.testapp1.noveu.dB.Project;
+import droid.nir.testapp1.ui.util.GridRecyclerSpaceDecoration;
 
 
 public class ProjectManager extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor>, View.OnClickListener {
@@ -73,6 +73,8 @@ public class ProjectManager extends AppCompatActivity implements LoaderManager.L
         Log.d("pm", "" + cursor.getCount());
         RecyclerView recyclerView = (RecyclerView)findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
+        recyclerView.addItemDecoration(new GridRecyclerSpaceDecoration(2,
+                DesignUtil.dpToPx(this,10), true));
         mAdapter =new ProjectAdapter(this,this,cursor);
         recyclerView.setAdapter(mAdapter);
         recyclerView.setHasFixedSize(true);

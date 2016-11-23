@@ -23,7 +23,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
 import com.wnafee.vector.MorphButton;
 
 import java.io.File;
@@ -33,7 +32,6 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Random;
 
-import droid.nir.testapp1.R;
 import droid.nir.testapp1.noveu.constants.SharedKeys;
 import droid.nir.testapp1.noveu.dB.metaValues.dBmetaData;
 
@@ -338,6 +336,7 @@ public class Import {
         String uri = prefix +"/" + resourceId;
         return context.getResources().getIdentifier(uri, null, context.getPackageName());
     }
+
 
     /**
      * helper function for composing mail

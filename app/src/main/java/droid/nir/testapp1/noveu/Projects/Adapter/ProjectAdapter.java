@@ -67,15 +67,11 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ViewHold
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
 
-        holder.edit.setVisibility(View.GONE);
-        holder.delete.setVisibility(View.GONE);
         String name = pronames.get(position);
         String size = "" + prosize.get(position) + " items";
 
         holder.proname.setText(name);
         holder.prosize.setText(size);
-
-
 
 
     }
@@ -89,7 +85,7 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ViewHold
 
         TextView proname;
         TextView prosize;
-        ImageButton more, edit, delete;
+        ImageButton more ;
         View view;
 
         public ViewHolder(View itemView) {
@@ -97,8 +93,7 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ViewHold
             proname = (TextView) itemView.findViewById(R.id.proname);
             prosize = (TextView) itemView.findViewById(R.id.prosize);
             more = (ImageButton) itemView.findViewById(R.id.more);
-            edit = (ImageButton) itemView.findViewById(R.id.proedit);
-            delete = (ImageButton) itemView.findViewById(R.id.prodelete);
+
             view = itemView.findViewById(R.id.prolayout);
 
 
