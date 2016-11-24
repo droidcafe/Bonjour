@@ -163,7 +163,8 @@ public class AllDecisions extends ActionBarActivity implements View.OnClickListe
             super.onProgressUpdate(values);
 
             if (ispresent == 0) {
-                Import.setBackGroundColor(context, activity, R.id.home_back, R.color.tsecondary);
+                Import.setBackGroundColor(context, activity, R.id.home_back, R.color.hprimary);
+                Import.setBackGroundColor(context, activity, R.id.toolbar, R.color.hprimary);
                 Import.setStatusBarColor(context,activity,R.color.hprimary_dark);
                 recyclerView.setVisibility(View.GONE);
                 Import.allDone(context, alldone_pic, alldone_title, alldone_promo);
@@ -177,6 +178,8 @@ public class AllDecisions extends ActionBarActivity implements View.OnClickListe
             if(ispresent==1)
             {
                 Import.setBackGroundColor(context,activity,R.id.home_back,R.color.white);
+                Import.setBackGroundColor(context,activity,R.id.toolbar,R.color.tprimary);
+                Import.setStatusBarColor(context,activity,R.color.tprimary_dark);
                 recyclerView.setVisibility(View.VISIBLE);
                 Import.allDoneUndo(context, alldone_pic, alldone_title, alldone_promo);
 

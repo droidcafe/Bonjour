@@ -287,6 +287,10 @@ public class Import {
                 getColor(color));
     }
 
+    public static void setToolBarColor(Context context, Activity activity, int toolbarid,int color){
+       activity.findViewById(toolbarid).setBackgroundColor(context.getResources().getColor(color));
+    }
+
     public  static void allDone(Context context, ImageView alldone_pic, TextView alldone_title,
                                TextView alldone_promo) {
         alldone_pic.setVisibility(View.VISIBLE);
