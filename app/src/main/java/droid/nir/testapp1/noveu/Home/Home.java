@@ -335,6 +335,7 @@ public class Home extends AppCompatActivity
             if (data.isEmpty()) {
 
                 Import.setBackGroundColor(context, activity, R.id.home_back, R.color.tsecondary);
+                Import.setStatusBarColor(context,activity,R.color.hprimary_dark);
                 recyclerView.setVisibility(View.GONE);
                 Import.allDone(context,alldone_pic,alldone_title,alldone_promo);
 

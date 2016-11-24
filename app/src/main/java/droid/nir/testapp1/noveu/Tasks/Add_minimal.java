@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
-import droid.nir.testapp1.noveu.Util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -28,9 +27,9 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import droid.nir.testapp1.R;
 import droid.nir.testapp1.noveu.Dialogue.DialogueSelectorTasks;
-import droid.nir.testapp1.noveu.Tasks.data.SharedData;
 import droid.nir.testapp1.noveu.Util.AutoRefresh;
 import droid.nir.testapp1.noveu.Util.Import;
+import droid.nir.testapp1.noveu.Util.Log;
 import droid.nir.testapp1.noveu.dB.Project;
 import droid.nir.testapp1.noveu.dB.Tasks;
 
@@ -88,7 +87,6 @@ public class Add_minimal extends AppCompatActivity implements View.OnClickListen
             public boolean onPreDraw() {
                 int height = findViewById(R.id.scroll2).getHeight();
                 Log.d("addmin", "height is " + height);
-                //   RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT,height);
                 //since relative view is inside scroll view
                 ScrollView.LayoutParams layoutParams = new ScrollView.LayoutParams(ScrollView.LayoutParams.WRAP_CONTENT, height);
                 view.setLayoutParams(layoutParams);
@@ -120,16 +118,13 @@ public class Add_minimal extends AppCompatActivity implements View.OnClickListen
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_add_minimal, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
+
         int id = item.getItemId();
 
         if (id == R.id.action_expand) {

@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -15,10 +14,6 @@ import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-
-import droid.nir.defcon3.FirstScreen;
-import droid.nir.testapp1.noveu.Util.Import;
-import droid.nir.testapp1.noveu.Util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -31,8 +26,9 @@ import java.util.List;
 
 import droid.nir.databaseHelper.Pending;
 import droid.nir.testapp1.noveu.NavDrw.setNav;
+import droid.nir.testapp1.noveu.Util.Import;
+import droid.nir.testapp1.noveu.Util.Log;
 import droid.nir.testapp1.noveu.bonjoursettings.ToolBarSettings.PrimarySettings;
-import droid.nir.testapp1.noveu.constants.constants;
 
 
 public class AllDecisions extends ActionBarActivity implements View.OnClickListener {
@@ -168,6 +164,7 @@ public class AllDecisions extends ActionBarActivity implements View.OnClickListe
 
             if (ispresent == 0) {
                 Import.setBackGroundColor(context, activity, R.id.home_back, R.color.tsecondary);
+                Import.setStatusBarColor(context,activity,R.color.hprimary_dark);
                 recyclerView.setVisibility(View.GONE);
                 Import.allDone(context, alldone_pic, alldone_title, alldone_promo);
             }

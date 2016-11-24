@@ -429,22 +429,22 @@
     <string name="next">Next</string>
     <string name="title_activity_all_list" translatable="false">All_list</string>
 
-    <string name="task0">Mail final draft</string>
-    <string name="task1">Lunch date tommorow 11pm</string>
-    <string name="task2">Buy groceries</string>
-    <string name="task3">Download Game of Thrones</string>
-    <string name="task4">Copy Bio assignment</string>
-    <string name="task5">Call Mom</string>
-    <string name="task6">Finish debugging of code</string>
-    <string name="task7">Go to mall</string>
-    <string name="task8">Share BucketList with friends</string>
-    <string name="task9">Buy gift for anniversary</string>
-    <string name="task10">Finsih watching Modern Family</string>
-    <string name="task11">Recharge mobile</string>
-    <string name="task12">Pay electricity bill</string>
-    <string name="task13">Pay tution fees</string>
-    <string name="task14">Pick up milk</string>
-    <string name="task15">Wish Peter Happy Bday</string>
+    <string name="task0">e.g. Mail draft</string>
+    <string name="task1">e.g. Lunch tomorrow 11pm</string>
+    <string name="task2">e.g. Buy groceries</string>
+    <string name="task3">e.g. Download Game of Thrones</string>
+    <string name="task4">e.g. Copy Bio assignment</string>
+    <string name="task5">e.g. Call Mom</string>
+    <string name="task6">e.g. Finish debugging code</string>
+    <string name="task7">e.g. Go to mall</string>
+    <string name="task8">e.g. Share BucketList</string>
+    <string name="task9">e.g. Buy gift for anniversary</string>
+    <string name="task10">e.g. Finsih  Modern Family</string>
+    <string name="task11">e.g. Recharge mobile</string>
+    <string name="task12">e.g. Pay electricity bill</string>
+    <string name="task13">e.g. Pay tution fees</string>
+    <string name="task14">e.g. Pick up milk</string>
+    <string name="task15">e.g. Wish Peter Happy Bday</string>
 
 
     <string name="today">Today</string>
@@ -659,7 +659,7 @@
     <string name="notification_summray">Notification Summary</string>
     <string name="decision_maker">Decision Maker</string>
 
-    <string name="app_desp">Forget how to forget</string>
+    <string name="app_desp">It\'s OK to SLACK!</string>
     <string name="decision_desp">Take the best decisions</string>
     <string name="task_desp">Manage all your chores with to-do lists, notes and reminders</string>
     <string name="events_desp">Never again miss an event</string>
