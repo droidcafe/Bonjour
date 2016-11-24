@@ -22,6 +22,7 @@ import butterknife.ButterKnife;
 import droid.nir.databaseHelper.Events;
 import droid.nir.testapp1.R;
 import droid.nir.testapp1.noveu.Dialogue.DialogueCreator;
+import droid.nir.testapp1.noveu.Util.AutoRefresh;
 import droid.nir.testapp1.noveu.Util.InputManager;
 import droid.nir.testapp1.noveu.Util.Log;
 import droid.nir.testapp1.noveu.Util.TimeUtil;
@@ -182,6 +183,7 @@ public class Add_Event extends AppCompatActivity implements View.OnClickListener
 
     private void save() {
         new AsyncSave().execute();
+        AutoRefresh.setRefreshSharedPref(this);
         finish();
     }
 
@@ -375,14 +377,12 @@ public class Add_Event extends AppCompatActivity implements View.OnClickListener
                 passString[0] = getResources().getString(R.string.randomevent);
             }
 
-            passString[2] = InputManager.getStrings((EditText) findViewById(R.id.elocedit));
-
             passString[3] = TimeUtil.getDate(f_date, f_month, f_year); ///fromdate
             if ( wholeSwitch.isChecked()) {
                 passInt[0] =1; //iswhole day
                 passString[4] = passString[3]; // todate
 
-                f_hr = 0;
+                f_hr = 7;
                 f_min =0;
                 t_hr = 23;
                 t_min = 59;
@@ -398,12 +398,13 @@ public class Add_Event extends AppCompatActivity implements View.OnClickListener
 
             /** date of event = from date if no notification is present .Else it is = notification date */
             if (notification_mode != 0) {
-                passInt[1] = 1;
+                passInt[1] = 1; //isnotify
                 Calendar notification_calendar = Calendar.getInstance();
                 notification_calendar = TimeUtil.setCalendar(notification_calendar,f_year,f_month,f_date);
                 notification_calendar = TimeUtil.setCalendar(notification_calendar, f_hr, f_min);
 
-                Log.d("ae","not cal "+notification_calendar.get(Calendar.DAY_OF_MONTH) +" "+notification_calendar.get(Calendar.MINUTE));
+                Log.d("ae","notif cal day "+notification_calendar.get(Calendar.DAY_OF_MONTH)
+                        +" hour "+notification_calendar.get(Calendar.HOUR_OF_DAY));
                 if (notification_mode == 1) {
                     notification_calendar.add(Calendar.MINUTE,-10);
                 } else if (notification_mode == 2) {
@@ -414,8 +415,8 @@ public class Add_Event extends AppCompatActivity implements View.OnClickListener
                 }
 
                 passString[2] = TimeUtil.getDate(notification_calendar);
-                passInt[9] = n_hr ;
-                passInt[10] = n_min ;
+                passInt[9] = notification_calendar.get(Calendar.HOUR_OF_DAY) ;
+                passInt[10] = notification_calendar.get(Calendar.MINUTE) ;
             }else{
                 passInt[1] = 0;
                 passString[2] = passString[3]; /** date of event = from date*/
@@ -428,21 +429,26 @@ public class Add_Event extends AppCompatActivity implements View.OnClickListener
                 passInt[2] = 1; /** isnotes = 1*/
             }
 
+            passString[1] = InputManager.getStrings((EditText) findViewById(R.id.elocedit)); /** location */
+
             passInt[3] = 0; /** done */
 
 
             if ((f_date == t_date) && (f_month == t_month) && (f_year == t_year)) {
                 passInt[4] = 0;
             } else {
-                passInt[4] = (f_date - t_date) + ((f_month - t_month) * 30) + ((f_year - t_year) * 365);
+                passInt[4] = (t_date - f_date) + ((t_month - f_month) * 30) + ((t_year - f_year) * 365);
             }
             if (passInt[4] < 0) {
                 passInt[4] = 0;
                 passString[4] = passString[3]; /** todate = fromdate  */
             }
-            Log.d("ae",""+passString.toString());
-            Log.d("ae",""+passInt.toString());
+            Log.d("ae"," from "+passString[3]+" "+passString[4]+" "+passInt[5]+":"+passInt[6]
+                    +" "+passInt[7]+":"+passInt[8] + " noti "+passString[2
+                    ]+"  "+passInt[9]+":"+passInt[10]);
+
             Events events = new Events(context);
+            events.settingDatabase();
             SQLiteDatabase db = events.settingDatabase();
             if (db != null)
                 events.insert(passString, passInt, db);

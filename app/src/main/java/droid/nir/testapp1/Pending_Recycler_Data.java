@@ -610,7 +610,7 @@ public class Pending_Recycler_Data extends RecyclerView.Adapter<Pending_Recycler
     public void setAnimator2(View view) {
         Animation anim = AnimationUtils.loadAnimation(context, R.anim.recyclerslidedown);
 
-        view.startAnimation(anim);
+//        view.startAnimation(anim);
     }
 
     @Override

@@ -6,38 +6,31 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-
-import droid.nir.defcon3.FirstScreen;
-import droid.nir.testapp1.noveu.Events.Add_Event;
-import droid.nir.testapp1.noveu.Util.Import;
-import droid.nir.testapp1.noveu.Util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-
-
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
 import droid.nir.databaseHelper.Events;
-import droid.nir.databaseHelper.Todolist;
+import droid.nir.testapp1.noveu.Events.Add_Event;
 import droid.nir.testapp1.noveu.NavDrw.setNav;
+import droid.nir.testapp1.noveu.Util.AutoRefresh;
+import droid.nir.testapp1.noveu.Util.Import;
+import droid.nir.testapp1.noveu.Util.Log;
 import droid.nir.testapp1.noveu.bonjoursettings.ToolBarSettings.PrimarySettings;
-import droid.nir.testapp1.noveu.constants.constants;
 
 public class AllEvents extends ActionBarActivity implements View.OnClickListener {
 
@@ -51,10 +44,10 @@ public class AllEvents extends ActionBarActivity implements View.OnClickListener
     RecyclerView.LayoutManager mLayoutManager;
     Pending_Recycler_Data pending_recycler_data;
     timecorrection timecorrection;
-    int ischanged=0;
     SharedPreferences sharedPreferences;
     toast maketext;
     FloatingActionButton fab;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,22 +61,22 @@ public class AllEvents extends ActionBarActivity implements View.OnClickListener
         setupNav();
 
         events = new Events(this);
-        context= this;
-        activity= this;
+        context = this;
+        activity = this;
         hiddentext = (TextView) findViewById(R.id.hiddentext);
-        recyclerView = (RecyclerView) findViewById(R.id.tasklist);
+        recyclerView = (RecyclerView) findViewById(R.id.eventlist);
         mLayoutManager = new LinearLayoutManager(this);
         timecorrection = new timecorrection();
 
-        maketext= new toast(this);
-        fab = (FloatingActionButton)findViewById(R.id.fab);
+        maketext = new toast(this);
+        fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(AllEvents.this);
         setuprecycler();
 
     }
 
     private void setupNav() {
-        new setNav(this,this).setupNavigation(R.id.nav_event);
+        new setNav(this, this).setupNavigation(R.id.nav_event);
     }
 
     @Override
@@ -92,12 +85,12 @@ public class AllEvents extends ActionBarActivity implements View.OnClickListener
 
 
         sharedPreferences = getSharedPreferences("sharedprefs", 0);
-        ischanged = sharedPreferences.getInt("ischanged", 0);
 
-        if (ischanged == 1) {
+        if (AutoRefresh.isRefreshNeeded(this)) {
             rundelayedrefresh();
         }
     }
+
     private void setuprecycler() {
 
         db = events.settingDatabase();
@@ -109,17 +102,16 @@ public class AllEvents extends ActionBarActivity implements View.OnClickListener
 
     @Override
     public void onClick(View v) {
-        int id= v.getId();
+        int id = v.getId();
 
-        switch (id)
-        {
+        switch (id) {
             case R.id.fab:
 
-                int date,month,year;
+                int date, month, year;
                 String todaydate;
                 Calendar calendar = Calendar.getInstance();
                 date = calendar.get(Calendar.DAY_OF_MONTH);
-                month = calendar.get(Calendar.MONTH) ;
+                month = calendar.get(Calendar.MONTH);
                 year = calendar.get(Calendar.YEAR);
                 todaydate = date + "/" + month + "/" + year;
                 Intent goinginent2 = new Intent(this, Add_Event.class);
@@ -133,12 +125,12 @@ public class AllEvents extends ActionBarActivity implements View.OnClickListener
 
     }
 
-    class  AsyncGet extends AsyncTask<Void,Void,Void>  {
+    class AsyncGet extends AsyncTask<Void, Void, Void> {
 
         TextView alldone_title;
         TextView alldone_promo;
         ImageView alldone_pic;
-        int ispresent =0;
+        int ispresent = 0;
         List<custom_data2> arrayList = new ArrayList<>();
 
         @Override
@@ -152,19 +144,18 @@ public class AllEvents extends ActionBarActivity implements View.OnClickListener
 
         @Override
         protected Void doInBackground(Void... params) {
-            int[] columno = {0,1,3,4,6,7,9};
+            int[] columno = {0, 1, 3, 4, 6, 7, 9};
 
             String orderby = " _id desc";
             Cursor cursor1 = events.select(db, 0, columno, null, null, null, null, orderby);
 
             if (cursor1.getCount() == 0) {
-                ispresent =0;
+                ispresent = 0;
                 publishProgress();
 
 
-            }
-            else {
-                ispresent=1;
+            } else {
+                ispresent = 1;
                 arrayList = setupcards(cursor1);
                 Log.d("allllists", "finished cards " + arrayList.size());
             }
@@ -186,17 +177,14 @@ public class AllEvents extends ActionBarActivity implements View.OnClickListener
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
-            if(ispresent==1)
-            {
-                Import.setBackGroundColor(context,activity,R.id.home_back,R.color.white);
+            if (ispresent == 1) {
+                Import.setBackGroundColor(context, activity, R.id.home_back, R.color.white);
                 recyclerView.setVisibility(View.VISIBLE);
                 Import.allDoneUndo(context, alldone_pic, alldone_title, alldone_promo);
 
-                pending_recycler_data = new Pending_Recycler_Data(context ,arrayList,4,-1);
+                pending_recycler_data = new Pending_Recycler_Data(context, arrayList, 4, -1);
                 recyclerView.setLayoutManager(mLayoutManager);
                 recyclerView.setAdapter(pending_recycler_data);
-
-
 
 
             }
@@ -205,11 +193,10 @@ public class AllEvents extends ActionBarActivity implements View.OnClickListener
 
     private List<custom_data2> setupcards(Cursor cursor) {
 
-        int iswholeday=0;
+        int iswholeday = 0;
         List<custom_data2> arrayList = new ArrayList<>();
         Log.d("checkfort1oday", " inserting event items " + cursor.getCount());
-        while(cursor.moveToNext())
-        {
+        while (cursor.moveToNext()) {
 
             custom_data2 customData = new custom_data2();
 
@@ -225,72 +212,64 @@ public class AllEvents extends ActionBarActivity implements View.OnClickListener
 
             String tempselection = " eid = ?";
             String tempargs[] = {Integer.toString(customData.id)};
-            if(iswholeday!=1)
-            {
-                customData.temp1 =0;
-                int tempcolumno[] = {2,3,4,5,6,7};
-                Cursor tempcursor = events.select(db,1,tempcolumno,tempselection,tempargs,null,null,null);
-                while(tempcursor.moveToNext())
-                {
-                    customData.customstatement1 =tempcursor.getString(tempcursor.getColumnIndex("fromdate"));
-                    customData.customstatement2 =tempcursor.getString(tempcursor.getColumnIndex("todate"));
-                    int  frommin = tempcursor.getInt(tempcursor.getColumnIndex("fromtimemin"));
+            if (iswholeday != 1) {
+                customData.temp1 = 0;
+                int tempcolumno[] = {2, 3, 4, 5, 6, 7};
+                Cursor tempcursor = events.select(db, 1, tempcolumno, tempselection, tempargs, null, null, null);
+                while (tempcursor.moveToNext()) {
+                    customData.customstatement1 = tempcursor.getString(tempcursor.getColumnIndex("fromdate"));
+                    customData.customstatement2 = tempcursor.getString(tempcursor.getColumnIndex("todate"));
+                    int frommin = tempcursor.getInt(tempcursor.getColumnIndex("fromtimemin"));
                     int fromhr = tempcursor.getInt(tempcursor.getColumnIndex("fromtimehr"));
 
-                    customData.customstatement3 =timecorrection.formatime(fromhr,frommin);
+                    customData.customstatement3 = timecorrection.formatime(fromhr, frommin);
 
 
-                   int tomin = tempcursor.getInt(tempcursor.getColumnIndex("totimemin"));
-                    int tohr  = tempcursor.getInt(tempcursor.getColumnIndex("totimehr"));
+                    int tomin = tempcursor.getInt(tempcursor.getColumnIndex("totimemin"));
+                    int tohr = tempcursor.getInt(tempcursor.getColumnIndex("totimehr"));
 
-                    customData.customstatement4 = timecorrection.formatime(tohr,tomin);
-
+                    customData.customstatement4 = timecorrection.formatime(tohr, tomin);
 
 
                 }
 
-            }
-            else {
+            } else {
                 customData.customstatement1 = getResources().getString(R.string.ewholeday);
-                customData.temp1 =1;
+                customData.temp1 = 1;
             }
 
-            if(notify>0)
-            {
-                notify =1;
+            if (notify > 0) {
+                notify = 1;
 
-                int tempcolumno[] = {2,3,4};
-                Cursor tempcursor = events.select(db,2,tempcolumno,tempselection,tempargs,null,null,null);
+                int tempcolumno[] = {2, 3, 4};
+                Cursor tempcursor = events.select(db, 2, tempcolumno, tempselection, tempargs, null, null, null);
 
-                while(tempcursor.moveToNext())
-                {
+                while (tempcursor.moveToNext()) {
 
 
-                    int min=tempcursor.getInt(tempcursor.getColumnIndex("timemin"));
+                    int min = tempcursor.getInt(tempcursor.getColumnIndex("timemin"));
 
                     int hr = tempcursor.getInt(tempcursor.getColumnIndex("timehr"));
 
 
-                    customData.time = timecorrection.formatime(hr,min);
+                    customData.time = timecorrection.formatime(hr, min);
 
                 }
-                customData.paddingleft =(int) context.getResources().getDimension(R.dimen.circlepaddingleft);;
-            }
-            else {
+                customData.paddingleft = (int) context.getResources().getDimension(R.dimen.circlepaddingleft);
+                ;
+            } else {
                 customData.paddingleft = (int) context.getResources().getDimension(R.dimen.circlepaddingleft2);
-                if(!customData.title.equals(""))
-                {
+                if (!customData.title.equals("")) {
                     char ch = customData.title.charAt(0);
                     ch = Character.toUpperCase(ch);
                     customData.time = Character.toString(ch);
-                }
-                else {
+                } else {
                     customData.time = Character.toString('E');
                 }
             }
 
 
-            arrayList.add(arrayList.size(),customData);
+            arrayList.add(arrayList.size(), customData);
         }
 
         return arrayList;
@@ -305,6 +284,7 @@ public class AllEvents extends ActionBarActivity implements View.OnClickListener
 
 
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -338,30 +318,22 @@ public class AllEvents extends ActionBarActivity implements View.OnClickListener
             }
         }, 3000);
 
-        ischanged=0;
-        SharedPreferences.Editor editor= sharedPreferences.edit();
-        editor.putInt("ischanged",0);
-        editor.apply();
+        AutoRefresh.setRefreshDone(this);
     }
 
     public void refresh() {
         setuprecycler();
-        ischanged=0;
-        //maketext.makeText(getResources().getString(R.string.refreshing));
         Log.d("mainactivity", "Refreshing");
     }
 
-    private void translatefab(float slideoffset)
-    {
-        if(fab!=null)
-        {
-            fab.setTranslationX(slideoffset*300);
-            Log.d("alldecisions","sliding");
+    private void translatefab(float slideoffset) {
+        if (fab != null) {
+            fab.setTranslationX(slideoffset * 300);
+            Log.d("alldecisions", "sliding");
         }
     }
 
-    public void ondrawerslide(float slideoffset)
-    {
+    public void ondrawerslide(float slideoffset) {
         translatefab(slideoffset);
         Log.d("alldecisions", "call sliding");
     }
