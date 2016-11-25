@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AppTheme.Settings" parent="Theme.AppCompat.Light">
+        <item name="colorPrimary">@color/sprimary_23</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="colorPrimaryDark">@color/sprimary_dark_23</item>
+        <item name="colorAccent">@color/saccent</item>
+
+    </style>
+
+</resources>
