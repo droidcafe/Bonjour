@@ -1,4 +1,4 @@
-package droid.nir.testapp1.ui.util;
+package droid.nir.testapp1.noveu.ui.util;
 
 import android.graphics.Rect;
 import android.support.v7.widget.RecyclerView;

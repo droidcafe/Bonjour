@@ -274,7 +274,7 @@ public class Import {
     public static void setStatusBarColor(Context context, Activity activity, int color) {
         Window window = activity.getWindow();
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+        if (isVersionOK(Build.VERSION_CODES.LOLLIPOP)) {
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
             window.setStatusBarColor(context.getResources().getColor(color));
@@ -394,6 +394,9 @@ public class Import {
             return list;
     }
 
+    public static  boolean isVersionOK(int base_version) {
+        return ( Build.VERSION.SDK_INT >=  base_version) ;
+    }
 
 }
 

@@ -28,7 +28,7 @@ import droid.nir.testapp1.noveu.Util.DesignUtil;
 import droid.nir.testapp1.noveu.Util.Log;
 import droid.nir.testapp1.noveu.dB.DBProvider;
 import droid.nir.testapp1.noveu.dB.Project;
-import droid.nir.testapp1.ui.util.GridRecyclerSpaceDecoration;
+import droid.nir.testapp1.noveu.ui.util.GridRecyclerSpaceDecoration;
 
 
 public class ProjectManager extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor>, View.OnClickListener {

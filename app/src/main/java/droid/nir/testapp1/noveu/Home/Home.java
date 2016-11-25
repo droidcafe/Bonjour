@@ -37,7 +37,6 @@ import droid.nir.testapp1.R;
 import droid.nir.testapp1.noveu.Home.Adapters.TaskAdapter;
 import droid.nir.testapp1.noveu.Home.data.dataHome;
 import droid.nir.testapp1.noveu.NavDrw.setNav;
-import droid.nir.testapp1.noveu.Tasks.Add_minimal;
 import droid.nir.testapp1.noveu.Tasks.Loaders.DeleteTask;
 import droid.nir.testapp1.noveu.Tasks.Loaders.LoadTask;
 import droid.nir.testapp1.noveu.Tasks.TaskUtil;
@@ -54,6 +53,7 @@ import droid.nir.testapp1.noveu.recycler.TaskAdapterItemTouchHelperCallback;
 import droid.nir.testapp1.noveu.sync.alarms.DailySyncAlarm;
 import droid.nir.testapp1.noveu.welcome.Initial;
 import droid.nir.testapp1.noveu.welcome.about.About;
+import droid.nir.testapp1.noveu.welcome.auth.SignIn;
 
 public class Home extends AppCompatActivity
         implements OnDateChangedListener, View.OnClickListener {
@@ -189,8 +189,8 @@ public class Home extends AppCompatActivity
 
                 break;
             case R.id.fab:
-//                startActivity(new Intent(this, SignIn.class));
-                startActivity(new Intent(this, Add_minimal.class));
+                startActivity(new Intent(this, SignIn.class));
+//                startActivity(new Intent(this, Add_minimal.class));
                 break;
         }
     }
