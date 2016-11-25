@@ -13,15 +13,21 @@ import com.google.android.gms.common.api.OptionalPendingResult;
 public class AuthUtil {
 
 
+
     public static GoogleSignInAccount silentSignIn(GoogleApiClient mGoogleApiClient){
         OptionalPendingResult<GoogleSignInResult> opr = getOptionalResult(mGoogleApiClient);
         GoogleSignInResult gsr = getSignInResult(opr);
         return getUserAccount(gsr);
     }
+
+    public static GoogleSignInAccount getUserAccount(
+            OptionalPendingResult<GoogleSignInResult> opr) {
+        return getUserAccount(getSignInResult(opr));
+    }
     public static GoogleSignInAccount getUserAccount(GoogleSignInResult result){
         return (result != null) ? result.getSignInAccount() : null;
     }
-    
+
     public static GoogleSignInResult getSignInResult(OptionalPendingResult<GoogleSignInResult> opr) {
         return (opr != null) ? opr.get() : null;
     }

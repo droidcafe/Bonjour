@@ -22,6 +22,7 @@ import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.auth.FirebaseAuth;
 
 import droid.nir.testapp1.R;
+import droid.nir.testapp1.noveu.Util.AuthUtil;
 import droid.nir.testapp1.noveu.Util.Import;
 import droid.nir.testapp1.noveu.Util.Log;
 import droid.nir.testapp1.noveu.constants.SharedKeys;
@@ -62,15 +63,19 @@ public class SignIn extends AppCompatActivity implements GoogleApiClient.OnConne
     @Override
     protected void onStart() {
         super.onStart();
-        OptionalPendingResult<GoogleSignInResult> pendingResult =
-                Auth.GoogleSignInApi.silentSignIn(mGoogleApiClient);
-
-        if (pendingResult.isDone()) {
+        OptionalPendingResult<GoogleSignInResult> opr = AuthUtil.getOptionalResult(mGoogleApiClient);
+        if (opr != null) {
             Log.d("si", "Got cached sign-in");
-            GoogleSignInResult result = pendingResult.get();
-            updateUI("Already signed is as "+result.getSignInAccount().getDisplayName());
+            updateUI("Already signed is as "+ AuthUtil.getUserAccount(opr).getDisplayName());
         }else{
-
+            progressDialog.showProgressDialog();
+            opr.setResultCallback(new ResultCallback<GoogleSignInResult>() {
+                @Override
+                public void onResult(GoogleSignInResult googleSignInResult) {
+                    progressDialog.hideProgressDialog();
+                    handleGoogleSignIn(googleSignInResult);
+                }
+            });
         }
     }
 
