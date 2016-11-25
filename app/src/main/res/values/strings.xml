@@ -690,7 +690,7 @@
     <string name="sign_in_failure">Sign In Failed! Please try again after some time</string>
     <string name="google_server_web_ouath2_client" translatable="false">
         598790910183-b2hf1trmtmpsj0n2elrmkpkj6armrisp.apps.googleusercontent.com</string>
-    <string name="sign_out">Sign Out</string>
+    <string name="sign_out">Log Out</string>
     <string name="loading">Loading</string>
     <!--<string name=""></string>-->
     <!--<string name=""></string>-->

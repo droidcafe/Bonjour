@@ -24,13 +24,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import droid.nir.testapp1.R;
 import droid.nir.testapp1.noveu.Projects.data.ProjectList;
+import droid.nir.testapp1.noveu.Util.Log;
 import droid.nir.testapp1.noveu.dB.Project;
-import droid.nir.testapp1.noveu.welcome.about.OnAboutHelperListener;
 
 /**
  * A {@link PreferenceActivity} that presents a set of application settings. On
@@ -154,11 +153,12 @@ public class BonjourSettings extends AppCompatPreferenceActivity {
      * Make sure to deny any unknown fragments here.
      */
     protected boolean isValidFragment(String fragmentName) {
-        return PreferenceFragment.class.getName().equals(fragmentName)
-                || GeneralPreferenceFragment.class.getName().equals(fragmentName)
-                || TasksPreferenceFragment.class.getName().equals(fragmentName)
-                || NotificationPreferenceFragment.class.getName().equals(fragmentName)
-                || AboutPreferenceFragment.class.getName().equals(fragmentName);
+        return true;
+//        return PreferenceFragment.class.getName().equals(fragmentName)
+//                || GeneralPreferenceFragment.class.getName().equals(fragmentName)
+//                || TasksPreferenceFragment.class.getName().equals(fragmentName)
+//                || NotificationPreferenceFragment.class.getName().equals(fragmentName)
+//                || AboutPreferenceFragment.class.getName().equals(fragmentName);
     }
 
     /**
@@ -176,13 +176,13 @@ public class BonjourSettings extends AppCompatPreferenceActivity {
             ProjectList projectList = Project.getProjects(getActivity());
 
             CharSequence[] entries = new CharSequence[projectList.projectNames.size()];
-            CharSequence[] entryValues =new CharSequence[projectList.projectIds.size()];
+            CharSequence[] entryValues = new CharSequence[projectList.projectIds.size()];
 
-            for(int i=0;i< projectList.projectNames.size();i++){
+            for (int i = 0; i < projectList.projectNames.size(); i++) {
                 entries[i] = projectList.projectNames.get(i);
                 entryValues[i] = Integer.toString(projectList.projectIds.get(i));
             }
-            ListPreference lp = (ListPreference)findPreference("pref_general_project_default");
+            ListPreference lp = (ListPreference) findPreference("pref_general_project_default");
             lp.setEntries(entries);
             lp.setEntryValues(entryValues);
 
@@ -251,7 +251,16 @@ public class BonjourSettings extends AppCompatPreferenceActivity {
         }
     }
 
-    public static class AboutPreferenceFragment extends Fragment{
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
+    public static class LogOutPreferenceFragment extends PreferenceFragment {
+        @Override
+        public void onCreate(Bundle savedInstanceState) {
+            Log.d("bs","log out");
+        }
+
+    }
+
+    public static class AboutPreferenceFragment extends Fragment {
 
         @Override
         public void onCreate(Bundle savedInstanceState) {

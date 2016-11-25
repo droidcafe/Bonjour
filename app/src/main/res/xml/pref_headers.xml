@@ -12,6 +12,10 @@
         android:title="@string/pref_header_tasks" />
 
     <!--<header-->
+        <!--android:fragment="droid.nir.testapp1.noveu.bonjoursettings.LogOutFragment"-->
+        <!--android:title="@string/sign_out" />-->
+
+    <!--<header-->
         <!--android:fragment="droid.nir.testapp1.noveu.bonjoursettings.BonjourSettings$NotificationPreferenceFragment"-->
         <!--android:icon="@drawable/ic_notifications_black_24dp"-->
         <!--android:title="@string/pref_header_notifications"-->

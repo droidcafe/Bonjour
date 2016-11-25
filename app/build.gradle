@@ -24,12 +24,12 @@ android {
             signingConfig signingConfigs.config
         }
     }
-    productFlavors{
-        dev{
+    productFlavors {
+        dev {
             minSdkVersion 21
 
         }
-        prod{
+        prod {
             minSdkVersion 15
 
         }
@@ -69,11 +69,17 @@ dependencies {
 
 
     compile project(':library')
-    compile 'com.github.alamkanak:android-week-view:1.2.3'
-    compile 'com.github.citux:datetimepicker:0.1.2'
-    compile 'com.github.marcohc:robotocalendarview:1.1.0'
+    //   compile 'com.google.android.gms:play-services-analytics:9.8.0'
+    
+
+
+
+
+    compile  'com.github.alamkanak:android-week-view:1.2.3'
+    compile  'com.github.citux:datetimepicker:0.1.2'
+    compile'com.github.marcohc:robotocalendarview:1.1.0'
     compile 'com.prolificinteractive:material-calendarview:0.6.1'
-    compile 'com.balysv:material-ripple:1.0.2'
+    compile  'com.balysv:material-ripple:1.0.2'
     compile 'com.github.jiahuanyu:CircleTimerView:62c7742622'
     compile 'com.getbase:floatingactionbutton:1.9.1'
     compile 'com.android.support:appcompat-v7:25.0.0'
@@ -90,19 +96,14 @@ dependencies {
     compile 'com.timehop.stickyheadersrecyclerview:library:0.4.3'
     compile 'com.facebook.stetho:stetho:1.4.1'
     compile 'eu.davidea:flexible-adapter:4.2.0'
- //   compile 'com.google.android.gms:play-services-analytics:9.8.0'
     compile 'com.android.support:support-v4:25.0.0'
-
     compile 'com.google.android.gms:play-services-auth:9.8.0'
     compile 'com.google.android.gms:play-services-maps:9.8.0'
-
-
     compile 'com.google.firebase:firebase-core:9.8.0'
     compile 'com.google.firebase:firebase-auth:9.8.0'
     compile 'com.google.firebase:firebase-messaging:9.8.0'
     compile 'com.google.firebase:firebase-crash:9.8.0'
     compile 'com.google.firebase:firebase-invites:9.8.0'
-
 }
 
 apply plugin: 'com.google.gms.google-services'

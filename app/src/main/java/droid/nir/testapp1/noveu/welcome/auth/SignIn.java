@@ -18,8 +18,14 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.OptionalPendingResult;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.analytics.FirebaseAnalytics;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.GoogleAuthProvider;
 
 import droid.nir.testapp1.R;
 import droid.nir.testapp1.noveu.Util.AuthUtil;
@@ -56,6 +62,23 @@ public class SignIn extends AppCompatActivity implements GoogleApiClient.OnConne
                 .enableAutoManage(this, this)
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
                 .build();
+        mAuth = FirebaseAuth.getInstance();
+        mAuthListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                    FirebaseUser user = firebaseAuth.getCurrentUser();
+                    if (user != null) {
+                        // User is signed in
+                        Log.d("si", "onAuthStateChanged:signed_in:" + user.getUid());
+                        handleSignInSuccess(user.getDisplayName());
+
+                    } else {
+                        // User is signed out
+                        Log.d("si", "onAuthStateChanged:signed_out");
+                    }
+
+            }
+        };
         findViewById(R.id.sign_in_button).setOnClickListener(this);
         findViewById(R.id.sign_out_button).setOnClickListener(this);
     }
@@ -63,8 +86,9 @@ public class SignIn extends AppCompatActivity implements GoogleApiClient.OnConne
     @Override
     protected void onStart() {
         super.onStart();
+        mAuth.addAuthStateListener(mAuthListener);
         OptionalPendingResult<GoogleSignInResult> opr = AuthUtil.getOptionalResult(mGoogleApiClient);
-        if (opr != null) {
+        if (AuthUtil.isUserSignedIn(opr)) {
             Log.d("si", "Got cached sign-in");
             updateUI("Already signed is as "+ AuthUtil.getUserAccount(opr).getDisplayName());
         }else{
@@ -72,6 +96,7 @@ public class SignIn extends AppCompatActivity implements GoogleApiClient.OnConne
             opr.setResultCallback(new ResultCallback<GoogleSignInResult>() {
                 @Override
                 public void onResult(GoogleSignInResult googleSignInResult) {
+                    Log.d("si", "onstart handleSignInResult:" + googleSignInResult.isSuccess());
                     progressDialog.hideProgressDialog();
                     handleGoogleSignIn(googleSignInResult);
                 }
@@ -80,14 +105,11 @@ public class SignIn extends AppCompatActivity implements GoogleApiClient.OnConne
     }
 
     @Override
-    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-        Log.d("signin", "failed to connect");
-
-        Bundle bundle = new Bundle();
-        bundle.putString(FirebaseAnalytics.Param.ITEM_ID, Log.sign_in_connect_error_id);
-        bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, Log.sign_in_connect_error);
-        mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
-
+    protected void onStop() {
+        super.onStop();
+        if (mAuthListener != null) {
+            mAuth.removeAuthStateListener(mAuthListener);
+        }
     }
 
     @Override
@@ -118,6 +140,7 @@ public class SignIn extends AppCompatActivity implements GoogleApiClient.OnConne
                         Import.setSharedPref(SignIn.this, SharedKeys.user_name, "");
                     }
                 });
+        FirebaseAuth.getInstance().signOut();
     }
 
     @Override
@@ -134,11 +157,10 @@ public class SignIn extends AppCompatActivity implements GoogleApiClient.OnConne
     private void handleGoogleSignIn(GoogleSignInResult result) {
         Log.d("si", "handleSignInResult:" + result.isSuccess());
         if (result.isSuccess()) {
-            // Signed in successfully, show authenticated UI.
             GoogleSignInAccount account = result.getSignInAccount();
             Log.d("si", " " + account.getId() + " " + account.getEmail());
             Log.d("si", " token id " + account.getIdToken());
-            handleSignInSuccess(account.getDisplayName());
+            firebaseAuthWithGoogle(account);
         } else {
             // Signed out, show unauthenticated UI.
             handleSignInFailure();
@@ -159,8 +181,38 @@ public class SignIn extends AppCompatActivity implements GoogleApiClient.OnConne
 
     }
 
+    private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
+        Log.d("si", "firebaseAuthWithGoogle:" + acct.getId());
+
+        AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
+        mAuth.signInWithCredential(credential)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        Log.d("si", "signInWithCredential:onComplete:" + task.isSuccessful());
+
+                        if (!task.isSuccessful()) {
+                            Log.w("si", "signInWithCredential"+ task.getException());
+                            updateUI("Sorry! Authentication Failed, Try Again after some time");
+                        }
+                    }
+                });
+    }
+
+
     private void updateUI(String message) {
         final CoordinatorLayout coordinatorLayout = (CoordinatorLayout) findViewById(R.id.signin_parent);
         Snackbar.make(coordinatorLayout, message, Snackbar.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+        Log.d("signin", "failed to connect");
+
+        Bundle bundle = new Bundle();
+        bundle.putString(FirebaseAnalytics.Param.ITEM_ID, Log.sign_in_connect_error_id);
+        bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, Log.sign_in_connect_error);
+        mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
+
     }
 }

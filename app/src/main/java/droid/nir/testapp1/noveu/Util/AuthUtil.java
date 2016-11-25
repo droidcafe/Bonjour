@@ -29,13 +29,13 @@ public class AuthUtil {
     }
 
     public static GoogleSignInResult getSignInResult(OptionalPendingResult<GoogleSignInResult> opr) {
-        return (opr != null) ? opr.get() : null;
+        return (isUserSignedIn(opr)) ? opr.get() : null;
     }
 
     public static OptionalPendingResult<GoogleSignInResult> getOptionalResult(GoogleApiClient mGoogleApiClient) {
         OptionalPendingResult<GoogleSignInResult> opr =
                 Auth.GoogleSignInApi.silentSignIn(mGoogleApiClient);
-        return (isUserSignedIn(opr)) ? opr : null;
+        return opr;
     }
 
     public static boolean isUserSignedIn(OptionalPendingResult<GoogleSignInResult> opr) {
