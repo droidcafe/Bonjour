@@ -10,6 +10,12 @@
     tools:showIn="@layout/activity_sign_in">
 
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/foyohe_tag"
+        android:text="@string/foyohe_tag"
+        />
     <com.google.android.gms.common.SignInButton
         android:id="@+id/sign_in_button"
         android:layout_width="match_parent"

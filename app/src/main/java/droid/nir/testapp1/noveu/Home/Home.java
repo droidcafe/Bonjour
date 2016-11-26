@@ -55,6 +55,7 @@ import droid.nir.testapp1.noveu.sync.alarms.DailySyncAlarm;
 import droid.nir.testapp1.noveu.sync.fcm.FCMUtil;
 import droid.nir.testapp1.noveu.welcome.Initial;
 import droid.nir.testapp1.noveu.welcome.about.About;
+import droid.nir.testapp1.noveu.welcome.auth.SignIn;
 
 public class Home extends AppCompatActivity
         implements OnDateChangedListener, View.OnClickListener {
@@ -127,6 +128,13 @@ public class Home extends AppCompatActivity
         int db_ops_status =  Import.getSharedPref(context,SharedKeys.db_ops_status);
         if(db_ops_status != constants.db_ops_status_modes[1]){
             Initial.startDBops(this);
+        }
+        int signed_status = Import.getSharedPref(this,SharedKeys.user_signed_status);
+        String user_name = Import.getSharedPref(SharedKeys.user_name,this);
+        if (signed_status != 1 || user_name == null) {
+            Intent auth_intent = new Intent(this, SignIn.class);
+            startActivity(auth_intent);
+            finish();
         }
 
         return ParentDb.getInstance(context).returnSQl();
@@ -414,6 +422,7 @@ public class Home extends AppCompatActivity
                 });
 
         snackbar.show();
+
         return true;
     }
 
