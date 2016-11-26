@@ -60,10 +60,7 @@ public class AuthUtil {
                 new ResultCallback<Status>() {
                     @Override
                     public void onResult(Status status) {
-                        Import.setSharedPref(context, SharedKeys.user_name, "");
-                        Import.setSharedPref(context, SharedKeys.user_display_name, "");
-                        Import.setSharedPref(context, SharedKeys.user_signed_status, -1);
-                        Import.setSharedPref(context, SharedKeys.user_email, "");
+                        proceedSignOut(context);
                     }
                 });
         FirebaseAuth.getInstance().signOut();
@@ -83,6 +80,21 @@ public class AuthUtil {
                 .enableAutoManage(activity,listener)
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
                 .build();
+    }
+
+    public static void proceddSignIn(Context context,GoogleSignInAccount account) {
+        Import.setSharedPref(context, SharedKeys.user_name, account.getGivenName());
+        Import.setSharedPref(context, SharedKeys.user_display_name, account.getDisplayName());
+        Import.setSharedPref(context, SharedKeys.user_email, account.getEmail());
+        Import.setSharedPref(context, SharedKeys.user_google_id, account.getId());
+
+    }
+
+    public static void proceedSignOut(Context context) {
+        Import.setSharedPref(context, SharedKeys.user_name, "");
+        Import.setSharedPref(context, SharedKeys.user_display_name, "");
+        Import.setSharedPref(context, SharedKeys.user_signed_status, -1);
+        Import.setSharedPref(context, SharedKeys.user_email, "");
     }
 
 

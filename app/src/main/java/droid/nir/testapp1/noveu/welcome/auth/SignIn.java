@@ -15,7 +15,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.common.api.OptionalPendingResult;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -87,10 +86,13 @@ public class SignIn extends AppCompatActivity implements GoogleApiClient.OnConne
     protected void onStart() {
         super.onStart();
         mAuth.addAuthStateListener(mAuthListener);
-        OptionalPendingResult<GoogleSignInResult> opr = AuthUtil.getOptionalResult(mGoogleApiClient);
+ /*       OptionalPendingResult<GoogleSignInResult> opr = AuthUtil.getOptionalResult(mGoogleApiClient);
         if (AuthUtil.isUserSignedIn(opr)) {
             Log.d("si", "Got cached sign-in");
             updateUI("Already signed is as " + AuthUtil.getUserAccount(opr).getDisplayName());
+            AuthUtil.proceddSignIn(this,AuthUtil.getUserAccount(opr));
+            proceedHome();
+
         } else {
             progressDialog.showProgressDialog();
             opr.setResultCallback(new ResultCallback<GoogleSignInResult>() {
@@ -102,7 +104,7 @@ public class SignIn extends AppCompatActivity implements GoogleApiClient.OnConne
                         handleGoogleSignIn(googleSignInResult);
                 }
             });
-        }
+        }*/
     }
 
     @Override
@@ -158,11 +160,7 @@ public class SignIn extends AppCompatActivity implements GoogleApiClient.OnConne
         Log.d("si", "handleSignInResult:" + result.isSuccess());
         if (result.isSuccess()) {
             GoogleSignInAccount account = result.getSignInAccount();
-            Import.setSharedPref(this, SharedKeys.user_name, account.getGivenName());
-            Import.setSharedPref(this, SharedKeys.user_display_name, account.getDisplayName());
-            Import.setSharedPref(this, SharedKeys.user_email, account.getEmail());
-            Import.setSharedPref(this, SharedKeys.user_google_id, account.getId());
-
+            AuthUtil.proceddSignIn(this,account);
             Log.d("si", " " + account.getId() + " " + account.getEmail());
             firebaseAuthWithGoogle(account);
         } else {
