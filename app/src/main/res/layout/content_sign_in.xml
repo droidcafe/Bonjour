@@ -29,6 +29,7 @@
         android:layout_height="wrap_content"
         android:text="@string/sign_out"
         android:layout_above="@id/sign_in_button"
+        android:visibility="gone"
         android:id="@+id/sign_out_button"/>
 
     <!--<TextView-->

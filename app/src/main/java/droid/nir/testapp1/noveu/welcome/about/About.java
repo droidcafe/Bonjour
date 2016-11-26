@@ -17,11 +17,11 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import droid.nir.testapp1.R;
-import droid.nir.testapp1.noveu.Home.Home;
 import droid.nir.testapp1.noveu.Util.Import;
 import droid.nir.testapp1.noveu.Util.Log;
 import droid.nir.testapp1.noveu.constants.constants;
 import droid.nir.testapp1.noveu.welcome.Initial;
+import droid.nir.testapp1.noveu.welcome.auth.SignIn;
 
 public class About extends FragmentActivity implements ViewPager.OnPageChangeListener, OnAboutHelperListener, View.OnClickListener {
 
@@ -171,9 +171,7 @@ public class About extends FragmentActivity implements ViewPager.OnPageChangeLis
 //        return_intent.putExtra("shown_till",position);
 //        setResult(constants.SUCCESS_CODE, return_intent);
 
-        Intent welcome_intent = new Intent(this, Home.class);
-        welcome_intent.putExtra("shown_till", position);
-        startActivity(welcome_intent);
+        startActivity(new Intent(this, SignIn.class));
         finish();
     }
 

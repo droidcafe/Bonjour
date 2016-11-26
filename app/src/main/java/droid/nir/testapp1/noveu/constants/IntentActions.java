@@ -17,6 +17,7 @@ public class IntentActions {
 
     public static final String ACTION_NOTIFICATION_PROCEED= "droid.nir.testapp1.intent.NOTIFY_PROCEED";
     public static final String ACTION_NOTIFICATION_PROCEED_TASK= "droid.nir.testapp1.intent.NOTIFY_PROCEED_TASK";
+    public static final String ACTION_NOTIFICATION_PROCEED_FCM= "droid.nir.testapp1.intent.NOTIFY_PROCEED_FCM";
     public static final String ACTION_NOTIFICATION_PROCEED_ALARM= "droid.nir.testapp1.intent.NOTIFY_PROCEED_ALARM";
     public static final String ACTION_NOTIFICATION_PROCEED_ALARM_TASK= "droid.nir.testapp1.intent.NOTIFY_PROCEED_ALARM_TASK";
     public static final String ACTION_NOTIFICATION_DISMISSALARM= "droid.nir.testapp1.intent.NOTIFY_DISMISSALARM";

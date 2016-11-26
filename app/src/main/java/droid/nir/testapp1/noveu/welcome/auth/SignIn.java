@@ -28,6 +28,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
 import droid.nir.testapp1.R;
+import droid.nir.testapp1.noveu.Home.Home;
 import droid.nir.testapp1.noveu.Util.AuthUtil;
 import droid.nir.testapp1.noveu.Util.Import;
 import droid.nir.testapp1.noveu.Util.Log;
@@ -66,16 +67,16 @@ public class SignIn extends AppCompatActivity implements GoogleApiClient.OnConne
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                    FirebaseUser user = firebaseAuth.getCurrentUser();
-                    if (user != null) {
-                        // User is signed in
-                        Log.d("si", "onAuthStateChanged:signed_in:" + user.getUid());
-                        handleSignInSuccess(user.getDisplayName());
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                if (user != null) {
+                    // User is signed in
+                    Log.d("si", "onAuthStateChanged:signed_in:" + user.getUid());
+                    handleSignInSuccess(user.getDisplayName());
 
-                    } else {
-                        // User is signed out
-                        Log.d("si", "onAuthStateChanged:signed_out");
-                    }
+                } else {
+                    // User is signed out
+                    Log.d("si", "onAuthStateChanged:signed_out");
+                }
 
             }
         };
@@ -90,15 +91,16 @@ public class SignIn extends AppCompatActivity implements GoogleApiClient.OnConne
         OptionalPendingResult<GoogleSignInResult> opr = AuthUtil.getOptionalResult(mGoogleApiClient);
         if (AuthUtil.isUserSignedIn(opr)) {
             Log.d("si", "Got cached sign-in");
-            updateUI("Already signed is as "+ AuthUtil.getUserAccount(opr).getDisplayName());
-        }else{
+            updateUI("Already signed is as " + AuthUtil.getUserAccount(opr).getDisplayName());
+        } else {
             progressDialog.showProgressDialog();
             opr.setResultCallback(new ResultCallback<GoogleSignInResult>() {
                 @Override
                 public void onResult(GoogleSignInResult googleSignInResult) {
                     Log.d("si", "onstart handleSignInResult:" + googleSignInResult.isSuccess());
                     progressDialog.hideProgressDialog();
-                    handleGoogleSignIn(googleSignInResult);
+                    if (googleSignInResult.isSuccess())
+                        handleGoogleSignIn(googleSignInResult);
                 }
             });
         }
@@ -127,6 +129,7 @@ public class SignIn extends AppCompatActivity implements GoogleApiClient.OnConne
 
     private void googleSignIn() {
         Log.d("si", "lauching signinintent");
+        progressDialog.showProgressDialog();
         Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
         startActivityForResult(signInIntent, RC_GOOGLE_SIGN_IN);
     }
@@ -146,10 +149,9 @@ public class SignIn extends AppCompatActivity implements GoogleApiClient.OnConne
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        Log.d("si", "result");
         if (requestCode == RC_GOOGLE_SIGN_IN) {
+            progressDialog.showProgressDialog();
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
-            Log.d("si", "result for signin " + resultCode + " " + result);
             handleGoogleSignIn(result);
         }
     }
@@ -159,10 +161,11 @@ public class SignIn extends AppCompatActivity implements GoogleApiClient.OnConne
         if (result.isSuccess()) {
             GoogleSignInAccount account = result.getSignInAccount();
             Log.d("si", " " + account.getId() + " " + account.getEmail());
-            Log.d("si", " token id " + account.getIdToken());
             firebaseAuthWithGoogle(account);
+            Intent welcome_intent = new Intent(this, Home.class);
+            startActivity(welcome_intent);
+            finish();
         } else {
-            // Signed out, show unauthenticated UI.
             handleSignInFailure();
         }
     }
@@ -192,7 +195,7 @@ public class SignIn extends AppCompatActivity implements GoogleApiClient.OnConne
                         Log.d("si", "signInWithCredential:onComplete:" + task.isSuccessful());
 
                         if (!task.isSuccessful()) {
-                            Log.w("si", "signInWithCredential"+ task.getException());
+                            Log.w("si", "signInWithCredential" + task.getException());
                             updateUI("Sorry! Authentication Failed, Try Again after some time");
                         }
                     }

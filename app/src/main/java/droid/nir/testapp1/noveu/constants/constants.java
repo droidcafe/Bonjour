@@ -78,8 +78,9 @@ public class constants {
     /**
      * permitted mode for notification (in today_notification table)
      * 1- from tasks
+     * 2 - from fcm override
      */
-    public static final int[] notificationMode = {1, 2};
+    public static final int[] notificationMode = {1, 2,3};
 
     public static final String notificationActionid1 = "111";
     public static final String notificationActionid2 = "222";
@@ -119,6 +120,14 @@ public class constants {
      */
     public static final  String[] event_notification_modes = {"No Notification",
             "10 minutes before","Half an hour before","Custom"};
+
+
+    /**
+     * the different types of fcm push notifications
+     * 0 - regular
+     * 1- to show user new update is present
+      */
+    public static final String[] fcm_type_modes = {"regular","bonjour_update"};
 
 
 }

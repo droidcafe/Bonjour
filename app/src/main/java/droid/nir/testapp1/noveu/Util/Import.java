@@ -32,6 +32,7 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Random;
 
+import droid.nir.testapp1.R;
 import droid.nir.testapp1.noveu.constants.SharedKeys;
 import droid.nir.testapp1.noveu.dB.metaValues.dBmetaData;
 
@@ -396,6 +397,11 @@ public class Import {
 
     public static  boolean isVersionOK(int base_version) {
         return ( Build.VERSION.SDK_INT >=  base_version) ;
+    }
+
+    public static Intent getPlayStoreIntent(Context context) {
+        return new Intent(Intent.ACTION_VIEW,
+                Uri.parse(context.getResources().getString(R.string.app_uri)));
     }
 
 }

@@ -24,6 +24,13 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value=" AIzaSyAZPSCWSozbghbsAS5AxLXuzmJI2yBjYzA" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/cc" />
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/tprimary" />
 
         <!-- android:theme="@style/AppTheme" -->
         <activity
@@ -376,7 +383,26 @@
         <activity
             android:name=".noveu.Home.AllEvents"
             android:label="@string/title_activity_all_events"
-            android:theme="@style/AppTheme.Event.ToolBar"/>
+            android:theme="@style/AppTheme.Event.ToolBar" />
+
+        <service
+            android:name=".noveu.sync.fcm.BonjourFCMService"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <service
+            android:name=".noveu.sync.fcm.BonjourFCMIdService"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+
+        </service>
     </application>
 
 </manifest>

@@ -1,6 +1,5 @@
 package droid.nir.testapp1.noveu.notifications.util;
 
-import android.app.Notification;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
@@ -19,8 +18,6 @@ import droid.nir.testapp1.noveu.constants.constants;
 import droid.nir.testapp1.noveu.notifications.NotificationActivity;
 import droid.nir.testapp1.noveu.notifications.handlers.NotificationHandler;
 import droid.nir.testapp1.noveu.sync.services.NotificationResponseService;
-import droid.nir.testapp1.noveu.sync.services.PlayBackService;
-import droid.nir.testapp1.noveu.sync.services.ShareService;
 
 /**
  * Created by droidcafe on 3/28/2016.
@@ -55,6 +52,8 @@ public class NotificationUtils {
 
         if(notificationType == constants.notificationMode[0])
              intent_expand.setAction(IntentActions.ACTION_NOTIFICATION_PROCEED_TASK);
+        else if(notificationType == constants.notificationMode[1])
+            intent_expand.setAction(IntentActions.ACTION_NOTIFICATION_PROCEED_FCM);
         else
             intent_expand.setAction(IntentActions.ACTION_NOTIFICATION_PROCEED);
 
@@ -172,7 +171,8 @@ public class NotificationUtils {
     }
 
     public static NotificationCompat.Builder buildNotificatonAlarm(final Context context,
-                                                                   NotificationCompat.Builder builder, int id, Intent intent, int notificationType) {
+                                                                   NotificationCompat.Builder builder,
+                                                                   int id, Intent intent, int notificationType) {
 
         Intent dismissIntent = new Intent(context, NotificationResponseService.class)
                 .setAction(IntentActions.ACTION_NOTIFICATION_DISMISSALARM).putExtra("nid", id);
