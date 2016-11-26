@@ -64,17 +64,16 @@ public class SignIn extends AppCompatActivity implements GoogleApiClient.OnConne
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
                 .build();
         mAuth = FirebaseAuth.getInstance();
+
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
-                    // User is signed in
                     Log.d("si", "onAuthStateChanged:signed_in:" + user.getUid());
                     handleSignInSuccess(user.getDisplayName());
-
+                    proceedHome();
                 } else {
-                    // User is signed out
                     Log.d("si", "onAuthStateChanged:signed_out");
                 }
 
@@ -98,7 +97,7 @@ public class SignIn extends AppCompatActivity implements GoogleApiClient.OnConne
                 @Override
                 public void onResult(GoogleSignInResult googleSignInResult) {
                     Log.d("si", "onstart handleSignInResult:" + googleSignInResult.isSuccess());
-                    progressDialog.hideProgressDialog();
+                    progressDialog.disMissProgressDialog();
                     if (googleSignInResult.isSuccess())
                         handleGoogleSignIn(googleSignInResult);
                 }
@@ -150,7 +149,6 @@ public class SignIn extends AppCompatActivity implements GoogleApiClient.OnConne
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == RC_GOOGLE_SIGN_IN) {
-            progressDialog.showProgressDialog();
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
             handleGoogleSignIn(result);
         }
@@ -160,11 +158,13 @@ public class SignIn extends AppCompatActivity implements GoogleApiClient.OnConne
         Log.d("si", "handleSignInResult:" + result.isSuccess());
         if (result.isSuccess()) {
             GoogleSignInAccount account = result.getSignInAccount();
+            Import.setSharedPref(this, SharedKeys.user_name, account.getGivenName());
+            Import.setSharedPref(this, SharedKeys.user_display_name, account.getDisplayName());
+            Import.setSharedPref(this, SharedKeys.user_email, account.getEmail());
+            Import.setSharedPref(this, SharedKeys.user_google_id, account.getId());
+
             Log.d("si", " " + account.getId() + " " + account.getEmail());
             firebaseAuthWithGoogle(account);
-            Intent welcome_intent = new Intent(this, Home.class);
-            startActivity(welcome_intent);
-            finish();
         } else {
             handleSignInFailure();
         }
@@ -174,10 +174,10 @@ public class SignIn extends AppCompatActivity implements GoogleApiClient.OnConne
 
         String welcome = getResources().getString(R.string.welcome, name);
         updateUI(welcome);
-        Import.setSharedPref(this, SharedKeys.user_name, name);
     }
 
     private void handleSignInFailure() {
+        progressDialog.disMissProgressDialog();
         final CoordinatorLayout coordinatorLayout = (CoordinatorLayout) findViewById(R.id.signin_parent);
         String failed = Import.getString(this, R.string.sign_in_failure);
         Snackbar.make(coordinatorLayout, failed, Snackbar.LENGTH_LONG).show();
@@ -193,13 +193,22 @@ public class SignIn extends AppCompatActivity implements GoogleApiClient.OnConne
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         Log.d("si", "signInWithCredential:onComplete:" + task.isSuccessful());
-
                         if (!task.isSuccessful()) {
                             Log.w("si", "signInWithCredential" + task.getException());
+                            progressDialog.disMissProgressDialog();
                             updateUI("Sorry! Authentication Failed, Try Again after some time");
                         }
                     }
                 });
+    }
+
+    private void proceedHome() {
+        progressDialog.disMissProgressDialog();
+        Import.setSharedPref(this,SharedKeys.user_signed_status,1);
+        Intent welcome_intent = new Intent(SignIn.this, Home.class);
+        startActivity(welcome_intent);
+        finish();
+
     }
 
 
@@ -212,6 +221,7 @@ public class SignIn extends AppCompatActivity implements GoogleApiClient.OnConne
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
         Log.d("signin", "failed to connect");
 
+        progressDialog.disMissProgressDialog();
         Bundle bundle = new Bundle();
         bundle.putString(FirebaseAnalytics.Param.ITEM_ID, Log.sign_in_connect_error_id);
         bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, Log.sign_in_connect_error);

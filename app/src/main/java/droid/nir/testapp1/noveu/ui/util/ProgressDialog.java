@@ -35,4 +35,11 @@ public class ProgressDialog {
             mProgressDialog.hide();
         }
     }
+    public void disMissProgressDialog() {
+        if (mProgressDialog != null && mProgressDialog.isShowing()) {
+            mProgressDialog.dismiss();
+        }
+    }
+
+
 }

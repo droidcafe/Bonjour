@@ -62,8 +62,8 @@
     <color name="tprimary_light">#B3E5FC</color>
     <color name="tprimarytext">#8e54b3</color>
 
-    <color name="aprimary">#adcf68</color>
-    <color name="aprimary_dark">#7DA330</color>
+    <color name="aprimary">#6b4fbb</color>
+    <color name="aprimary_dark">#FF6341C4</color>
 
 
     <color name="sprimary">#F4F4F4</color>
@@ -124,17 +124,22 @@
     <color name="nav_center1">#8975AC</color>
     <color name="nav_end1">#5B4E78</color>
     <color name="ripple_color">#BCBCBC</color>
-
     <color name="about_dark">#292421</color>
-    <color name="about_dark1">#7DA330</color>
-    <!--<color name="about_dark2">#8C6801</color>-->
-    <color name="about_dark4">#C03332</color>
-    <color name="about_dark3">#0A5832</color>
-    <color name="about_dark2">#016D7A</color>
-    <color name="about_primary1">#adcf68</color>
-    <color name="about_primary4">#D94C3F</color>
-    <!--<color name="about_primary2">#FDC001</color>-->
-    <color name="about_primary3">#0F9C58</color>
+
+    <color name="about_primary1">#6b4fbb</color>
+    <color name="about_dark1">#FF6341C4</color>
+    <!--<color name="about_primary1">#adcf68</color>-->
+    <!--<color name="about_dark1">#7DA330</color>-->
+
     <color name="about_primary2">#01BBD3</color>
+    <color name="about_dark2">#016D7A</color>
+
+    <color name="about_primary3">#0F9C58</color>
+    <color name="about_dark3">#0A5832</color>
+
+    <color name="about_primary4">#D94C3F</color>
+    <color name="about_dark4">#C03332</color>
+
+    <!--<color name="about_primary2">#FDC001</color>-->
 </resources>
 

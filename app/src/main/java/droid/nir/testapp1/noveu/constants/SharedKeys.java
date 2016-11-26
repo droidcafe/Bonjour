@@ -41,6 +41,7 @@ public class SharedKeys {
     public static final String user_name= "user_name";
     public static final String user_display_name= "user_display_name";
     public static final String user_email= "user_email";
+    public static final String user_google_id = "user_google_id";
     public static final String user_signed_status= "is_user_signed_in";
     public static final String fcm_update_availabe= "fcm_update_available_version";
 //    public static final String = "";
