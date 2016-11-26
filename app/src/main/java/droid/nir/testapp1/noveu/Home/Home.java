@@ -72,6 +72,11 @@ public class Home extends AppCompatActivity
         context = this;
         activity = this;
 
+        Intent intent = getIntent();
+        Log.d("home","on  create");
+        if(intent.getData() != null){
+            Log.d("home","intent data "+intent.getData());
+        }
         SQLiteDatabase db = checkInitial();
         setbasics();
         if (db != null && !db.needUpgrade(dBmetaData.DATABASE_VERSION) && Import.checkTable(db, Tasks.tableNames[0])) {

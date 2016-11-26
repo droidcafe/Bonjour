@@ -29,33 +29,40 @@ public class BonjourFCMService extends FirebaseMessagingService {
         Log.d("bfs", "From: " + remoteMessage.getFrom());
 
         if (remoteMessage.getData().size() > 0) {
-            Log.d("bfs","message received "+remoteMessage.getData());
+            Log.d("bfs", "message received " + remoteMessage.getData());
         }
-        Map<String,String> data = remoteMessage.getData();
+        Map<String, String> data = remoteMessage.getData();
         PendingIntent pendingIntent = null;
-        if(data != null){
+        if (data != null) {
             String type = data.get("type");
-            if(type.equals(constants.fcm_type_modes[0])){ /** regular */
+            Log.d("bfs", "type " + type);
+            if (type == null) {
                 pendingIntent = getDefaultPendingIntent();
-            }if(type.equals(constants.fcm_type_modes[1])){ /** update available */
+                Log.d("bfs", "null type");
+            } else if (type.equals(constants.fcm_type_modes[0])) { /** regular */
+                Log.d("bfs", "regular type");
+                pendingIntent = getDefaultPendingIntent();
+            } else if (type.equals(constants.fcm_type_modes[1])) { /** update available */
+                Log.d("bfs", "uppdate type");
                 Intent intent = Import.getPlayStoreIntent(this);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
                         PendingIntent.FLAG_ONE_SHOT);
             }
-        }else{
-           pendingIntent = getDefaultPendingIntent();
+        } else {
+            Log.d("bfs","data null");
+            pendingIntent = getDefaultPendingIntent();
         }
         if (remoteMessage.getNotification() != null) {
             Log.d("bfs", "Message Notification Body: " +
                     remoteMessage.getNotification().getBody());
             RemoteMessage.Notification notification = remoteMessage.getNotification();
-            sendNotification(notification.getTitle(),notification.getBody(),pendingIntent);
+            sendNotification(notification.getTitle(), notification.getBody(), pendingIntent);
         }
     }
 
-    private void sendNotification(String title,String messageBody,PendingIntent pendingIntent) {
-        title = (title==null) ? Import.getString(this,R.string.app_name) : title;
+    private void sendNotification(String title, String messageBody, PendingIntent pendingIntent) {
+        title = (title == null) ? Import.getString(this, R.string.app_name) : title;
         pendingIntent = (pendingIntent == null) ? getDefaultPendingIntent() : pendingIntent;
         Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
@@ -67,7 +74,7 @@ public class BonjourFCMService extends FirebaseMessagingService {
                 .setSound(defaultSoundUri)
                 .setContentIntent(pendingIntent);
 
-        NotificationHandler.notify(this,notificationBuilder.build(), (int) (456*Math.random()) +2) ;
+        NotificationHandler.notify(this, notificationBuilder.build(), (int) (456 * Math.random()) + 2);
     }
 
     private PendingIntent getDefaultPendingIntent() {
