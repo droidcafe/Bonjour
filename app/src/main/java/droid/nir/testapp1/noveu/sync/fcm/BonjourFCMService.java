@@ -15,6 +15,7 @@ import droid.nir.testapp1.R;
 import droid.nir.testapp1.noveu.Home.Home;
 import droid.nir.testapp1.noveu.Util.Import;
 import droid.nir.testapp1.noveu.Util.Log;
+import droid.nir.testapp1.noveu.constants.SharedKeys;
 import droid.nir.testapp1.noveu.constants.constants;
 import droid.nir.testapp1.noveu.notifications.handlers.NotificationHandler;
 
@@ -35,7 +36,6 @@ public class BonjourFCMService extends FirebaseMessagingService {
         PendingIntent pendingIntent = null;
         if (data != null) {
             String type = data.get("type");
-            Log.d("bfs", "type " + type);
             if (type == null) {
                 pendingIntent = getDefaultPendingIntent();
                 Log.d("bfs", "null type");
@@ -43,14 +43,20 @@ public class BonjourFCMService extends FirebaseMessagingService {
                 Log.d("bfs", "regular type");
                 pendingIntent = getDefaultPendingIntent();
             } else if (type.equals(constants.fcm_type_modes[1])) { /** update available */
-                Log.d("bfs", "uppdate type");
+                Log.d("bfs", "update type");
+                String update_version = data.get("version");
+                String version_present = Import.getSharedPref(SharedKeys.fcm_update_availabe, this);
+                if (update_version.equals(version_present))
+                    return;
+
+                Import.setSharedPref(this, SharedKeys.fcm_update_availabe, update_version);
                 Intent intent = Import.getPlayStoreIntent(this);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
                         PendingIntent.FLAG_ONE_SHOT);
             }
         } else {
-            Log.d("bfs","data null");
+            Log.d("bfs", "data null");
             pendingIntent = getDefaultPendingIntent();
         }
         if (remoteMessage.getNotification() != null) {

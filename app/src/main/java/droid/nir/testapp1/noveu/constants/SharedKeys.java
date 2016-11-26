@@ -39,7 +39,7 @@ public class SharedKeys {
     public static final String about_shown_till= "about_shown_till";
     public static final String  project_random_index= "project_random_index";
     public static final String user_name= "USER_NAME";
-//    public static final String = "";
+    public static final String fcm_update_availabe= "fcm_update_available_version";
 //    public static final String = "";
 //    public static final String = "";
 }

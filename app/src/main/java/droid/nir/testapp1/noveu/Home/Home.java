@@ -52,6 +52,7 @@ import droid.nir.testapp1.noveu.dB.Tasks;
 import droid.nir.testapp1.noveu.dB.metaValues.dBmetaData;
 import droid.nir.testapp1.noveu.recycler.TaskAdapterItemTouchHelperCallback;
 import droid.nir.testapp1.noveu.sync.alarms.DailySyncAlarm;
+import droid.nir.testapp1.noveu.sync.fcm.FCMUtil;
 import droid.nir.testapp1.noveu.welcome.Initial;
 import droid.nir.testapp1.noveu.welcome.about.About;
 
@@ -68,20 +69,33 @@ public class Home extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Bundle bundle = getIntent().getExtras();
+        if(bundle != null){
+            handleIntentExtra(bundle);
+        }
         setContentView(R.layout.activity_home);
         context = this;
         activity = this;
 
-        Intent intent = getIntent();
-        Log.d("home","on  create");
-        if(intent.getData() != null){
-            Log.d("home","intent data "+intent.getData());
-        }
         SQLiteDatabase db = checkInitial();
         setbasics();
         if (db != null && !db.needUpgrade(dBmetaData.DATABASE_VERSION) && Import.checkTable(db, Tasks.tableNames[0])) {
             setuptasklist();
             //   ParentDb.getInstance(context).close();
+        }
+
+    }
+
+    private void handleIntentExtra(Bundle bundle) {
+        String from = (String) bundle.get("uplink");
+        if(from == null) {
+            return;
+        }
+
+        Log.d("home","intent data "+from);
+        if (from.equals("fcm")) {
+            FCMUtil.handleFCMIntent(this,this,bundle);
         }
 
     }
