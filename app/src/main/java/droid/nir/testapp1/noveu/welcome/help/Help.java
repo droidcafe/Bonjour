@@ -2,19 +2,19 @@ package droid.nir.testapp1.noveu.welcome.help;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
+
 import droid.nir.testapp1.R;
+import droid.nir.testapp1.noveu.Util.FirebaseUtil;
 import droid.nir.testapp1.noveu.Util.Import;
-import droid.nir.testapp1.noveu.Util.Log;
 
 public class Help extends AppCompatActivity implements View.OnClickListener {
 
+    FirebaseAnalytics mFirebaseAnalytics;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +33,13 @@ public class Help extends AppCompatActivity implements View.OnClickListener {
         findViewById(R.id.pendingdecision).setOnClickListener(this);
         findViewById(R.id.events).setOnClickListener(this);
         findViewById(R.id.labels).setOnClickListener(this);
+
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+        FirebaseUtil.recordScreenView(this,"help",mFirebaseAnalytics);
+
+        Bundle fireBundle = new Bundle();
+        mFirebaseAnalytics.logEvent(FirebaseUtil.help_view,fireBundle);
+
     }
 
     @Override

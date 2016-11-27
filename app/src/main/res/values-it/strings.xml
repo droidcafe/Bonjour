@@ -367,4 +367,12 @@
     <string name="initial_task2">Vuoi modificare me? Clicca su di me</string>
     <string name="initial_task3">Fatto con me? Poi mi strisciare a sinistra oa destra per eliminare</string>
     <string name="initial_task4">Vuoi aggiungere ai propri compiti? Fare clic su tale arancione più pulsante qui sotto</string>
+    <string name="fromdate">dalla data</string>
+    <string name="join_now">Creare un account gratuito</string>
+    <string name="loading">caricamento</string>
+    <string name="randomevent">alcuni eventi</string>
+    <string name="sign_out">Disconnettersi</string>
+    <string name="signing_in">Registrarsi</string>
+    <string name="sign_in_failure">Accedi riuscita! Riprova dopo qualche tempo</string>
+    <string name="welcome">benvenuto %1$s</string>
 </resources>

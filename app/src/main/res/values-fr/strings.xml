@@ -369,4 +369,12 @@
     <string name="initial_task3">Fait avec moi? Puis glissez-moi à gauche ou à droite pour supprimer</string>
     <string name="initial_task2">Voulez-vous me modifier? Cliquez sur moi</string>
     <string name="initial_task4">Voulez-vous ajouter à vos propres tâches? Cliquez sur ce bouton plus d\'orange ci-dessous</string>
+    <string name="fromdate">Partir de la date</string>
+    <string name="join_now">Créer un compte gratuit</string>
+    <string name="loading">chargement</string>
+    <string name="randomevent">Quelque événement</string>
+    <string name="sign_in_failure">Connexion impossible! Veuillez réessayer après un certain temps</string>
+    <string name="sign_out">Se déconnecter</string>
+    <string name="signing_in">Connectez-vous</string>
+    <string name="welcome">Bienvenue %1$s</string>
 </resources>

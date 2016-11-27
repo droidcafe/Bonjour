@@ -234,7 +234,7 @@
     </style>
 
     <style name="event_inner_text3" parent="event_inner_text2">
-        <item name="android:textColor">@color/primary_dark</item>
+        <item name="android:textColor">@color/accent</item>
 
     </style>
 

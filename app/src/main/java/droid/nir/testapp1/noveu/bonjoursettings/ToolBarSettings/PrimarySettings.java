@@ -28,8 +28,8 @@ public class PrimarySettings {
 
                 activity.startActivity(new Intent(context, Help.class));
                 Bundle fireBundle = new Bundle();
-                fireBundle.putString("name",activity.getPackageName());
-                mFirebaseAnalytics.logEvent(FirebaseUtil.menu_rate,fireBundle);
+                fireBundle.putString("name",activity.getLocalClassName());
+                mFirebaseAnalytics.logEvent(FirebaseUtil.menu_help,fireBundle);
                 break;
             case R.id.action_share:
 
@@ -48,9 +48,16 @@ public class PrimarySettings {
                 break;
             case R.id.action_feedback:
                 String[] mailid = {constants.dev_mail};
+                Bundle fireFeedBack = new Bundle();
+                fireFeedBack.putString("name",activity.getLocalClassName());
+                mFirebaseAnalytics.logEvent(FirebaseUtil.menu_feedback,fireFeedBack);
                 Import.composeEmail(activity, mailid, "FeedBack", null);
                 break;
             case R.id.action_rate:
+                Bundle fireRate = new Bundle();
+                fireRate.putString("name",activity.getLocalClassName());
+                mFirebaseAnalytics.logEvent(FirebaseUtil.menu_rate,fireRate);
+
                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(context.getResources().getString(R.string.app_uri)));
                 activity.startActivity(intent);
                 break;

@@ -195,7 +195,7 @@ public class SignIn extends AppCompatActivity implements GoogleApiClient.OnConne
                         if (!task.isSuccessful()) {
                             Log.w("si", "signInWithCredential" + task.getException());
                             progressDialog.disMissProgressDialog();
-                            updateUI("Sorry! Authentication Failed, Try Again after some time");
+                            updateUI(getResources().getString(R.string.sign_in_failure));
                         }
                     }
                 });

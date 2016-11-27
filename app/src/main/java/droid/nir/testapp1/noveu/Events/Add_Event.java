@@ -342,6 +342,8 @@ public class Add_Event extends AppCompatActivity implements View.OnClickListener
             dateFragment.show(getFragmentManager(), "datPicker");
             clickmode = 4;
             notification_mode = 3;
+            findViewById(R.id.ealarmset).setVisibility(View.VISIBLE);
+            findViewById(R.id.ealarmswitch).setVisibility(View.VISIBLE);
         } else {
             notifyTime.setText(currentinlang);
             if (current.equals("No Notification")) {
@@ -450,6 +452,8 @@ public class Add_Event extends AppCompatActivity implements View.OnClickListener
                 passInt[4] = 0;
                 passString[4] = passString[3]; /** todate = fromdate  */
             }
+
+            passInt[11] = ((Switch)findViewById(R.id.ealarmswitch)).isChecked() ? 1 : 0;
             Log.d("ae"," from "+passString[3]+" "+passString[4]+" "+passInt[5]+":"+passInt[6]
                     +" "+passInt[7]+":"+passInt[8] + " noti "+passString[2
                     ]+"  "+passInt[9]+":"+passInt[10]);

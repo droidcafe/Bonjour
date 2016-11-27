@@ -33,6 +33,13 @@ public class FirebaseUtil {
     public static final String menu_help="MENU_HELP";
     public static final String menu_feedback="FEEDBACK";
     public static final String menu_rate="RATE";
+    public static final String help_view="HELP_VIEW";
+    public static final String help_pending="HELP_PENDING";
+    public static final String help_event="HELP_EVENT";
+    public static final String help_task="HELP_TASK";
+    public static final String help_label="HELP_LABEL";
+    public static final String compose_mail="COMPOSE_MAIL";
+//    public static final String ="";
 //    public static final String ="";
 //    public static final String ="";
     public static void logEvent(FirebaseAnalytics mFirebaseAnalytics,

@@ -366,6 +366,14 @@
     <string name="initial_task2">저를 편집 할? 저를 클릭하세요</string>
     <string name="initial_task3">저와 함께 완료? 그런 다음 삭제를 좌우로 저를 슬쩍</string>
     <string name="initial_task4">자신의 작업에 추가 할? 그 오렌지 플러스 아래 버튼을 클릭</string>
+    <string name="fromdate">날짜부터</string>
+    <string name="join_now">무료 계정 만들기</string>
+    <string name="loading">하중</string>
+    <string name="randomevent">일부 이벤트</string>
+    <string name="sign_out">로그 아웃</string>
+    <string name="signing_in">로그인</string>
+    <string name="sign_in_failure">로그인 실패! 잠시 후 다시 시도하십시오.</string>
+    <string name="welcome">환영 %1$s</string>
 
 
 </resources>

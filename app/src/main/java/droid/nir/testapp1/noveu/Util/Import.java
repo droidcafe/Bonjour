@@ -23,6 +23,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.wnafee.vector.MorphButton;
 
 import java.io.File;
@@ -357,6 +358,12 @@ public class Import {
         intent.putExtra(Intent.EXTRA_SUBJECT, subject);
         if (attachment != null)
            intent.putExtra(Intent.EXTRA_STREAM, attachment);
+
+        FirebaseAnalytics mFirebaseAnalytics = FirebaseAnalytics.getInstance(activity);
+        Bundle fireBundle = new Bundle();
+        fireBundle.putString("subject",subject);
+        fireBundle.putString("address",addresses[0]);
+        mFirebaseAnalytics.logEvent(FirebaseUtil.compose_mail,fireBundle);
 
         if (intent.resolveActivity(activity.getPackageManager()) != null) {
             activity.startActivity(intent);
