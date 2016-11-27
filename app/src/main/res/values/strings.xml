@@ -692,7 +692,8 @@
         598790910183-b2hf1trmtmpsj0n2elrmkpkj6armrisp.apps.googleusercontent.com</string>
     <string name="sign_out">Log Out</string>
     <string name="loading">Loading</string>
-    <string name="foyohe_tag">Made with \u2665 by foyohe</string>
+    <string name="foyohe_tag" translatable="false">Made with \u2665 by foyohe</string>
+    <string name="signing_in">Signing in</string>
     <!--<string name=""></string>-->
     <!--<string name=""></string>-->
     <!--<string name=""></string>-->

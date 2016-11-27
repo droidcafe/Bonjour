@@ -20,6 +20,7 @@ import android.widget.TextView;
 import com.android.datetimepicker.date.DatePickerDialog;
 import com.android.datetimepicker.time.RadialPickerLayout;
 import com.android.datetimepicker.time.TimePickerDialog;
+import com.google.firebase.analytics.FirebaseAnalytics;
 
 import java.util.Calendar;
 
@@ -28,6 +29,7 @@ import butterknife.ButterKnife;
 import droid.nir.testapp1.R;
 import droid.nir.testapp1.noveu.Dialogue.DialogueSelectorTasks;
 import droid.nir.testapp1.noveu.Util.AutoRefresh;
+import droid.nir.testapp1.noveu.Util.FirebaseUtil;
 import droid.nir.testapp1.noveu.Util.Import;
 import droid.nir.testapp1.noveu.Util.Log;
 import droid.nir.testapp1.noveu.dB.Project;
@@ -43,6 +45,7 @@ public class Add_minimal extends AppCompatActivity implements View.OnClickListen
    static String dateselected;
    static int timehr,timemin,mode,projectid;
     static Context context;
+    static FirebaseAnalytics mFirebaseAnalytics;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,6 +63,9 @@ public class Add_minimal extends AppCompatActivity implements View.OnClickListen
         newtask.setHint(TaskUtil.getRandomHint(this));
         setOnClicks();
         mode=0;
+
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+        FirebaseUtil.recordScreenView(this,"Task minimal",mFirebaseAnalytics);
     }
 
     private void getArguments() {
@@ -454,6 +460,10 @@ public class Add_minimal extends AppCompatActivity implements View.OnClickListen
                 else
                     passInt = new int[]{projectid,1,0,0,0,1,timehr,timemin,0,0};
             }
+
+            Bundle fireBundle = new Bundle();
+            fireBundle.putString("task",params[0]);
+            mFirebaseAnalytics.logEvent(FirebaseUtil.task_insert_minimal,fireBundle);
 
             Tasks.insert(passData,passInt,context, null,null);
             return null;

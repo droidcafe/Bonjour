@@ -12,6 +12,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +21,7 @@ import droid.nir.testapp1.R;
 import droid.nir.testapp1.noveu.Home.data.dataHome;
 import droid.nir.testapp1.noveu.Tasks.Add_Expand;
 import droid.nir.testapp1.noveu.Tasks.Loaders.DeleteTask;
+import droid.nir.testapp1.noveu.Util.FirebaseUtil;
 import droid.nir.testapp1.noveu.Util.Import;
 import droid.nir.testapp1.noveu.Util.Log;
 import droid.nir.testapp1.noveu.recycler.Interfaces.ItemTouchHelperAdapter;
@@ -34,10 +37,12 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> im
     public static List<dataHome> taskList;
     Activity activity;
     SparseBooleanArray selectedItems;
+    static FirebaseAnalytics mFirebaseAnalytics;
 
-    public TaskAdapter(Context context,Activity activity, List<dataHome> list) {
+    public TaskAdapter(Context context, Activity activity, List<dataHome> list, FirebaseAnalytics mFirebaseAnalytics) {
         taskList = list;
         this.activity = activity;
+        this.mFirebaseAnalytics = mFirebaseAnalytics;
 
         selectedItems = new SparseBooleanArray();
         Log.d("ta","size "+list.size());
@@ -169,6 +174,12 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> im
         int tid =+taskList.get(position).taskid ;
         if(tid !=-1)
         {
+            Bundle fireBundle = new Bundle();
+            fireBundle.putString("name",taskList.get(position).tasktitle);
+            fireBundle.putString("project",taskList.get(position).projectName);
+            fireBundle.putString("type","swipe");
+            mFirebaseAnalytics.logEvent(FirebaseUtil.task_delete,fireBundle);
+
             DeleteTask.setDelayedDelete(activity,tid, 5000);
             taskList.remove(position);
             notifyItemRemoved(position);
@@ -206,6 +217,14 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> im
                         Bundle bundle_expand = new Bundle();
                         bundle_expand.putInt("taskid", taskList.get(getAdapterPosition()).taskid);
                         bundle_expand.putInt("choice", 1);
+
+
+                        Bundle fireBundle = new Bundle();
+                        fireBundle.putString(FirebaseAnalytics.Param.ITEM_CATEGORY,"task");
+                        fireBundle.putString(FirebaseAnalytics.Param.ITEM_NAME,taskList.get(getAdapterPosition()).tasktitle);
+                        fireBundle.putString(FirebaseAnalytics.Param.ITEM_ID,
+                                String.valueOf(taskList.get(getAdapterPosition()).taskid));
+                        mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.VIEW_ITEM,fireBundle);
 
                         intent_expand.putExtras(bundle_expand);
                         task.getContext().startActivity(intent_expand);

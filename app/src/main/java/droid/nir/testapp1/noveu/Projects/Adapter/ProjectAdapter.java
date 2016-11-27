@@ -16,11 +16,14 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
+
 import java.util.ArrayList;
 
 import droid.nir.testapp1.R;
 import droid.nir.testapp1.noveu.Dialogue.DialogueProjectManager;
 import droid.nir.testapp1.noveu.Projects.ProjectTask;
+import droid.nir.testapp1.noveu.Util.FirebaseUtil;
 import droid.nir.testapp1.noveu.Util.Log;
 import droid.nir.testapp1.noveu.dB.Project;
 
@@ -143,10 +146,13 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ViewHold
 
     }
 
-    public  void deleteProject() {
+    public  void deleteProject(FirebaseAnalytics mFirebaseAnalytics) {
         Log.d("pa", "last " + lastClickedPosition);
-        for (int i = 0; i < pronames.size(); i++)
-            Log.d("pa", " " + pronames.get(i) + " " + i);
+        Bundle fireBundle = new Bundle();
+        fireBundle.putString("name",pronames.get(lastClickedPosition));
+        fireBundle.putInt("size",prosize.get(lastClickedPosition));
+        fireBundle.putString("type","project");
+        mFirebaseAnalytics.logEvent(FirebaseUtil.project_delete,fireBundle);
 
         pronames.remove(lastClickedPosition);
         proids.remove(lastClickedPosition);

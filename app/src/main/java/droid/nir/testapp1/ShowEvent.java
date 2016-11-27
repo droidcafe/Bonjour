@@ -18,8 +18,11 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
+
 import droid.nir.databaseHelper.Events;
 import droid.nir.databaseHelper.Today;
+import droid.nir.testapp1.noveu.Util.FirebaseUtil;
 import droid.nir.testapp1.noveu.Util.Log;
 import droid.nir.testapp1.noveu.social.share.Master;
 
@@ -35,6 +38,7 @@ public class ShowEvent extends ActionBarActivity {
     String titletext, fromdatetext, fromtimetext, todatetext, totimetext;
     int iswholeday;
     timecorrection timecorrection;
+    FirebaseAnalytics mFirebaseAnalytics;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,6 +84,10 @@ public class ShowEvent extends ActionBarActivity {
 
             db = events.settingDatabase();
             setupEvent();
+
+            mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+            FirebaseUtil.recordScreenView(this,"show event",mFirebaseAnalytics);
+
         } else {
             maketext.makeText("Sorry!Please Try Again!Failed Pipe");
         }
@@ -321,6 +329,10 @@ public class ShowEvent extends ActionBarActivity {
             list = list.concat(temp);
             Intent shareintent = Master.share(titletext, list);
 
+            Bundle fire_share = new Bundle();
+            fire_share.putString(FirebaseAnalytics.Param.CONTENT_TYPE,"event");
+            fire_share.putString(FirebaseAnalytics.Param.ITEM_ID, titletext);
+            mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SHARE,fire_share);
             startActivity(Intent.createChooser(shareintent, getResources().getString(R.string.shareusing)));
         } else if (id == R.id.action_delete) {
             DialogFragment alertDialog = MyDialogFragment.newInstance(getResources().getString(R.string.delete) + " " + titletext, 5, getResources().getString(R.string.edeletewarn));
@@ -336,6 +348,11 @@ public class ShowEvent extends ActionBarActivity {
         int x = deletelistitem();
         if (x > 0) {
             maketext.makeText(getResources().getString(R.string.deletionsucess));
+            Bundle fireBundle = new Bundle();
+            fireBundle.putString("name",titletext);
+            fireBundle.putString("type","expand");
+            mFirebaseAnalytics.logEvent(FirebaseUtil.event_delete,fireBundle);
+
             SharedPreferences sharedPreferences = getSharedPreferences("sharedprefs", 0);
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putInt("ischanged", 1);

@@ -15,6 +15,8 @@ import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
+
 import java.util.Calendar;
 
 import butterknife.Bind;
@@ -23,6 +25,7 @@ import droid.nir.databaseHelper.Events;
 import droid.nir.testapp1.R;
 import droid.nir.testapp1.noveu.Dialogue.DialogueCreator;
 import droid.nir.testapp1.noveu.Util.AutoRefresh;
+import droid.nir.testapp1.noveu.Util.FirebaseUtil;
 import droid.nir.testapp1.noveu.Util.InputManager;
 import droid.nir.testapp1.noveu.Util.Log;
 import droid.nir.testapp1.noveu.Util.TimeUtil;
@@ -73,6 +76,8 @@ public class Add_Event extends AppCompatActivity implements View.OnClickListener
     @Bind(R.id.efromdate1)
     TextView fromDate1;
 
+    FirebaseAnalytics mFirebaseAnalytics;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -86,6 +91,8 @@ public class Add_Event extends AppCompatActivity implements View.OnClickListener
         setupViews();
 
         context = this;
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+        FirebaseUtil.recordScreenView(this,"add event",mFirebaseAnalytics);
     }
 
 
@@ -450,6 +457,14 @@ public class Add_Event extends AppCompatActivity implements View.OnClickListener
             Events events = new Events(context);
             events.settingDatabase();
             SQLiteDatabase db = events.settingDatabase();
+
+            Bundle fireBundle = new Bundle();
+            fireBundle.putString("event",passString[0]);
+            fireBundle.putString("location",passString[1]);
+            fireBundle.putInt("iswholeday",passInt[0]);
+            fireBundle.putInt("isnotify",passInt[1]);
+
+            mFirebaseAnalytics.logEvent(FirebaseUtil.event_insert,fireBundle);
             if (db != null)
                 events.insert(passString, passInt, db);
 

@@ -18,12 +18,13 @@ public class ProgressDialog {
     }
 
     public void showProgressDialog() {
-        showProgressDialog(R.string.loading);
+        showProgressDialog(R.string.loading,false);
     }
-    public void showProgressDialog(int message_id) {
+    public void showProgressDialog(int message_id,boolean isCancelable) {
         if (mProgressDialog == null) {
             mProgressDialog = new android.app.ProgressDialog(context);
             mProgressDialog.setMessage(context.getString(message_id));
+            mProgressDialog.setCancelable(isCancelable);
             mProgressDialog.setIndeterminate(true);
         }
 

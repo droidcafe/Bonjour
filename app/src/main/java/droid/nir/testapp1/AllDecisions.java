@@ -20,12 +20,15 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
 import droid.nir.databaseHelper.Pending;
 import droid.nir.testapp1.noveu.NavDrw.setNav;
+import droid.nir.testapp1.noveu.Util.FirebaseUtil;
 import droid.nir.testapp1.noveu.Util.Import;
 import droid.nir.testapp1.noveu.Util.Log;
 import droid.nir.testapp1.noveu.bonjoursettings.ToolBarSettings.PrimarySettings;
@@ -48,6 +51,7 @@ public class AllDecisions extends ActionBarActivity implements View.OnClickListe
     FloatingActionButton fab;
     toast maketext;
 
+    FirebaseAnalytics mFirebaseAnalytics;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,6 +75,10 @@ public class AllDecisions extends ActionBarActivity implements View.OnClickListe
         fab.setOnClickListener(AllDecisions.this);
         maketext= new toast(this);
         setuprecycler();
+
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+        FirebaseUtil.recordScreenView(this,"all decision",mFirebaseAnalytics);
+
 
     }
 
@@ -318,7 +326,7 @@ public class AllDecisions extends ActionBarActivity implements View.OnClickListe
                 refresh();
                 break;
             default:
-                PrimarySettings.primarySetting(this, this, id);
+                PrimarySettings.primarySetting(this, this, id,mFirebaseAnalytics);
 
 
         }

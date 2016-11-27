@@ -316,6 +316,8 @@ public class Pending_Recycler_Data extends RecyclerView.Adapter<Pending_Recycler
                 @Override
                 public void onClick(View v) {
                     // maketext.makeText("clicked of positionn "+position + " of type "+type);
+
+
                     switch (type) {
                         case 0:
                             Intent showintent = new Intent(context, ShowDecision.class);

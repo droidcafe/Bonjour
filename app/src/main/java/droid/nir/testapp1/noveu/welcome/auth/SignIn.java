@@ -41,7 +41,7 @@ public class SignIn extends AppCompatActivity implements GoogleApiClient.OnConne
     private FirebaseAnalytics mFirebaseAnalytics;
     ProgressDialog progressDialog;
     private FirebaseAuth mAuth;
-
+    String name;
     private FirebaseAuth.AuthStateListener mAuthListener;
 
     @Override
@@ -130,7 +130,7 @@ public class SignIn extends AppCompatActivity implements GoogleApiClient.OnConne
 
     private void googleSignIn() {
         Log.d("si", "lauching signinintent");
-        progressDialog.showProgressDialog();
+        progressDialog.showProgressDialog(R.string.signing_in,false);
         Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
         startActivityForResult(signInIntent, RC_GOOGLE_SIGN_IN);
     }
@@ -161,6 +161,7 @@ public class SignIn extends AppCompatActivity implements GoogleApiClient.OnConne
         if (result.isSuccess()) {
             GoogleSignInAccount account = result.getSignInAccount();
             AuthUtil.proceddSignIn(this,account);
+            name = account.getGivenName();
             Log.d("si", " " + account.getId() + " " + account.getEmail());
             firebaseAuthWithGoogle(account);
         } else {
@@ -201,6 +202,11 @@ public class SignIn extends AppCompatActivity implements GoogleApiClient.OnConne
     }
 
     private void proceedHome() {
+
+        Bundle bundle = new Bundle();
+        bundle.putString(FirebaseAnalytics.Param.SIGN_UP_METHOD,name );
+        mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SIGN_UP, bundle);
+
         progressDialog.disMissProgressDialog();
         Import.setSharedPref(this,SharedKeys.user_signed_status,1);
         Intent welcome_intent = new Intent(SignIn.this, Home.class);

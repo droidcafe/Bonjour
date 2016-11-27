@@ -22,24 +22,22 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.wnafee.vector.MorphButton;
 
 import java.util.Arrays;
 import java.util.Calendar;
-import java.util.HashMap;
 import java.util.List;
 
-import droid.nir.testapp1.Bonjour;
 import droid.nir.testapp1.R;
 import droid.nir.testapp1.noveu.Dialogue.DialogueSelectorTasks;
-import droid.nir.testapp1.noveu.Home.Home;
 import droid.nir.testapp1.noveu.Tasks.Loaders.DeleteTask;
 import droid.nir.testapp1.noveu.Tasks.Loaders.LoadTaskHelper;
 import droid.nir.testapp1.noveu.Tasks.data.SharedData;
 import droid.nir.testapp1.noveu.Tasks.data.TaskVitalData;
 import droid.nir.testapp1.noveu.Util.AutoRefresh;
+import droid.nir.testapp1.noveu.Util.FirebaseUtil;
 import droid.nir.testapp1.noveu.Util.Import;
 import droid.nir.testapp1.noveu.Util.Log;
 import droid.nir.testapp1.noveu.constants.constants;
@@ -89,6 +87,7 @@ public class Add_Expand extends AppCompatActivity
     static String extras;
     static boolean isMoreVisible, isShared;
     static int choice, id;
+    static FirebaseAnalytics mFirebaseAnalytics;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,6 +108,9 @@ public class Add_Expand extends AppCompatActivity
 
         getArguments();
         setupviews();
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+
+        FirebaseUtil.recordScreenView(this,"Task Expand",mFirebaseAnalytics);
 
     }
 
@@ -363,14 +365,25 @@ public class Add_Expand extends AppCompatActivity
         TaskVitalData taskVitalData = TaskVitalData.initialise(mode, task, dateselected);
         int[] passInt = {0, TaskUtil.isTime(remmode), timehr, timemin, TaskUtil.isAlarm(remmode)};
 
+
         TaskShare taskShare = new TaskShare(passInt, Project.getProjectName(context, projectid), taskVitalData);
         Intent shareIntent = taskShare.share(context);
         context.startActivity(Intent.createChooser(shareIntent, context.getResources().getString(R.string.shareusing)));
+
+        Bundle fire_share = new Bundle();
+        fire_share.putString(FirebaseAnalytics.Param.CONTENT_TYPE,"task");
+        fire_share.putString(FirebaseAnalytics.Param.ITEM_ID, task);
+        mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SHARE,fire_share);
     }
 
     private void deleteTask() {
 
         DeleteTask.setDelayedDelete(activity,id, 5000);
+        Bundle fireBundle = new Bundle();
+        String task = ((TextView) activity.findViewById(R.id.new_task)).getText().toString();
+        fireBundle.putString("name",task);
+        fireBundle.putString("type","expand");
+        mFirebaseAnalytics.logEvent(FirebaseUtil.task_delete,fireBundle);
         finish();
     }
 
@@ -608,7 +621,7 @@ public class Add_Expand extends AppCompatActivity
      * 0       1        2      3
      * <p></p>
      * passint = projectid, isrem, isnotes, issubtask, done, istime, timehr, timemin, isalarm,isrepeat,rmode
-     * 0            1     2        3         4      5      6        7       8     9   10
+     *            0            1     2        3         4      5      6        7       8     9   10
      */
 
     public static class AsyncSave extends AsyncTask<String, Void, Void> {
@@ -674,14 +687,19 @@ public class Add_Expand extends AppCompatActivity
             }
 
             Log.d("ae","pid "+passInt[0]);
-            if (choice == 0)
+            String keys[] = {"name" ,"project","is_rem","sub_taskno","is_notes"};
+            String types[] = {"string","string","integer","integer","integer"};
+            String logString[] = {passData[0],Project.getProjectName(context,passInt[0])};
+            int logInt[] = {passInt[1],SharedData.list.size(),passInt[3]};
+            if (choice == 0) {
+                FirebaseUtil.logEvent(mFirebaseAnalytics,FirebaseUtil.task_insert,keys,types,logString,logInt,null);
                 Tasks.insert(passData, passInt, context, SharedData.list, SharedData.subTaskdone);
-            else if (choice == 1) {
+            } else if (choice == 1) {
+                FirebaseUtil.logEvent(mFirebaseAnalytics,FirebaseUtil.task_update,keys,types,logString,logInt,null);
                 Tasks.update(passData, passInt, context, SharedData.list, SharedData.subTaskdone, id);
             }
+
             SharedData.clearAll();
-//            if (isShared)
-//                System.exit(1);
             return null;
         }
     }

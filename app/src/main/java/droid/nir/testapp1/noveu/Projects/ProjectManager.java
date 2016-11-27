@@ -19,12 +19,15 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
+
 import droid.nir.testapp1.R;
 import droid.nir.testapp1.noveu.Dialogue.DialogueProjectManager;
 import droid.nir.testapp1.noveu.NavDrw.setNav;
 import droid.nir.testapp1.noveu.Projects.Adapter.ProjectAdapter;
 import droid.nir.testapp1.noveu.Util.AutoRefresh;
 import droid.nir.testapp1.noveu.Util.DesignUtil;
+import droid.nir.testapp1.noveu.Util.FirebaseUtil;
 import droid.nir.testapp1.noveu.Util.Log;
 import droid.nir.testapp1.noveu.dB.DBProvider;
 import droid.nir.testapp1.noveu.dB.Project;
@@ -36,6 +39,7 @@ public class ProjectManager extends AppCompatActivity implements LoaderManager.L
 
     ProjectAdapter mAdapter;
     static final int LOADER_ID = 0101;
+    FirebaseAnalytics mFirebaseAnalytics;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +56,10 @@ public class ProjectManager extends AppCompatActivity implements LoaderManager.L
             getLoaderManager().initLoader(LOADER_ID, null, this);
 
         findViewById(R.id.fab).setOnClickListener(this);
+
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+        FirebaseUtil.recordScreenView(this,"project manager",mFirebaseAnalytics);
+
 
     }
 
@@ -149,6 +157,11 @@ public class ProjectManager extends AppCompatActivity implements LoaderManager.L
         Log.d("ProjectManager",""+text);
             mAdapter.addItem(text, no, id);
 
+        Bundle fireBundle = new Bundle();
+        fireBundle.putString("name",text);
+        fireBundle.putInt("no",no);
+        mFirebaseAnalytics.logEvent(FirebaseUtil.project_insert,fireBundle);
+
     }
 
     /**
@@ -169,12 +182,18 @@ public class ProjectManager extends AppCompatActivity implements LoaderManager.L
 
         mAdapter.changeProjectName(newProname);
         mAdapter.notifyItemChanged(mAdapter.lastClickedPosition);
+
+        Bundle fireBundle = new Bundle();
+        fireBundle.putString("updated_name",newProname);
+        fireBundle.putInt("no",Project.getProjectSize(id));
+        mFirebaseAnalytics.logEvent(FirebaseUtil.project_update,fireBundle);
     }
 
     public void doPositiveDelete(String text, int id,int no_tasks )
     {
 
-        mAdapter.deleteProject();
+        mAdapter.deleteProject(mFirebaseAnalytics);
+
         Log.d("dpm", "new pid " + id+" "+text);
         if(text != null){
             doPositiveInsert(text, id,no_tasks);

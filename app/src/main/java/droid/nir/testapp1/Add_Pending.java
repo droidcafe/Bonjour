@@ -3,29 +3,19 @@ package droid.nir.testapp1;
 
 import android.app.DialogFragment;
 import android.content.Intent;
-
 import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-
-
-
-import droid.nir.testapp1.noveu.Util.Log;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-
 import android.view.View;
 import android.view.ViewGroup;
-
-
-
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -33,18 +23,16 @@ import android.widget.Toast;
 
 import com.android.datetimepicker.time.RadialPickerLayout;
 import com.android.datetimepicker.time.TimePickerDialog;
-
-
-import org.w3c.dom.Text;
+import com.google.firebase.analytics.FirebaseAnalytics;
 
 import java.util.ArrayList;
-
 import java.util.Calendar;
-
 import java.util.List;
 
 import droid.nir.databaseHelper.DatabaseCreater;
 import droid.nir.databaseHelper.Pending;
+import droid.nir.testapp1.noveu.Util.FirebaseUtil;
+import droid.nir.testapp1.noveu.Util.Log;
 
 
 public class Add_Pending extends ActionBarActivity implements DialogueCreator.DialogListener, View.OnClickListener, TimePicker.OnTimeChangedListener, TimePickerDialog.OnTimeSetListener {
@@ -69,6 +57,7 @@ public class Add_Pending extends ActionBarActivity implements DialogueCreator.Di
     int f =0,year,date,month;
 
     DatabaseCreater databaseCreater;
+    FirebaseAnalytics mFirebaseAnalytics;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -215,6 +204,9 @@ public class Add_Pending extends ActionBarActivity implements DialogueCreator.Di
         String arr2[] = {"Add an Extra ","Phone" ,"WebSite" ,"Mail Id"};
 
     findViewById(R.id.fab).setOnClickListener(this);
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+        FirebaseUtil.recordScreenView(this,"add decision",mFirebaseAnalytics);
+
     }
 
 
@@ -740,7 +732,12 @@ public class Add_Pending extends ActionBarActivity implements DialogueCreator.Di
 
                 db = pending.settingDatabase();
                pending.insert(passStrings,passInt,prolist,conlist,extralist,db,extrasArray,tempcalendar);
-                toast.makeText("Successully Inserted");
+                Bundle fireBundle = new Bundle();
+                fireBundle.putString("name",title);
+                fireBundle.putInt("prosize",passInt[3]);
+                fireBundle.putInt("consize",passInt[4]);
+                fireBundle.putInt("extra used",passInt[6]);
+                mFirebaseAnalytics.logEvent(FirebaseUtil.decision_insert,fireBundle);
                 return 1;
 
             }

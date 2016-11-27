@@ -6,27 +6,26 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.CardView;
-import droid.nir.testapp1.noveu.Util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
-
 import android.widget.TextView;
 
-
+import com.google.firebase.analytics.FirebaseAnalytics;
 
 import java.util.ArrayList;
 import java.util.List;
 
-
 import droid.nir.databaseHelper.Pending;
 import droid.nir.databaseHelper.Today;
+import droid.nir.testapp1.noveu.Util.FirebaseUtil;
+import droid.nir.testapp1.noveu.Util.Log;
 import droid.nir.testapp1.noveu.social.share.Master;
 
 public class ShowDecision extends ActionBarActivity {
@@ -43,6 +42,7 @@ public class ShowDecision extends ActionBarActivity {
     List<String> prolist,conlist;
     ArrayAdapter<String> mProArrayAdapter,mConArrayAdapter;
     LinearLayout protextid,contextid;
+    FirebaseAnalytics mFirebaseAnalytics;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -99,6 +99,9 @@ public class ShowDecision extends ActionBarActivity {
 
 
             setupdecision();
+            mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+            FirebaseUtil.recordScreenView(this,"show decision",mFirebaseAnalytics);
+
 
         } else {
             maketext.makeText("Sorry!Please Try Again!Failed Pipe");
@@ -400,8 +403,12 @@ public class ShowDecision extends ActionBarActivity {
                 list = list.concat("\n "+getResources().getString(R.string.pconsare)+" \n"+con);
             }
 
-            Intent shareIntent = Master.share(titletext,list);
+            Bundle fire_share = new Bundle();
+            fire_share.putString(FirebaseAnalytics.Param.CONTENT_TYPE,"decision");
+            fire_share.putString(FirebaseAnalytics.Param.ITEM_ID, titletext);
+            mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SHARE,fire_share);
 
+            Intent shareIntent = Master.share(titletext,list);
             startActivity(Intent.createChooser(shareIntent, getResources().getString(R.string.shareusing)));
         }
 
@@ -423,6 +430,11 @@ public class ShowDecision extends ActionBarActivity {
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putInt("ischanged", 1);
             editor.apply();
+
+            Bundle fireBundle = new Bundle();
+            fireBundle.putString("name",titletext);
+            mFirebaseAnalytics.logEvent(FirebaseUtil.decision_delete,fireBundle);
+
             finish();
         } else {
             maketext.makeText( getResources().getString(R.string.deletionfailed));

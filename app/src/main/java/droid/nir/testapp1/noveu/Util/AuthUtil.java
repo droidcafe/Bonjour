@@ -3,6 +3,7 @@ package droid.nir.testapp1.noveu.Util;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 
 import com.google.android.gms.auth.api.Auth;
@@ -13,6 +14,7 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.OptionalPendingResult;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.auth.FirebaseAuth;
 
 import droid.nir.testapp1.R;
@@ -64,6 +66,11 @@ public class AuthUtil {
                     }
                 });
         FirebaseAuth.getInstance().signOut();
+        Bundle bundle = new Bundle();
+        bundle.putString("user",Import.getSharedPref(SharedKeys.user_name, context));
+        FirebaseAnalytics firebaseAnalytics = FirebaseAnalytics.getInstance(context);
+        firebaseAnalytics.logEvent(FirebaseUtil.sign_out,bundle);
+
         activity.startActivity(new Intent(context,SignIn.class));
         activity.finish();
     }

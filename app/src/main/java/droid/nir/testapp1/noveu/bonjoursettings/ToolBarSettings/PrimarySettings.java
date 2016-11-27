@@ -4,9 +4,13 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Bundle;
+
+import com.google.firebase.analytics.FirebaseAnalytics;
 
 import droid.nir.defcon3.FirstScreen;
 import droid.nir.testapp1.R;
+import droid.nir.testapp1.noveu.Util.FirebaseUtil;
 import droid.nir.testapp1.noveu.Util.Import;
 import droid.nir.testapp1.noveu.constants.constants;
 import droid.nir.testapp1.noveu.welcome.help.Help;
@@ -16,13 +20,16 @@ import droid.nir.testapp1.noveu.welcome.help.Help;
  */
 public class PrimarySettings {
 
-    public static void primarySetting(Context context,Activity activity,int id){
+    public static void primarySetting(Context context, Activity activity, int id,
+                                      FirebaseAnalytics mFirebaseAnalytics){
         switch(id){
 
             case R.id.action_help:
 
                 activity.startActivity(new Intent(context, Help.class));
-
+                Bundle fireBundle = new Bundle();
+                fireBundle.putString("name",activity.getPackageName());
+                mFirebaseAnalytics.logEvent(FirebaseUtil.menu_rate,fireBundle);
                 break;
             case R.id.action_share:
 
@@ -31,6 +38,12 @@ public class PrimarySettings {
                 shar.setAction(Intent.ACTION_SEND);
                 shar.setType("text/plain");
                 shar.putExtra(Intent.EXTRA_TEXT, sharetext);
+
+                Bundle fire_share = new Bundle();
+                fire_share.putString(FirebaseAnalytics.Param.CONTENT_TYPE,"bonjour");
+                fire_share.putString(FirebaseAnalytics.Param.ITEM_ID, activity.getLocalClassName());
+                mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SHARE,fire_share);
+
                 activity.startActivity(Intent.createChooser(shar, context.getResources().getString(R.string.shareusing)));
                 break;
             case R.id.action_feedback:

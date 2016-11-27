@@ -25,6 +25,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 import com.prolificinteractive.materialcalendarview.OnDateChangedListener;
@@ -42,6 +43,7 @@ import droid.nir.testapp1.noveu.Tasks.Loaders.DeleteTask;
 import droid.nir.testapp1.noveu.Tasks.Loaders.LoadTask;
 import droid.nir.testapp1.noveu.Tasks.TaskUtil;
 import droid.nir.testapp1.noveu.Util.AutoRefresh;
+import droid.nir.testapp1.noveu.Util.FirebaseUtil;
 import droid.nir.testapp1.noveu.Util.Import;
 import droid.nir.testapp1.noveu.Util.Log;
 import droid.nir.testapp1.noveu.bonjoursettings.ToolBarSettings.PrimarySettings;
@@ -66,6 +68,7 @@ public class Home extends AppCompatActivity
     SharedPreferences sharedPreferences;
     static Context context;
     static Activity activity;
+    static FirebaseAnalytics mFirebaseAnalytics;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,6 +88,9 @@ public class Home extends AppCompatActivity
             setuptasklist();
             //   ParentDb.getInstance(context).close();
         }
+
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+        FirebaseUtil.recordScreenView(activity,"Home",mFirebaseAnalytics);
 
     }
 
@@ -252,7 +258,7 @@ public class Home extends AppCompatActivity
                 refresh();
                 break;
             default:
-                PrimarySettings.primarySetting(this,this,id);
+                PrimarySettings.primarySetting(this,this,id,mFirebaseAnalytics);
 
         }
         return super.onOptionsItemSelected(item);
@@ -374,7 +380,7 @@ public class Home extends AppCompatActivity
             recyclerView.setVisibility(View.VISIBLE);
             Import.allDoneUndo(context, alldone_pic, alldone_title, alldone_promo);
 
-            TaskAdapter taskAdapter = new TaskAdapter(context, activity, data);
+            TaskAdapter taskAdapter = new TaskAdapter(context, activity, data,mFirebaseAnalytics);
             recyclerView.setAdapter(taskAdapter);
             recyclerView.setHasFixedSize(true);
 
