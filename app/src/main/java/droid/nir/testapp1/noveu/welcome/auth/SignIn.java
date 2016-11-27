@@ -25,6 +25,11 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import droid.nir.testapp1.R;
 import droid.nir.testapp1.noveu.Home.Home;
@@ -41,8 +46,11 @@ public class SignIn extends AppCompatActivity implements GoogleApiClient.OnConne
     private FirebaseAnalytics mFirebaseAnalytics;
     ProgressDialog progressDialog;
     private FirebaseAuth mAuth;
-    String name;
+    User user;
+    String name ="";
     private FirebaseAuth.AuthStateListener mAuthListener;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,7 +78,7 @@ public class SignIn extends AppCompatActivity implements GoogleApiClient.OnConne
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
                     Log.d("si", "onAuthStateChanged:signed_in:" + user.getUid());
-                    handleSignInSuccess(user.getDisplayName());
+                     uploadUser();
                     proceedHome();
                 } else {
                     Log.d("si", "onAuthStateChanged:signed_out");
@@ -80,6 +88,7 @@ public class SignIn extends AppCompatActivity implements GoogleApiClient.OnConne
         };
         findViewById(R.id.sign_in_button).setOnClickListener(this);
         findViewById(R.id.sign_out_button).setOnClickListener(this);
+
     }
 
     @Override
@@ -161,12 +170,50 @@ public class SignIn extends AppCompatActivity implements GoogleApiClient.OnConne
         if (result.isSuccess()) {
             GoogleSignInAccount account = result.getSignInAccount();
             AuthUtil.proceddSignIn(this,account);
+            user = User.saveUser(account);
             name = account.getGivenName();
+
             Log.d("si", " " + account.getId() + " " + account.getEmail());
             firebaseAuthWithGoogle(account);
         } else {
             handleSignInFailure();
         }
+    }
+
+    private void uploadUser() {
+        DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference mProceedChild = mRootRef.child("user_proceed");
+        final DatabaseReference mUserChild = mRootRef.child("users");
+
+        Log.d("si","proceed "+mProceedChild.getKey()+" "+mProceedChild.getParent());
+        mProceedChild.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                int proceedVaulue = dataSnapshot.getValue(Integer.class);
+                if (proceedVaulue == 1){
+                    Log.d("si","uploading");
+                    if (user != null) {
+                        DatabaseReference myRef = mUserChild.child(user.id);
+                        myRef.setValue(user);
+                    }else{
+                        User user = User.saveUser(SignIn.this);
+                        DatabaseReference myRef = mUserChild.child(user.id);
+                        myRef.setValue(user);
+                    }
+                }else{
+                    Log.d("si","permission denied");
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+
+
+
     }
 
     private void handleSignInSuccess(String name) {
@@ -209,7 +256,15 @@ public class SignIn extends AppCompatActivity implements GoogleApiClient.OnConne
 
         progressDialog.disMissProgressDialog();
         Import.setSharedPref(this,SharedKeys.user_signed_status,1);
+
+        String welcome = getResources().getString(R.string.welcome, name);
+
+        Bundle welcome_bundle = new Bundle();
+        welcome_bundle.putString("snackMessage",welcome);
         Intent welcome_intent = new Intent(SignIn.this, Home.class);
+        welcome_intent.putExtras(welcome_bundle);
+
+
         startActivity(welcome_intent);
         finish();
 

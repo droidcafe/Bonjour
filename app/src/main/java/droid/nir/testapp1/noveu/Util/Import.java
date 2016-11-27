@@ -16,6 +16,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.support.design.widget.Snackbar;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -411,6 +412,10 @@ public class Import {
                 Uri.parse(context.getResources().getString(R.string.app_uri)));
     }
 
+
+    public static void makeSnack(View view,String message){
+         Snackbar.make(view, message, Snackbar.LENGTH_LONG).show();
+    }
 
 
 }

@@ -11,10 +11,8 @@ import android.os.AsyncTask;
 
 import droid.nir.testapp1.noveu.Util.Import;
 import droid.nir.testapp1.noveu.Util.Log;
-
 import droid.nir.testapp1.noveu.constants.SharedKeys;
 import droid.nir.testapp1.noveu.constants.constants;
-import droid.nir.testapp1.noveu.dB.initial.inital_projects;
 import droid.nir.testapp1.noveu.dB.metaValues.dBmetaData;
 import droid.nir.testapp1.noveu.welcome.Initial;
 

@@ -94,6 +94,8 @@ public class AuthUtil {
         Import.setSharedPref(context, SharedKeys.user_display_name, account.getDisplayName());
         Import.setSharedPref(context, SharedKeys.user_email, account.getEmail());
         Import.setSharedPref(context, SharedKeys.user_google_id, account.getId());
+        Import.setSharedPref(context, SharedKeys.user_google_photo_url, String.valueOf(account.getPhotoUrl()));
+
 
     }
 

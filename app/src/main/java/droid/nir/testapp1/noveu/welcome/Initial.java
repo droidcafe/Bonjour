@@ -43,6 +43,7 @@ public class Initial {
 
     public static void startDBops(Context context) {
 
+        Log.d("initial","starting db ops");
         int bonjour_status = Import.getSharedPref(context, SharedKeys.db_bonjour);
         int mydb_status = Import.getSharedPref(context, SharedKeys.db_mydatabase);
         if (bonjour_status == constants.SUCCESS_CODE

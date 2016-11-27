@@ -74,11 +74,12 @@ public class Home extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        setContentView(R.layout.activity_home);
         Bundle bundle = getIntent().getExtras();
-        if(bundle != null){
+        if (bundle != null) {
             handleIntentExtra(bundle);
         }
-        setContentView(R.layout.activity_home);
+
         context = this;
         activity = this;
 
@@ -90,19 +91,25 @@ public class Home extends AppCompatActivity
         }
 
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
-        FirebaseUtil.recordScreenView(activity,"Home",mFirebaseAnalytics);
+        FirebaseUtil.recordScreenView(activity, "Home", mFirebaseAnalytics);
 
     }
 
     private void handleIntentExtra(Bundle bundle) {
         String from = (String) bundle.get("uplink");
-        if(from == null) {
-            return;
-        }
 
-        Log.d("home","intent data "+from);
-        if (from.equals("fcm")) {
-            FCMUtil.handleFCMIntent(this,this,bundle);
+        if (from != null && from.equals("fcm")) {
+            Log.d("home", "intent data " + from);
+            FCMUtil.handleFCMIntent(this, this, bundle);
+        }
+        Log.d("home","getting print");
+        String printMessage = bundle.getString("snackMessage");
+        if (printMessage != null) {
+            Log.d("home","print "+printMessage);
+            final CoordinatorLayout coordinatorLayout = (CoordinatorLayout) findViewById(R.id.homeparent);
+           // Import.makeSnack(coordinatorLayout, printMessage);
+            Snackbar.make(coordinatorLayout, printMessage, Snackbar.LENGTH_LONG).show();
+
         }
 
     }
@@ -116,12 +123,12 @@ public class Home extends AppCompatActivity
         if (version != constants.VERSION) {
             Intent welcome_intent = new Intent(this, About.class);
             welcome_intent.putExtra("version", version);
-            Log.d("ho", "continue "+version);
+            Log.d("ho", "continue " + version);
             startActivity(welcome_intent);
             finish();
             return null;
         }
-        Log.d("home","continuing");
+        Log.d("home", "continuing");
         SQLiteDatabase db = continueInitial();
         return db;
     }
@@ -131,12 +138,12 @@ public class Home extends AppCompatActivity
         if (!isAlarmSet) {
             DailySyncAlarm.setSyncAlarmNow(context);
         }
-        int db_ops_status =  Import.getSharedPref(context,SharedKeys.db_ops_status);
-        if(db_ops_status != constants.db_ops_status_modes[1]){
+        int db_ops_status = Import.getSharedPref(context, SharedKeys.db_ops_status);
+        if (db_ops_status != constants.db_ops_status_modes[1]) {
             Initial.startDBops(this);
         }
-        int signed_status = Import.getSharedPref(this,SharedKeys.user_signed_status);
-        String user_name = Import.getSharedPref(SharedKeys.user_name,this);
+        int signed_status = Import.getSharedPref(this, SharedKeys.user_signed_status);
+        String user_name = Import.getSharedPref(SharedKeys.user_name, this);
         if (signed_status != 1 || user_name == null) {
             Intent auth_intent = new Intent(this, SignIn.class);
             startActivity(auth_intent);
@@ -258,7 +265,7 @@ public class Home extends AppCompatActivity
                 refresh();
                 break;
             default:
-                PrimarySettings.primarySetting(this,this,id,mFirebaseAnalytics);
+                PrimarySettings.primarySetting(this, this, id, mFirebaseAnalytics);
 
         }
         return super.onOptionsItemSelected(item);
@@ -275,7 +282,6 @@ public class Home extends AppCompatActivity
             }
         }
     }
-
 
 
     private void showhelpdialogue() {
@@ -368,19 +374,19 @@ public class Home extends AppCompatActivity
 
                 Import.setBackGroundColor(context, activity, R.id.home_back, R.color.hprimary);
                 Import.setBackGroundColor(context, activity, R.id.toolbar, R.color.hprimary);
-                Import.setStatusBarColor(context,activity,R.color.hprimary_dark);
+                Import.setStatusBarColor(context, activity, R.color.hprimary_dark);
                 recyclerView.setVisibility(View.GONE);
-                Import.allDone(context,alldone_pic,alldone_title,alldone_promo);
+                Import.allDone(context, alldone_pic, alldone_title, alldone_promo);
 
                 return;
             }
-            Import.setBackGroundColor(context,activity,R.id.home_back,R.color.white);
-            Import.setBackGroundColor(context,activity,R.id.toolbar,R.color.tprimary);
-            Import.setStatusBarColor(context,activity,R.color.tprimary_dark);
+            Import.setBackGroundColor(context, activity, R.id.home_back, R.color.white);
+            Import.setBackGroundColor(context, activity, R.id.toolbar, R.color.tprimary);
+            Import.setStatusBarColor(context, activity, R.color.tprimary_dark);
             recyclerView.setVisibility(View.VISIBLE);
             Import.allDoneUndo(context, alldone_pic, alldone_title, alldone_promo);
 
-            TaskAdapter taskAdapter = new TaskAdapter(context, activity, data,mFirebaseAnalytics);
+            TaskAdapter taskAdapter = new TaskAdapter(context, activity, data, mFirebaseAnalytics);
             recyclerView.setAdapter(taskAdapter);
             recyclerView.setHasFixedSize(true);
 
