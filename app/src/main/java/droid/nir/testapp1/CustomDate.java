@@ -9,12 +9,11 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import droid.nir.testapp1.noveu.Util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -34,6 +33,7 @@ import droid.nir.databaseHelper.Pending;
 import droid.nir.databaseHelper.Remainder;
 import droid.nir.databaseHelper.SelectAll;
 import droid.nir.databaseHelper.Todolist;
+import droid.nir.testapp1.noveu.Util.Log;
 
 
 public class CustomDate extends ActionBarActivity implements View.OnClickListener, View.OnLongClickListener {
@@ -660,13 +660,7 @@ public class CustomDate extends ActionBarActivity implements View.OnClickListene
                 startActivity(goinginent2);
                 break;
             case 0xd:
-                Intent goinginent3 = new Intent(this,Add_Todo_list.class);
-                goinginent3.putExtra("customdate",passdate);
-                goinginent3.putExtra("l1",date);
-                goinginent3.putExtra("l2",month);
-                goinginent3.putExtra("l3",year);
-                goinginent3.putExtra("oid",-3);
-                startActivity(goinginent3);
+
                 break;
             case 0xe:
                 //   startActivity(new Intent(this,floating_trials.class));

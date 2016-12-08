@@ -8,11 +8,11 @@ import android.os.Bundle;
 
 import com.google.firebase.analytics.FirebaseAnalytics;
 
-import droid.nir.defcon3.FirstScreen;
 import droid.nir.testapp1.R;
 import droid.nir.testapp1.noveu.Util.FirebaseUtil;
 import droid.nir.testapp1.noveu.Util.Import;
 import droid.nir.testapp1.noveu.constants.constants;
+import droid.nir.testapp1.noveu.welcome.Version;
 import droid.nir.testapp1.noveu.welcome.help.Help;
 
 /**
@@ -63,7 +63,7 @@ public class PrimarySettings {
                 break;
             case R.id.action_about:
 
-                activity.startActivity(new Intent(context, FirstScreen.class));
+                activity.startActivity(new Intent(context, Version.class));
                 break;
 
         }

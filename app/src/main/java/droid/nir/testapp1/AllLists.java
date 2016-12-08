@@ -10,18 +10,16 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import droid.nir.testapp1.noveu.Util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-
 import android.widget.TextView;
 
 import com.melnykov.fab.FloatingActionButton;
@@ -31,9 +29,9 @@ import java.util.Calendar;
 import java.util.List;
 
 import droid.nir.alarmManager.NotificationCreater;
-
 import droid.nir.databaseHelper.Today;
 import droid.nir.databaseHelper.Todolist;
+import droid.nir.testapp1.noveu.Util.Log;
 
 public class AllLists extends ActionBarActivity implements View.OnClickListener {
 
@@ -119,13 +117,7 @@ public class AllLists extends ActionBarActivity implements View.OnClickListener 
                 month = calendar.get(Calendar.MONTH) + 1;
                 year = calendar.get(Calendar.YEAR);
                 todaydate = date + "/" + month + "/" + year;
-                Intent goinginent3 = new Intent(this, Add_Todo_list.class);
-                goinginent3.putExtra("customdate", todaydate);
-                goinginent3.putExtra("l1", date);
-                goinginent3.putExtra("l2", month);
-                goinginent3.putExtra("l3", year);
-                goinginent3.putExtra("oid",-3);
-                startActivity(goinginent3);
+
                 break;
         }
     }
@@ -364,13 +356,6 @@ public class AllLists extends ActionBarActivity implements View.OnClickListener 
                         month = Integer.parseInt(todaydate.substring(first+1,second));
                         year = Integer.parseInt(todaydate.substring(second+1));
 
-                        Intent goinginent3 = new Intent(AllLists.this, Add_Todo_list.class);
-                        goinginent3.putExtra("customdate", todaydate);
-                        goinginent3.putExtra("l1", date);
-                        goinginent3.putExtra("l2", month);
-                        goinginent3.putExtra("l3", year);
-                        goinginent3.putExtra("oid",oid);
-                        startActivity(goinginent3);
                         Log.d("showlist ",""+date+" ,"+month+" ,"+year);
 
                     }

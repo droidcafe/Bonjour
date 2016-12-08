@@ -48,9 +48,7 @@
         <activity
             android:name=".MainActivity2Activity"
             android:label="@string/title_activity_main_activity2" />
-        <activity
-            android:name=".trial_calendar2"
-            android:label="@string/title_activity_trial_calendar2" />
+
         <activity
             android:name=".Add_Event2"
             android:label="@string/title_activity_add__event2"
@@ -97,9 +95,7 @@
         <activity
             android:name=".floating_trials"
             android:label="@string/title_activity_floating_trials" />
-        <activity
-            android:name=".xx"
-            android:label="@string/title_activity_xx" />
+
         <activity
             android:name=".CustomDate"
             android:label="@string/title_activity_custom_date"
@@ -152,12 +148,8 @@
             android:name=".AllRemainders"
             android:label="@string/title_activity_all_remainders"
             android:theme="@style/AppTheme.Toolbar4" />
-        <activity
-            android:name=".trial_flaoting"
-            android:label="@string/title_activity_trial_flaoting" />
-        <activity
-            android:name=".trial_alarm"
-            android:label="@string/title_activity_trial_alarm" />
+
+
         <activity
             android:name=".ShowRemainder"
             android:label="@string/title_activity_show_remainder"
@@ -167,14 +159,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="droid.nir.testapp1.MainActivity" />
         </activity>
-        <activity
-            android:name="droid.nir.defcon3.ScreenSlidePageFragment"
-            android:label="@string/title_activity_help" />
-        <activity
-            android:name="droid.nir.defcon3.FirstScreen"
-            android:label="@string/title_activity_first_screen"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.Toolbar" />
+
         <activity
             android:name="droid.nir.defcon3.help_main"
             android:label="@string/title_activity_help_main"

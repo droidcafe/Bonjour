@@ -1,7 +1,6 @@
 package droid.nir.testapp1.todolist;
 
 import android.content.Context;
-import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
@@ -20,7 +19,6 @@ import java.util.Calendar;
 import java.util.List;
 
 import droid.nir.databaseHelper.Todolist;
-import droid.nir.testapp1.Add_Todo_list;
 import droid.nir.testapp1.R;
 import droid.nir.testapp1.noveu.Util.Log;
 import droid.nir.testapp1.todolist.adapters.Alladapters;
@@ -222,13 +220,7 @@ public class All_list extends ActionBarActivity implements View.OnClickListener 
                 month = calendar.get(Calendar.MONTH) + 1;
                 year = calendar.get(Calendar.YEAR);
                 todaydate = date + "/" + month + "/" + year;
-                Intent goinginent3 = new Intent(this, Add_Todo_list.class);
-                goinginent3.putExtra("customdate", todaydate);
-                goinginent3.putExtra("l1", date);
-                goinginent3.putExtra("l2", month);
-                goinginent3.putExtra("l3", year);
-                goinginent3.putExtra("oid",-3);
-                startActivity(goinginent3);
+
                 break;
         }
     }

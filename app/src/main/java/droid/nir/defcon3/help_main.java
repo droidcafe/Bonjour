@@ -4,17 +4,14 @@ import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.content.Context;
 import android.content.Intent;
-
 import android.graphics.Typeface;
-import android.os.Handler;
-
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.os.Handler;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
@@ -30,7 +27,6 @@ import java.util.Calendar;
 
 import droid.nir.testapp1.Add_Event2;
 import droid.nir.testapp1.Add_Pending;
-import droid.nir.testapp1.Add_Todo_list;
 import droid.nir.testapp1.MainActivity;
 import droid.nir.testapp1.R;
 
@@ -466,13 +462,7 @@ public class help_main extends ActionBarActivity implements View.OnClickListener
                 startActivity(goinginent2);
                 break;
             case 0xd:
-                Intent goinginent3 = new Intent(this, Add_Todo_list.class);
-                goinginent3.putExtra("customdate", todaydate);
-                goinginent3.putExtra("l1", date);
-                goinginent3.putExtra("l2", month);
-                goinginent3.putExtra("l3", year);
-                goinginent3.putExtra("oid",-3);
-                startActivity(goinginent3);
+
                 break;
 
             case 0xe:

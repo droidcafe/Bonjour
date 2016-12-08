@@ -2,40 +2,26 @@ package droid.nir.testapp1;
 
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
-
 import android.app.Dialog;
-
 import android.app.DialogFragment;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-
 import android.database.sqlite.SQLiteDatabase;
-
 import android.net.Uri;
+import android.os.Bundle;
 import android.os.Handler;
-import android.os.Parcelable;
-
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
-
-
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-
 import android.util.AttributeSet;
-import droid.nir.testapp1.noveu.Util.Log;
-
 import android.view.Menu;
-
 import android.view.MenuItem;
 import android.view.View;
-
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-
 import android.widget.TextView;
 
 import com.oguzdev.circularfloatingactionmenu.library.FloatingActionButton;
@@ -45,23 +31,20 @@ import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 import com.prolificinteractive.materialcalendarview.OnDateChangedListener;
 
-
 import java.util.Calendar;
 
-
-import droid.nir.alarmManager.*;
-
+import droid.nir.alarmManager.CheckForToday;
 import droid.nir.databaseHelper.Events;
 import droid.nir.databaseHelper.MainDatabase;
-
 import droid.nir.databaseHelper.Remainder;
-import droid.nir.defcon3.FirstScreen;
 import droid.nir.testapp1.noveu.Home.Home;
 import droid.nir.testapp1.noveu.NavDrw.HomeNav;
-import droid.nir.testapp1.noveu.welcome.about.*;
+import droid.nir.testapp1.noveu.Util.Log;
+import droid.nir.testapp1.noveu.welcome.about.About;
 
 
-public class MainActivity extends ActionBarActivity implements UndoBarController.UndoListener, View.OnClickListener, View.OnLongClickListener, OnDateChangedListener {
+public class MainActivity extends ActionBarActivity implements View.OnClickListener,
+        View.OnLongClickListener, OnDateChangedListener {
 
     Toolbar toolbar;
 
@@ -325,7 +308,7 @@ public class MainActivity extends ActionBarActivity implements UndoBarController
                 break;
             case R.id.action_about:
 
-                startActivity(new Intent(this, FirstScreen.class));
+                startActivity(new Intent(this, About.class));
 
 
                 break;
@@ -340,7 +323,7 @@ public class MainActivity extends ActionBarActivity implements UndoBarController
 
     private void showhelpdialogue()
     {
-        startActivity(new Intent(this, FirstScreen.class));
+        startActivity(new Intent(this, About.class));
 
         SharedPreferences.Editor editor= sharedPreferences.edit();
         editor.putInt("firsttime", 0);
@@ -370,10 +353,7 @@ public class MainActivity extends ActionBarActivity implements UndoBarController
         calendarcancelbutton.setOnClickListener(this);
     }
 
-    @Override
-    public void onUndo(Parcelable token) {
-        // Perform the undo
-    }
+
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {

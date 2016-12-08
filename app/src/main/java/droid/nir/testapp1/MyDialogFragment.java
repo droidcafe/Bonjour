@@ -189,36 +189,7 @@ public class MyDialogFragment extends DialogFragment implements CompoundButton.O
         final int choice = getArguments().getInt("choice");
         maketext = new toast(getActivity());
         this.choice = choice;
-        if (choice == 1) {
-            return new AlertDialog.Builder(getActivity())
-
-                    .setTitle(title)
-                    .setView(R.layout.mydialoglayout)
-                    .setPositiveButton(getResources().getString(R.string.ok),
-                            new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int whichButton) {
-
-                                    final EditText tv = (EditText) getDialog().findViewById(R.id.newlistitem);
-
-                                    String text = tv.getText().toString();
-                                    if (tv.equals(""))
-                                        maketext.makeText(getResources().getString(R.string.emptytodolist));
-                                    else {
-                                        ((Add_Todo_list) getActivity()).doPositiveClick(text);
-
-                                    }
-                                }
-                            }
-                    )
-                    .setNegativeButton(getResources().getText(R.string.cancel),
-                            new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int whichButton) {
-                                    ((Add_Todo_list) getActivity()).doNegativeClick();
-                                }
-                            }
-                    )
-                    .create();
-        } else if (choice == 2 || choice == 7 )//remaindr creationn dialog from main activity and from allremainder activity
+       if (choice == 2 || choice == 7 )//remaindr creationn dialog from main activity and from allremainder activity
         {
             passdate = getArguments().getString("passdate");
             AlertDialog.Builder remaainderalert = new AlertDialog.Builder(getActivity());

@@ -2,7 +2,6 @@ package droid.nir.testapp1;
 
 
 import android.app.AlarmManager;
-
 import android.app.DialogFragment;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -12,12 +11,8 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
-
-
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-
-import droid.nir.testapp1.noveu.Util.Log;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -29,12 +24,12 @@ import android.widget.TextView;
 import com.melnykov.fab.FloatingActionButton;
 
 import java.util.ArrayList;
-
 import java.util.List;
 
 import droid.nir.alarmManager.NotificationCreater;
 import droid.nir.databaseHelper.Today;
 import droid.nir.databaseHelper.Todolist;
+import droid.nir.testapp1.noveu.Util.Log;
 
 public class ShowList extends ActionBarActivity implements View.OnClickListener {
 
@@ -124,15 +119,6 @@ public class ShowList extends ActionBarActivity implements View.OnClickListener 
                 month = Integer.parseInt(todaydate.substring(first+1,second));
                 year = Integer.parseInt(todaydate.substring(second+1));
 
-                Intent goinginent3 = new Intent(this, Add_Todo_list.class);
-                goinginent3.putExtra("customdate", todaydate);
-                goinginent3.putExtra("l1", date);
-                goinginent3.putExtra("l2", month);
-                goinginent3.putExtra("l3", year);
-                goinginent3.putExtra("oid",oid);
-
-                Log.d("showlist ",""+date+" ,"+month+" ,"+year);
-                startActivity(goinginent3);
                 break;
         }
     }
