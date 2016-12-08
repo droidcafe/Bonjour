@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -32,7 +31,6 @@ import com.prolificinteractive.materialcalendarview.OnDateChangedListener;
 
 import java.util.List;
 
-import droid.nir.defcon3.FirstScreen;
 import droid.nir.testapp1.CustomDate;
 import droid.nir.testapp1.R;
 import droid.nir.testapp1.noveu.Home.Adapters.TaskAdapter;
@@ -65,7 +63,6 @@ public class Home extends AppCompatActivity
 
     public static String dateselected;
     Dialog dialog;
-    SharedPreferences sharedPreferences;
     static Context context;
     static Activity activity;
     static FirebaseAnalytics mFirebaseAnalytics;
@@ -117,8 +114,8 @@ public class Home extends AppCompatActivity
 
     private SQLiteDatabase checkInitial() {
 
-        sharedPreferences = getSharedPreferences(SharedKeys.prefname, 0);
-        int version = sharedPreferences.getInt(SharedKeys.Version, -1);
+
+        int version = Import.getSharedPref(this,SharedKeys.Version);
 
         if (version != constants.VERSION) {
             Intent welcome_intent = new Intent(this, About.class);
@@ -284,18 +281,6 @@ public class Home extends AppCompatActivity
     }
 
 
-    private void showhelpdialogue() {
-        startActivity(new Intent(this, FirstScreen.class));
-
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putInt("firsttime", 0);
-        editor.commit();
-        //  MainActivity.this.finish();
-
-
-    }
-
-
     private void showcalendialogue() {
 
         dialog = new Dialog(this);
@@ -335,10 +320,14 @@ public class Home extends AppCompatActivity
     public static class AsyncLoad extends AsyncTask<Void, Void, List<dataHome>> {
 
         RecyclerView recyclerView;
-
+        boolean safeState = true;
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
+            if (activity == null || context == null) {
+                safeState = false;
+                return;
+            }
             recyclerView = (RecyclerView) activity.findViewById(R.id.tasklist);
             recyclerView.setLayoutManager(new LinearLayoutManager(context));
         }
@@ -346,7 +335,9 @@ public class Home extends AppCompatActivity
         @Override
         protected List<dataHome> doInBackground(Void... params) {
 
-
+            if (!safeState) {
+                return null;
+            }
             LoadTask loadTask = new LoadTask(activity, context);
             String preselection = "" + Tasks.columnNames[0][8] + " = 0";
             loadTask.loadPreSelection(preselection, null);
@@ -365,6 +356,9 @@ public class Home extends AppCompatActivity
         protected void onPostExecute(List<dataHome> data) {
             super.onPostExecute(data);
 
+            if (!safeState || data == null) {
+                return;
+            }
             TextView alldone_title = (TextView) activity.findViewById(R.id.alldone_title);
             TextView alldone_promo = (TextView) activity.findViewById(R.id.hiddentext);
             ImageView alldone_pic = (ImageView) activity.findViewById(R.id.alldone_pic);

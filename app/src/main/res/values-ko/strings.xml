@@ -265,7 +265,7 @@
     <string name="title_activity_project_task">라벨 작업</string>
     <string name="prodelete_hint2">모든 작업을 수행 할 작업</string>
     <string name="prodelete_hint3">이동</string>
-    <string name="prodelete_task1">에서 모든 작업을 삭제 %1$d</string>
+    <string name="prodelete_task1">에서 모든 작업을 삭제 %1$s</string>
     <string name="prodelete_task2">다른 라벨로 모든 작업을 이동</string>
     <string name="project">라벨</string>
     <string name="promotion_download">지금 다운로드 !!\ \</string>

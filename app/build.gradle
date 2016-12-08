@@ -14,8 +14,8 @@ android {
     defaultConfig {
         applicationId "droid.nir.testapp1"
         targetSdkVersion 25
-        versionCode 11
-        versionName "2.0.2"
+        versionCode 12
+        versionName "2.0.3-dev"
     }
     buildTypes {
         release {
