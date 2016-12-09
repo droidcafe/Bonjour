@@ -5,16 +5,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="droid.nir.testapp1.noveu.welcome.help.TaskHelp">
+    android:background="@color/hprimary"
+    tools:context="droid.nir.testapp1.noveu.welcome.help.ui.TaskHelp">
 
-    <ScrollView
+    <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/hprimary">
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/tasks"
+            style="@style/help_inner_title"/>
+
+    </android.support.design.widget.AppBarLayout>
 
         <include layout="@layout/content_task_help" />
 
-    </ScrollView>
+   <!-- </ScrollView>-->
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"

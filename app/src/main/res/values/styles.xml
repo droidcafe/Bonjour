@@ -500,8 +500,11 @@
     </style>
 
     <style name="help_inner_title">
-        <item name="android:padding">20dp</item>
-        <item name="android:textSize">30sp</item>
+        <item name="android:paddingRight">20dp</item>
+        <item name="android:paddingTop">16dp</item>
+        <item name="android:paddingBottom">16dp</item>
+        <item name="android:paddingLeft">20dp</item>
+        <item name="android:textSize">23sp</item>
         <item name="android:textColor">@color/htext</item>
         <item name="android:textAllCaps">true</item>
     </style>

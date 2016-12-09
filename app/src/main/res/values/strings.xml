@@ -669,8 +669,8 @@
     <string name="redo_task">Task Restored</string>
     <string name="title_activity_version">Version</string>
     <string name="more">More</string>
-    <string name="title_activity_help_details" translatable="false">HelpDetails</string>
-    <string name="title_activity_task_help" translatable="false">TaskHelp</string>
+    <string name="title_activity_help_details" translatable="false"><Help></Help></string>
+    <string name="title_activity_task_help" translatable="false">Task</string>
 
     <string name="task_hint">Enter the task</string>
     <string name="task_expand_hint1">To add subtasks, alarms, notes click on the</string>
@@ -680,9 +680,9 @@
     <string name="initial_task2">Want to edit me? Click on me</string>
     <string name="initial_task3">Done with me ? Then swipe me to left or right to delete</string>
     <string name="initial_task4">Want to add to your own tasks? Click that orange plus button below</string>
-    <string name="title_activity_pending_help" translatable="false">PendingHelp</string>
-    <string name="title_activity_event_help" translatable="false">EventHelp</string>
-    <string name="title_activity_label_help" translatable="false">LabelHelp</string>
+    <string name="title_activity_pending_help" translatable="false">Pending Decision</string>
+    <string name="title_activity_event_help" translatable="false">Events</string>
+    <string name="title_activity_label_help" translatable="false">Labels</string>
     <string name="title_activity_add__event" translatable="false">Add_Event</string>
     <string name="title_activity_sign_in" translatable="false">SignIn</string>
 

@@ -13,7 +13,7 @@ import droid.nir.testapp1.noveu.Util.FirebaseUtil;
 import droid.nir.testapp1.noveu.Util.Import;
 import droid.nir.testapp1.noveu.constants.constants;
 import droid.nir.testapp1.noveu.welcome.Version;
-import droid.nir.testapp1.noveu.welcome.help.Help;
+import droid.nir.testapp1.noveu.welcome.help.ui.Help;
 
 /**
  * Created by droidcafe on 9/15/2016.

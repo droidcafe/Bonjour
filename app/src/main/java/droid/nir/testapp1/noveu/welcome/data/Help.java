@@ -9,14 +9,16 @@ import com.google.firebase.database.IgnoreExtraProperties;
 @IgnoreExtraProperties
 public class Help {
 
-    String title,desp;
+    public String title,desp;
+    public int order;
 
     public Help() {
         // required for firebase calls
     }
 
-    public Help(String title,String desp) {
+    public Help(String title,String desp,int order) {
         this.title = title;
         this.desp = desp;
+        this.order = order;
     }
 }

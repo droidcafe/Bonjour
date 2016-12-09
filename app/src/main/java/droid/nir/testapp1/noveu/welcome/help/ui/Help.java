@@ -1,4 +1,4 @@
-package droid.nir.testapp1.noveu.welcome.help;
+package droid.nir.testapp1.noveu.welcome.help.ui;
 
 import android.content.Intent;
 import android.os.Bundle;

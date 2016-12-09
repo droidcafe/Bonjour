@@ -45,9 +45,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="droid.nir.testapp1.MainActivity" />
         </activity>
-        <activity
-            android:name=".MainActivity2Activity"
-            android:label="@string/title_activity_main_activity2" />
 
 
         <activity
@@ -77,9 +74,6 @@
             </intent-filter>
         </receiver>
 
-        <activity
-            android:name=".floating_trials"
-            android:label="@string/title_activity_floating_trials" />
 
         <activity
             android:name=".CustomDate"
@@ -126,10 +120,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="droid.nir.testapp1.AllDecisions" />
         </activity>
-        <activity
-            android:name=".AllRemainders"
-            android:label="@string/title_activity_all_remainders"
-            android:theme="@style/AppTheme.Toolbar4" />
 
 
         <activity
@@ -308,23 +298,23 @@
             android:label="@string/title_activity_version"
             android:theme="@style/AppTheme.About" />
         <activity
-            android:name=".noveu.welcome.help.Help"
+            android:name=".noveu.welcome.help.ui.Help"
             android:label="@string/title_activity_help"
             android:theme="@style/AppTheme.Help.ToolBar" />
         <activity
-            android:name=".noveu.welcome.help.TaskHelp"
+            android:name=".noveu.welcome.help.ui.TaskHelp"
             android:label="@string/title_activity_task_help"
             android:theme="@style/AppTheme.Help.ToolBar" />
         <activity
-            android:name=".noveu.welcome.help.PendingHelp"
+            android:name=".noveu.welcome.help.ui.PendingHelp"
             android:label="@string/title_activity_pending_help"
             android:theme="@style/AppTheme.Help.ToolBar" />
         <activity
-            android:name=".noveu.welcome.help.EventHelp"
+            android:name=".noveu.welcome.help.ui.EventHelp"
             android:label="@string/title_activity_event_help"
             android:theme="@style/AppTheme.Help.ToolBar" />
         <activity
-            android:name=".noveu.welcome.help.LabelHelp"
+            android:name=".noveu.welcome.help.ui.LabelHelp"
             android:label="@string/title_activity_label_help"
             android:theme="@style/AppTheme.Help.ToolBar" />
         <activity

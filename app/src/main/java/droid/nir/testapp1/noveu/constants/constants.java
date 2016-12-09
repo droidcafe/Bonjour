@@ -7,7 +7,7 @@ import android.content.Context;
  */
 public class constants {
 
-    public final static int VERSION = 12;
+    public final static int VERSION = 9;
     public final static String VERSION_CODE  = "2.0.3-dev";
     public final static String dev_mail  = "wiizzapps@gmail.com";
     public final static int REMINDER_REQUESTCODE = 101;
