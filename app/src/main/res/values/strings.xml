@@ -328,7 +328,8 @@
 
     <string name="tasktitle_6" translatable="false">Sharing a task</string>
     <string name="taskhelp_6" translatable="false">To share a task click on it from the home page. Then click on the more button right of task name.
-    Then a dialogue pops up with option to share or delete the task . Click on share button and choose the sharing medium from the next dialogue.</string>
+    Then a dialogue pops up with option to share or delete the task . Click on share button and
+        choose the sharing medium from the next dialogue.</string>
 
     <string name="tasktitle_5" translatable="false">Editing  a task</string>
     <string name="taskhelp_5" translatable="false">To edit a task click on it from the home page and in the details page edit or change any

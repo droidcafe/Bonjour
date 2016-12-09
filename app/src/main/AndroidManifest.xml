@@ -49,27 +49,12 @@
             android:name=".MainActivity2Activity"
             android:label="@string/title_activity_main_activity2" />
 
-        <activity
-            android:name=".Add_Event2"
-            android:label="@string/title_activity_add__event2"
-            android:parentActivityName=".MainActivity"
-            android:theme="@style/AppTheme.Event">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="droid.nir.testapp1.MainActivity" />
-        </activity>
+
         <activity
             android:name="droid.nir.alarmManager.AlaramReceiver2"
             android:label="@string/title_activity_alaram_receiver2" />
-        <activity
-            android:name=".Add_Todo_list"
-            android:label="@string/title_activity_add__todo_list"
-            android:parentActivityName=".MainActivity"
-            android:theme="@style/AppTheme3">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="droid.nir.testapp1.MainActivity" />
-        </activity>
+
+
 
         <service
             android:name="droid.nir.alarmManager.CheckForToday"
@@ -131,10 +116,7 @@
             android:name=".AllEvents"
             android:label="@string/title_activity_all_events"
             android:theme="@style/AppTheme.Event.ToolBar" />
-        <activity
-            android:name=".AllLists"
-            android:label="@string/title_activity_all_lists"
-            android:theme="@style/AppTheme.Toolbar3" />
+
         <activity
             android:name=".ShowDecision"
             android:label="@string/title_activity_show_decision"
@@ -160,15 +142,8 @@
                 android:value="droid.nir.testapp1.MainActivity" />
         </activity>
 
-        <activity
-            android:name="droid.nir.defcon3.help_main"
-            android:label="@string/title_activity_help_main"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.Toolbar" />
-        <activity
-            android:name=".todolist.All_list"
-            android:label="@string/title_activity_all_list"
-            android:theme="@style/AppTheme.Toolbar3" />
+
+
         <activity
             android:name=".noveu.Home.Home"
             android:theme="@style/AppTheme.Task.ToolBar">

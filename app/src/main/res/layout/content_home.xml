@@ -41,7 +41,7 @@
         android:clipToPadding="true"
         android:paddingTop="0dp"
 
-        android:saveEnabled="false"
+        android:saveEnabled="true"
         android:visibility="gone" />
 
 </RelativeLayout>

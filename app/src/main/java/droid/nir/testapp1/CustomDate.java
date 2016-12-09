@@ -33,6 +33,7 @@ import droid.nir.databaseHelper.Pending;
 import droid.nir.databaseHelper.Remainder;
 import droid.nir.databaseHelper.SelectAll;
 import droid.nir.databaseHelper.Todolist;
+import droid.nir.testapp1.noveu.Events.Add_Event;
 import droid.nir.testapp1.noveu.Util.Log;
 
 
@@ -652,7 +653,7 @@ public class CustomDate extends ActionBarActivity implements View.OnClickListene
 
                 break;
             case 0xc:
-                Intent goinginent2 = new Intent(this,Add_Event2.class);
+                Intent goinginent2 = new Intent(this,Add_Event.class);
                 goinginent2.putExtra("customdate",passdate);
                 goinginent2.putExtra("e1",date);
                 goinginent2.putExtra("e2",month);

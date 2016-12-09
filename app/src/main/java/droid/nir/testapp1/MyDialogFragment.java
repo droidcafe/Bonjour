@@ -212,8 +212,7 @@ public class MyDialogFragment extends DialogFragment implements CompoundButton.O
                                     String[] passvalues = {title, descriptionn, passdate};
                                     if (choice == 2)
                                         ((MainActivity) getActivity()).doPositiveClick(passvalues, passint);
-                                    else if (choice == 7)
-                                        ((AllRemainders) getActivity()).doPositiveClick(passvalues, passint);
+
 
                                 }
                             }
@@ -223,8 +222,7 @@ public class MyDialogFragment extends DialogFragment implements CompoundButton.O
                                 public void onClick(DialogInterface dialog, int whichButton) {
                                     if (choice == 2)
                                         ((MainActivity) getActivity()).doNegativeClick();
-                                    else if (choice == 7)
-                                        ((AllRemainders) getActivity()).doNegativeClick();
+
 
                                 }
                             }
@@ -337,9 +335,7 @@ public class MyDialogFragment extends DialogFragment implements CompoundButton.O
                                 case 8:
                                     ((ShowRemainder) getActivity()).doPositiveClick();
                                     break;
-                                case 9:
-                                    ((AllLists) getActivity()).doPositiveClick();
-                                    break;
+
 
                             }
                         }
@@ -361,9 +357,7 @@ public class MyDialogFragment extends DialogFragment implements CompoundButton.O
                                         case 8:
                                             ((ShowRemainder) getActivity()).doNegativeClick();
                                             break;
-                                        case 9:
-                                            ((AllLists) getActivity()).doNegativeClick();
-                                            break;
+
                                     }
 
                                 }

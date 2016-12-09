@@ -3,6 +3,8 @@ package droid.nir.testapp1;
 import android.app.Application;
 import android.content.Context;
 
+import com.facebook.stetho.Stetho;
+
 /**
  * Created by droidcafe on 2/27/2016.
  */
@@ -13,7 +15,7 @@ public class Bonjour extends Application {
     public void onCreate() {
         super.onCreate();
 
-    //    Stetho.initializeWithDefaults(this);
+        Stetho.initializeWithDefaults(this);
         sContext = getApplicationContext();
     }
 

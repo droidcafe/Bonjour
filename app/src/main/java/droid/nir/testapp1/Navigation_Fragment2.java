@@ -7,20 +7,18 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-
-import droid.nir.testapp1.noveu.Util.Log;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.support.v7.widget.Toolbar;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.balysv.materialripple.MaterialRippleLayout;
 import com.oguzdev.circularfloatingactionmenu.library.FloatingActionMenu;
 
 import droid.nir.testapp1.noveu.Home.Home;
+import droid.nir.testapp1.noveu.Util.Log;
 
 
 /**
@@ -242,13 +240,12 @@ public class Navigation_Fragment2 extends Fragment implements View.OnClickListen
 
                 break;
             case R.id.navtodolist:
-                Intent intent3 = new Intent(context,AllLists.class);
+                Intent intent3 = new Intent(context,Home.class);
                 startActivity(intent3);
                 break;
             case R.id.navremainder:
 
-                Intent intent4 = new Intent(context,AllRemainders.class);
-                startActivity(intent4);
+
                 break;
 
             case R.id.imageView2:

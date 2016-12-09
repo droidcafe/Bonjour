@@ -37,6 +37,7 @@ import droid.nir.alarmManager.CheckForToday;
 import droid.nir.databaseHelper.Events;
 import droid.nir.databaseHelper.MainDatabase;
 import droid.nir.databaseHelper.Remainder;
+import droid.nir.testapp1.noveu.Events.Add_Event;
 import droid.nir.testapp1.noveu.Home.Home;
 import droid.nir.testapp1.noveu.NavDrw.HomeNav;
 import droid.nir.testapp1.noveu.Util.Log;
@@ -383,7 +384,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
                 break;
             case 0xc:
-                Intent goinginent2 = new Intent(this, Add_Event2.class);
+                Intent goinginent2 = new Intent(this, Add_Event.class);
                 goinginent2.putExtra("customdate", todaydate);
                 goinginent2.putExtra("e1", date);
                 goinginent2.putExtra("e2", month);
