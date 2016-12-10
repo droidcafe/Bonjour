@@ -39,8 +39,8 @@ public class FirebaseUtil {
     public static final String help_task = "HELP_TASK";
     public static final String help_label = "HELP_LABEL";
     public static final String compose_mail = "COMPOSE_MAIL";
-//    public static final String ="";
-//    public static final String ="";
+    public static final String help_error="HELP_ERROR";
+    public static final String network_error="NETWORK_ERROR";
 //    public static final String ="";
 
 

@@ -242,145 +242,6 @@
     <string name="nocustom">No tasks created for this day.To create one please click on the plus button below</string>
 
 
-    <string name="pendinghelp_1" translatable="false">Having a hard time deciding whether to buy that cute dress you saw on Amazon or
-        message the cute girl from your class ? We all face this dilemma of being confused and not knowing what to do.
-        This feature is perfect for those moments . Create a pending decision using this feature, logically add pros and cons ,analyse your
-        options and then decide. \n Sometimes time is the best teacher. Give yourself some time before deciding. For not forgetting about
-        it create reminders, add alarms for a convienient later time. Also Bucket List makes it easier to share the decision with others
-        so that you can take their advice before choosing.
- </string>
-
-    <string name="pendingtitle_2" translatable="false">Viewing all your decisions</string>
-    <string name="pendinghelp_2" translatable="false">To go to decisions page click on hamburger button on top left corner in home page
-        , then choose Pending Decision from navigation screen. \n
-    Here all your saved decisions would be listed. </string>
-
-    <string name="pendingtitle_3" translatable="false">Creating a new decision</string>
-    <string name="pendinghelp_3" translatable="false">To add a new decision first go to decisions page by clicking on the hamburger button on top  left most corner on home page,
-        then choose Pending Decisions. From the decisions page click on the plus button on bottom corner. \n A new page will be opened containing
-    various fields regarding your decision. You can set reminders, add alarm, add pros and cons for your decision all from this page.
-        You can also add extra items like phone no, email ids, websites etc related to your decision.
-     Once you are done click on the tick button on bottom corner to save your changes. Your new decision would be added to
-    the list of decisions in decision page after a few seconds. \n
-    To discard your changes just press back button before saving of the decision</string>
-
-    <string name="pendingtitle_4" translatable="false">Viewing a decision</string>
-    <string name="pendinghelp_4" translatable="false">To view an decision first go to decisions page by clicking on the hamburger button on top  left most corner on home page,
-        then choose Pending Decisions. Here you can see a list of saved decisions. To view any decision just click on the particular decision card.</string>
-
-    <string name="pendingtitle_5" translatable="false">Sharing or deleting a particular decision</string>
-    <string name="pendinghelp_5" translatable="false">To share or delete an decision go to the particular page of that decision by clicking on it from list of decisions. Then to share
-        click of share icon on the title bar, then choose your medium of sharing from the dialogue. To delete click on the delete icon
-        next to the share icon on the title bar. Remember  deletion is final and cannot be retraced back.</string>
-
-
-
-
-    <string name="eventhelp_1" translatable="false"> Have an upcoming birthday party, wedding,
-        anniversary celebrations ? Finding it hard to keep track of all upcoming events or prone to forget important dates?
-        Then this feature is the perfect solution for you. Add all your upcoming parties, weddings, anniversairies. You can set reminders for any
-        events of your choice. You can also  add alarms prior to events to make sure you do not forget about them.
-   </string>
-    <string name="eventtitle_3" translatable="false">Creating a new event</string>
-    <string name="eventhelp_3" translatable="false">To add a new event first go to events page by  clicking on the hamburger button on top  left most corner on home page,
-        then choose Events. From the events page click on the plus button on bottom corner. \n A new page will be opened containing
-    various fields regarding your event. You can set reminders, add alarm, add location for your event all from this page.
-     Once you are done click on the tick button on bottom corner to save your changes. Your new event would be added to
-    the list of events in event page after a few seconds. \n
-    To discard your changes just press back button before saving of the event</string>
-
-    <string name="eventtitle_2" translatable="false">Viewing all your events</string>
-    <string name="eventhelp_2" translatable="false">To go to events page click on hamburger button on top left corner in home page
-        , then choose Events from navigation screen. \n
-    Here all your saved events would be listed. </string>
-
-    <string name="eventtitle_4" translatable="false">Viewing an event</string>
-    <string name="eventhelp_4" translatable="false">To view an event first go to events page click on the hamburger button on top  left most corner on home page,
-        then choose Events. Here you can see a list of saved events. To view any event just click on the particular event card. </string>
-
-    <string name="eventtitle_5" translatable="false">Sharing or deleting a particular event</string>
-    <string name="eventhelp_5" translatable="false">To share or delete an event go to the particular page of that event by clicking on it from list of events. Then to share
-        click of share icon on the title bar, then choose your medium of sharing from the dialogue. To delete click on the delete icon
-        next to the share icon on the title bar. Remember deletion is final and cannot be retraced back.
-     </string>
-
-
-    <string name="taskhelp_1" translatable="false">Having a lot on your mind? Lots of things to get done?
-        Well this feature is most suited for you. Tasks let you create new todo items, assign a label for them
-    ,create alarms,add notes and add subtasks within a task. </string>
-
-
-    <string name="tasktitle_2" translatable="false">Viewing all your tasks</string>
-    <string name="taskhelp_2" translatable="false">To go to tasks page click on hamburger button on top left corner in home page
-        , then choose Tasks from navigation screen. \n
-    Here all your saved tasks would be listed.</string>
-
-    <string name="tasktitle_3" translatable="false">Creating a new task</string>
-    <string name="taskhelp_3" translatable="false">From the home page press the plus button on bottom corner. A new page opens where you can add
-    your task and set a reminder for it. Also you can assign a label for it for easy organisation of your tasks.
-        To add subtasks, notes, set alarms or repeat options click on expand option in
-    top right corner to open the expanded view. Once you have added all details press the plus sign in one step page or the tick button in
-    expanded page to save the task.</string>
-
-    <string name="tasktitle_4" translatable="false">Viewing an task</string>
-    <string name="taskhelp_4" translatable="false">To view an task from the list of task in home page just click on it</string>
-
-
-    <string name="tasktitle_6" translatable="false">Sharing a task</string>
-    <string name="taskhelp_6" translatable="false">To share a task click on it from the home page. Then click on the more button right of task name.
-    Then a dialogue pops up with option to share or delete the task . Click on share button and
-        choose the sharing medium from the next dialogue.</string>
-
-    <string name="tasktitle_5" translatable="false">Editing  a task</string>
-    <string name="taskhelp_5" translatable="false">To edit a task click on it from the home page and in the details page edit or change any
-    detail you wish. Change the task name, edit the notes, add or remove subtask , change labels etc. After changes have been made
-    click on tick button on bottom corner of the page.</string>
-
-    <string name="tasktitle_7" translatable="false">Deleting a task</string>
-    <string name="taskhelp_7" translatable="false">To delete a task either swipe the particular task to left or right from home page or
-    go to the particular page of task by clicking on it. Then click on the more button right of task name.
-    Then a dialogue pops up with option to share or delete the task . Click on delete option. </string>
-
-
-    <string name="labelhelp_1" translatable="false">Labels help you to organise your task. You can categorise your tasks into different labels like
-    work, to-dos, personal etc thus helping to bring order within your tasks. Also it can help you to find your task much easier.
-    Each task can be assigned one label during creation which can be edited any time. You can set one label to be default
-    label in settings which will be the default label when creating new tasks. You can change that by clicking on it and choosing
-    your new label</string>
-    <string name="labeltitle_2" translatable="false">Viewing all your labels</string>
-    <string name="labelhelp_2" translatable="false">To go to labels page click on hamburger button on top left corner in home page
-        , then choose Labels from navigation screen. \n
-    Here all your labels would be listed.</string>
-
-    <string name="labeltitle_3" translatable="false">Creating a new label</string>
-    <string name="labelhelp_3" translatable="false">To add a new label first go to labels page by  clicking on the hamburger button on top  left most corner on
-        home page, then choose Labels. From the labels page click on the plus button on bottom corner.</string>
-
-    <string name="labeltitle_4" translatable="false">Viewing all tasks in a label</string>
-    <string name="labelhelp_4" translatable="false">To view all tasks in a label first go to label manager page click on the hamburger button on top  left most corner on home page,
-        then choose Labels. Here you can see a list of labels. To view all tasks in any particular label just click on it.</string>
-
-    <string name="labeltitle_5" translatable="false">Adding a task to a particular label</string>
-    <string name="labelhelp_5" translatable="false">To add a task to a particular label either go to the label page from label manager and press the plus button
-    on bottom right or while adding new task change the label to the desired one by clicking on label text and choosing your
-    desired option.</string>
-
-    <string name="labeltitle_6" translatable="false">Editing a label</string>
-    <string name="labelhelp_6" translatable="false">To edit a label click go to label manager and click on more button under the label name. Then click on the
-    pencil image to edit your label.</string>
-    <string name="labeltitle_7" translatable="false">Deleting a label</string>
-    <string name="labelhelp_7" translatable="false">To delete a label go to label manager and click on more button under the label name. Then click on the
-    delete button to edit your label. Here you option to decide what to do with the tasks in the label. Either you can delete all tasks in
-    that label or assign a new or existing label for those tasks. If no option is chosen then all tasks in that label with be labeless.
-    </string>
-
-
-    <string name="labeltitle_8" translatable="false">Setting default label</string>
-    <string name="labelhelp_8" translatable="false">To set a default label go to settings and click on general. Then click on Default Label and choose your
-        desired label. This will be used as default option while creating new tasks. You can change label by clicking on it and chosing your new
-        label.
-    </string>
-
 
     <string name="title_activity_first_screen" translatable="false">FirstScreen</string>
 
@@ -694,9 +555,10 @@
     <string name="sign_out">Log Out</string>
     <string name="loading">Loading</string>
     <string name="foyohe_tag" translatable="false">Made with \u2665 by foyohe</string>
-    <string name="signing_in">Signing in</string>
-    <!--<string name=""></string>-->
-    <!--<string name=""></string>-->
+    <string name="signing_in" >Signing in</string>
+    <string name="network_error" translatable="false">Sorry couldn\'t connect to server. Please try again after checking your network
+    connection</string>
+    <string name="help_error" translatable="false">Help currently not available! Try again later</string>
     <!--<string name=""></string>-->
     <!--<string name=""></string>-->
     <!--<string name=""></string>-->

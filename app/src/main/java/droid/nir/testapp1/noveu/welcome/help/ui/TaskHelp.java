@@ -29,6 +29,7 @@ import droid.nir.testapp1.noveu.constants.constants;
 import droid.nir.testapp1.noveu.ui.util.ProgressDialog;
 import droid.nir.testapp1.noveu.welcome.data.Help;
 import droid.nir.testapp1.noveu.welcome.help.HelpAdapter;
+import droid.nir.testapp1.noveu.welcome.help.HelpLoad;
 
 public class TaskHelp extends AppCompatActivity implements View.OnClickListener {
 
@@ -57,6 +58,7 @@ public class TaskHelp extends AppCompatActivity implements View.OnClickListener 
 */
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(this);
+        findViewById(R.id.refresh).setOnClickListener(this);
 
         FirebaseAnalytics mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
         FirebaseUtil.recordScreenView(this, "help task", mFirebaseAnalytics);
@@ -67,8 +69,8 @@ public class TaskHelp extends AppCompatActivity implements View.OnClickListener 
     }
 
     private void setupHelpList() {
-        new AsyncLoad(this, this).execute();
-
+     //   new AsyncLoad(this, this).execute();
+        new HelpLoad(this,this).load("tasks");
     }
 
     static class AsyncLoad extends AsyncTask<Void, Void, HashMap<String, String>> implements ValueEventListener {
@@ -178,6 +180,9 @@ public class TaskHelp extends AppCompatActivity implements View.OnClickListener 
             case R.id.fab:
                 String mailid[] = {constants.dev_mail};
                 Import.composeEmail(this, mailid, "Help [Tasks]", null);
+                break;
+            case R.id.refresh:
+                setupHelpList();
                 break;
         }
     }

@@ -9,16 +9,21 @@ import com.google.firebase.database.IgnoreExtraProperties;
 @IgnoreExtraProperties
 public class Help {
 
+    /**
+     * type = type of help
+     * 0 - normal title and desp
+     * 1 - only title
+     * 2 - only desp
+     */
     public String title,desp;
-    public int order;
+
 
     public Help() {
         // required for firebase calls
     }
 
-    public Help(String title,String desp,int order) {
+    public Help(String title,String desp) {
         this.title = title;
         this.desp = desp;
-        this.order = order;
     }
 }
